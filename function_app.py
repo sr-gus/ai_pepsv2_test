@@ -7,6 +7,9 @@ from datetime import datetime
 
 app = func.FunctionApp(http_auth_level=func.AuthLevel.FUNCTION)
 
+logger = logging.getLogger(__name__)
+
+
 # =========================================
 # KEYWORD CONFIGURATION
 # =========================================
@@ -25,6 +28,7 @@ TOPIC_CONFIG = {
         "threshold": 2
     }
 }
+
 
 # =========================================
 # HELPERS
@@ -60,6 +64,9 @@ def get_latest_message(thread):
     ]
 
     if not valid_messages:
+        logger.warning(
+            "No messages with received timestamp found. Falling back to last message in thread."
+        )
         return thread[-1] if thread else {}
 
     def parse_dt(value):
@@ -69,9 +76,18 @@ def get_latest_message(thread):
             # Handles values like: 2026-05-17T10:00:00Z
             return datetime.fromisoformat(value.replace("Z", "+00:00"))
         except Exception:
+            logger.warning("Unable to parse message received timestamp: %s", value)
             return datetime.min
 
-    return max(valid_messages, key=lambda m: parse_dt(m.get("received")))
+    latest_message = max(valid_messages, key=lambda m: parse_dt(m.get("received")))
+
+    logger.info(
+        "Latest message selected for keyword analysis. received=%s from=%s",
+        latest_message.get("received"),
+        latest_message.get("from")
+    )
+
+    return latest_message
 
 
 # =========================================
@@ -83,7 +99,9 @@ async def analyze_sentimental(thread):
     Placeholder sentimental analysis.
     Can later use normalize_text(thread) or the full thread directly.
     """
-    return {
+    logger.info("Starting sentimental analysis. message_count=%s", len(thread))
+
+    result = {
         "name": "sentimental",
         "score": 0.82,
         "label": "negative",
@@ -92,6 +110,15 @@ async def analyze_sentimental(thread):
         "details": {}
     }
 
+    logger.info(
+        "Completed sentimental analysis. score=%s label=%s flags=%s",
+        result["score"],
+        result["label"],
+        result["flags"]
+    )
+
+    return result
+
 
 async def analyze_keywords(thread):
     """
@@ -99,6 +126,8 @@ async def analyze_keywords(thread):
     Uses ONLY the newest message in the thread.
     If at least one topic exceeds its threshold, keyword_trigger is raised.
     """
+    logger.info("Starting keyword analysis. message_count=%s", len(thread))
+
     latest_msg = get_latest_message(thread)
 
     # Analyze only newest message
@@ -161,7 +190,7 @@ async def analyze_keywords(thread):
     if total_matches > 5:
         flags.append("high_keyword_density")
 
-    return {
+    result = {
         "name": "keyword",
         "score": round(score, 2),
         "label": label,
@@ -170,7 +199,8 @@ async def analyze_keywords(thread):
             "analyzedMessage": {
                 "received": latest_msg.get("received"),
                 "subject": latest_msg.get("subject"),
-                "preview": latest_msg.get("preview")
+                "preview": latest_msg.get("preview"),
+                "from": latest_msg.get("from")
             },
             "topics": topic_results,
             "triggeredTopics": triggered_topics,
@@ -179,13 +209,27 @@ async def analyze_keywords(thread):
         }
     }
 
+    logger.info(
+        "Completed keyword analysis. score=%s label=%s total_matches=%s word_count=%s triggered_topics=%s flags=%s",
+        result["score"],
+        result["label"],
+        total_matches,
+        len(words),
+        triggered_topics,
+        flags
+    )
+
+    return result
+
 
 async def analyze_frequency(thread):
     """
     Placeholder frequency analysis.
     Can later use received timestamps across full thread.
     """
-    return {
+    logger.info("Starting frequency analysis. message_count=%s", len(thread))
+
+    result = {
         "name": "frequency",
         "score": 0.6,
         "label": "increasing",
@@ -196,12 +240,23 @@ async def analyze_frequency(thread):
         }
     }
 
+    logger.info(
+        "Completed frequency analysis. score=%s label=%s flags=%s",
+        result["score"],
+        result["label"],
+        result["flags"]
+    )
+
+    return result
+
 
 # =========================================
 # AGGREGATION (DETERMINANT LOGIC)
 # =========================================
 
 def aggregate_results(sentimental, keyword, frequency):
+    logger.info("Starting result aggregation.")
+
     weights = {
         "sentimental": 0.4,
         "keyword": 0.3,
@@ -228,12 +283,21 @@ def aggregate_results(sentimental, keyword, frequency):
 
     final_score = min(base_score + boosts, 1.0)
 
-    return {
+    result = {
         "score": round(final_score, 2),
         "baseScore": round(base_score, 2),
         "boost": round(boosts, 2),
         "signals": [sentimental, keyword, frequency]
     }
+
+    logger.info(
+        "Completed result aggregation. base_score=%s boost=%s final_score=%s",
+        result["baseScore"],
+        result["boost"],
+        result["score"]
+    )
+
+    return result
 
 
 # =========================================
@@ -241,6 +305,8 @@ def aggregate_results(sentimental, keyword, frequency):
 # =========================================
 
 def decide_escalation(aggregate):
+    logger.info("Starting escalation decision. score=%s", aggregate["score"])
+
     score = aggregate["score"]
 
     explanation = []
@@ -250,7 +316,7 @@ def decide_escalation(aggregate):
             explanation.extend(signal["flags"])
 
     if score < 0.5:
-        return {
+        decision = {
             "tier": None,
             "action": "exit",
             "reason": "Low escalation score",
@@ -259,7 +325,7 @@ def decide_escalation(aggregate):
         }
 
     elif score < 0.75:
-        return {
+        decision = {
             "tier": "Tier 1",
             "action": "Only Support Engineer",
             "reason": "Moderate escalation risk",
@@ -268,13 +334,23 @@ def decide_escalation(aggregate):
         }
 
     else:
-        return {
+        decision = {
             "tier": "Tier 2",
             "action": "Engineer, Supervisor",
             "reason": "High escalation risk",
             "confidence": score,
             "explanation": explanation
         }
+
+    logger.info(
+        "Escalation decision completed. tier=%s action=%s confidence=%s explanation=%s",
+        decision["tier"],
+        decision["action"],
+        decision["confidence"],
+        decision["explanation"]
+    )
+
+    return decision
 
 
 # =========================================
@@ -283,7 +359,7 @@ def decide_escalation(aggregate):
 
 @app.route(route="threadEscalationEngine")
 async def threadEscalationEngine(req: func.HttpRequest) -> func.HttpResponse:
-    logging.info("Processing thread escalation request")
+    logger.info("Thread escalation request received.")
 
     # ----------------------------
     # 1. VALIDATION
@@ -291,6 +367,8 @@ async def threadEscalationEngine(req: func.HttpRequest) -> func.HttpResponse:
     try:
         req_body = req.get_json()
     except ValueError:
+        logger.warning("Request validation failed. Invalid JSON payload.")
+
         return func.HttpResponse(
             json.dumps({"error": "Invalid JSON payload"}),
             status_code=400,
@@ -300,19 +378,28 @@ async def threadEscalationEngine(req: func.HttpRequest) -> func.HttpResponse:
     thread = req_body.get("thread")
 
     if not isinstance(thread, list) or len(thread) == 0:
+        logger.warning(
+            "Request validation failed. 'thread' must be a non-empty array. received_type=%s",
+            type(thread).__name__
+        )
+
         return func.HttpResponse(
             json.dumps({"error": "'thread' must be a non-empty array"}),
             status_code=400,
             mimetype="application/json"
         )
 
+    logger.info("Request validation completed. raw_thread_count=%s", len(thread))
+
     # ----------------------------
     # 2. NORMALIZATION
     # ----------------------------
     messages = []
+    skipped_messages = 0
 
     for msg in thread:
         if not isinstance(msg, dict):
+            skipped_messages += 1
             continue
 
         messages.append({
@@ -323,16 +410,29 @@ async def threadEscalationEngine(req: func.HttpRequest) -> func.HttpResponse:
         })
 
     if len(messages) == 0:
+        logger.warning(
+            "Thread normalization failed. No valid messages found. skipped_messages=%s",
+            skipped_messages
+        )
+
         return func.HttpResponse(
             json.dumps({"error": "Thread contains no valid messages"}),
             status_code=400,
             mimetype="application/json"
         )
 
+    logger.info(
+        "Thread normalization completed. normalized_message_count=%s skipped_messages=%s",
+        len(messages),
+        skipped_messages
+    )
+
     # ----------------------------
     # 3. PARALLEL ANALYSIS
     # ----------------------------
     try:
+        logger.info("Starting parallel analysis.")
+
         sentimental, keyword, frequency = await asyncio.wait_for(
             asyncio.gather(
                 analyze_sentimental(messages),
@@ -341,14 +441,21 @@ async def threadEscalationEngine(req: func.HttpRequest) -> func.HttpResponse:
             ),
             timeout=10
         )
+
+        logger.info("Parallel analysis completed.")
+
     except asyncio.TimeoutError:
+        logger.error("Analysis timeout after 10 seconds.")
+
         return func.HttpResponse(
             json.dumps({"error": "Analysis timeout"}),
             status_code=504,
             mimetype="application/json"
         )
+
     except Exception as e:
-        logging.exception("Unexpected error during analysis")
+        logger.exception("Unexpected error during analysis.")
+
         return func.HttpResponse(
             json.dumps({
                 "error": "Internal analysis failure",
@@ -381,6 +488,14 @@ async def threadEscalationEngine(req: func.HttpRequest) -> func.HttpResponse:
         "aggregation": aggregate,
         "decision": decision
     }
+
+    logger.info(
+        "Thread escalation request completed. message_count=%s final_score=%s tier=%s action=%s",
+        len(messages),
+        aggregate["score"],
+        decision["tier"],
+        decision["action"]
+    )
 
     return func.HttpResponse(
         json.dumps(response),
