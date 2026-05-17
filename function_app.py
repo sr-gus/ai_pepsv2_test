@@ -2,14 +2,87 @@ import azure.functions as func
 import logging
 import json
 import asyncio
+import re
+from datetime import datetime
 
 app = func.FunctionApp(http_auth_level=func.AuthLevel.FUNCTION)
+
+# =========================================
+# KEYWORD CONFIGURATION
+# =========================================
+
+TOPIC_CONFIG = {
+    "billing_issue": {
+        "keywords": ["invoice", "billing", "charge", "refund"],
+        "threshold": 3
+    },
+    "technical_failure": {
+        "keywords": ["error", "failure", "bug", "issue", "down"],
+        "threshold": 2
+    },
+    "urgent_request": {
+        "keywords": ["urgent", "asap", "immediately", "critical"],
+        "threshold": 2
+    }
+}
+
+# =========================================
+# HELPERS
+# =========================================
+
+def normalize_text(thread):
+    """
+    Full-thread normalizer.
+    Useful for sentiment/frequency/other future analyses.
+    """
+    text = " ".join(
+        ((msg.get("subject") or "") + " " + (msg.get("preview") or ""))
+        for msg in thread
+    )
+
+    return re.sub(r"[^\w\s]", " ", text.lower())
+
+
+def get_latest_message(thread):
+    """
+    Returns the newest message in the normalized thread list.
+    Expects items shaped like:
+    {
+        "subject": ...,
+        "preview": ...,
+        "from": ...,
+        "received": ...
+    }
+    """
+    valid_messages = [
+        msg for msg in thread
+        if isinstance(msg, dict) and msg.get("received")
+    ]
+
+    if not valid_messages:
+        return thread[-1] if thread else {}
+
+    def parse_dt(value):
+        if not value:
+            return datetime.min
+        try:
+            # Handles values like: 2026-05-17T10:00:00Z
+            return datetime.fromisoformat(value.replace("Z", "+00:00"))
+        except Exception:
+            return datetime.min
+
+    return max(valid_messages, key=lambda m: parse_dt(m.get("received")))
+
 
 # =========================================
 # ANALYSIS FUNCTIONS (STANDARD FORMAT)
 # =========================================
 
 async def analyze_sentimental(thread):
+    """
+    Placeholder sentimental analysis.
+    Can later use normalize_text(thread) or the full thread directly.
+    """
     return {
         "name": "sentimental",
         "score": 0.82,
@@ -21,19 +94,97 @@ async def analyze_sentimental(thread):
 
 
 async def analyze_keywords(thread):
+    """
+    Topic-based keyword analysis.
+    Uses ONLY the newest message in the thread.
+    If at least one topic exceeds its threshold, keyword_trigger is raised.
+    """
+    latest_msg = get_latest_message(thread)
+
+    # Analyze only newest message
+    text = (
+        (latest_msg.get("subject") or "") + " " +
+        (latest_msg.get("preview") or "")
+    )
+
+    text = re.sub(r"[^\w\s]", " ", text.lower())
+    words = text.split()
+
+    topic_results = []
+    triggered_topics = []
+    total_matches = 0
+
+    for topic, config in TOPIC_CONFIG.items():
+        keyword_matches = 0
+
+        for keyword in config["keywords"]:
+            keyword_matches += sum(1 for w in words if w == keyword.lower())
+
+        threshold = config["threshold"]
+        triggered = keyword_matches >= threshold
+
+        topic_result = {
+            "topic": topic,
+            "matches": keyword_matches,
+            "threshold": threshold,
+            "triggered": triggered
+        }
+
+        topic_results.append(topic_result)
+        total_matches += keyword_matches
+
+        if triggered:
+            triggered_topics.append(topic)
+
+    # OR-condition trigger: if at least one topic triggered
+    overall_trigger = len(triggered_topics) > 0
+
+    # Score based only on latest message density
+    word_count = max(len(words), 1)
+    raw_score = total_matches / word_count
+    score = min(raw_score * 5, 1.0)
+
+    # Label
+    if overall_trigger:
+        label = "triggered"
+    elif score > 0.5:
+        label = "moderate_signal"
+    else:
+        label = "low_signal"
+
+    # Flags
+    flags = []
+
+    if overall_trigger:
+        flags.append("keyword_trigger")
+
+    if total_matches > 5:
+        flags.append("high_keyword_density")
+
     return {
         "name": "keyword",
-        "score": 0.7,
-        "label": "high_keyword_density",
-        "flags": ["keyword_trigger"],
+        "score": round(score, 2),
+        "label": label,
+        "flags": flags,
         "details": {
-            "keywords": ["billing", "error"],
-            "matches": 5
+            "analyzedMessage": {
+                "received": latest_msg.get("received"),
+                "subject": latest_msg.get("subject"),
+                "preview": latest_msg.get("preview")
+            },
+            "topics": topic_results,
+            "triggeredTopics": triggered_topics,
+            "totalMatches": total_matches,
+            "wordCount": len(words)
         }
     }
 
 
 async def analyze_frequency(thread):
+    """
+    Placeholder frequency analysis.
+    Can later use received timestamps across full thread.
+    """
     return {
         "name": "frequency",
         "score": 0.6,
@@ -119,7 +270,7 @@ def decide_escalation(aggregate):
     else:
         return {
             "tier": "Tier 2",
-            "action": "Engineer, TA, Manager",
+            "action": "Engineer, Supervisor",
             "reason": "High escalation risk",
             "confidence": score,
             "explanation": explanation
@@ -171,6 +322,13 @@ async def threadEscalationEngine(req: func.HttpRequest) -> func.HttpResponse:
             "received": msg.get("receivedDateTime")
         })
 
+    if len(messages) == 0:
+        return func.HttpResponse(
+            json.dumps({"error": "Thread contains no valid messages"}),
+            status_code=400,
+            mimetype="application/json"
+        )
+
     # ----------------------------
     # 3. PARALLEL ANALYSIS
     # ----------------------------
@@ -187,6 +345,16 @@ async def threadEscalationEngine(req: func.HttpRequest) -> func.HttpResponse:
         return func.HttpResponse(
             json.dumps({"error": "Analysis timeout"}),
             status_code=504,
+            mimetype="application/json"
+        )
+    except Exception as e:
+        logging.exception("Unexpected error during analysis")
+        return func.HttpResponse(
+            json.dumps({
+                "error": "Internal analysis failure",
+                "details": str(e)
+            }),
+            status_code=500,
             mimetype="application/json"
         )
 
