@@ -11,21 +11,63 @@ logger = logging.getLogger(__name__)
 
 
 # =========================================
-# KEYWORD CONFIGURATION
+# ESCALATION CONFIGURATION
 # =========================================
 
-TOPIC_CONFIG = {
-    "billing_issue": {
-        "keywords": ["invoice", "billing", "charge", "refund"],
-        "threshold": 3
+ESCALATION_CONFIG = {
+    "topics": {
+        "billing_issue": {
+            "keywords": ["invoice", "billing", "charge", "refund"],
+            "threshold": 3
+        },
+        "technical_failure": {
+            "keywords": ["error", "failure", "bug", "issue", "down"],
+            "threshold": 2
+        },
+        "urgent_request": {
+            "keywords": ["urgent", "asap", "immediately", "critical"],
+            "threshold": 2
+        }
     },
-    "technical_failure": {
-        "keywords": ["error", "failure", "bug", "issue", "down"],
-        "threshold": 2
+    "weights": {
+        "sentimental": 0.4,
+        "keyword": 0.3,
+        "frequency": 0.3
     },
-    "urgent_request": {
-        "keywords": ["urgent", "asap", "immediately", "critical"],
-        "threshold": 2
+    "boosts": {
+        "keyword_trigger": 0.05,
+        "rapid_followup": 0.05,
+        "frustration_detected": 0.05
+    },
+    "tiers": {
+        "tier_1_min_score": 0.5,
+        "tier_2_min_score": 0.75
+    },
+    "notifications": {
+        "exit": {
+            "shouldNotify": False,
+            "severity": "none",
+            "target": None,
+            "title": "No escalation required",
+            "summary": "Thread did not reach the minimum escalation score.",
+            "recommendedAction": "No action required"
+        },
+        "tier_1": {
+            "shouldNotify": True,
+            "severity": "medium",
+            "target": "support",
+            "title": "Tier 1 escalation",
+            "summary": "Thread reached moderate escalation risk.",
+            "recommendedAction": "Review by support engineer"
+        },
+        "tier_2": {
+            "shouldNotify": True,
+            "severity": "high",
+            "target": "supervisor",
+            "title": "Tier 2 escalation required",
+            "summary": "Thread reached high escalation risk.",
+            "recommendedAction": "Review by engineer and supervisor"
+        }
     }
 }
 
@@ -90,6 +132,45 @@ def get_latest_message(thread):
     return latest_message
 
 
+def build_notification(decision):
+    """
+    Builds a notification object for Power Automate / Teams routing.
+    """
+    tier = decision.get("tier")
+
+    if tier == "Tier 1":
+        notification_key = "tier_1"
+    elif tier == "Tier 2":
+        notification_key = "tier_2"
+    else:
+        notification_key = "exit"
+
+    notification_config = ESCALATION_CONFIG["notifications"][notification_key]
+
+    notification = {
+        "shouldNotify": notification_config["shouldNotify"],
+        "severity": notification_config["severity"],
+        "target": notification_config["target"],
+        "title": notification_config["title"],
+        "summary": notification_config["summary"],
+        "recommendedAction": notification_config["recommendedAction"],
+        "tier": decision.get("tier"),
+        "action": decision.get("action"),
+        "reason": decision.get("reason"),
+        "confidence": decision.get("confidence"),
+        "explanation": decision.get("explanation", [])
+    }
+
+    logger.info(
+        "Notification built. should_notify=%s severity=%s target=%s",
+        notification["shouldNotify"],
+        notification["severity"],
+        notification["target"]
+    )
+
+    return notification
+
+
 # =========================================
 # ANALYSIS FUNCTIONS (STANDARD FORMAT)
 # =========================================
@@ -143,7 +224,9 @@ async def analyze_keywords(thread):
     triggered_topics = []
     total_matches = 0
 
-    for topic, config in TOPIC_CONFIG.items():
+    topic_config = ESCALATION_CONFIG["topics"]
+
+    for topic, config in topic_config.items():
         keyword_matches = 0
 
         for keyword in config["keywords"]:
@@ -257,11 +340,8 @@ async def analyze_frequency(thread):
 def aggregate_results(sentimental, keyword, frequency):
     logger.info("Starting result aggregation.")
 
-    weights = {
-        "sentimental": 0.4,
-        "keyword": 0.3,
-        "frequency": 0.3
-    }
+    weights = ESCALATION_CONFIG["weights"]
+    boost_config = ESCALATION_CONFIG["boosts"]
 
     base_score = (
         sentimental["score"] * weights["sentimental"] +
@@ -269,17 +349,16 @@ def aggregate_results(sentimental, keyword, frequency):
         frequency["score"] * weights["frequency"]
     )
 
-    # Apply rule-based boosts
     boosts = 0
 
     if "keyword_trigger" in keyword.get("flags", []):
-        boosts += 0.05
+        boosts += boost_config["keyword_trigger"]
 
     if "rapid_followup" in frequency.get("flags", []):
-        boosts += 0.05
+        boosts += boost_config["rapid_followup"]
 
     if "frustration_detected" in sentimental.get("flags", []):
-        boosts += 0.05
+        boosts += boost_config["frustration_detected"]
 
     final_score = min(base_score + boosts, 1.0)
 
@@ -287,6 +366,7 @@ def aggregate_results(sentimental, keyword, frequency):
         "score": round(final_score, 2),
         "baseScore": round(base_score, 2),
         "boost": round(boosts, 2),
+        "weights": weights,
         "signals": [sentimental, keyword, frequency]
     }
 
@@ -308,6 +388,7 @@ def decide_escalation(aggregate):
     logger.info("Starting escalation decision. score=%s", aggregate["score"])
 
     score = aggregate["score"]
+    tier_config = ESCALATION_CONFIG["tiers"]
 
     explanation = []
 
@@ -315,7 +396,7 @@ def decide_escalation(aggregate):
         if signal.get("flags"):
             explanation.extend(signal["flags"])
 
-    if score < 0.5:
+    if score < tier_config["tier_1_min_score"]:
         decision = {
             "tier": None,
             "action": "exit",
@@ -324,7 +405,7 @@ def decide_escalation(aggregate):
             "explanation": explanation
         }
 
-    elif score < 0.75:
+    elif score < tier_config["tier_2_min_score"]:
         decision = {
             "tier": "Tier 1",
             "action": "Only Support Engineer",
@@ -476,7 +557,12 @@ async def threadEscalationEngine(req: func.HttpRequest) -> func.HttpResponse:
     decision = decide_escalation(aggregate)
 
     # ----------------------------
-    # 6. FINAL RESPONSE
+    # 6. NOTIFICATION
+    # ----------------------------
+    notification = build_notification(decision)
+
+    # ----------------------------
+    # 7. FINAL RESPONSE
     # ----------------------------
     response = {
         "messageCount": len(messages),
@@ -486,15 +572,19 @@ async def threadEscalationEngine(req: func.HttpRequest) -> func.HttpResponse:
             "frequency": frequency
         },
         "aggregation": aggregate,
-        "decision": decision
+        "decision": decision,
+        "notification": notification
     }
 
     logger.info(
-        "Thread escalation request completed. message_count=%s final_score=%s tier=%s action=%s",
+        "Thread escalation request completed. message_count=%s final_score=%s tier=%s action=%s should_notify=%s severity=%s target=%s",
         len(messages),
         aggregate["score"],
         decision["tier"],
-        decision["action"]
+        decision["action"],
+        notification["shouldNotify"],
+        notification["severity"],
+        notification["target"]
     )
 
     return func.HttpResponse(
