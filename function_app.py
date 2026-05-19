@@ -437,7 +437,7 @@ def decide_escalation(aggregate):
 # =========================================
 # MAIN FUNCTION
 # =========================================
-
+#Test comment Gabriel
 @app.route(route="threadEscalationEngine")
 async def threadEscalationEngine(req: func.HttpRequest) -> func.HttpResponse:
     logger.info("Thread escalation request received.")
