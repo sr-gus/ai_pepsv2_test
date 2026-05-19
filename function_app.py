@@ -7,6 +7,7 @@ from datetime import datetime
 
 app = func.FunctionApp(http_auth_level=func.AuthLevel.FUNCTION)
 
+
 logger = logging.getLogger(__name__)
 
 
@@ -438,6 +439,7 @@ def decide_escalation(aggregate):
 # MAIN FUNCTION
 # =========================================
 #Test comment Gabriel
+#Test comment deni
 @app.route(route="threadEscalationEngine")
 async def threadEscalationEngine(req: func.HttpRequest) -> func.HttpResponse:
     logger.info("Thread escalation request received.")
