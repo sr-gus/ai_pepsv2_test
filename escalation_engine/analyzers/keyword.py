@@ -10,7 +10,11 @@ from escalation_engine.thread.extractors import (
     get_sender_address,
     get_subject,
 )
-from escalation_engine.thread.selectors import get_latest_message
+from escalation_engine.thread.selectors import (
+    get_customer_messages,
+    get_latest_message,
+    get_valid_messages,
+)
 
 logger = logging.getLogger(__name__)
 
@@ -23,7 +27,17 @@ async def analyze_keywords(raw_thread: list[Any]) -> dict[str, Any]:
     """
     logger.info("Starting keyword analysis. raw_thread_count=%s", len(raw_thread))
 
-    latest_msg = get_latest_message(raw_thread)
+    valid_messages = get_valid_messages(raw_thread)
+    customer_messages = get_customer_messages(raw_thread)
+    ignored_engineer_messages = len(valid_messages) - len(customer_messages)
+
+    logger.info(
+        "Keyword analysis filtered messages. customer_message_count=%s ignored_engineer_message_count=%s",
+        len(customer_messages),
+        ignored_engineer_messages
+    )
+
+    latest_msg = get_latest_message(customer_messages)
 
     text = get_message_text(latest_msg)
     text = re.sub(r"[^\w\s]", " ", text.lower())
@@ -96,7 +110,9 @@ async def analyze_keywords(raw_thread: list[Any]) -> dict[str, Any]:
             "topics": topic_results,
             "triggeredTopics": triggered_topics,
             "totalMatches": total_matches,
-            "wordCount": len(words)
+            "wordCount": len(words),
+            "customerMessageCount": len(customer_messages),
+            "ignoredEngineerMessageCount": ignored_engineer_messages
         }
     }
 
