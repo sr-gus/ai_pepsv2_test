@@ -39,8 +39,9 @@ async def analyze_keywords(raw_thread: list[Any]) -> dict[str, Any]:
 
     latest_msg = get_latest_message(customer_messages)
 
-    text = get_message_text(latest_msg)
-    text = re.sub(r"[^\w\s]", " ", text.lower())
+    subject_text = _normalize_text(get_subject(latest_msg))
+    preview_text = _normalize_text(get_preview(latest_msg))
+    text = _normalize_text(get_message_text(latest_msg))
     words = text.split()
 
     topic_results = []
@@ -50,26 +51,28 @@ async def analyze_keywords(raw_thread: list[Any]) -> dict[str, Any]:
     topic_config = ESCALATION_CONFIG["topics"]
 
     for topic, config in topic_config.items():
-        keyword_matches = 0
-
-        for keyword in config["keywords"]:
-            keyword_matches += sum(
-                1 for word in words
-                if word == keyword.lower()
-            )
+        topic_match = _analyze_topic_matches(
+            subject_text,
+            preview_text,
+            config
+        )
 
         threshold = config["threshold"]
-        triggered = keyword_matches >= threshold
+        triggered = topic_match["weightedMatches"] >= threshold
 
         topic_result = {
             "topic": topic,
-            "matches": keyword_matches,
+            "matches": topic_match["matches"],
+            "weightedMatches": topic_match["weightedMatches"],
+            "uniqueMatches": topic_match["uniqueMatches"],
+            "keywordMatches": topic_match["keywordMatches"],
+            "phraseMatches": topic_match["phraseMatches"],
             "threshold": threshold,
             "triggered": triggered
         }
 
         topic_results.append(topic_result)
-        total_matches += keyword_matches
+        total_matches += topic_match["matches"]
 
         if triggered:
             triggered_topics.append(topic)
@@ -77,7 +80,16 @@ async def analyze_keywords(raw_thread: list[Any]) -> dict[str, Any]:
     overall_trigger = len(triggered_topics) > 0
 
     word_count = max(len(words), 1)
-    raw_score = total_matches / word_count
+    weighted_total_matches = sum(
+        topic["weightedMatches"]
+        for topic in topic_results
+    )
+    total_unique_matches = len({
+        match
+        for topic in topic_results
+        for match in topic["uniqueMatches"]
+    })
+    raw_score = weighted_total_matches / word_count
     score = min(raw_score * 5, 1.0)
 
     if overall_trigger:
@@ -92,7 +104,7 @@ async def analyze_keywords(raw_thread: list[Any]) -> dict[str, Any]:
     if overall_trigger:
         flags.append("keyword_trigger")
 
-    if total_matches > 5:
+    if weighted_total_matches > 5:
         flags.append("high_keyword_density")
 
     result = {
@@ -110,6 +122,8 @@ async def analyze_keywords(raw_thread: list[Any]) -> dict[str, Any]:
             "topics": topic_results,
             "triggeredTopics": triggered_topics,
             "totalMatches": total_matches,
+            "weightedTotalMatches": weighted_total_matches,
+            "totalUniqueMatches": total_unique_matches,
             "wordCount": len(words),
             "customerMessageCount": len(customer_messages),
             "ignoredEngineerMessageCount": ignored_engineer_messages
@@ -127,3 +141,88 @@ async def analyze_keywords(raw_thread: list[Any]) -> dict[str, Any]:
     )
 
     return result
+
+
+def _normalize_text(value: str) -> str:
+    return re.sub(r"[^\w\s]", " ", value.lower())
+
+
+def _analyze_topic_matches(
+    subject_text: str,
+    preview_text: str,
+    config: dict[str, Any]
+) -> dict[str, Any]:
+    keyword_matches = []
+    phrase_matches = []
+    unique_matches = set()
+    weighted_matches = 0
+
+    for keyword in config.get("keywords", []):
+        normalized_keyword = _normalize_text(keyword).strip()
+
+        if not normalized_keyword:
+            continue
+
+        subject_count = _count_word_matches(subject_text, normalized_keyword)
+        preview_count = _count_word_matches(preview_text, normalized_keyword)
+        total_count = subject_count + preview_count
+
+        if total_count == 0:
+            continue
+
+        unique_matches.add(normalized_keyword)
+        weighted_matches += subject_count * 2 + preview_count
+        keyword_matches.append({
+            "value": normalized_keyword,
+            "subjectMatches": subject_count,
+            "previewMatches": preview_count,
+            "matches": total_count
+        })
+
+    for phrase in config.get("phrases", []):
+        normalized_phrase = _normalize_text(phrase).strip()
+
+        if not normalized_phrase:
+            continue
+
+        subject_count = _count_phrase_matches(subject_text, normalized_phrase)
+        preview_count = _count_phrase_matches(preview_text, normalized_phrase)
+        total_count = subject_count + preview_count
+
+        if total_count == 0:
+            continue
+
+        unique_matches.add(normalized_phrase)
+        weighted_matches += subject_count * 2 + preview_count
+        phrase_matches.append({
+            "value": normalized_phrase,
+            "subjectMatches": subject_count,
+            "previewMatches": preview_count,
+            "matches": total_count
+        })
+
+    total_matches = sum(
+        match["matches"]
+        for match in keyword_matches + phrase_matches
+    )
+
+    return {
+        "matches": total_matches,
+        "weightedMatches": weighted_matches,
+        "uniqueMatches": sorted(unique_matches),
+        "keywordMatches": keyword_matches,
+        "phraseMatches": phrase_matches
+    }
+
+
+def _count_word_matches(text: str, word: str) -> int:
+    return sum(
+        1 for current_word in text.split()
+        if current_word == word
+    )
+
+
+def _count_phrase_matches(text: str, phrase: str) -> int:
+    pattern = rf"\b{re.escape(phrase)}\b"
+
+    return len(re.findall(pattern, text))
