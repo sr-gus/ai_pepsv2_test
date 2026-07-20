@@ -350,4 +350,4 @@ async def analyze_frequency(raw_thread: list[Any], *, now: Optional[datetime] = 
         result["flags"],
     )
  
-    return result
+    return result 
