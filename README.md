@@ -2,6 +2,9 @@
 
 Azure Function in Python that receives an email/message thread, analyzes escalation signals, assigns an escalation tier, and returns a notification payload for downstream routing.
 
+Internal development and collaboration notes are available in
+[`DEVELOPMENT.md`](DEVELOPMENT.md).
+
 ## Endpoint
 
 - Route: `threadEscalationEngine`
