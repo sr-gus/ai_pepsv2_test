@@ -2,7 +2,7 @@ import logging
 from typing import Any, Optional
 from datetime import datetime, timezone
 
-from escalation_engine.thread.extractors import get_received_datetime
+from escalation_engine.thread.extractors import parse_received_datetime
 from escalation_engine.thread.selectors import get_valid_messages
 
 logger = logging.getLogger(__name__)
@@ -179,7 +179,7 @@ def _compute_unanswered_and_ghosted(
     if not trailing_customer:
         return 0, 0.0
  
-    reference_now = _normalize_dt(now) or datetime.utcnow()
+    reference_now = _normalize_dt(now) or datetime.now(timezone.utc).replace(tzinfo=None)
     last_unanswered_dt = trailing_customer[-1][0]
     ghosted_hours = max((reference_now - last_unanswered_dt).total_seconds() / 3600, 0.0)
     return len(trailing_customer), ghosted_hours
@@ -263,7 +263,7 @@ async def analyze_frequency(raw_thread: list[Any], *, now: Optional[datetime] = 
     messages_with_timestamp = 0
  
     for message in valid_messages:
-        dt = _normalize_dt(get_received_datetime(message))
+        dt = parse_received_datetime(message)
         if dt is not None:
             messages_with_timestamp += 1
  
@@ -350,4 +350,4 @@ async def analyze_frequency(raw_thread: list[Any], *, now: Optional[datetime] = 
         result["flags"],
     )
  
-    return result 
+    return result
