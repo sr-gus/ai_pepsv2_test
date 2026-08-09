@@ -30,6 +30,12 @@ def get_sender_address(message: dict[str, Any]) -> str | None:
     return address if isinstance(address, str) else None
 
 
+def get_headers(message: dict[str, Any]) -> dict[str, Any] | str | None:
+    value = message.get("headers")
+
+    return value if isinstance(value, (dict, str)) else None
+
+
 def get_received_datetime(message: dict[str, Any]) -> str | None:
     value = message.get("receivedDateTime")
 

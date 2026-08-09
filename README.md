@@ -11,11 +11,13 @@ Azure Function in Python that receives an email/message thread, analyzes escalat
 
 ## Request Contract
 
-The request body must be a JSON object with a non-empty `thread` array.
+The request body must be a JSON object with a non-empty `thread` array. The
+array can be provided at the root or under `body.thread` for Power Automate
+compatibility.
 
 Each useful thread item should be a message object. Non-object items are ignored by the analyzers, but the request is rejected when the array does not contain at least one object.
 
-Recommended message fields:
+Canonical message fields:
 
 ```json
 {
@@ -33,6 +35,18 @@ Recommended message fields:
   ]
 }
 ```
+
+Field behavior:
+
+- `subject` and `bodyPreview` provide the text analyzed for sentiment and keywords.
+- `receivedDateTime` must use ISO 8601 and drives message ordering and frequency metrics.
+- `from.emailAddress.address` identifies the sender.
+- `headers` is optional and can be an object or string used to detect automatic replies.
+
+Engineer messages are identified exclusively by matching
+`from.emailAddress.address` against the comma-separated `ENGINEER_EMAILS`
+environment variable. Matching is case-insensitive. Any sender that is not
+configured as an engineer is treated as a customer.
 
 Validation failures return `400` with an `error` field.
 
@@ -104,14 +118,19 @@ escalation_engine/
 
 ## Analyzer Notes
 
-Two analyzers are intentionally placeholders at the moment:
+The sentimental analyzer is intentionally a placeholder at the moment:
 
 - `analyzers/sentimental.py`
-- `analyzers/frequency.py`
 
-They currently return fixed scores and flags so other branches can replace them independently. Because of those fixed values, the current engine may escalate low-risk content. Treat the current scoring behavior as integration scaffolding until those implementations are completed.
+It currently returns fixed scores and flags. Because of those fixed values,
+the current engine may escalate low-risk content. Treat its scoring behavior
+as integration scaffolding until the implementation is completed.
 
 `analyzers/keyword.py` is implemented and evaluates only the newest message in the thread, using `receivedDateTime` when available and falling back to the last valid message.
+
+`analyzers/frequency.py` evaluates customer follow-ups, unanswered messages,
+response delays, automatic replies, and response-time trends. It uses the same
+configured engineer email classification as the keyword analyzer.
 
 ## Configuration
 
@@ -125,6 +144,12 @@ They currently return fixed scores and flags so other branches can replace them 
 
 Changing escalation behavior should usually start there before changing pipeline code.
 
+Deployment environment:
+
+```text
+ENGINEER_EMAILS=eng1@example.com,eng2@example.com
+```
+
 ## Local Checks
 
 Syntax check:
@@ -133,9 +158,8 @@ Syntax check:
 python -m compileall escalation_engine function_app.py
 ```
 
-There are no automated tests in the repository yet. Recommended first tests:
+Run the automated tests:
 
-- Request validation rejects malformed bodies and all-invalid threads.
-- Keyword analyzer selects the latest message correctly.
-- Aggregation applies weights and boosts correctly.
-- Decision logic respects Tier 1 and Tier 2 thresholds.
+```powershell
+python -m unittest discover -s tests -v
+```

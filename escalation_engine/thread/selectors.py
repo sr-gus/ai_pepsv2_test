@@ -11,6 +11,9 @@ from escalation_engine.thread.extractors import (
 
 logger = logging.getLogger(__name__)
 
+CUSTOMER_ROLE = "customer"
+ENGINEER_ROLE = "engineer"
+
 
 def get_valid_messages(raw_thread: list[Any]) -> list[dict[str, Any]]:
     """
@@ -43,6 +46,11 @@ def is_engineer_message(message: dict[str, Any]) -> bool:
         return False
 
     return sender_address.lower() in get_engineer_emails()
+
+
+def get_message_role(message: dict[str, Any]) -> str:
+    """Classify a canonical message using its configured sender address."""
+    return ENGINEER_ROLE if is_engineer_message(message) else CUSTOMER_ROLE
 
 
 def get_customer_messages(raw_thread: list[Any]) -> list[dict[str, Any]]:
