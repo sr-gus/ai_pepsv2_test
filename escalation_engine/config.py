@@ -1,15 +1,40 @@
 ESCALATION_CONFIG = {
     "topics": {
         "billing_issue": {
-            "keywords": ["invoice", "billing", "charge", "refund"],
+            "keywords": [
+                "invoice", "billing", "bill", "charge", "charges", "charged",
+                "refund", "payment", "factura", "cobro", "cargo", "reembolso",
+                "pago"
+            ],
+            "phrases": [
+                "payment failed", "billing issue", "refund request",
+                "cargo incorrecto", "problema de facturacion"
+            ],
             "threshold": 3
         },
         "technical_failure": {
-            "keywords": ["error", "failure", "bug", "issue", "down"],
+            "keywords": [
+                "error", "failure", "failed", "bug", "issue", "down",
+                "outage", "broken", "falla", "fallo", "problema", "caido",
+                "caida"
+            ],
+            "phrases": [
+                "not working", "cannot access", "can't access", "cant access",
+                "cannot login", "can't login", "cant login", "service down",
+                "no funciona", "no puedo acceder", "no puedo entrar",
+                "sistema caido"
+            ],
             "threshold": 2
         },
         "urgent_request": {
-            "keywords": ["urgent", "asap", "immediately", "critical"],
+            "keywords": [
+                "urgent", "asap", "immediately", "critical", "urgente",
+                "critico", "inmediato", "inmediatamente", "prioridad"
+            ],
+            "phrases": [
+                "as soon as possible", "high priority", "critical issue",
+                "necesito ayuda urgente", "lo antes posible", "alta prioridad"
+            ],
             "threshold": 2
         }
     },

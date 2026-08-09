@@ -8,7 +8,7 @@ from escalation_engine.analyzers import (
     analyze_sentimental,
 )
 from escalation_engine.notification import build_notification
-from escalation_engine.request.validation import validate_request_body
+from escalation_engine.request.validation import extract_thread, validate_request_body
 from escalation_engine.scoring.aggregation import aggregate_results
 from escalation_engine.scoring.decision import decide_escalation
 from escalation_engine.thread.selectors import get_valid_messages
@@ -28,7 +28,15 @@ async def process_thread_escalation(
             "error": error_message
         }, 400
 
-    raw_thread = req_body["thread"]
+    raw_thread = extract_thread(req_body)
+
+    if raw_thread is None:
+        logger.error("Request validation passed but thread extraction failed.")
+
+        return {
+            "error": "Unable to extract thread"
+        }, 400
+
     valid_messages = get_valid_messages(raw_thread)
 
     logger.info(
