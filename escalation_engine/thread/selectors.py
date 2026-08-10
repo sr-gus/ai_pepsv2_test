@@ -6,9 +6,13 @@ from typing import Any
 from escalation_engine.thread.extractors import (
     get_received_datetime,
     get_sender_address,
+    parse_received_datetime,
 )
 
 logger = logging.getLogger(__name__)
+
+CUSTOMER_ROLE = "customer"
+ENGINEER_ROLE = "engineer"
 
 
 def get_valid_messages(raw_thread: list[Any]) -> list[dict[str, Any]]:
@@ -44,6 +48,11 @@ def is_engineer_message(message: dict[str, Any]) -> bool:
     return sender_address.lower() in get_engineer_emails()
 
 
+def get_message_role(message: dict[str, Any]) -> str:
+    """Classify a canonical message using its configured sender address."""
+    return ENGINEER_ROLE if is_engineer_message(message) else CUSTOMER_ROLE
+
+
 def get_customer_messages(raw_thread: list[Any]) -> list[dict[str, Any]]:
     """
     Returns valid messages that were not sent by configured engineer emails.
@@ -66,7 +75,7 @@ def get_latest_message(raw_thread: list[Any]) -> dict[str, Any]:
 
     messages_with_received = [
         msg for msg in valid_messages
-        if get_received_datetime(msg)
+        if parse_received_datetime(msg) is not None
     ]
 
     if not messages_with_received:
@@ -92,8 +101,10 @@ def _parse_datetime(value: str | None) -> datetime:
     if not value:
         return datetime.min
 
-    try:
-        return datetime.fromisoformat(value.replace("Z", "+00:00"))
-    except Exception:
+    parsed = parse_received_datetime({"receivedDateTime": value})
+
+    if parsed is None:
         logger.warning("Unable to parse message receivedDateTime: %s", value)
         return datetime.min
+
+    return parsed

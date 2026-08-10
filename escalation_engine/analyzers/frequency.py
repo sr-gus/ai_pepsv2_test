@@ -2,8 +2,12 @@ import logging
 from typing import Any, Optional
 from datetime import datetime, timezone
 
-from escalation_engine.thread.extractors import get_received_datetime
-from escalation_engine.thread.selectors import get_valid_messages
+from escalation_engine.thread.extractors import (
+    get_headers,
+    get_subject,
+    parse_received_datetime,
+)
+from escalation_engine.thread.selectors import get_message_role, get_valid_messages
 
 logger = logging.getLogger(__name__)
 
@@ -78,38 +82,16 @@ AUTO_REPLY_HEADER_HINTS = (
     "precedence: bulk",
 )
  
-def _get_field(message: Any, *names: str, default: Any = None) -> Any:
-    for name in names:
-        if isinstance(message, dict):
-            value = message.get(name)
-        else:
-            value = getattr(message, name, None)
-        if value is not None:
-            return value
-    return default
- 
-def _get_sender_role(message: Any) -> str:
-    """Return 'engineer' or 'customer'. Defaults to 'customer' when unknown,
-    which is the conservative choice for escalation detection."""
-    raw = _get_field(message, "sender", "from", "senderType", "sender_type", "role", default="")
-    raw_lower = str(raw).lower()
-    if any(keyword in raw_lower for keyword in ("engineer", "support", "agent", "microsoft")):
-        return "engineer"
-    return "customer"
- 
-def _get_subject(message: Any) -> str:
-    return str(_get_field(message, "subject", default="") or "")
- 
-def _get_headers_blob(message: Any) -> str:
-    headers = _get_field(message, "headers", default=None)
+def _get_headers_blob(message: dict[str, Any]) -> str:
+    headers = get_headers(message)
     if not headers:
         return ""
     if isinstance(headers, dict):
         return " ".join(f"{k}: {v}" for k, v in headers.items()).lower()
     return str(headers).lower()
 
-def _is_auto_reply(message: Any) -> bool:
-    subject = _get_subject(message).lower()
+def _is_auto_reply(message: dict[str, Any]) -> bool:
+    subject = get_subject(message).lower()
     headers_blob = _get_headers_blob(message)
     if any(keyword in subject for keyword in AUTO_REPLY_SUBJECT_KEYWORDS):
         return True
@@ -179,7 +161,7 @@ def _compute_unanswered_and_ghosted(
     if not trailing_customer:
         return 0, 0.0
  
-    reference_now = _normalize_dt(now) or datetime.utcnow()
+    reference_now = _normalize_dt(now) or datetime.now(timezone.utc).replace(tzinfo=None)
     last_unanswered_dt = trailing_customer[-1][0]
     ghosted_hours = max((reference_now - last_unanswered_dt).total_seconds() / 3600, 0.0)
     return len(trailing_customer), ghosted_hours
@@ -263,7 +245,7 @@ async def analyze_frequency(raw_thread: list[Any], *, now: Optional[datetime] = 
     messages_with_timestamp = 0
  
     for message in valid_messages:
-        dt = _normalize_dt(get_received_datetime(message))
+        dt = parse_received_datetime(message)
         if dt is not None:
             messages_with_timestamp += 1
  
@@ -275,7 +257,7 @@ async def analyze_frequency(raw_thread: list[Any], *, now: Optional[datetime] = 
             # Missing timestamp, can't participate in time-based metrics - Skip
             continue
  
-        timestamped.append((dt, _get_sender_role(message), message))
+        timestamped.append((dt, get_message_role(message), message))
  
     timestamped.sort(key=lambda item: item[0])
  
@@ -350,4 +332,4 @@ async def analyze_frequency(raw_thread: list[Any], *, now: Optional[datetime] = 
         result["flags"],
     )
  
-    return result 
+    return result

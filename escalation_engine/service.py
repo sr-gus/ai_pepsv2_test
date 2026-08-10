@@ -2,11 +2,9 @@ import asyncio
 import logging
 from typing import Any
 
-from escalation_engine.analyzers import (
-    analyze_frequency,
-    analyze_keywords,
-    analyze_sentimental,
-)
+from escalation_engine.analyzers.frequency import analyze_frequency
+from escalation_engine.analyzers.keyword import analyze_keywords
+from escalation_engine.analyzers.sentimental import analyze_sentimental
 from escalation_engine.notification import build_notification
 from escalation_engine.request.validation import extract_thread, validate_request_body
 from escalation_engine.scoring.aggregation import aggregate_results
