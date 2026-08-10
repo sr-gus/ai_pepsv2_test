@@ -67,6 +67,7 @@ async def analyze_keywords(raw_thread: list[Any]) -> dict[str, Any]:
             "uniqueMatches": topic_match["uniqueMatches"],
             "keywordMatches": topic_match["keywordMatches"],
             "phraseMatches": topic_match["phraseMatches"],
+            "criticalPhraseMatches": topic_match["criticalPhraseMatches"],
             "threshold": threshold,
             "triggered": triggered
         }
@@ -154,6 +155,7 @@ def _analyze_topic_matches(
 ) -> dict[str, Any]:
     keyword_matches = []
     phrase_matches = []
+    critical_phrase_matches = []
     unique_matches = set()
     weighted_matches = 0
 
@@ -201,9 +203,32 @@ def _analyze_topic_matches(
             "matches": total_count
         })
 
+    for phrase in config.get("critical_phrases", []):
+        normalized_phrase = _normalize_text(phrase).strip()
+
+        if not normalized_phrase:
+            continue
+
+        subject_count = _count_phrase_matches(subject_text, normalized_phrase)
+        preview_count = _count_phrase_matches(preview_text, normalized_phrase)
+        total_count = subject_count + preview_count
+
+        if total_count == 0:
+            continue
+
+        unique_matches.add(normalized_phrase)
+        weighted_matches += (subject_count * 2 + preview_count) * 2
+        critical_phrase_matches.append({
+            "value": normalized_phrase,
+            "subjectMatches": subject_count,
+            "previewMatches": preview_count,
+            "matches": total_count,
+            "weightMultiplier": 2
+        })
+
     total_matches = sum(
         match["matches"]
-        for match in keyword_matches + phrase_matches
+        for match in keyword_matches + phrase_matches + critical_phrase_matches
     )
 
     return {
@@ -211,7 +236,8 @@ def _analyze_topic_matches(
         "weightedMatches": weighted_matches,
         "uniqueMatches": sorted(unique_matches),
         "keywordMatches": keyword_matches,
-        "phraseMatches": phrase_matches
+        "phraseMatches": phrase_matches,
+        "criticalPhraseMatches": critical_phrase_matches
     }
 
 

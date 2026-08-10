@@ -109,6 +109,37 @@ Cuando se agregue una nueva señal:
 4. Agregar pruebas con resultados observables, no únicamente pruebas de que la
    función no lanza excepciones.
 
+### Actualización del vocabulario
+
+Las listas de keywords y frases viven en `escalation_engine/config.py`. Al
+actualizarlas:
+
+- Preferir frases que expresen riesgo o impacto real sobre términos genéricos
+  como `subscription`, `tenant`, `request` o `cancel`.
+- Recordar que una coincidencia en el asunto tiene peso doble y que el asunto
+  normalmente se conserva durante todo el thread.
+- Evitar duplicar la misma keyword en varios tópicos, porque cada coincidencia
+  contribuye al score total.
+- Incluir variantes en inglés y español cuando existan en conversaciones
+  reales.
+- Usar ejemplos anonimizados en las pruebas; nunca copiar nombres, correos,
+  IDs de suscripción o contenido completo de clientes.
+- Agregar un caso neutral o resuelto para vigilar falsos positivos.
+
+Los thresholds no representan severidad por sí solos: representan cuánta
+evidencia debe aparecer para activar un tópico. Una keyword o frase normal vale
+1 en el cuerpo y 2 en el asunto. Las entradas de `critical_phrases` valen el
+doble, por lo que una frase inequívocamente crítica puede activar un tópico sin
+obligar a bajar su threshold para todo el vocabulario.
+
+Calibración actual:
+
+- `urgent_request`: 1, porque una declaración explícita de urgencia es suficiente.
+- `security_concern`, `business_impact`, `subscription_state`,
+  `transfer_ownership` y `support_breakdown`: 2.
+- `billing_issue`, `technical_failure` y `quota_capacity`: 3, porque sus
+  términos son más amplios o suelen aparecer juntos como keyword y frase.
+
 ## Verificaciones antes de compartir cambios
 
 ```powershell
