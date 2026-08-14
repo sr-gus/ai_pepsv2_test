@@ -1,0 +1,211 @@
+{
+    "messageCount": 7,
+    "analysis": {
+        "sentimental": {
+            "name": "sentimental",
+            "score": 0.82,
+            "label": "negative",
+            "confidence": 0.9,
+            "flags": [
+                "frustration_detected"
+            ],
+            "details": {
+                "analyzedMessages": 7
+            }
+        },
+        "keyword": {
+            "name": "keyword",
+            "score": 0.0,
+            "label": "low_signal",
+            "flags": [],
+            "details": {
+                "analyzedMessage": {
+                    "received": "2026-05-17T14:06:00Z",
+                    "subject": "RE: Unexpected 44% increase on AKS VM Scale Set - TrackingID#2606110040001842",
+                    "preview": "This has been open for two weeks now with no resolution and no timeline. I've asked for someone with decision-making authority three times. Please escalate this to your manager today - we are seriously reconsidering renewing our EA given how this has been",
+                    "from": "marcus.bellweather@nordrail-logistics.com"
+                },
+                "topics": [
+                    {
+                        "topic": "billing_issue",
+                        "matches": 0,
+                        "weightedMatches": 0,
+                        "uniqueMatches": [],
+                        "keywordMatches": [],
+                        "phraseMatches": [],
+                        "threshold": 3,
+                        "triggered": false
+                    },
+                    {
+                        "topic": "technical_failure",
+                        "matches": 0,
+                        "weightedMatches": 0,
+                        "uniqueMatches": [],
+                        "keywordMatches": [],
+                        "phraseMatches": [],
+                        "threshold": 2,
+                        "triggered": false
+                    },
+                    {
+                        "topic": "urgent_request",
+                        "matches": 0,
+                        "weightedMatches": 0,
+                        "uniqueMatches": [],
+                        "keywordMatches": [],
+                        "phraseMatches": [],
+                        "threshold": 2,
+                        "triggered": false
+                    }
+                ],
+                "triggeredTopics": [],
+                "totalMatches": 0,
+                "weightedTotalMatches": 0,
+                "totalUniqueMatches": 0,
+                "wordCount": 55,
+                "customerMessageCount": 7,
+                "ignoredEngineerMessageCount": 0
+            }
+        },
+        "frequency": {
+            "name": "frequency",
+            "score": 0.55,
+            "label": "increasing",
+            "flags": [
+                "critical_response_delay",
+                "multiple_unanswered_messages"
+            ],
+            "details": {
+                "messagesPerDay": 0.53,
+                "customerMessages": 7,
+                "engineerMessages": 0,
+                "unansweredCustomerMessages": 7,
+                "ghostedHours": 2068.5,
+                "spamMessagesIgnored": 0,
+                "messagesWithTimestamp": 7
+            }
+        }
+    },
+    "aggregation": {
+        "score": 0.54,
+        "baseScore": 0.49,
+        "boost": 0.05,
+        "weights": {
+            "sentimental": 0.4,
+            "keyword": 0.3,
+            "frequency": 0.3
+        },
+        "signals": [
+            {
+                "name": "sentimental",
+                "score": 0.82,
+                "label": "negative",
+                "confidence": 0.9,
+                "flags": [
+                    "frustration_detected"
+                ],
+                "details": {
+                    "analyzedMessages": 7
+                }
+            },
+            {
+                "name": "keyword",
+                "score": 0.0,
+                "label": "low_signal",
+                "flags": [],
+                "details": {
+                    "analyzedMessage": {
+                        "received": "2026-05-17T14:06:00Z",
+                        "subject": "RE: Unexpected 44% increase on AKS VM Scale Set - TrackingID#2606110040001842",
+                        "preview": "This has been open for two weeks now with no resolution and no timeline. I've asked for someone with decision-making authority three times. Please escalate this to your manager today - we are seriously reconsidering renewing our EA given how this has been",
+                        "from": "marcus.bellweather@nordrail-logistics.com"
+                    },
+                    "topics": [
+                        {
+                            "topic": "billing_issue",
+                            "matches": 0,
+                            "weightedMatches": 0,
+                            "uniqueMatches": [],
+                            "keywordMatches": [],
+                            "phraseMatches": [],
+                            "threshold": 3,
+                            "triggered": false
+                        },
+                        {
+                            "topic": "technical_failure",
+                            "matches": 0,
+                            "weightedMatches": 0,
+                            "uniqueMatches": [],
+                            "keywordMatches": [],
+                            "phraseMatches": [],
+                            "threshold": 2,
+                            "triggered": false
+                        },
+                        {
+                            "topic": "urgent_request",
+                            "matches": 0,
+                            "weightedMatches": 0,
+                            "uniqueMatches": [],
+                            "keywordMatches": [],
+                            "phraseMatches": [],
+                            "threshold": 2,
+                            "triggered": false
+                        }
+                    ],
+                    "triggeredTopics": [],
+                    "totalMatches": 0,
+                    "weightedTotalMatches": 0,
+                    "totalUniqueMatches": 0,
+                    "wordCount": 55,
+                    "customerMessageCount": 7,
+                    "ignoredEngineerMessageCount": 0
+                }
+            },
+            {
+                "name": "frequency",
+                "score": 0.55,
+                "label": "increasing",
+                "flags": [
+                    "critical_response_delay",
+                    "multiple_unanswered_messages"
+                ],
+                "details": {
+                    "messagesPerDay": 0.53,
+                    "customerMessages": 7,
+                    "engineerMessages": 0,
+                    "unansweredCustomerMessages": 7,
+                    "ghostedHours": 2068.5,
+                    "spamMessagesIgnored": 0,
+                    "messagesWithTimestamp": 7
+                }
+            }
+        ]
+    },
+    "decision": {
+        "tier": "Tier 1",
+        "action": "Only Support Engineer",
+        "reason": "Moderate escalation risk",
+        "confidence": 0.54,
+        "explanation": [
+            "frustration_detected",
+            "critical_response_delay",
+            "multiple_unanswered_messages"
+        ]
+    },
+    "notification": {
+        "shouldNotify": true,
+        "severity": "medium",
+        "target": "support",
+        "title": "Tier 1 escalation",
+        "summary": "Thread reached moderate escalation risk.",
+        "recommendedAction": "Review by support engineer",
+        "tier": "Tier 1",
+        "action": "Only Support Engineer",
+        "reason": "Moderate escalation risk",
+        "confidence": 0.54,
+        "explanation": [
+            "frustration_detected",
+            "critical_response_delay",
+            "multiple_unanswered_messages"
+        ]
+    }
+}
