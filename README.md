@@ -229,3 +229,43 @@ The inspector keeps its default output compact: it displays only the cleaned
 body used for each interaction, followed immediately by the keyword result and
 evidence. Engineer responses and ignored automatic messages remain visible so
 the conversation can still be followed chronologically.
+
+### Additional synthetic thread fixtures
+
+Three extra Outlook-shaped datasets exercise a wider range of newly-authored
+body lengths without changing the original regression fixture:
+
+- `tests/azure_billing_escalation_threads_short.json`: 8 threads with terse
+  customer replies, including one-line follow-ups.
+- `tests/azure_billing_escalation_threads_mixed.json`: 8 threads that mix
+  short replies with medium-length explanations.
+- `tests/azure_billing_escalation_threads_long.json`: 8 threads with long,
+  multi-paragraph customer context and decisive language in different body
+  positions.
+
+Use `--fixture` with any timeline inspector. `--case` remains one-based:
+
+```powershell
+python -m tests.inspect_keyword_timeline `
+  --fixture tests\azure_billing_escalation_threads_short.json `
+  --case 1 `
+  --pause
+
+python -m tests.inspect_frequency_timeline `
+  --fixture tests\azure_billing_escalation_threads_mixed.json `
+  --case 3 `
+  --pause
+
+python -m tests.inspect_sentiment_timeline `
+  --fixture tests\azure_billing_escalation_threads_long.json `
+  --all
+```
+
+`tests/additional_thread_expectations.json` documents each case's intent,
+message lengths, and expected escalation context. It intentionally does not
+freeze keyword scores, so score calibration can continue independently. The
+fixtures are deterministic and can be regenerated with:
+
+```powershell
+python -m tests.generate_additional_thread_fixtures
+```

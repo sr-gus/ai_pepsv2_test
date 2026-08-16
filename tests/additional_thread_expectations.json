@@ -1,0 +1,778 @@
+{
+  "azure_billing_escalation_threads_short.json": [
+    {
+      "key": "short_generic_escalation",
+      "subject": "Card verification loop - TrackingID#2701010001000001",
+      "language": "en",
+      "intent": "A terse generic escalation must force Tier 2.",
+      "messageCount": 5,
+      "customerEvents": [
+        {
+          "status": "none",
+          "kind": null,
+          "requestedTarget": null,
+          "tier2Override": false,
+          "customerEvent": 1,
+          "messageStep": 1,
+          "authoredCharacters": 35,
+          "authoredWords": 5
+        },
+        {
+          "status": "none",
+          "kind": null,
+          "requestedTarget": null,
+          "tier2Override": false,
+          "customerEvent": 2,
+          "messageStep": 3,
+          "authoredCharacters": 11,
+          "authoredWords": 2
+        },
+        {
+          "status": "active",
+          "kind": "generic",
+          "requestedTarget": null,
+          "tier2Override": true,
+          "customerEvent": 3,
+          "messageStep": 5,
+          "authoredCharacters": 14,
+          "authoredWords": 2
+        }
+      ],
+      "case": 1
+    },
+    {
+      "key": "short_manager_request",
+      "subject": "Missing corrected invoice - TrackingID#2701010001000002",
+      "language": "en",
+      "intent": "A short manager request without the word escalate is hierarchical.",
+      "messageCount": 4,
+      "customerEvents": [
+        {
+          "status": "none",
+          "kind": null,
+          "requestedTarget": null,
+          "tier2Override": false,
+          "customerEvent": 1,
+          "messageStep": 1,
+          "authoredCharacters": 33,
+          "authoredWords": 5
+        },
+        {
+          "status": "none",
+          "kind": null,
+          "requestedTarget": null,
+          "tier2Override": false,
+          "customerEvent": 2,
+          "messageStep": 3,
+          "authoredCharacters": 14,
+          "authoredWords": 2
+        },
+        {
+          "status": "active",
+          "kind": "hierarchical",
+          "requestedTarget": "manager",
+          "tier2Override": true,
+          "customerEvent": 3,
+          "messageStep": 4,
+          "authoredCharacters": 20,
+          "authoredWords": 4
+        }
+      ],
+      "case": 2
+    },
+    {
+      "key": "short_specialist_handoff",
+      "subject": "Usage meter mismatch - TrackingID#2701010001000003",
+      "language": "en",
+      "intent": "Engineering handoff is active but remains score-based.",
+      "messageCount": 5,
+      "customerEvents": [
+        {
+          "status": "none",
+          "kind": null,
+          "requestedTarget": null,
+          "tier2Override": false,
+          "customerEvent": 1,
+          "messageStep": 1,
+          "authoredCharacters": 28,
+          "authoredWords": 5
+        },
+        {
+          "status": "none",
+          "kind": null,
+          "requestedTarget": null,
+          "tier2Override": false,
+          "customerEvent": 2,
+          "messageStep": 3,
+          "authoredCharacters": 5,
+          "authoredWords": 1
+        },
+        {
+          "status": "active",
+          "kind": "specialist_handoff",
+          "requestedTarget": "engineering_team",
+          "tier2Override": false,
+          "customerEvent": 3,
+          "messageStep": 5,
+          "authoredCharacters": 36,
+          "authoredWords": 5
+        }
+      ],
+      "case": 3
+    },
+    {
+      "key": "short_conditional",
+      "subject": "Credit not visible - TrackingID#2701010001000004",
+      "language": "en",
+      "intent": "A future escalation threat must not override routing.",
+      "messageCount": 3,
+      "customerEvents": [
+        {
+          "status": "none",
+          "kind": null,
+          "requestedTarget": null,
+          "tier2Override": false,
+          "customerEvent": 1,
+          "messageStep": 1,
+          "authoredCharacters": 23,
+          "authoredWords": 3
+        },
+        {
+          "status": "conditional",
+          "kind": null,
+          "requestedTarget": null,
+          "tier2Override": false,
+          "customerEvent": 2,
+          "messageStep": 3,
+          "authoredCharacters": 41,
+          "authoredWords": 9
+        }
+      ],
+      "case": 4
+    },
+    {
+      "key": "short_manager_false_positive",
+      "subject": "Need receipt copy - TrackingID#2701010001000005",
+      "language": "en",
+      "intent": "Mentioning the customer's manager is not an escalation request.",
+      "messageCount": 3,
+      "customerEvents": [
+        {
+          "status": "none",
+          "kind": null,
+          "requestedTarget": null,
+          "tier2Override": false,
+          "customerEvent": 1,
+          "messageStep": 1,
+          "authoredCharacters": 26,
+          "authoredWords": 4
+        },
+        {
+          "status": "none",
+          "kind": null,
+          "requestedTarget": null,
+          "tier2Override": false,
+          "customerEvent": 2,
+          "messageStep": 3,
+          "authoredCharacters": 29,
+          "authoredWords": 5
+        }
+      ],
+      "case": 5
+    },
+    {
+      "key": "short_spanish_generic",
+      "subject": "Cobro duplicado - TrackingID#2701010001000006",
+      "language": "es",
+      "intent": "A concise Spanish generic escalation must force Tier 2.",
+      "messageCount": 5,
+      "customerEvents": [
+        {
+          "status": "none",
+          "kind": null,
+          "requestedTarget": null,
+          "tier2Override": false,
+          "customerEvent": 1,
+          "messageStep": 1,
+          "authoredCharacters": 22,
+          "authoredWords": 4
+        },
+        {
+          "status": "none",
+          "kind": null,
+          "requestedTarget": null,
+          "tier2Override": false,
+          "customerEvent": 2,
+          "messageStep": 3,
+          "authoredCharacters": 16,
+          "authoredWords": 2
+        },
+        {
+          "status": "active",
+          "kind": "generic",
+          "requestedTarget": null,
+          "tier2Override": true,
+          "customerEvent": 3,
+          "messageStep": 5,
+          "authoredCharacters": 24,
+          "authoredWords": 3
+        }
+      ],
+      "case": 6
+    },
+    {
+      "key": "short_spanish_specialist",
+      "subject": "Impuesto incorrecto - TrackingID#2701010001000007",
+      "language": "es",
+      "intent": "A Spanish billing handoff is not a severity override.",
+      "messageCount": 3,
+      "customerEvents": [
+        {
+          "status": "none",
+          "kind": null,
+          "requestedTarget": null,
+          "tier2Override": false,
+          "customerEvent": 1,
+          "messageStep": 1,
+          "authoredCharacters": 27,
+          "authoredWords": 4
+        },
+        {
+          "status": "active",
+          "kind": "specialist_handoff",
+          "requestedTarget": "billing_team",
+          "tier2Override": false,
+          "customerEvent": 2,
+          "messageStep": 3,
+          "authoredCharacters": 37,
+          "authoredWords": 5
+        }
+      ],
+      "case": 7
+    },
+    {
+      "key": "short_quoted_risk",
+      "subject": "Refund status - TrackingID#2701010001000008",
+      "language": "en",
+      "intent": "A calm reply must ignore escalation language in quoted history.",
+      "messageCount": 3,
+      "customerEvents": [
+        {
+          "status": "active",
+          "kind": "hierarchical",
+          "requestedTarget": "manager",
+          "tier2Override": true,
+          "customerEvent": 1,
+          "messageStep": 1,
+          "authoredCharacters": 48,
+          "authoredWords": 8
+        },
+        {
+          "status": "none",
+          "kind": null,
+          "requestedTarget": null,
+          "tier2Override": false,
+          "customerEvent": 2,
+          "messageStep": 3,
+          "authoredCharacters": 19,
+          "authoredWords": 3
+        }
+      ],
+      "case": 8
+    }
+  ],
+  "azure_billing_escalation_threads_mixed.json": [
+    {
+      "key": "mixed_progressive_frustration",
+      "subject": "EA commitment applied to wrong enrollment - TrackingID#2702020002000001",
+      "language": "en",
+      "intent": "General escalation risk grows over messages without an explicit request.",
+      "messageCount": 5,
+      "customerEvents": [
+        {
+          "status": "none",
+          "kind": null,
+          "requestedTarget": null,
+          "tier2Override": false,
+          "customerEvent": 1,
+          "messageStep": 1,
+          "authoredCharacters": 115,
+          "authoredWords": 18
+        },
+        {
+          "status": "none",
+          "kind": null,
+          "requestedTarget": null,
+          "tier2Override": false,
+          "customerEvent": 2,
+          "messageStep": 3,
+          "authoredCharacters": 78,
+          "authoredWords": 13
+        },
+        {
+          "status": "none",
+          "kind": null,
+          "requestedTarget": null,
+          "tier2Override": false,
+          "customerEvent": 3,
+          "messageStep": 5,
+          "authoredCharacters": 191,
+          "authoredWords": 32
+        }
+      ],
+      "case": 1
+    },
+    {
+      "key": "mixed_generic_polite",
+      "subject": "Refund exception review - TrackingID#2702020002000002",
+      "language": "en",
+      "intent": "A polite passive generic request still overrides to Tier 2.",
+      "messageCount": 3,
+      "customerEvents": [
+        {
+          "status": "none",
+          "kind": null,
+          "requestedTarget": null,
+          "tier2Override": false,
+          "customerEvent": 1,
+          "messageStep": 1,
+          "authoredCharacters": 131,
+          "authoredWords": 22
+        },
+        {
+          "status": "active",
+          "kind": "generic",
+          "requestedTarget": null,
+          "tier2Override": true,
+          "customerEvent": 2,
+          "messageStep": 3,
+          "authoredCharacters": 124,
+          "authoredWords": 20
+        }
+      ],
+      "case": 2
+    },
+    {
+      "key": "mixed_security_handoff",
+      "subject": "Unknown marketplace purchase - TrackingID#2702020002000003",
+      "language": "en",
+      "intent": "A security-team handoff is specialist routing, not a hierarchy request.",
+      "messageCount": 3,
+      "customerEvents": [
+        {
+          "status": "none",
+          "kind": null,
+          "requestedTarget": null,
+          "tier2Override": false,
+          "customerEvent": 1,
+          "messageStep": 1,
+          "authoredCharacters": 124,
+          "authoredWords": 19
+        },
+        {
+          "status": "active",
+          "kind": "specialist_handoff",
+          "requestedTarget": "security_team",
+          "tier2Override": false,
+          "customerEvent": 2,
+          "messageStep": 3,
+          "authoredCharacters": 166,
+          "authoredWords": 28
+        }
+      ],
+      "case": 3
+    },
+    {
+      "key": "mixed_hierarchy_without_escalate",
+      "subject": "Subscription reactivation delayed - TrackingID#2702020002000004",
+      "language": "en",
+      "intent": "A request to speak with a supervisor forces Tier 2.",
+      "messageCount": 4,
+      "customerEvents": [
+        {
+          "status": "none",
+          "kind": null,
+          "requestedTarget": null,
+          "tier2Override": false,
+          "customerEvent": 1,
+          "messageStep": 1,
+          "authoredCharacters": 77,
+          "authoredWords": 10
+        },
+        {
+          "status": "active",
+          "kind": "hierarchical",
+          "requestedTarget": "supervisor",
+          "tier2Override": true,
+          "customerEvent": 2,
+          "messageStep": 4,
+          "authoredCharacters": 157,
+          "authoredWords": 27
+        }
+      ],
+      "case": 4
+    },
+    {
+      "key": "mixed_historical_escalation",
+      "subject": "Tax exemption review - TrackingID#2702020002000005",
+      "language": "en",
+      "intent": "Acknowledging a completed escalation is historical only.",
+      "messageCount": 3,
+      "customerEvents": [
+        {
+          "status": "none",
+          "kind": null,
+          "requestedTarget": null,
+          "tier2Override": false,
+          "customerEvent": 1,
+          "messageStep": 1,
+          "authoredCharacters": 104,
+          "authoredWords": 17
+        },
+        {
+          "status": "historical",
+          "kind": null,
+          "requestedTarget": null,
+          "tier2Override": false,
+          "customerEvent": 2,
+          "messageStep": 3,
+          "authoredCharacters": 97,
+          "authoredWords": 17
+        }
+      ],
+      "case": 5
+    },
+    {
+      "key": "mixed_spanish_manager",
+      "subject": "Suscripción cancelada sigue facturando - TrackingID#2702020002000006",
+      "language": "es",
+      "intent": "A Spanish manager request buried after context forces Tier 2.",
+      "messageCount": 3,
+      "customerEvents": [
+        {
+          "status": "none",
+          "kind": null,
+          "requestedTarget": null,
+          "tier2Override": false,
+          "customerEvent": 1,
+          "messageStep": 1,
+          "authoredCharacters": 132,
+          "authoredWords": 21
+        },
+        {
+          "status": "active",
+          "kind": "hierarchical",
+          "requestedTarget": "manager",
+          "tier2Override": true,
+          "customerEvent": 2,
+          "messageStep": 3,
+          "authoredCharacters": 172,
+          "authoredWords": 27
+        }
+      ],
+      "case": 6
+    },
+    {
+      "key": "mixed_spanish_conditional",
+      "subject": "Saldo de patrocinio sin aplicar - TrackingID#2702020002000007",
+      "language": "es",
+      "intent": "A Spanish conditional threat is recorded without override.",
+      "messageCount": 3,
+      "customerEvents": [
+        {
+          "status": "none",
+          "kind": null,
+          "requestedTarget": null,
+          "tier2Override": false,
+          "customerEvent": 1,
+          "messageStep": 1,
+          "authoredCharacters": 96,
+          "authoredWords": 15
+        },
+        {
+          "status": "conditional",
+          "kind": null,
+          "requestedTarget": null,
+          "tier2Override": false,
+          "customerEvent": 2,
+          "messageStep": 3,
+          "authoredCharacters": 113,
+          "authoredWords": 19
+        }
+      ],
+      "case": 7
+    },
+    {
+      "key": "mixed_negated_escalation",
+      "subject": "Budget alert delivery - TrackingID#2702020002000008",
+      "language": "en",
+      "intent": "Explicitly declining escalation must not trigger routing.",
+      "messageCount": 3,
+      "customerEvents": [
+        {
+          "status": "none",
+          "kind": null,
+          "requestedTarget": null,
+          "tier2Override": false,
+          "customerEvent": 1,
+          "messageStep": 1,
+          "authoredCharacters": 120,
+          "authoredWords": 18
+        },
+        {
+          "status": "negated",
+          "kind": null,
+          "requestedTarget": null,
+          "tier2Override": false,
+          "customerEvent": 2,
+          "messageStep": 3,
+          "authoredCharacters": 94,
+          "authoredWords": 16
+        }
+      ],
+      "case": 8
+    }
+  ],
+  "azure_billing_escalation_threads_long.json": [
+    {
+      "key": "long_calm_technical",
+      "subject": "Cost analysis export differs from invoice - TrackingID#2703030003000001",
+      "language": "en",
+      "intent": "Long technical detail must remain low risk when language is calm.",
+      "messageCount": 3,
+      "customerEvents": [
+        {
+          "status": "none",
+          "kind": null,
+          "requestedTarget": null,
+          "tier2Override": false,
+          "customerEvent": 1,
+          "messageStep": 1,
+          "authoredCharacters": 679,
+          "authoredWords": 104
+        },
+        {
+          "status": "none",
+          "kind": null,
+          "requestedTarget": null,
+          "tier2Override": false,
+          "customerEvent": 2,
+          "messageStep": 3,
+          "authoredCharacters": 432,
+          "authoredWords": 71
+        }
+      ],
+      "case": 1
+    },
+    {
+      "key": "long_manager_at_end",
+      "subject": "Production reservation exchange blocked - TrackingID#2703030003000002",
+      "language": "en",
+      "intent": "A hierarchy request at the end of a long message must be detected.",
+      "messageCount": 3,
+      "customerEvents": [
+        {
+          "status": "none",
+          "kind": null,
+          "requestedTarget": null,
+          "tier2Override": false,
+          "customerEvent": 1,
+          "messageStep": 1,
+          "authoredCharacters": 666,
+          "authoredWords": 102
+        },
+        {
+          "status": "active",
+          "kind": "hierarchical",
+          "requestedTarget": "manager",
+          "tier2Override": true,
+          "customerEvent": 2,
+          "messageStep": 3,
+          "authoredCharacters": 652,
+          "authoredWords": 104
+        }
+      ],
+      "case": 2
+    },
+    {
+      "key": "long_specialist_at_end",
+      "subject": "Storage transaction spike after lifecycle change - TrackingID#2703030003000003",
+      "language": "en",
+      "intent": "A long specialist request must not be confused with hierarchy.",
+      "messageCount": 3,
+      "customerEvents": [
+        {
+          "status": "none",
+          "kind": null,
+          "requestedTarget": null,
+          "tier2Override": false,
+          "customerEvent": 1,
+          "messageStep": 1,
+          "authoredCharacters": 624,
+          "authoredWords": 95
+        },
+        {
+          "status": "active",
+          "kind": "specialist_handoff",
+          "requestedTarget": "other_team",
+          "tier2Override": false,
+          "customerEvent": 2,
+          "messageStep": 3,
+          "authoredCharacters": 531,
+          "authoredWords": 87
+        }
+      ],
+      "case": 3
+    },
+    {
+      "key": "long_conditional_relationship_risk",
+      "subject": "Enterprise invoice allocation unresolved - TrackingID#2703030003000004",
+      "language": "en",
+      "intent": "Strong relationship-risk language with a conditional escalation remains score-based.",
+      "messageCount": 3,
+      "customerEvents": [
+        {
+          "status": "none",
+          "kind": null,
+          "requestedTarget": null,
+          "tier2Override": false,
+          "customerEvent": 1,
+          "messageStep": 1,
+          "authoredCharacters": 512,
+          "authoredWords": 75
+        },
+        {
+          "status": "conditional",
+          "kind": null,
+          "requestedTarget": null,
+          "tier2Override": false,
+          "customerEvent": 2,
+          "messageStep": 3,
+          "authoredCharacters": 568,
+          "authoredWords": 89
+        }
+      ],
+      "case": 4
+    },
+    {
+      "key": "long_historical_and_quoted",
+      "subject": "Marketplace refund completed - TrackingID#2703030003000005",
+      "language": "en",
+      "intent": "Resolution text must ignore both historical and quoted active requests.",
+      "messageCount": 3,
+      "customerEvents": [
+        {
+          "status": "active",
+          "kind": "hierarchical",
+          "requestedTarget": "manager",
+          "tier2Override": true,
+          "customerEvent": 1,
+          "messageStep": 1,
+          "authoredCharacters": 479,
+          "authoredWords": 78
+        },
+        {
+          "status": "historical",
+          "kind": null,
+          "requestedTarget": null,
+          "tier2Override": false,
+          "customerEvent": 2,
+          "messageStep": 3,
+          "authoredCharacters": 426,
+          "authoredWords": 67
+        }
+      ],
+      "case": 5
+    },
+    {
+      "key": "long_spanish_hierarchy",
+      "subject": "Créditos consumidos por recurso eliminado - TrackingID#2703030003000006",
+      "language": "es",
+      "intent": "A long Spanish hierarchy request must force Tier 2.",
+      "messageCount": 3,
+      "customerEvents": [
+        {
+          "status": "none",
+          "kind": null,
+          "requestedTarget": null,
+          "tier2Override": false,
+          "customerEvent": 1,
+          "messageStep": 1,
+          "authoredCharacters": 572,
+          "authoredWords": 92
+        },
+        {
+          "status": "active",
+          "kind": "hierarchical",
+          "requestedTarget": "supervisor",
+          "tier2Override": true,
+          "customerEvent": 2,
+          "messageStep": 3,
+          "authoredCharacters": 557,
+          "authoredWords": 93
+        }
+      ],
+      "case": 6
+    },
+    {
+      "key": "long_spanish_specialist",
+      "subject": "Uso no reconocido en cuenta de almacenamiento - TrackingID#2703030003000007",
+      "language": "es",
+      "intent": "A Spanish specialist request remains score-based even in a long email.",
+      "messageCount": 3,
+      "customerEvents": [
+        {
+          "status": "none",
+          "kind": null,
+          "requestedTarget": null,
+          "tier2Override": false,
+          "customerEvent": 1,
+          "messageStep": 1,
+          "authoredCharacters": 584,
+          "authoredWords": 93
+        },
+        {
+          "status": "active",
+          "kind": "specialist_handoff",
+          "requestedTarget": "security_team",
+          "tier2Override": false,
+          "customerEvent": 2,
+          "messageStep": 3,
+          "authoredCharacters": 499,
+          "authoredWords": 76
+        }
+      ],
+      "case": 7
+    },
+    {
+      "key": "long_request_in_signature",
+      "subject": "Billing profile address updated - TrackingID#2703030003000008",
+      "language": "en",
+      "intent": "Escalation words in a signature must not affect a calm long reply.",
+      "messageCount": 3,
+      "customerEvents": [
+        {
+          "status": "none",
+          "kind": null,
+          "requestedTarget": null,
+          "tier2Override": false,
+          "customerEvent": 1,
+          "messageStep": 1,
+          "authoredCharacters": 495,
+          "authoredWords": 79
+        },
+        {
+          "status": "none",
+          "kind": null,
+          "requestedTarget": null,
+          "tier2Override": false,
+          "customerEvent": 2,
+          "messageStep": 3,
+          "authoredCharacters": 420,
+          "authoredWords": 71
+        }
+      ],
+      "case": 8
+    }
+  ]
+}

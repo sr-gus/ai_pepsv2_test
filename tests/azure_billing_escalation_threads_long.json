@@ -1,0 +1,1362 @@
+[
+  {
+    "uri": "https://<your-function-app>.azurewebsites.net/api/threadEscalationEngine?code=<function-key>",
+    "method": "POST",
+    "body": {
+      "thread": [
+        {
+          "@odata.etag": "W/\"0irY3Jzv8CgE5uNQtElO6Y2E\"",
+          "id": "AAMkAGqVkGWXZyvpOl-8oNwOKUCzJ8ezvqlSUAzPYynNV2R10",
+          "createdDateTime": "2026-09-02T09:00:00Z",
+          "lastModifiedDateTime": "2026-09-02T09:01:00Z",
+          "changeKey": "0irY3Jzv8CgE5uNQtElO6Y2E",
+          "categories": [],
+          "receivedDateTime": "2026-09-02T09:01:00Z",
+          "sentDateTime": "2026-09-02T09:00:00Z",
+          "hasAttachments": false,
+          "internetMessageId": "<Uki553AG5x6BDf670ghInSUD2zf9Q_fsaOLeO0omQlk@fixture.example>",
+          "subject": "Cost analysis export differs from invoice - TrackingID#2703030003000001",
+          "bodyPreview": "We are reconciling the July invoice against our daily Cost Management export. The invoice total is 18,421.73 USD, while the sum of the amortized-cost rows for the same billing period is 18,097.21 USD. I filtered to the same billing profile, excluded purch",
+          "importance": "normal",
+          "parentFolderId": "AAMkAGriZ00ZErNgafJOWOTTzVmP3mNTDFwt_WLD7GCFl-Klk",
+          "conversationId": "AAQkAGweihZo-eNspgjnrR9Slr8yv0FpuneIapjvM361-vy5c",
+          "conversationIndex": "yOOuexrIPEGbIr6HJAzbx1xL3reGL0rl",
+          "isDeliveryReceiptRequested": null,
+          "isReadReceiptRequested": false,
+          "isRead": true,
+          "isDraft": false,
+          "webLink": "https://outlook.office365.com/owa/?ItemID=AAMkAGqVkGWXZyvpOl-8oNwOKUCzJ8ezvqlSUAzPYynNV2R10",
+          "inferenceClassification": "focused",
+          "body": {
+            "contentType": "html",
+            "content": "<html><head><meta charset=\"utf-8\"></head><body dir=\"ltr\"><div class=\"elementToProof\">We are reconciling the July invoice against our daily Cost Management export. The invoice total is 18,421.73 USD, while the sum of the amortized-cost rows for the same billing period is 18,097.21 USD. I filtered to the same billing profile, excluded purchases and refunds, and converted all timestamps to UTC before grouping. The remaining difference appears mostly under bandwidth and support charges. Could you confirm whether those charge types are intentionally absent from the amortized export, or whether I should use a different cost field for invoice reconciliation? There is no production impact; we are trying to document the correct accounting method before month-end.</div></body></html>"
+          },
+          "sender": {
+            "emailAddress": {
+              "name": "Grace Liu",
+              "address": "grace.liu@alpine-ski.example"
+            }
+          },
+          "from": {
+            "emailAddress": {
+              "name": "Grace Liu",
+              "address": "grace.liu@alpine-ski.example"
+            }
+          },
+          "toRecipients": [
+            {
+              "emailAddress": {
+                "name": "Marco Hill",
+                "address": "marco.hill@microsoft.com"
+              }
+            }
+          ],
+          "ccRecipients": [],
+          "bccRecipients": [],
+          "replyTo": [],
+          "flag": {
+            "flagStatus": "notFlagged"
+          }
+        },
+        {
+          "@odata.etag": "W/\"FQMbCFYRvyA2vEoJCBO2GH0D\"",
+          "id": "AAMkAGDBlMHcvCqJdQaEBfEL3XuSQgHe9UTe6nnv07rrkLKJM",
+          "createdDateTime": "2026-09-02T14:00:00Z",
+          "lastModifiedDateTime": "2026-09-02T14:01:00Z",
+          "changeKey": "FQMbCFYRvyA2vEoJCBO2GH0D",
+          "categories": [],
+          "receivedDateTime": "2026-09-02T14:01:00Z",
+          "sentDateTime": "2026-09-02T14:00:00Z",
+          "hasAttachments": false,
+          "internetMessageId": "<mLZRn_-431H1BC2nw17rVofv9h7bH3pqaQtj68k4oWY@fixture.example>",
+          "subject": "RE: Cost analysis export differs from invoice - TrackingID#2703030003000001",
+          "bodyPreview": "Your comparison method is mostly correct. The amortized-cost export spreads reservation purchases and can omit certain invoice-level adjustments that are not resource usage. I will map the difference by charge type and send you the exact query needed to r",
+          "importance": "normal",
+          "parentFolderId": "AAMkAGXklKlzOlpINDRazBfh-WHnPvOJ487F_mQog62MNeY5Y",
+          "conversationId": "AAQkAGweihZo-eNspgjnrR9Slr8yv0FpuneIapjvM361-vy5c",
+          "conversationIndex": "buDQQTBy-4NJOqazW_oFzSPsgjRp7HvB",
+          "isDeliveryReceiptRequested": null,
+          "isReadReceiptRequested": false,
+          "isRead": true,
+          "isDraft": false,
+          "webLink": "https://outlook.office365.com/owa/?ItemID=AAMkAGDBlMHcvCqJdQaEBfEL3XuSQgHe9UTe6nnv07rrkLKJM",
+          "inferenceClassification": "focused",
+          "body": {
+            "contentType": "html",
+            "content": "<html><head><meta charset=\"utf-8\"></head><body dir=\"ltr\"><div class=\"elementToProof\">Your comparison method is mostly correct. The amortized-cost export spreads reservation purchases and can omit certain invoice-level adjustments that are not resource usage. I will map the difference by charge type and send you the exact query needed to reproduce the invoiced total. In the meantime, please keep the invoice currency rather than converting the rows through the pricing-currency column, because those can differ for some agreements.</div><div id=\"appendonsend\"></div><hr tabindex=\"-1\"><div id=\"divRplyFwdMsg\" dir=\"ltr\"><b>From:</b> Grace Liu &lt;grace.liu@alpine-ski.example&gt;<br><b>Sent:</b> 2026-09-02T14:00:00Z<br><b>Subject:</b> RE: generated fixture</div><div class=\"quotedMessage\"><div class=\"elementToProof\">We are reconciling the July invoice against our daily Cost Management export. The invoice total is 18,421.73 USD, while the sum of the amortized-cost rows for the same billing period is 18,097.21 USD. I filtered to the same billing profile, excluded purchases and refunds, and converted all timestamps to UTC before grouping. The remaining difference appears mostly under bandwidth and support charges. Could you confirm whether those charge types are intentionally absent from the amortized export, or whether I should use a different cost field for invoice reconciliation? There is no production impact; we are trying to document the correct accounting method before month-end.</div></div></body></html>"
+          },
+          "sender": {
+            "emailAddress": {
+              "name": "Marco Hill",
+              "address": "marco.hill@microsoft.com"
+            }
+          },
+          "from": {
+            "emailAddress": {
+              "name": "Marco Hill",
+              "address": "marco.hill@microsoft.com"
+            }
+          },
+          "toRecipients": [
+            {
+              "emailAddress": {
+                "name": "Grace Liu",
+                "address": "grace.liu@alpine-ski.example"
+              }
+            }
+          ],
+          "ccRecipients": [],
+          "bccRecipients": [],
+          "replyTo": [],
+          "flag": {
+            "flagStatus": "notFlagged"
+          }
+        },
+        {
+          "@odata.etag": "W/\"N6jeZ15DQDG-l-f47cMmT1Zm\"",
+          "id": "AAMkAGgXI9IcPlq74OzTd6WKX2MtS8t-cKGqOvUCx7Q6YB31k",
+          "createdDateTime": "2026-09-03T13:00:00Z",
+          "lastModifiedDateTime": "2026-09-03T13:01:00Z",
+          "changeKey": "N6jeZ15DQDG-l-f47cMmT1Zm",
+          "categories": [],
+          "receivedDateTime": "2026-09-03T13:01:00Z",
+          "sentDateTime": "2026-09-03T13:00:00Z",
+          "hasAttachments": false,
+          "internetMessageId": "<DRl_pblXQqwMVg3BL593yRK9SViVWd-k7AID2XBMdPQ@fixture.example>",
+          "subject": "RE: Cost analysis export differs from invoice - TrackingID#2703030003000001",
+          "bodyPreview": "That makes sense. I reran the query using invoice currency and added the pricing-model and charge-type columns. The difference is now down to the support plan and a small tax adjustment, which matches your explanation. When you have the sample query, plea",
+          "importance": "normal",
+          "parentFolderId": "AAMkAG06cpIH187tZdCWjf-ArBcZDyACHuVJPNK4ZfaZoZ4RM",
+          "conversationId": "AAQkAGweihZo-eNspgjnrR9Slr8yv0FpuneIapjvM361-vy5c",
+          "conversationIndex": "zHPSS9Ca8GmLB5IFFv-Y-4aSozUVRXaS",
+          "isDeliveryReceiptRequested": null,
+          "isReadReceiptRequested": false,
+          "isRead": true,
+          "isDraft": false,
+          "webLink": "https://outlook.office365.com/owa/?ItemID=AAMkAGgXI9IcPlq74OzTd6WKX2MtS8t-cKGqOvUCx7Q6YB31k",
+          "inferenceClassification": "focused",
+          "body": {
+            "contentType": "html",
+            "content": "<html><head><meta charset=\"utf-8\"></head><body dir=\"ltr\"><div class=\"elementToProof\">That makes sense. I reran the query using invoice currency and added the pricing-model and charge-type columns. The difference is now down to the support plan and a small tax adjustment, which matches your explanation. When you have the sample query, please send it so we can add it to our internal runbook. This is not time-sensitive anymore, and the invoice can proceed through approval while we document the reconciliation steps.</div><div id=\"appendonsend\"></div><hr tabindex=\"-1\"><div id=\"divRplyFwdMsg\" dir=\"ltr\"><b>From:</b> Marco Hill &lt;marco.hill@microsoft.com&gt;<br><b>Sent:</b> 2026-09-03T13:00:00Z<br><b>Subject:</b> RE: generated fixture</div><div class=\"quotedMessage\"><div class=\"elementToProof\">Your comparison method is mostly correct. The amortized-cost export spreads reservation purchases and can omit certain invoice-level adjustments that are not resource usage. I will map the difference by charge type and send you the exact query needed to reproduce the invoiced total. In the meantime, please keep the invoice currency rather than converting the rows through the pricing-currency column, because those can differ for some agreements.</div></div></body></html>"
+          },
+          "sender": {
+            "emailAddress": {
+              "name": "Grace Liu",
+              "address": "grace.liu@alpine-ski.example"
+            }
+          },
+          "from": {
+            "emailAddress": {
+              "name": "Grace Liu",
+              "address": "grace.liu@alpine-ski.example"
+            }
+          },
+          "toRecipients": [
+            {
+              "emailAddress": {
+                "name": "Marco Hill",
+                "address": "marco.hill@microsoft.com"
+              }
+            }
+          ],
+          "ccRecipients": [],
+          "bccRecipients": [],
+          "replyTo": [],
+          "flag": {
+            "flagStatus": "notFlagged"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "uri": "https://<your-function-app>.azurewebsites.net/api/threadEscalationEngine?code=<function-key>",
+    "method": "POST",
+    "body": {
+      "thread": [
+        {
+          "@odata.etag": "W/\"P9T4-G6O24mbtcswovb7EX80\"",
+          "id": "AAMkAGjE5NZTqgMmfS3bVh3BW_LdaH_rXaG3u5UraKjpYlmFw",
+          "createdDateTime": "2026-09-03T09:00:00Z",
+          "lastModifiedDateTime": "2026-09-03T09:01:00Z",
+          "changeKey": "P9T4-G6O24mbtcswovb7EX80",
+          "categories": [],
+          "receivedDateTime": "2026-09-03T09:01:00Z",
+          "sentDateTime": "2026-09-03T09:00:00Z",
+          "hasAttachments": false,
+          "internetMessageId": "<UWjTiRs7R44vwq0UXAzdoTIulccxF00GwMHibcnvarA@fixture.example>",
+          "subject": "Production reservation exchange blocked - TrackingID#2703030003000002",
+          "bodyPreview": "Last Thursday we exchanged twelve D-series reservations after the sizing review recommended moving the workload to E-series. The portal accepted eleven exchanges, but the final reservation remains in a failed state even though it is still charging against",
+          "importance": "normal",
+          "parentFolderId": "AAMkAGaXznKrUDBMWt8KKOPChJpHQawwbU45I0vJ2p3Guw1jE",
+          "conversationId": "AAQkAG9ALihDe__FecMwSdRBajdERks5VsrbFES5GyyWm_ZtE",
+          "conversationIndex": "tcKFm8FxCGk1I_RyFf5cEwqiOhn4g4Rz",
+          "isDeliveryReceiptRequested": null,
+          "isReadReceiptRequested": false,
+          "isRead": true,
+          "isDraft": false,
+          "webLink": "https://outlook.office365.com/owa/?ItemID=AAMkAGjE5NZTqgMmfS3bVh3BW_LdaH_rXaG3u5UraKjpYlmFw",
+          "inferenceClassification": "focused",
+          "body": {
+            "contentType": "html",
+            "content": "<html><head><meta charset=\"utf-8\"></head><body dir=\"ltr\"><div class=\"elementToProof\">Last Thursday we exchanged twelve D-series reservations after the sizing review recommended moving the workload to E-series. The portal accepted eleven exchanges, but the final reservation remains in a failed state even though it is still charging against the original scope. We supplied the purchase order, reservation order ID, target SKU, region, and screenshots of the portal error in the initial request. The workload migration is complete, so the unused reservation is now creating avoidable daily cost. Please review why this single item behaves differently from the other eleven and tell us whether the exchange must be completed through a backend operation.</div></body></html>"
+          },
+          "sender": {
+            "emailAddress": {
+              "name": "Martin Webb",
+              "address": "martin.webb@fourthcoffee.example"
+            }
+          },
+          "from": {
+            "emailAddress": {
+              "name": "Martin Webb",
+              "address": "martin.webb@fourthcoffee.example"
+            }
+          },
+          "toRecipients": [
+            {
+              "emailAddress": {
+                "name": "Priya Nair",
+                "address": "priya.nair@microsoft.com"
+              }
+            }
+          ],
+          "ccRecipients": [],
+          "bccRecipients": [],
+          "replyTo": [],
+          "flag": {
+            "flagStatus": "notFlagged"
+          }
+        },
+        {
+          "@odata.etag": "W/\"aim8yA11qq1MM69sJ793-VIw\"",
+          "id": "AAMkAGZOTDLDa2cVzbp0ER5U1GT3KU0VafG8mbsry-bKgsnN0",
+          "createdDateTime": "2026-09-03T13:00:00Z",
+          "lastModifiedDateTime": "2026-09-03T13:01:00Z",
+          "changeKey": "aim8yA11qq1MM69sJ793-VIw",
+          "categories": [],
+          "receivedDateTime": "2026-09-03T13:01:00Z",
+          "sentDateTime": "2026-09-03T13:00:00Z",
+          "hasAttachments": false,
+          "internetMessageId": "<q8jnBcFpv9bN10_6o4OtJNFltwP6ju6KjZbOPzdjF_U@fixture.example>",
+          "subject": "RE: Production reservation exchange blocked - TrackingID#2703030003000002",
+          "bodyPreview": "I confirmed that the failed item has a stale exchange operation attached to it. I sent the reservation order and correlation ID to commerce operations so they can clear the pending state. Their normal handling time is two business days, and I will update ",
+          "importance": "normal",
+          "parentFolderId": "AAMkAGA8SabCDq-dd-8Gy9d1cnGEeDq8_GIKBrlLm4I_0XwK4",
+          "conversationId": "AAQkAG9ALihDe__FecMwSdRBajdERks5VsrbFES5GyyWm_ZtE",
+          "conversationIndex": "pP1TWU2Y0Z1hl7HFuxT3JaqDKctdOMix",
+          "isDeliveryReceiptRequested": null,
+          "isReadReceiptRequested": false,
+          "isRead": true,
+          "isDraft": false,
+          "webLink": "https://outlook.office365.com/owa/?ItemID=AAMkAGZOTDLDa2cVzbp0ER5U1GT3KU0VafG8mbsry-bKgsnN0",
+          "inferenceClassification": "focused",
+          "body": {
+            "contentType": "html",
+            "content": "<html><head><meta charset=\"utf-8\"></head><body dir=\"ltr\"><div class=\"elementToProof\">I confirmed that the failed item has a stale exchange operation attached to it. I sent the reservation order and correlation ID to commerce operations so they can clear the pending state. Their normal handling time is two business days, and I will update you as soon as the operation is released.</div><div id=\"appendonsend\"></div><hr tabindex=\"-1\"><div id=\"divRplyFwdMsg\" dir=\"ltr\"><b>From:</b> Martin Webb &lt;martin.webb@fourthcoffee.example&gt;<br><b>Sent:</b> 2026-09-03T13:00:00Z<br><b>Subject:</b> RE: generated fixture</div><div class=\"quotedMessage\"><div class=\"elementToProof\">Last Thursday we exchanged twelve D-series reservations after the sizing review recommended moving the workload to E-series. The portal accepted eleven exchanges, but the final reservation remains in a failed state even though it is still charging against the original scope. We supplied the purchase order, reservation order ID, target SKU, region, and screenshots of the portal error in the initial request. The workload migration is complete, so the unused reservation is now creating avoidable daily cost. Please review why this single item behaves differently from the other eleven and tell us whether the exchange must be completed through a backend operation.</div></div></body></html>"
+          },
+          "sender": {
+            "emailAddress": {
+              "name": "Priya Nair",
+              "address": "priya.nair@microsoft.com"
+            }
+          },
+          "from": {
+            "emailAddress": {
+              "name": "Priya Nair",
+              "address": "priya.nair@microsoft.com"
+            }
+          },
+          "toRecipients": [
+            {
+              "emailAddress": {
+                "name": "Martin Webb",
+                "address": "martin.webb@fourthcoffee.example"
+              }
+            }
+          ],
+          "ccRecipients": [],
+          "bccRecipients": [],
+          "replyTo": [],
+          "flag": {
+            "flagStatus": "notFlagged"
+          }
+        },
+        {
+          "@odata.etag": "W/\"a7f2gpTnbWMt8CQU9BMNbSOe\"",
+          "id": "AAMkAGbjKRluOsqzKEAjvk3dVwv6Z1HPz4POyQQTj0GotHMCo",
+          "createdDateTime": "2026-09-07T14:00:00Z",
+          "lastModifiedDateTime": "2026-09-07T14:01:00Z",
+          "changeKey": "a7f2gpTnbWMt8CQU9BMNbSOe",
+          "categories": [],
+          "receivedDateTime": "2026-09-07T14:01:00Z",
+          "sentDateTime": "2026-09-07T14:00:00Z",
+          "hasAttachments": false,
+          "internetMessageId": "<Ksbi4o7DpBKYInAvwRMttCknI-Q8gSRYVtY-eW3eZl8@fixture.example>",
+          "subject": "RE: Production reservation exchange blocked - TrackingID#2703030003000002",
+          "bodyPreview": "We are now on the fourth business day and the reservation still shows the same pending operation. Yesterday we were told the queue had accepted the request, but nobody could provide an owner, a completion estimate, or a workaround. We have already moved t",
+          "importance": "normal",
+          "parentFolderId": "AAMkAGZbRbPse28rqEOj2-wBCYG7TMM3_q5OUExq9VnaX4Gws",
+          "conversationId": "AAQkAG9ALihDe__FecMwSdRBajdERks5VsrbFES5GyyWm_ZtE",
+          "conversationIndex": "K7uW1igXGfkNMCGVKZmFgWPewn6_SSso",
+          "isDeliveryReceiptRequested": null,
+          "isReadReceiptRequested": false,
+          "isRead": true,
+          "isDraft": false,
+          "webLink": "https://outlook.office365.com/owa/?ItemID=AAMkAGbjKRluOsqzKEAjvk3dVwv6Z1HPz4POyQQTj0GotHMCo",
+          "inferenceClassification": "focused",
+          "body": {
+            "contentType": "html",
+            "content": "<html><head><meta charset=\"utf-8\"></head><body dir=\"ltr\"><div class=\"elementToProof\">We are now on the fourth business day and the reservation still shows the same pending operation. Yesterday we were told the queue had accepted the request, but nobody could provide an owner, a completion estimate, or a workaround. We have already moved the production workload and are paying for capacity that cannot be applied, which makes every additional day more expensive. The technical details and correlation ID have been available since the case opened, so another request for the same information will not move this forward. Please escalate this to your manager and have someone with decision-making authority confirm the recovery plan today.</div><div id=\"appendonsend\"></div><hr tabindex=\"-1\"><div id=\"divRplyFwdMsg\" dir=\"ltr\"><b>From:</b> Priya Nair &lt;priya.nair@microsoft.com&gt;<br><b>Sent:</b> 2026-09-07T14:00:00Z<br><b>Subject:</b> RE: generated fixture</div><div class=\"quotedMessage\"><div class=\"elementToProof\">I confirmed that the failed item has a stale exchange operation attached to it. I sent the reservation order and correlation ID to commerce operations so they can clear the pending state. Their normal handling time is two business days, and I will update you as soon as the operation is released.</div></div></body></html>"
+          },
+          "sender": {
+            "emailAddress": {
+              "name": "Martin Webb",
+              "address": "martin.webb@fourthcoffee.example"
+            }
+          },
+          "from": {
+            "emailAddress": {
+              "name": "Martin Webb",
+              "address": "martin.webb@fourthcoffee.example"
+            }
+          },
+          "toRecipients": [
+            {
+              "emailAddress": {
+                "name": "Priya Nair",
+                "address": "priya.nair@microsoft.com"
+              }
+            }
+          ],
+          "ccRecipients": [],
+          "bccRecipients": [],
+          "replyTo": [],
+          "flag": {
+            "flagStatus": "notFlagged"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "uri": "https://<your-function-app>.azurewebsites.net/api/threadEscalationEngine?code=<function-key>",
+    "method": "POST",
+    "body": {
+      "thread": [
+        {
+          "@odata.etag": "W/\"9F01HsBsRin_1C5DzqxFQ2PE\"",
+          "id": "AAMkAG5_6tITxkblznq5NT_3Vj7Wt3VqUQc2XqIOLYiJXrn_A",
+          "createdDateTime": "2026-09-04T09:00:00Z",
+          "lastModifiedDateTime": "2026-09-04T09:01:00Z",
+          "changeKey": "9F01HsBsRin_1C5DzqxFQ2PE",
+          "categories": [],
+          "receivedDateTime": "2026-09-04T09:01:00Z",
+          "sentDateTime": "2026-09-04T09:00:00Z",
+          "hasAttachments": false,
+          "internetMessageId": "<FiY_XuJbED3mAH7CBJB6-zhRgOx-Gltou5Wd4JBoV7Q@fixture.example>",
+          "subject": "Storage transaction spike after lifecycle change - TrackingID#2703030003000003",
+          "bodyPreview": "We changed the lifecycle policy on three archive storage accounts on August 2. The stored capacity stayed nearly flat, but transaction charges increased by roughly six times during the following forty-eight hours. We checked the diagnostic logs and can se",
+          "importance": "normal",
+          "parentFolderId": "AAMkAGwIxQ5_J6zwDjC6kUhUYjrhf4MvXAIutocI6FeUh--dE",
+          "conversationId": "AAQkAGvnnxp5Y6a7tF83ghyELEXSEvHL1DGtjbPUKNeBRQVIk",
+          "conversationIndex": "PbVQLuBp_a1ClX1DNoVRKMYyvNVjAz2J",
+          "isDeliveryReceiptRequested": null,
+          "isReadReceiptRequested": false,
+          "isRead": true,
+          "isDraft": false,
+          "webLink": "https://outlook.office365.com/owa/?ItemID=AAMkAG5_6tITxkblznq5NT_3Vj7Wt3VqUQc2XqIOLYiJXrn_A",
+          "inferenceClassification": "focused",
+          "body": {
+            "contentType": "html",
+            "content": "<html><head><meta charset=\"utf-8\"></head><body dir=\"ltr\"><div class=\"elementToProof\">We changed the lifecycle policy on three archive storage accounts on August 2. The stored capacity stayed nearly flat, but transaction charges increased by roughly six times during the following forty-eight hours. We checked the diagnostic logs and can see repeated list and set-tier operations, although no application deployment occurred during that period. The policy contains one rule for blobs older than 180 days and another rule that deletes snapshots after 30 days. We need help determining whether reevaluation of the policy can generate this transaction pattern or whether another service is touching the accounts.</div></body></html>"
+          },
+          "sender": {
+            "emailAddress": {
+              "name": "Helen Ward",
+              "address": "helen.ward@consolidatedmessenger.example"
+            }
+          },
+          "from": {
+            "emailAddress": {
+              "name": "Helen Ward",
+              "address": "helen.ward@consolidatedmessenger.example"
+            }
+          },
+          "toRecipients": [
+            {
+              "emailAddress": {
+                "name": "Alex Wu",
+                "address": "alex.wu@microsoft.com"
+              }
+            }
+          ],
+          "ccRecipients": [],
+          "bccRecipients": [],
+          "replyTo": [],
+          "flag": {
+            "flagStatus": "notFlagged"
+          }
+        },
+        {
+          "@odata.etag": "W/\"lSKlr9JV9n9pcpnT7jstCvTI\"",
+          "id": "AAMkAG1_7b6VsEjD4rYszBFk5L0ucPEehaPnYENMt-zM6xKag",
+          "createdDateTime": "2026-09-04T15:00:00Z",
+          "lastModifiedDateTime": "2026-09-04T15:01:00Z",
+          "changeKey": "lSKlr9JV9n9pcpnT7jstCvTI",
+          "categories": [],
+          "receivedDateTime": "2026-09-04T15:01:00Z",
+          "sentDateTime": "2026-09-04T15:00:00Z",
+          "hasAttachments": false,
+          "internetMessageId": "<6a6oFkISNAL00BFY4SW3JA0oILrxOdd05cLv4TWjee0@fixture.example>",
+          "subject": "RE: Storage transaction spike after lifecycle change - TrackingID#2703030003000003",
+          "bodyPreview": "The billing meter confirms that the increase is primarily list operations. Lifecycle evaluation can perform internal scans, but I need the storage diagnostics team to correlate the request IDs with the policy run. Please send one affected account name and",
+          "importance": "normal",
+          "parentFolderId": "AAMkAGA5DikOoK_9Xk2kiI1rtpXQ9cWM65lHKM5g3xS9bUBxQ",
+          "conversationId": "AAQkAGvnnxp5Y6a7tF83ghyELEXSEvHL1DGtjbPUKNeBRQVIk",
+          "conversationIndex": "Ol-Kco1p_arVHgdX6Ae5VGZcQS31qTCl",
+          "isDeliveryReceiptRequested": null,
+          "isReadReceiptRequested": false,
+          "isRead": true,
+          "isDraft": false,
+          "webLink": "https://outlook.office365.com/owa/?ItemID=AAMkAG1_7b6VsEjD4rYszBFk5L0ucPEehaPnYENMt-zM6xKag",
+          "inferenceClassification": "focused",
+          "body": {
+            "contentType": "html",
+            "content": "<html><head><meta charset=\"utf-8\"></head><body dir=\"ltr\"><div class=\"elementToProof\">The billing meter confirms that the increase is primarily list operations. Lifecycle evaluation can perform internal scans, but I need the storage diagnostics team to correlate the request IDs with the policy run. Please send one affected account name and a six-hour UTC window so I can prepare the trace request.</div><div id=\"appendonsend\"></div><hr tabindex=\"-1\"><div id=\"divRplyFwdMsg\" dir=\"ltr\"><b>From:</b> Helen Ward &lt;helen.ward@consolidatedmessenger.example&gt;<br><b>Sent:</b> 2026-09-04T15:00:00Z<br><b>Subject:</b> RE: generated fixture</div><div class=\"quotedMessage\"><div class=\"elementToProof\">We changed the lifecycle policy on three archive storage accounts on August 2. The stored capacity stayed nearly flat, but transaction charges increased by roughly six times during the following forty-eight hours. We checked the diagnostic logs and can see repeated list and set-tier operations, although no application deployment occurred during that period. The policy contains one rule for blobs older than 180 days and another rule that deletes snapshots after 30 days. We need help determining whether reevaluation of the policy can generate this transaction pattern or whether another service is touching the accounts.</div></div></body></html>"
+          },
+          "sender": {
+            "emailAddress": {
+              "name": "Alex Wu",
+              "address": "alex.wu@microsoft.com"
+            }
+          },
+          "from": {
+            "emailAddress": {
+              "name": "Alex Wu",
+              "address": "alex.wu@microsoft.com"
+            }
+          },
+          "toRecipients": [
+            {
+              "emailAddress": {
+                "name": "Helen Ward",
+                "address": "helen.ward@consolidatedmessenger.example"
+              }
+            }
+          ],
+          "ccRecipients": [],
+          "bccRecipients": [],
+          "replyTo": [],
+          "flag": {
+            "flagStatus": "notFlagged"
+          }
+        },
+        {
+          "@odata.etag": "W/\"JpwtgKcS26mCeFqPEADvzSNM\"",
+          "id": "AAMkAGCM-rnFnFLccRMe4jZ-apsh8wvDZjIVZH6Dh9Y9HKIuI",
+          "createdDateTime": "2026-09-04T19:00:00Z",
+          "lastModifiedDateTime": "2026-09-04T19:01:00Z",
+          "changeKey": "JpwtgKcS26mCeFqPEADvzSNM",
+          "categories": [],
+          "receivedDateTime": "2026-09-04T19:01:00Z",
+          "sentDateTime": "2026-09-04T19:00:00Z",
+          "hasAttachments": false,
+          "internetMessageId": "<uCmmQ9niTU7NcV5PuUCEBF6zwQYYJotrIecuS7mjzdY@fixture.example>",
+          "subject": "RE: Storage transaction spike after lifecycle change - TrackingID#2703030003000003",
+          "bodyPreview": "I added the account name, policy JSON, and the UTC window to the secure upload. The trace should focus on 03:00 through 09:00 on August 3, when the list-operation meter rose most sharply. We are not asking for a management escalation at this stage; we nee",
+          "importance": "normal",
+          "parentFolderId": "AAMkAGpVBhiXiIJZVDScTtAOkv-pFMNIBAAhPU2UMC1CSB4ac",
+          "conversationId": "AAQkAGvnnxp5Y6a7tF83ghyELEXSEvHL1DGtjbPUKNeBRQVIk",
+          "conversationIndex": "thv7rez4OCcfTr4csx-IBPMG8PyDi2mn",
+          "isDeliveryReceiptRequested": null,
+          "isReadReceiptRequested": false,
+          "isRead": true,
+          "isDraft": false,
+          "webLink": "https://outlook.office365.com/owa/?ItemID=AAMkAGCM-rnFnFLccRMe4jZ-apsh8wvDZjIVZH6Dh9Y9HKIuI",
+          "inferenceClassification": "focused",
+          "body": {
+            "contentType": "html",
+            "content": "<html><head><meta charset=\"utf-8\"></head><body dir=\"ltr\"><div class=\"elementToProof\">I added the account name, policy JSON, and the UTC window to the secure upload. The trace should focus on 03:00 through 09:00 on August 3, when the list-operation meter rose most sharply. We are not asking for a management escalation at this stage; we need the source of the requests identified before changing a policy that applies to retained customer records. Please escalate the technical investigation to the storage engineering team and keep the current case owner copied so the billing and diagnostic findings stay together.</div><div id=\"appendonsend\"></div><hr tabindex=\"-1\"><div id=\"divRplyFwdMsg\" dir=\"ltr\"><b>From:</b> Alex Wu &lt;alex.wu@microsoft.com&gt;<br><b>Sent:</b> 2026-09-04T19:00:00Z<br><b>Subject:</b> RE: generated fixture</div><div class=\"quotedMessage\"><div class=\"elementToProof\">The billing meter confirms that the increase is primarily list operations. Lifecycle evaluation can perform internal scans, but I need the storage diagnostics team to correlate the request IDs with the policy run. Please send one affected account name and a six-hour UTC window so I can prepare the trace request.</div></div></body></html>"
+          },
+          "sender": {
+            "emailAddress": {
+              "name": "Helen Ward",
+              "address": "helen.ward@consolidatedmessenger.example"
+            }
+          },
+          "from": {
+            "emailAddress": {
+              "name": "Helen Ward",
+              "address": "helen.ward@consolidatedmessenger.example"
+            }
+          },
+          "toRecipients": [
+            {
+              "emailAddress": {
+                "name": "Alex Wu",
+                "address": "alex.wu@microsoft.com"
+              }
+            }
+          ],
+          "ccRecipients": [],
+          "bccRecipients": [],
+          "replyTo": [],
+          "flag": {
+            "flagStatus": "notFlagged"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "uri": "https://<your-function-app>.azurewebsites.net/api/threadEscalationEngine?code=<function-key>",
+    "method": "POST",
+    "body": {
+      "thread": [
+        {
+          "@odata.etag": "W/\"tE8pSDYjQq5ydK_55kRfJImQ\"",
+          "id": "AAMkAGhEIipnoPorwmfRDPOomNBuJS5HjQ0CY0RYqMP3bQkkQ",
+          "createdDateTime": "2026-09-05T09:00:00Z",
+          "lastModifiedDateTime": "2026-09-05T09:01:00Z",
+          "changeKey": "tE8pSDYjQq5ydK_55kRfJImQ",
+          "categories": [],
+          "receivedDateTime": "2026-09-05T09:01:00Z",
+          "sentDateTime": "2026-09-05T09:00:00Z",
+          "hasAttachments": false,
+          "internetMessageId": "<9YiNZZclCSE08SW89BMs4YUx3nFvMhteZ8AJAzPkt64@fixture.example>",
+          "subject": "Enterprise invoice allocation unresolved - TrackingID#2703030003000004",
+          "bodyPreview": "Since the billing profile migration, three invoice sections have been assigned to the wrong legal entities. We provided the intended ownership matrix before the migration and again when the first incorrect invoice appeared. The current structure prevents ",
+          "importance": "normal",
+          "parentFolderId": "AAMkAGVHiJwdIIWhVRkZbvOPLMAoPNQU104Xpy41ws6Tdb0xw",
+          "conversationId": "AAQkAG_a6-sPD-P2y4ronvStFm4_Y96sRyrZ4LlxpQfkRbwp8",
+          "conversationIndex": "dtE4bXxiUleqKQiYE53nnkuC1j0FPpWN",
+          "isDeliveryReceiptRequested": null,
+          "isReadReceiptRequested": false,
+          "isRead": true,
+          "isDraft": false,
+          "webLink": "https://outlook.office365.com/owa/?ItemID=AAMkAGhEIipnoPorwmfRDPOomNBuJS5HjQ0CY0RYqMP3bQkkQ",
+          "inferenceClassification": "focused",
+          "body": {
+            "contentType": "html",
+            "content": "<html><head><meta charset=\"utf-8\"></head><body dir=\"ltr\"><div class=\"elementToProof\">Since the billing profile migration, three invoice sections have been assigned to the wrong legal entities. We provided the intended ownership matrix before the migration and again when the first incorrect invoice appeared. The current structure prevents our regional teams from approving their charges and forces corporate finance to reallocate several hundred line items manually. We can tolerate a temporary reporting discrepancy, but we need a documented correction plan before the next invoice is generated.</div></body></html>"
+          },
+          "sender": {
+            "emailAddress": {
+              "name": "Victor Ames",
+              "address": "victor.ames@contoso-pharma.example"
+            }
+          },
+          "from": {
+            "emailAddress": {
+              "name": "Victor Ames",
+              "address": "victor.ames@contoso-pharma.example"
+            }
+          },
+          "toRecipients": [
+            {
+              "emailAddress": {
+                "name": "Rita Singh",
+                "address": "rita.singh@microsoft.com"
+              }
+            }
+          ],
+          "ccRecipients": [],
+          "bccRecipients": [],
+          "replyTo": [],
+          "flag": {
+            "flagStatus": "notFlagged"
+          }
+        },
+        {
+          "@odata.etag": "W/\"f_9-uQGRvh1HtHZzGDRzuYbq\"",
+          "id": "AAMkAGcwfVVQcEhiCMlSnkSM08Te3EI0IHnOkh1aja9XxD0Ng",
+          "createdDateTime": "2026-09-05T16:00:00Z",
+          "lastModifiedDateTime": "2026-09-05T16:01:00Z",
+          "changeKey": "f_9-uQGRvh1HtHZzGDRzuYbq",
+          "categories": [],
+          "receivedDateTime": "2026-09-05T16:01:00Z",
+          "sentDateTime": "2026-09-05T16:00:00Z",
+          "hasAttachments": false,
+          "internetMessageId": "<AwA4y8FxekVb01R5hW2tmUKtO8JcsTVgop1wpYSFhTM@fixture.example>",
+          "subject": "RE: Enterprise invoice allocation unresolved - TrackingID#2703030003000004",
+          "bodyPreview": "I compared the matrix with the current invoice-section owners and found that the migration imported the previous department identifiers. I submitted a batch correction to billing operations. They must validate the legal-entity mapping before applying it, ",
+          "importance": "normal",
+          "parentFolderId": "AAMkAGKl45GCRgfnZo9GsR6eoWFt5xCumESBS_xFloNQFJpuc",
+          "conversationId": "AAQkAG_a6-sPD-P2y4ronvStFm4_Y96sRyrZ4LlxpQfkRbwp8",
+          "conversationIndex": "ehW0x2kUV4qmYbNbWRD4_AYqYifmD-VQ",
+          "isDeliveryReceiptRequested": null,
+          "isReadReceiptRequested": false,
+          "isRead": true,
+          "isDraft": false,
+          "webLink": "https://outlook.office365.com/owa/?ItemID=AAMkAGcwfVVQcEhiCMlSnkSM08Te3EI0IHnOkh1aja9XxD0Ng",
+          "inferenceClassification": "focused",
+          "body": {
+            "contentType": "html",
+            "content": "<html><head><meta charset=\"utf-8\"></head><body dir=\"ltr\"><div class=\"elementToProof\">I compared the matrix with the current invoice-section owners and found that the migration imported the previous department identifiers. I submitted a batch correction to billing operations. They must validate the legal-entity mapping before applying it, and I requested completion before the next billing cut.</div><div id=\"appendonsend\"></div><hr tabindex=\"-1\"><div id=\"divRplyFwdMsg\" dir=\"ltr\"><b>From:</b> Victor Ames &lt;victor.ames@contoso-pharma.example&gt;<br><b>Sent:</b> 2026-09-05T16:00:00Z<br><b>Subject:</b> RE: generated fixture</div><div class=\"quotedMessage\"><div class=\"elementToProof\">Since the billing profile migration, three invoice sections have been assigned to the wrong legal entities. We provided the intended ownership matrix before the migration and again when the first incorrect invoice appeared. The current structure prevents our regional teams from approving their charges and forces corporate finance to reallocate several hundred line items manually. We can tolerate a temporary reporting discrepancy, but we need a documented correction plan before the next invoice is generated.</div></div></body></html>"
+          },
+          "sender": {
+            "emailAddress": {
+              "name": "Rita Singh",
+              "address": "rita.singh@microsoft.com"
+            }
+          },
+          "from": {
+            "emailAddress": {
+              "name": "Rita Singh",
+              "address": "rita.singh@microsoft.com"
+            }
+          },
+          "toRecipients": [
+            {
+              "emailAddress": {
+                "name": "Victor Ames",
+                "address": "victor.ames@contoso-pharma.example"
+              }
+            }
+          ],
+          "ccRecipients": [],
+          "bccRecipients": [],
+          "replyTo": [],
+          "flag": {
+            "flagStatus": "notFlagged"
+          }
+        },
+        {
+          "@odata.etag": "W/\"h2wfRa8A_0P2AieiKQ8yy0Nh\"",
+          "id": "AAMkAGMr-SCyoBQXzu0VElIzxMNVXjMjIjbjpO-86nIBexrBw",
+          "createdDateTime": "2026-09-12T17:00:00Z",
+          "lastModifiedDateTime": "2026-09-12T17:01:00Z",
+          "changeKey": "h2wfRa8A_0P2AieiKQ8yy0Nh",
+          "categories": [],
+          "receivedDateTime": "2026-09-12T17:01:00Z",
+          "sentDateTime": "2026-09-12T17:00:00Z",
+          "hasAttachments": false,
+          "internetMessageId": "<Slg1zf1vbrnPr3LVTXgSPia8OzRu1cikpaJfPeL0dmY@fixture.example>",
+          "subject": "RE: Enterprise invoice allocation unresolved - TrackingID#2703030003000004",
+          "bodyPreview": "Another week has passed without a confirmed owner or completion date. This is the third billing cycle affected, and our auditors have now recorded the allocation failure as a control exception. We selected the enterprise agreement partly because consolida",
+          "importance": "normal",
+          "parentFolderId": "AAMkAG8pQw31Lv2yAN55oOUdypJ9bVbHRch-muOApO5ouElKQ",
+          "conversationId": "AAQkAG_a6-sPD-P2y4ronvStFm4_Y96sRyrZ4LlxpQfkRbwp8",
+          "conversationIndex": "N9tsKHHRd1s5nsx8G03LZoq2JJ-_hEft",
+          "isDeliveryReceiptRequested": null,
+          "isReadReceiptRequested": false,
+          "isRead": true,
+          "isDraft": false,
+          "webLink": "https://outlook.office365.com/owa/?ItemID=AAMkAGMr-SCyoBQXzu0VElIzxMNVXjMjIjbjpO-86nIBexrBw",
+          "inferenceClassification": "focused",
+          "body": {
+            "contentType": "html",
+            "content": "<html><head><meta charset=\"utf-8\"></head><body dir=\"ltr\"><div class=\"elementToProof\">Another week has passed without a confirmed owner or completion date. This is the third billing cycle affected, and our auditors have now recorded the allocation failure as a control exception. We selected the enterprise agreement partly because consolidated billing was supposed to reduce manual reconciliation, yet this case has added work every month and nobody will commit to a timeline. If the ownership matrix is not corrected before Friday, we will escalate this through our account team and reconsider whether the current agreement is workable for the renewal.</div><div id=\"appendonsend\"></div><hr tabindex=\"-1\"><div id=\"divRplyFwdMsg\" dir=\"ltr\"><b>From:</b> Rita Singh &lt;rita.singh@microsoft.com&gt;<br><b>Sent:</b> 2026-09-12T17:00:00Z<br><b>Subject:</b> RE: generated fixture</div><div class=\"quotedMessage\"><div class=\"elementToProof\">I compared the matrix with the current invoice-section owners and found that the migration imported the previous department identifiers. I submitted a batch correction to billing operations. They must validate the legal-entity mapping before applying it, and I requested completion before the next billing cut.</div></div></body></html>"
+          },
+          "sender": {
+            "emailAddress": {
+              "name": "Victor Ames",
+              "address": "victor.ames@contoso-pharma.example"
+            }
+          },
+          "from": {
+            "emailAddress": {
+              "name": "Victor Ames",
+              "address": "victor.ames@contoso-pharma.example"
+            }
+          },
+          "toRecipients": [
+            {
+              "emailAddress": {
+                "name": "Rita Singh",
+                "address": "rita.singh@microsoft.com"
+              }
+            }
+          ],
+          "ccRecipients": [],
+          "bccRecipients": [],
+          "replyTo": [],
+          "flag": {
+            "flagStatus": "notFlagged"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "uri": "https://<your-function-app>.azurewebsites.net/api/threadEscalationEngine?code=<function-key>",
+    "method": "POST",
+    "body": {
+      "thread": [
+        {
+          "@odata.etag": "W/\"7j9odgu5cggrFvgAFldnLbJy\"",
+          "id": "AAMkAGgJILvkfGey7MKPENRoewE6t4ISkzMghPj6PGAO6Klss",
+          "createdDateTime": "2026-09-06T09:00:00Z",
+          "lastModifiedDateTime": "2026-09-06T09:01:00Z",
+          "changeKey": "7j9odgu5cggrFvgAFldnLbJy",
+          "categories": [],
+          "receivedDateTime": "2026-09-06T09:01:00Z",
+          "sentDateTime": "2026-09-06T09:00:00Z",
+          "hasAttachments": false,
+          "internetMessageId": "<R8Rp3fEawVoJXBHV90bA5TkeJBMzK-Ka69_bREL73y8@fixture.example>",
+          "subject": "Marketplace refund completed - TrackingID#2703030003000005",
+          "bodyPreview": "The marketplace plan was purchased by a test account during a proof of concept and was never deployed to a production resource. We disabled renewal as soon as finance noticed it, but the annual charge had already posted. The publisher confirmed in writing",
+          "importance": "normal",
+          "parentFolderId": "AAMkAGHZDC-JCq9KRYBK18hggZL14iwAkOZipDl5oPxv3vSK8",
+          "conversationId": "AAQkAG3jPxv0nBvmo1jt_0RaNdjs_IJcHoLndHywdaYjhwk5U",
+          "conversationIndex": "CCmzwooUQXLciq8hzWPpLMErzjFS_AzN",
+          "isDeliveryReceiptRequested": null,
+          "isReadReceiptRequested": false,
+          "isRead": true,
+          "isDraft": false,
+          "webLink": "https://outlook.office365.com/owa/?ItemID=AAMkAGgJILvkfGey7MKPENRoewE6t4ISkzMghPj6PGAO6Klss",
+          "inferenceClassification": "focused",
+          "body": {
+            "contentType": "html",
+            "content": "<html><head><meta charset=\"utf-8\"></head><body dir=\"ltr\"><div class=\"elementToProof\">The marketplace plan was purchased by a test account during a proof of concept and was never deployed to a production resource. We disabled renewal as soon as finance noticed it, but the annual charge had already posted. The publisher confirmed in writing that they do not object to a refund and attached their authorization. Because the amount consumes most of the department&#x27;s remaining annual software budget, please escalate this case to your manager for an exception review.</div></body></html>"
+          },
+          "sender": {
+            "emailAddress": {
+              "name": "Amber Cole",
+              "address": "amber.cole@schoolofart.example"
+            }
+          },
+          "from": {
+            "emailAddress": {
+              "name": "Amber Cole",
+              "address": "amber.cole@schoolofart.example"
+            }
+          },
+          "toRecipients": [
+            {
+              "emailAddress": {
+                "name": "Neil Cox",
+                "address": "neil.cox@microsoft.com"
+              }
+            }
+          ],
+          "ccRecipients": [],
+          "bccRecipients": [],
+          "replyTo": [],
+          "flag": {
+            "flagStatus": "notFlagged"
+          }
+        },
+        {
+          "@odata.etag": "W/\"w-4-k8loVw0xlcJJCy06g4NZ\"",
+          "id": "AAMkAGRJAJBZXcKTBYAkx8aL9Dfdf3yE0wFymSzgMrIBeWiMY",
+          "createdDateTime": "2026-09-07T15:00:00Z",
+          "lastModifiedDateTime": "2026-09-07T15:01:00Z",
+          "changeKey": "w-4-k8loVw0xlcJJCy06g4NZ",
+          "categories": [],
+          "receivedDateTime": "2026-09-07T15:01:00Z",
+          "sentDateTime": "2026-09-07T15:00:00Z",
+          "hasAttachments": false,
+          "internetMessageId": "<TA2cwKQLtYvzx2GXU7UKlhZd4gguQ8hLDV2EJTZPshY@fixture.example>",
+          "subject": "RE: Marketplace refund completed - TrackingID#2703030003000005",
+          "bodyPreview": "The publisher authorization was sufficient for an exception. My manager approved the request and the marketplace operations team issued the credit memo. It may take up to twenty-four hours for the adjusted balance to appear in Cost Management and the invo",
+          "importance": "normal",
+          "parentFolderId": "AAMkAGAWsTKQg7a-2sPagGvEhtO6CBcDD1a1vNAqIjgqf8SRc",
+          "conversationId": "AAQkAG3jPxv0nBvmo1jt_0RaNdjs_IJcHoLndHywdaYjhwk5U",
+          "conversationIndex": "Agv5cJwxXgvgwmwgQGHinXnPVMAjQnRX",
+          "isDeliveryReceiptRequested": null,
+          "isReadReceiptRequested": false,
+          "isRead": true,
+          "isDraft": false,
+          "webLink": "https://outlook.office365.com/owa/?ItemID=AAMkAGRJAJBZXcKTBYAkx8aL9Dfdf3yE0wFymSzgMrIBeWiMY",
+          "inferenceClassification": "focused",
+          "body": {
+            "contentType": "html",
+            "content": "<html><head><meta charset=\"utf-8\"></head><body dir=\"ltr\"><div class=\"elementToProof\">The publisher authorization was sufficient for an exception. My manager approved the request and the marketplace operations team issued the credit memo. It may take up to twenty-four hours for the adjusted balance to appear in Cost Management and the invoice portal.</div><div id=\"appendonsend\"></div><hr tabindex=\"-1\"><div id=\"divRplyFwdMsg\" dir=\"ltr\"><b>From:</b> Amber Cole &lt;amber.cole@schoolofart.example&gt;<br><b>Sent:</b> 2026-09-07T15:00:00Z<br><b>Subject:</b> RE: generated fixture</div><div class=\"quotedMessage\"><div class=\"elementToProof\">The marketplace plan was purchased by a test account during a proof of concept and was never deployed to a production resource. We disabled renewal as soon as finance noticed it, but the annual charge had already posted. The publisher confirmed in writing that they do not object to a refund and attached their authorization. Because the amount consumes most of the department&#x27;s remaining annual software budget, please escalate this case to your manager for an exception review.</div></div></body></html>"
+          },
+          "sender": {
+            "emailAddress": {
+              "name": "Neil Cox",
+              "address": "neil.cox@microsoft.com"
+            }
+          },
+          "from": {
+            "emailAddress": {
+              "name": "Neil Cox",
+              "address": "neil.cox@microsoft.com"
+            }
+          },
+          "toRecipients": [
+            {
+              "emailAddress": {
+                "name": "Amber Cole",
+                "address": "amber.cole@schoolofart.example"
+              }
+            }
+          ],
+          "ccRecipients": [],
+          "bccRecipients": [],
+          "replyTo": [],
+          "flag": {
+            "flagStatus": "notFlagged"
+          }
+        },
+        {
+          "@odata.etag": "W/\"O0GOrx7vUJE04ockdnDwuCsK\"",
+          "id": "AAMkAGjEleBRLi1kbFPiLpXxLOpfhYh-cEpf3HgnQ5tHJOCR4",
+          "createdDateTime": "2026-09-08T13:00:00Z",
+          "lastModifiedDateTime": "2026-09-08T13:01:00Z",
+          "changeKey": "O0GOrx7vUJE04ockdnDwuCsK",
+          "categories": [],
+          "receivedDateTime": "2026-09-08T13:01:00Z",
+          "sentDateTime": "2026-09-08T13:00:00Z",
+          "hasAttachments": false,
+          "internetMessageId": "<CYpNT6aWOsJL0WS6apGaCaf2wcZr1pGrAiTRre9CLXo@fixture.example>",
+          "subject": "RE: Marketplace refund completed - TrackingID#2703030003000005",
+          "bodyPreview": "Thank you for escalating the exception and keeping us informed. The credit memo is now visible, the invoice balance matches the amount approved by the publisher, and finance has released the remaining budget for the department. No additional review is req",
+          "importance": "normal",
+          "parentFolderId": "AAMkAGhsIMwF2Efg7uOOfUvzFmR01x7c-JuwSFFtpG7FZjvB4",
+          "conversationId": "AAQkAG3jPxv0nBvmo1jt_0RaNdjs_IJcHoLndHywdaYjhwk5U",
+          "conversationIndex": "1FT9_sS3DEZlQUZkmSbFcAy7PeJLiRRf",
+          "isDeliveryReceiptRequested": null,
+          "isReadReceiptRequested": false,
+          "isRead": true,
+          "isDraft": false,
+          "webLink": "https://outlook.office365.com/owa/?ItemID=AAMkAGjEleBRLi1kbFPiLpXxLOpfhYh-cEpf3HgnQ5tHJOCR4",
+          "inferenceClassification": "focused",
+          "body": {
+            "contentType": "html",
+            "content": "<html><head><meta charset=\"utf-8\"></head><body dir=\"ltr\"><div class=\"elementToProof\">Thank you for escalating the exception and keeping us informed. The credit memo is now visible, the invoice balance matches the amount approved by the publisher, and finance has released the remaining budget for the department. No additional review is required from our side. You can close the support request after confirming that the marketplace subscription itself remains disabled, since we do not intend to reactivate it.</div><div id=\"appendonsend\"></div><hr tabindex=\"-1\"><div id=\"divRplyFwdMsg\" dir=\"ltr\"><b>From:</b> Neil Cox &lt;neil.cox@microsoft.com&gt;<br><b>Sent:</b> 2026-09-08T13:00:00Z<br><b>Subject:</b> RE: generated fixture</div><div class=\"quotedMessage\"><div class=\"elementToProof\">The publisher authorization was sufficient for an exception. My manager approved the request and the marketplace operations team issued the credit memo. It may take up to twenty-four hours for the adjusted balance to appear in Cost Management and the invoice portal.</div></div></body></html>"
+          },
+          "sender": {
+            "emailAddress": {
+              "name": "Amber Cole",
+              "address": "amber.cole@schoolofart.example"
+            }
+          },
+          "from": {
+            "emailAddress": {
+              "name": "Amber Cole",
+              "address": "amber.cole@schoolofart.example"
+            }
+          },
+          "toRecipients": [
+            {
+              "emailAddress": {
+                "name": "Neil Cox",
+                "address": "neil.cox@microsoft.com"
+              }
+            }
+          ],
+          "ccRecipients": [],
+          "bccRecipients": [],
+          "replyTo": [],
+          "flag": {
+            "flagStatus": "notFlagged"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "uri": "https://<your-function-app>.azurewebsites.net/api/threadEscalationEngine?code=<function-key>",
+    "method": "POST",
+    "body": {
+      "thread": [
+        {
+          "@odata.etag": "W/\"zA2TbTF-HZ6pqfswtwmAbiWU\"",
+          "id": "AAMkAG2UoeEOtzJbCRybu3zTQtVNB2rs5bk-6UmClsktFLHuQ",
+          "createdDateTime": "2026-09-07T09:00:00Z",
+          "lastModifiedDateTime": "2026-09-07T09:01:00Z",
+          "changeKey": "zA2TbTF-HZ6pqfswtwmAbiWU",
+          "categories": [],
+          "receivedDateTime": "2026-09-07T09:01:00Z",
+          "sentDateTime": "2026-09-07T09:00:00Z",
+          "hasAttachments": false,
+          "internetMessageId": "<1RhtnGWXJfn_OGhIH0EK_9EIN7rjRnGLXfQZXbaATgA@fixture.example>",
+          "subject": "Créditos consumidos por recurso eliminado - TrackingID#2703030003000006",
+          "bodyPreview": "Eliminamos el clúster de pruebas el 3 de agosto y el grupo de recursos ya no aparece en el portal. Sin embargo, el reporte de costos sigue mostrando cargos diarios asociados con discos administrados y direcciones IP que pensábamos que se borrarían junto c",
+          "importance": "normal",
+          "parentFolderId": "AAMkAGNPMXYVRHN2wEeywxqBWoF9cK7vRZZPN_X-khAdGu4c0",
+          "conversationId": "AAQkAGpb5KebrVs8zUYDA3vTg8OIuPskKAIbzw2400tNrgcHs",
+          "conversationIndex": "3kRe3AibctAsuMFzq4Mv6uS4pUyoLFSH",
+          "isDeliveryReceiptRequested": null,
+          "isReadReceiptRequested": false,
+          "isRead": true,
+          "isDraft": false,
+          "webLink": "https://outlook.office365.com/owa/?ItemID=AAMkAG2UoeEOtzJbCRybu3zTQtVNB2rs5bk-6UmClsktFLHuQ",
+          "inferenceClassification": "focused",
+          "body": {
+            "contentType": "html",
+            "content": "<html><head><meta charset=\"utf-8\"></head><body dir=\"ltr\"><div class=\"elementToProof\">Eliminamos el clúster de pruebas el 3 de agosto y el grupo de recursos ya no aparece en el portal. Sin embargo, el reporte de costos sigue mostrando cargos diarios asociados con discos administrados y direcciones IP que pensábamos que se borrarían junto con el clúster. Revisamos las suscripciones una por una y no encontramos esos recursos con los nombres que aparecen en la exportación. Necesitamos identificar dónde permanecen antes de que se termine el saldo del patrocinio, pero por ahora solo buscamos una explicación técnica y los pasos correctos para localizarlos.</div></body></html>"
+          },
+          "sender": {
+            "emailAddress": {
+              "name": "Carolina Paredes",
+              "address": "carolina.paredes@empresa-ejemplo.mx"
+            }
+          },
+          "from": {
+            "emailAddress": {
+              "name": "Carolina Paredes",
+              "address": "carolina.paredes@empresa-ejemplo.mx"
+            }
+          },
+          "toRecipients": [
+            {
+              "emailAddress": {
+                "name": "Andrés Peña",
+                "address": "andres.pena@microsoft.com"
+              }
+            }
+          ],
+          "ccRecipients": [],
+          "bccRecipients": [],
+          "replyTo": [],
+          "flag": {
+            "flagStatus": "notFlagged"
+          }
+        },
+        {
+          "@odata.etag": "W/\"fYA8deTLiJBjO5J82SiCoNoT\"",
+          "id": "AAMkAGDIFAIz5pbzPVZWrYotMgcSH1DnTJ5seGqH73KSiymv0",
+          "createdDateTime": "2026-09-07T14:00:00Z",
+          "lastModifiedDateTime": "2026-09-07T14:01:00Z",
+          "changeKey": "fYA8deTLiJBjO5J82SiCoNoT",
+          "categories": [],
+          "receivedDateTime": "2026-09-07T14:01:00Z",
+          "sentDateTime": "2026-09-07T14:00:00Z",
+          "hasAttachments": false,
+          "internetMessageId": "<NWoTi0Smn8Mm5TWYahOBbBg6_OXQlV2T7a6fDGc4sd0@fixture.example>",
+          "subject": "RE: Créditos consumidos por recurso eliminado - TrackingID#2703030003000006",
+          "bodyPreview": "Los identificadores indican que dos discos y una IP quedaron en un grupo administrado diferente al que se eliminó. Estoy verificando si pertenecen a nodos que fueron reemplazados antes de borrar el clúster. Enviaré la ruta exacta de cada recurso y confirm",
+          "importance": "normal",
+          "parentFolderId": "AAMkAGpRcM7E1Y3gHB3k9_8P-CJGi-1U6gjcURhPQQDiFKYtI",
+          "conversationId": "AAQkAGpb5KebrVs8zUYDA3vTg8OIuPskKAIbzw2400tNrgcHs",
+          "conversationIndex": "iX5HNS3goBAJmXlHKiuBXm0ohzklKMs9",
+          "isDeliveryReceiptRequested": null,
+          "isReadReceiptRequested": false,
+          "isRead": true,
+          "isDraft": false,
+          "webLink": "https://outlook.office365.com/owa/?ItemID=AAMkAGDIFAIz5pbzPVZWrYotMgcSH1DnTJ5seGqH73KSiymv0",
+          "inferenceClassification": "focused",
+          "body": {
+            "contentType": "html",
+            "content": "<html><head><meta charset=\"utf-8\"></head><body dir=\"ltr\"><div class=\"elementToProof\">Los identificadores indican que dos discos y una IP quedaron en un grupo administrado diferente al que se eliminó. Estoy verificando si pertenecen a nodos que fueron reemplazados antes de borrar el clúster. Enviaré la ruta exacta de cada recurso y confirmaré si existe alguna dependencia antes de recomendar su eliminación.</div><div id=\"appendonsend\"></div><hr tabindex=\"-1\"><div id=\"divRplyFwdMsg\" dir=\"ltr\"><b>From:</b> Carolina Paredes &lt;carolina.paredes@empresa-ejemplo.mx&gt;<br><b>Sent:</b> 2026-09-07T14:00:00Z<br><b>Subject:</b> RE: generated fixture</div><div class=\"quotedMessage\"><div class=\"elementToProof\">Eliminamos el clúster de pruebas el 3 de agosto y el grupo de recursos ya no aparece en el portal. Sin embargo, el reporte de costos sigue mostrando cargos diarios asociados con discos administrados y direcciones IP que pensábamos que se borrarían junto con el clúster. Revisamos las suscripciones una por una y no encontramos esos recursos con los nombres que aparecen en la exportación. Necesitamos identificar dónde permanecen antes de que se termine el saldo del patrocinio, pero por ahora solo buscamos una explicación técnica y los pasos correctos para localizarlos.</div></div></body></html>"
+          },
+          "sender": {
+            "emailAddress": {
+              "name": "Andrés Peña",
+              "address": "andres.pena@microsoft.com"
+            }
+          },
+          "from": {
+            "emailAddress": {
+              "name": "Andrés Peña",
+              "address": "andres.pena@microsoft.com"
+            }
+          },
+          "toRecipients": [
+            {
+              "emailAddress": {
+                "name": "Carolina Paredes",
+                "address": "carolina.paredes@empresa-ejemplo.mx"
+              }
+            }
+          ],
+          "ccRecipients": [],
+          "bccRecipients": [],
+          "replyTo": [],
+          "flag": {
+            "flagStatus": "notFlagged"
+          }
+        },
+        {
+          "@odata.etag": "W/\"a6Oomrr80mbidLs2XUNiZofE\"",
+          "id": "AAMkAGtfS3ggocGRgbFUSSsqPPMcfrHikP4t33lsvV7l8qq40",
+          "createdDateTime": "2026-09-13T14:00:00Z",
+          "lastModifiedDateTime": "2026-09-13T14:01:00Z",
+          "changeKey": "a6Oomrr80mbidLs2XUNiZofE",
+          "categories": [],
+          "receivedDateTime": "2026-09-13T14:01:00Z",
+          "sentDateTime": "2026-09-13T14:00:00Z",
+          "hasAttachments": false,
+          "internetMessageId": "<A1PiKNxYNolA7fuNSssdXSF4YQvZ_Hh2hmHfpbC2Epk@fixture.example>",
+          "subject": "RE: Créditos consumidos por recurso eliminado - TrackingID#2703030003000006",
+          "bodyPreview": "Han pasado seis días desde esa respuesta y todavía no recibimos las rutas ni una confirmación de dependencias. Mientras tanto, los cargos continúan y el crédito restante bajó lo suficiente como para poner en riesgo las cargas de producción que sí deben pe",
+          "importance": "normal",
+          "parentFolderId": "AAMkAGunxvWc_rT-TuXMwpdm3ffDWjcrDOJ9JXak6y2w1rBt0",
+          "conversationId": "AAQkAGpb5KebrVs8zUYDA3vTg8OIuPskKAIbzw2400tNrgcHs",
+          "conversationIndex": "ygwmKN5PVqlcaMRZGsaufUkqlCBBLCUa",
+          "isDeliveryReceiptRequested": null,
+          "isReadReceiptRequested": false,
+          "isRead": true,
+          "isDraft": false,
+          "webLink": "https://outlook.office365.com/owa/?ItemID=AAMkAGtfS3ggocGRgbFUSSsqPPMcfrHikP4t33lsvV7l8qq40",
+          "inferenceClassification": "focused",
+          "body": {
+            "contentType": "html",
+            "content": "<html><head><meta charset=\"utf-8\"></head><body dir=\"ltr\"><div class=\"elementToProof\">Han pasado seis días desde esa respuesta y todavía no recibimos las rutas ni una confirmación de dependencias. Mientras tanto, los cargos continúan y el crédito restante bajó lo suficiente como para poner en riesgo las cargas de producción que sí deben permanecer activas. Ya compartimos la exportación completa, los identificadores y las fechas en dos ocasiones, así que volver a pedir la misma información no es una solución. Por favor, escale este caso con su supervisora y solicite que alguien con autoridad nos dé hoy un plan y una fecha de resolución.</div><div id=\"appendonsend\"></div><hr tabindex=\"-1\"><div id=\"divRplyFwdMsg\" dir=\"ltr\"><b>From:</b> Andrés Peña &lt;andres.pena@microsoft.com&gt;<br><b>Sent:</b> 2026-09-13T14:00:00Z<br><b>Subject:</b> RE: generated fixture</div><div class=\"quotedMessage\"><div class=\"elementToProof\">Los identificadores indican que dos discos y una IP quedaron en un grupo administrado diferente al que se eliminó. Estoy verificando si pertenecen a nodos que fueron reemplazados antes de borrar el clúster. Enviaré la ruta exacta de cada recurso y confirmaré si existe alguna dependencia antes de recomendar su eliminación.</div></div></body></html>"
+          },
+          "sender": {
+            "emailAddress": {
+              "name": "Carolina Paredes",
+              "address": "carolina.paredes@empresa-ejemplo.mx"
+            }
+          },
+          "from": {
+            "emailAddress": {
+              "name": "Carolina Paredes",
+              "address": "carolina.paredes@empresa-ejemplo.mx"
+            }
+          },
+          "toRecipients": [
+            {
+              "emailAddress": {
+                "name": "Andrés Peña",
+                "address": "andres.pena@microsoft.com"
+              }
+            }
+          ],
+          "ccRecipients": [],
+          "bccRecipients": [],
+          "replyTo": [],
+          "flag": {
+            "flagStatus": "notFlagged"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "uri": "https://<your-function-app>.azurewebsites.net/api/threadEscalationEngine?code=<function-key>",
+    "method": "POST",
+    "body": {
+      "thread": [
+        {
+          "@odata.etag": "W/\"WXoRXgGlzrre4_RriW4tK9ok\"",
+          "id": "AAMkAGNltWv2q3tatsWmW-wVRX20EnWQULvA_MrBzqMPPwdr4",
+          "createdDateTime": "2026-09-08T09:00:00Z",
+          "lastModifiedDateTime": "2026-09-08T09:01:00Z",
+          "changeKey": "WXoRXgGlzrre4_RriW4tK9ok",
+          "categories": [],
+          "receivedDateTime": "2026-09-08T09:01:00Z",
+          "sentDateTime": "2026-09-08T09:00:00Z",
+          "hasAttachments": false,
+          "internetMessageId": "<2QY00di4Jtw-TA__xFwg8MpgqTAX1NQAijGa7b3MLTk@fixture.example>",
+          "subject": "Uso no reconocido en cuenta de almacenamiento - TrackingID#2703030003000007",
+          "bodyPreview": "Detectamos un incremento de operaciones de lectura en una cuenta que normalmente solo recibe respaldos nocturnos. El cambio comenzó el lunes a las 02:00 UTC y no coincide con ninguna implementación de nuestro equipo. Las métricas muestran solicitudes desd",
+          "importance": "normal",
+          "parentFolderId": "AAMkAGy8YjDeV_LSIN5U1CVkFkBBvhiLc3C9e8lNBVz5P47g8",
+          "conversationId": "AAQkAGHrKdkgrqJQX-QpHcn-8ZzikG1M-cw2MMIUdkPuzYHvU",
+          "conversationIndex": "V6VFdnORiVXgk8qxRAP_c5HjRqCWThyo",
+          "isDeliveryReceiptRequested": null,
+          "isReadReceiptRequested": false,
+          "isRead": true,
+          "isDraft": false,
+          "webLink": "https://outlook.office365.com/owa/?ItemID=AAMkAGNltWv2q3tatsWmW-wVRX20EnWQULvA_MrBzqMPPwdr4",
+          "inferenceClassification": "focused",
+          "body": {
+            "contentType": "html",
+            "content": "<html><head><meta charset=\"utf-8\"></head><body dir=\"ltr\"><div class=\"elementToProof\">Detectamos un incremento de operaciones de lectura en una cuenta que normalmente solo recibe respaldos nocturnos. El cambio comenzó el lunes a las 02:00 UTC y no coincide con ninguna implementación de nuestro equipo. Las métricas muestran solicitudes desde varias direcciones y el costo diario ya es cuatro veces mayor al promedio. Rotamos las claves de acceso y detuvimos el trabajo de respaldo, pero las operaciones continuaron durante casi una hora. Queremos confirmar si se trata de un proceso interno de la plataforma o de credenciales que todavía estén activas en otro servicio.</div></body></html>"
+          },
+          "sender": {
+            "emailAddress": {
+              "name": "Jorge Cano",
+              "address": "jorge.cano@datos-ejemplo.mx"
+            }
+          },
+          "from": {
+            "emailAddress": {
+              "name": "Jorge Cano",
+              "address": "jorge.cano@datos-ejemplo.mx"
+            }
+          },
+          "toRecipients": [
+            {
+              "emailAddress": {
+                "name": "Teresa Ríos",
+                "address": "teresa.rios@microsoft.com"
+              }
+            }
+          ],
+          "ccRecipients": [],
+          "bccRecipients": [],
+          "replyTo": [],
+          "flag": {
+            "flagStatus": "notFlagged"
+          }
+        },
+        {
+          "@odata.etag": "W/\"guYHS5FKpP_c0ncn0FTEyhp7\"",
+          "id": "AAMkAGFkrCit76RBNHaHvGax2nUQLrfIYAqTHQvT1nfjX_hRo",
+          "createdDateTime": "2026-09-08T12:00:00Z",
+          "lastModifiedDateTime": "2026-09-08T12:01:00Z",
+          "changeKey": "guYHS5FKpP_c0ncn0FTEyhp7",
+          "categories": [],
+          "receivedDateTime": "2026-09-08T12:01:00Z",
+          "sentDateTime": "2026-09-08T12:00:00Z",
+          "hasAttachments": false,
+          "internetMessageId": "<G6vH5Wpf6NsLyTihhk5caNJ38sy8S3QASjpYG5T2rNI@fixture.example>",
+          "subject": "RE: Uso no reconocido en cuenta de almacenamiento - TrackingID#2703030003000007",
+          "bodyPreview": "Revisé los registros disponibles y las solicitudes usan autenticación de identidad administrada, no las claves que rotaron. Para conocer el recurso que posee esa identidad necesitamos correlacionar el identificador del token con los registros de la plataf",
+          "importance": "normal",
+          "parentFolderId": "AAMkAG5nVg1bloKuSQ6KkqsQ8EjXXBsiNuY_yCyWqM63kCN4o",
+          "conversationId": "AAQkAGHrKdkgrqJQX-QpHcn-8ZzikG1M-cw2MMIUdkPuzYHvU",
+          "conversationIndex": "6GT0Xa3lgRSFCc4lZwOpte6WHl15PSmP",
+          "isDeliveryReceiptRequested": null,
+          "isReadReceiptRequested": false,
+          "isRead": true,
+          "isDraft": false,
+          "webLink": "https://outlook.office365.com/owa/?ItemID=AAMkAGFkrCit76RBNHaHvGax2nUQLrfIYAqTHQvT1nfjX_hRo",
+          "inferenceClassification": "focused",
+          "body": {
+            "contentType": "html",
+            "content": "<html><head><meta charset=\"utf-8\"></head><body dir=\"ltr\"><div class=\"elementToProof\">Revisé los registros disponibles y las solicitudes usan autenticación de identidad administrada, no las claves que rotaron. Para conocer el recurso que posee esa identidad necesitamos correlacionar el identificador del token con los registros de la plataforma. Por favor, carguen de forma segura tres identificadores de solicitud y el intervalo exacto donde siguieron viendo tráfico.</div><div id=\"appendonsend\"></div><hr tabindex=\"-1\"><div id=\"divRplyFwdMsg\" dir=\"ltr\"><b>From:</b> Jorge Cano &lt;jorge.cano@datos-ejemplo.mx&gt;<br><b>Sent:</b> 2026-09-08T12:00:00Z<br><b>Subject:</b> RE: generated fixture</div><div class=\"quotedMessage\"><div class=\"elementToProof\">Detectamos un incremento de operaciones de lectura en una cuenta que normalmente solo recibe respaldos nocturnos. El cambio comenzó el lunes a las 02:00 UTC y no coincide con ninguna implementación de nuestro equipo. Las métricas muestran solicitudes desde varias direcciones y el costo diario ya es cuatro veces mayor al promedio. Rotamos las claves de acceso y detuvimos el trabajo de respaldo, pero las operaciones continuaron durante casi una hora. Queremos confirmar si se trata de un proceso interno de la plataforma o de credenciales que todavía estén activas en otro servicio.</div></div></body></html>"
+          },
+          "sender": {
+            "emailAddress": {
+              "name": "Teresa Ríos",
+              "address": "teresa.rios@microsoft.com"
+            }
+          },
+          "from": {
+            "emailAddress": {
+              "name": "Teresa Ríos",
+              "address": "teresa.rios@microsoft.com"
+            }
+          },
+          "toRecipients": [
+            {
+              "emailAddress": {
+                "name": "Jorge Cano",
+                "address": "jorge.cano@datos-ejemplo.mx"
+              }
+            }
+          ],
+          "ccRecipients": [],
+          "bccRecipients": [],
+          "replyTo": [],
+          "flag": {
+            "flagStatus": "notFlagged"
+          }
+        },
+        {
+          "@odata.etag": "W/\"vZagPgnDLnVOwb2FmLxRuuzq\"",
+          "id": "AAMkAGYvhw5pYWhDKSH4buR_G8Vo7fIWUyG6O0LeA2pdL-6SM",
+          "createdDateTime": "2026-09-08T18:00:00Z",
+          "lastModifiedDateTime": "2026-09-08T18:01:00Z",
+          "changeKey": "vZagPgnDLnVOwb2FmLxRuuzq",
+          "categories": [],
+          "receivedDateTime": "2026-09-08T18:01:00Z",
+          "sentDateTime": "2026-09-08T18:00:00Z",
+          "hasAttachments": false,
+          "internetMessageId": "<wo8XGrVwzimhEgfYDm8Dnzqs0vHpNKSnA4w1Wkpx6DI@fixture.example>",
+          "subject": "RE: Uso no reconocido en cuenta de almacenamiento - TrackingID#2703030003000007",
+          "bodyPreview": "Ya cargamos cinco identificadores, el intervalo en UTC y una captura de las métricas. También incluimos el identificador de la suscripción para evitar otra ronda de preguntas. El acceso se detuvo, pero necesitamos saber qué identidad lo originó antes de v",
+          "importance": "normal",
+          "parentFolderId": "AAMkAGYzbTpaDY-w7rvjSyBzLWBR01-ApsWucFYGCFrgl5zw4",
+          "conversationId": "AAQkAGHrKdkgrqJQX-QpHcn-8ZzikG1M-cw2MMIUdkPuzYHvU",
+          "conversationIndex": "bLDA-h7lNG58Sutua77Sn_LQu43QtytM",
+          "isDeliveryReceiptRequested": null,
+          "isReadReceiptRequested": false,
+          "isRead": true,
+          "isDraft": false,
+          "webLink": "https://outlook.office365.com/owa/?ItemID=AAMkAGYvhw5pYWhDKSH4buR_G8Vo7fIWUyG6O0LeA2pdL-6SM",
+          "inferenceClassification": "focused",
+          "body": {
+            "contentType": "html",
+            "content": "<html><head><meta charset=\"utf-8\"></head><body dir=\"ltr\"><div class=\"elementToProof\">Ya cargamos cinco identificadores, el intervalo en UTC y una captura de las métricas. También incluimos el identificador de la suscripción para evitar otra ronda de preguntas. El acceso se detuvo, pero necesitamos saber qué identidad lo originó antes de volver a habilitar los respaldos. Por favor, escalen la investigación al equipo de seguridad; no estamos solicitando intervención de un gerente, sino una revisión especializada de los registros y recomendaciones para evitar que vuelva a ocurrir.</div><div id=\"appendonsend\"></div><hr tabindex=\"-1\"><div id=\"divRplyFwdMsg\" dir=\"ltr\"><b>From:</b> Teresa Ríos &lt;teresa.rios@microsoft.com&gt;<br><b>Sent:</b> 2026-09-08T18:00:00Z<br><b>Subject:</b> RE: generated fixture</div><div class=\"quotedMessage\"><div class=\"elementToProof\">Revisé los registros disponibles y las solicitudes usan autenticación de identidad administrada, no las claves que rotaron. Para conocer el recurso que posee esa identidad necesitamos correlacionar el identificador del token con los registros de la plataforma. Por favor, carguen de forma segura tres identificadores de solicitud y el intervalo exacto donde siguieron viendo tráfico.</div></div></body></html>"
+          },
+          "sender": {
+            "emailAddress": {
+              "name": "Jorge Cano",
+              "address": "jorge.cano@datos-ejemplo.mx"
+            }
+          },
+          "from": {
+            "emailAddress": {
+              "name": "Jorge Cano",
+              "address": "jorge.cano@datos-ejemplo.mx"
+            }
+          },
+          "toRecipients": [
+            {
+              "emailAddress": {
+                "name": "Teresa Ríos",
+                "address": "teresa.rios@microsoft.com"
+              }
+            }
+          ],
+          "ccRecipients": [],
+          "bccRecipients": [],
+          "replyTo": [],
+          "flag": {
+            "flagStatus": "notFlagged"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "uri": "https://<your-function-app>.azurewebsites.net/api/threadEscalationEngine?code=<function-key>",
+    "method": "POST",
+    "body": {
+      "thread": [
+        {
+          "@odata.etag": "W/\"Jn8WTeBR2xsf0V3zSoOleOYJ\"",
+          "id": "AAMkAGEfHNe_J1dCSJh9TF5yC0zQvw9F-9IZXWsg9KQcxSZZM",
+          "createdDateTime": "2026-09-09T09:00:00Z",
+          "lastModifiedDateTime": "2026-09-09T09:01:00Z",
+          "changeKey": "Jn8WTeBR2xsf0V3zSoOleOYJ",
+          "categories": [],
+          "receivedDateTime": "2026-09-09T09:01:00Z",
+          "sentDateTime": "2026-09-09T09:00:00Z",
+          "hasAttachments": false,
+          "internetMessageId": "<sXBZYgUIM2lwAOfngsazC9Dq-x_RnWxBbAYdpn8U6eE@fixture.example>",
+          "subject": "Billing profile address updated - TrackingID#2703030003000008",
+          "bodyPreview": "We moved offices and updated the sold-to address in the billing account last week. The profile page shows the new street and postal code, but the downloadable invoice still shows the previous address. Our accounts-payable team can process this month's inv",
+          "importance": "normal",
+          "parentFolderId": "AAMkAGgKvB5YfpBrdX05h2LHlN5gmquhfTznBO6jE_fC3G9AE",
+          "conversationId": "AAQkAGcRfDdppTVdOwwx-rxnipxHYJWdB52cAg5Eln9iMpzEs",
+          "conversationIndex": "h2DrBKfSz2npEp6JTQE_JUPwaQ9rK2jB",
+          "isDeliveryReceiptRequested": null,
+          "isReadReceiptRequested": false,
+          "isRead": true,
+          "isDraft": false,
+          "webLink": "https://outlook.office365.com/owa/?ItemID=AAMkAGEfHNe_J1dCSJh9TF5yC0zQvw9F-9IZXWsg9KQcxSZZM",
+          "inferenceClassification": "focused",
+          "body": {
+            "contentType": "html",
+            "content": "<html><head><meta charset=\"utf-8\"></head><body dir=\"ltr\"><div class=\"elementToProof\">We moved offices and updated the sold-to address in the billing account last week. The profile page shows the new street and postal code, but the downloadable invoice still shows the previous address. Our accounts-payable team can process this month&#x27;s invoice as long as the tax registration and legal entity remain unchanged. Could you confirm whether invoice documents take effect only in the next billing cycle, and whether we need to regenerate the current document after the profile update?</div></body></html>"
+          },
+          "sender": {
+            "emailAddress": {
+              "name": "Sam King",
+              "address": "sam.king@lucernepublishing.example"
+            }
+          },
+          "from": {
+            "emailAddress": {
+              "name": "Sam King",
+              "address": "sam.king@lucernepublishing.example"
+            }
+          },
+          "toRecipients": [
+            {
+              "emailAddress": {
+                "name": "Faye Ross",
+                "address": "faye.ross@microsoft.com"
+              }
+            }
+          ],
+          "ccRecipients": [],
+          "bccRecipients": [],
+          "replyTo": [],
+          "flag": {
+            "flagStatus": "notFlagged"
+          }
+        },
+        {
+          "@odata.etag": "W/\"I5aRGGIbAO_M2lpqjij_hQsa\"",
+          "id": "AAMkAGD85Z7FIkBish4oGpdzwyLNLfSXU2s-K6ssGPA6Jyxec",
+          "createdDateTime": "2026-09-09T13:00:00Z",
+          "lastModifiedDateTime": "2026-09-09T13:01:00Z",
+          "changeKey": "I5aRGGIbAO_M2lpqjij_hQsa",
+          "categories": [],
+          "receivedDateTime": "2026-09-09T13:01:00Z",
+          "sentDateTime": "2026-09-09T13:00:00Z",
+          "hasAttachments": false,
+          "internetMessageId": "<jxfyR1OWF3EtAJNMaL34JFYjmTvM9TA10ZhtUQbeM2E@fixture.example>",
+          "subject": "RE: Billing profile address updated - TrackingID#2703030003000008",
+          "bodyPreview": "Address changes apply to documents generated after the update and do not rewrite an invoice that has already been finalized. I requested a regenerated informational copy for your records, while the legally issued original will remain unchanged. The next i",
+          "importance": "normal",
+          "parentFolderId": "AAMkAGH8joIn2IE5BQtL5q5VWKuwUNI8BtH6iecVWFjF9DS-I",
+          "conversationId": "AAQkAGcRfDdppTVdOwwx-rxnipxHYJWdB52cAg5Eln9iMpzEs",
+          "conversationIndex": "Ap3ojAGSkIlcWg--UQZJ5pJ7FENhgQ6N",
+          "isDeliveryReceiptRequested": null,
+          "isReadReceiptRequested": false,
+          "isRead": true,
+          "isDraft": false,
+          "webLink": "https://outlook.office365.com/owa/?ItemID=AAMkAGD85Z7FIkBish4oGpdzwyLNLfSXU2s-K6ssGPA6Jyxec",
+          "inferenceClassification": "focused",
+          "body": {
+            "contentType": "html",
+            "content": "<html><head><meta charset=\"utf-8\"></head><body dir=\"ltr\"><div class=\"elementToProof\">Address changes apply to documents generated after the update and do not rewrite an invoice that has already been finalized. I requested a regenerated informational copy for your records, while the legally issued original will remain unchanged. The next invoice will use the new sold-to address automatically.</div><div id=\"appendonsend\"></div><hr tabindex=\"-1\"><div id=\"divRplyFwdMsg\" dir=\"ltr\"><b>From:</b> Sam King &lt;sam.king@lucernepublishing.example&gt;<br><b>Sent:</b> 2026-09-09T13:00:00Z<br><b>Subject:</b> RE: generated fixture</div><div class=\"quotedMessage\"><div class=\"elementToProof\">We moved offices and updated the sold-to address in the billing account last week. The profile page shows the new street and postal code, but the downloadable invoice still shows the previous address. Our accounts-payable team can process this month&#x27;s invoice as long as the tax registration and legal entity remain unchanged. Could you confirm whether invoice documents take effect only in the next billing cycle, and whether we need to regenerate the current document after the profile update?</div></div></body></html>"
+          },
+          "sender": {
+            "emailAddress": {
+              "name": "Faye Ross",
+              "address": "faye.ross@microsoft.com"
+            }
+          },
+          "from": {
+            "emailAddress": {
+              "name": "Faye Ross",
+              "address": "faye.ross@microsoft.com"
+            }
+          },
+          "toRecipients": [
+            {
+              "emailAddress": {
+                "name": "Sam King",
+                "address": "sam.king@lucernepublishing.example"
+              }
+            }
+          ],
+          "ccRecipients": [],
+          "bccRecipients": [],
+          "replyTo": [],
+          "flag": {
+            "flagStatus": "notFlagged"
+          }
+        },
+        {
+          "@odata.etag": "W/\"hFY3LCBKc2YwjGrSDuo2ewoO\"",
+          "id": "AAMkAGPBMVtu4V3d46KkFb1QsPob53jZHjLNYPa7K_lk0gIHQ",
+          "createdDateTime": "2026-09-09T16:00:00Z",
+          "lastModifiedDateTime": "2026-09-09T16:01:00Z",
+          "changeKey": "hFY3LCBKc2YwjGrSDuo2ewoO",
+          "categories": [],
+          "receivedDateTime": "2026-09-09T16:01:00Z",
+          "sentDateTime": "2026-09-09T16:00:00Z",
+          "hasAttachments": false,
+          "internetMessageId": "<e_jAqDj6pG8KVLOiohi_o2fj8A1BCvQSmLAniIYhLuc@fixture.example>",
+          "subject": "RE: Billing profile address updated - TrackingID#2703030003000008",
+          "bodyPreview": "Understood. That behavior is acceptable because the legal entity and tax registration are correct, and accounts payable has confirmed that they can use the original document. Please send the informational copy when it is available, but there is no deadlin",
+          "importance": "normal",
+          "parentFolderId": "AAMkAG0NUJXJnZ4f_-62B1u_sCJ2tazqS_7p2TMmvL7oO7GYg",
+          "conversationId": "AAQkAGcRfDdppTVdOwwx-rxnipxHYJWdB52cAg5Eln9iMpzEs",
+          "conversationIndex": "iWjo5cIvb2WKgSZE6_pNkWf5Vo62v1fq",
+          "isDeliveryReceiptRequested": null,
+          "isReadReceiptRequested": false,
+          "isRead": true,
+          "isDraft": false,
+          "webLink": "https://outlook.office365.com/owa/?ItemID=AAMkAGPBMVtu4V3d46KkFb1QsPob53jZHjLNYPa7K_lk0gIHQ",
+          "inferenceClassification": "focused",
+          "body": {
+            "contentType": "html",
+            "content": "<html><head><meta charset=\"utf-8\"></head><body dir=\"ltr\"><div class=\"elementToProof\">Understood. That behavior is acceptable because the legal entity and tax registration are correct, and accounts payable has confirmed that they can use the original document. Please send the informational copy when it is available, but there is no deadline and no further action is needed for this month&#x27;s payment. We will verify the address on the next invoice and reopen the case only if it still shows the old office.</div><div id=\"Signature\">Sam King<br>Director, Customer Escalation Management</div><div id=\"appendonsend\"></div><hr tabindex=\"-1\"><div id=\"divRplyFwdMsg\" dir=\"ltr\"><b>From:</b> Faye Ross &lt;faye.ross@microsoft.com&gt;<br><b>Sent:</b> 2026-09-09T16:00:00Z<br><b>Subject:</b> RE: generated fixture</div><div class=\"quotedMessage\"><div class=\"elementToProof\">Address changes apply to documents generated after the update and do not rewrite an invoice that has already been finalized. I requested a regenerated informational copy for your records, while the legally issued original will remain unchanged. The next invoice will use the new sold-to address automatically.</div></div></body></html>"
+          },
+          "sender": {
+            "emailAddress": {
+              "name": "Sam King",
+              "address": "sam.king@lucernepublishing.example"
+            }
+          },
+          "from": {
+            "emailAddress": {
+              "name": "Sam King",
+              "address": "sam.king@lucernepublishing.example"
+            }
+          },
+          "toRecipients": [
+            {
+              "emailAddress": {
+                "name": "Faye Ross",
+                "address": "faye.ross@microsoft.com"
+              }
+            }
+          ],
+          "ccRecipients": [],
+          "bccRecipients": [],
+          "replyTo": [],
+          "flag": {
+            "flagStatus": "notFlagged"
+          }
+        }
+      ]
+    }
+  }
+]

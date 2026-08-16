@@ -1,0 +1,1740 @@
+[
+  {
+    "uri": "https://<your-function-app>.azurewebsites.net/api/threadEscalationEngine?code=<function-key>",
+    "method": "POST",
+    "body": {
+      "thread": [
+        {
+          "@odata.etag": "W/\"d6tfZ4Y2D6rNo2UVSPRoGp4i\"",
+          "id": "AAMkAGnx67CMpCjLVgYSWtUXQaiAkCgPQrU_6WYamhw9Ivqrg",
+          "createdDateTime": "2026-09-02T09:00:00Z",
+          "lastModifiedDateTime": "2026-09-02T09:01:00Z",
+          "changeKey": "d6tfZ4Y2D6rNo2UVSPRoGp4i",
+          "categories": [],
+          "receivedDateTime": "2026-09-02T09:01:00Z",
+          "sentDateTime": "2026-09-02T09:00:00Z",
+          "hasAttachments": false,
+          "internetMessageId": "<CHm614agrDHAWlmGLoRS6R4HG03qVa9mSKeFtE7s8Eg@fixture.example>",
+          "subject": "Card verification loop - TrackingID#2701010001000001",
+          "bodyPreview": "My card keeps failing verification.",
+          "importance": "normal",
+          "parentFolderId": "AAMkAGnZJSUc0rqHeunD_dx8Gq0Awd3JWGNX1kSQKgvwMaXao",
+          "conversationId": "AAQkAGpSk_LRCSs_88CJxI_wbumFRoSCERqXuzVGpm73MH5S4",
+          "conversationIndex": "VYe9On9MslZP80sw9PKHu0Md3EdL7LRF",
+          "isDeliveryReceiptRequested": null,
+          "isReadReceiptRequested": false,
+          "isRead": true,
+          "isDraft": false,
+          "webLink": "https://outlook.office365.com/owa/?ItemID=AAMkAGnx67CMpCjLVgYSWtUXQaiAkCgPQrU_6WYamhw9Ivqrg",
+          "inferenceClassification": "focused",
+          "body": {
+            "contentType": "html",
+            "content": "<html><head><meta charset=\"utf-8\"></head><body dir=\"ltr\"><div class=\"elementToProof\">My card keeps failing verification.</div></body></html>"
+          },
+          "sender": {
+            "emailAddress": {
+              "name": "Maya Reed",
+              "address": "maya.reed@contoso-retail.com"
+            }
+          },
+          "from": {
+            "emailAddress": {
+              "name": "Maya Reed",
+              "address": "maya.reed@contoso-retail.com"
+            }
+          },
+          "toRecipients": [
+            {
+              "emailAddress": {
+                "name": "Owen Price",
+                "address": "owen.price@microsoft.com"
+              }
+            }
+          ],
+          "ccRecipients": [],
+          "bccRecipients": [],
+          "replyTo": [],
+          "flag": {
+            "flagStatus": "notFlagged"
+          }
+        },
+        {
+          "@odata.etag": "W/\"RN985c4WbeEbOGOjmNUYrDcY\"",
+          "id": "AAMkAGIBPSI6vMMxFxG3eXwKJILrClnWQ5KL0RdK05gButzng",
+          "createdDateTime": "2026-09-02T10:00:00Z",
+          "lastModifiedDateTime": "2026-09-02T10:01:00Z",
+          "changeKey": "RN985c4WbeEbOGOjmNUYrDcY",
+          "categories": [],
+          "receivedDateTime": "2026-09-02T10:01:00Z",
+          "sentDateTime": "2026-09-02T10:00:00Z",
+          "hasAttachments": false,
+          "internetMessageId": "<MuvK0JTi383tE_x--03QdDkXWAMLzOc3NO1E963iP7o@fixture.example>",
+          "subject": "RE: Card verification loop - TrackingID#2701010001000001",
+          "bodyPreview": "I am checking the payment profile now.",
+          "importance": "normal",
+          "parentFolderId": "AAMkAGAoMLF3ZvQXl9FB-if2yyva42lCUOL4G3kaDkYDAXmyE",
+          "conversationId": "AAQkAGpSk_LRCSs_88CJxI_wbumFRoSCERqXuzVGpm73MH5S4",
+          "conversationIndex": "yNDC0vmU_BXeyH_nSI4gNkuwUfAYQxVm",
+          "isDeliveryReceiptRequested": null,
+          "isReadReceiptRequested": false,
+          "isRead": true,
+          "isDraft": false,
+          "webLink": "https://outlook.office365.com/owa/?ItemID=AAMkAGIBPSI6vMMxFxG3eXwKJILrClnWQ5KL0RdK05gButzng",
+          "inferenceClassification": "focused",
+          "body": {
+            "contentType": "html",
+            "content": "<html><head><meta charset=\"utf-8\"></head><body dir=\"ltr\"><div class=\"elementToProof\">I am checking the payment profile now.</div><div id=\"appendonsend\"></div><hr tabindex=\"-1\"><div id=\"divRplyFwdMsg\" dir=\"ltr\"><b>From:</b> Maya Reed &lt;maya.reed@contoso-retail.com&gt;<br><b>Sent:</b> 2026-09-02T10:00:00Z<br><b>Subject:</b> RE: generated fixture</div><div class=\"quotedMessage\"><div class=\"elementToProof\">My card keeps failing verification.</div></div></body></html>"
+          },
+          "sender": {
+            "emailAddress": {
+              "name": "Owen Price",
+              "address": "owen.price@microsoft.com"
+            }
+          },
+          "from": {
+            "emailAddress": {
+              "name": "Owen Price",
+              "address": "owen.price@microsoft.com"
+            }
+          },
+          "toRecipients": [
+            {
+              "emailAddress": {
+                "name": "Maya Reed",
+                "address": "maya.reed@contoso-retail.com"
+              }
+            }
+          ],
+          "ccRecipients": [],
+          "bccRecipients": [],
+          "replyTo": [],
+          "flag": {
+            "flagStatus": "notFlagged"
+          }
+        },
+        {
+          "@odata.etag": "W/\"ZHCZdin3zXU4fZbXOPj3INN0\"",
+          "id": "AAMkAGielQ4kWQQyc67oxS-VGBJdqdddUdSK9eqgJO09ZezCA",
+          "createdDateTime": "2026-09-03T10:00:00Z",
+          "lastModifiedDateTime": "2026-09-03T10:01:00Z",
+          "changeKey": "ZHCZdin3zXU4fZbXOPj3INN0",
+          "categories": [],
+          "receivedDateTime": "2026-09-03T10:01:00Z",
+          "sentDateTime": "2026-09-03T10:00:00Z",
+          "hasAttachments": false,
+          "internetMessageId": "<EsVKFH-Q7c0zVqwGltK40IdXz23gg-V77StvgX3_ArA@fixture.example>",
+          "subject": "RE: Card verification loop - TrackingID#2701010001000001",
+          "bodyPreview": "Any update?",
+          "importance": "normal",
+          "parentFolderId": "AAMkAGrW0dZg93iTx75OJBfs1lpe8oNWuKnvZitCQO_m-5nUc",
+          "conversationId": "AAQkAGpSk_LRCSs_88CJxI_wbumFRoSCERqXuzVGpm73MH5S4",
+          "conversationIndex": "O9hrfBAznvw7Mz42NaW6BO_D2u_kjhgC",
+          "isDeliveryReceiptRequested": null,
+          "isReadReceiptRequested": false,
+          "isRead": true,
+          "isDraft": false,
+          "webLink": "https://outlook.office365.com/owa/?ItemID=AAMkAGielQ4kWQQyc67oxS-VGBJdqdddUdSK9eqgJO09ZezCA",
+          "inferenceClassification": "focused",
+          "body": {
+            "contentType": "html",
+            "content": "<html><head><meta charset=\"utf-8\"></head><body dir=\"ltr\"><div class=\"elementToProof\">Any update?</div><div id=\"appendonsend\"></div><hr tabindex=\"-1\"><div id=\"divRplyFwdMsg\" dir=\"ltr\"><b>From:</b> Owen Price &lt;owen.price@microsoft.com&gt;<br><b>Sent:</b> 2026-09-03T10:00:00Z<br><b>Subject:</b> RE: generated fixture</div><div class=\"quotedMessage\"><div class=\"elementToProof\">I am checking the payment profile now.</div></div></body></html>"
+          },
+          "sender": {
+            "emailAddress": {
+              "name": "Maya Reed",
+              "address": "maya.reed@contoso-retail.com"
+            }
+          },
+          "from": {
+            "emailAddress": {
+              "name": "Maya Reed",
+              "address": "maya.reed@contoso-retail.com"
+            }
+          },
+          "toRecipients": [
+            {
+              "emailAddress": {
+                "name": "Owen Price",
+                "address": "owen.price@microsoft.com"
+              }
+            }
+          ],
+          "ccRecipients": [],
+          "bccRecipients": [],
+          "replyTo": [],
+          "flag": {
+            "flagStatus": "notFlagged"
+          }
+        },
+        {
+          "@odata.etag": "W/\"LkhJVRNWH93j4hOztAI7tnyR\"",
+          "id": "AAMkAGhl2MYJZKEEKNw-7fu3Db8yNXhclDM9HQvS4oDe1jwv0",
+          "createdDateTime": "2026-09-03T12:00:00Z",
+          "lastModifiedDateTime": "2026-09-03T12:01:00Z",
+          "changeKey": "LkhJVRNWH93j4hOztAI7tnyR",
+          "categories": [],
+          "receivedDateTime": "2026-09-03T12:01:00Z",
+          "sentDateTime": "2026-09-03T12:00:00Z",
+          "hasAttachments": false,
+          "internetMessageId": "<TsRCBFCAzqbUaDEc2Wx_EiT_u1TxR2JZ5BKfvZrtcoM@fixture.example>",
+          "subject": "RE: Card verification loop - TrackingID#2701010001000001",
+          "bodyPreview": "The validation job is still pending.",
+          "importance": "normal",
+          "parentFolderId": "AAMkAGjChNJHWgnj607UIFUBIXZulPwQ8bpTojQW6xUPzrImw",
+          "conversationId": "AAQkAGpSk_LRCSs_88CJxI_wbumFRoSCERqXuzVGpm73MH5S4",
+          "conversationIndex": "YSEe5xd6awDTD0fGnHS-l5Mc2w-3QzEj",
+          "isDeliveryReceiptRequested": null,
+          "isReadReceiptRequested": false,
+          "isRead": true,
+          "isDraft": false,
+          "webLink": "https://outlook.office365.com/owa/?ItemID=AAMkAGhl2MYJZKEEKNw-7fu3Db8yNXhclDM9HQvS4oDe1jwv0",
+          "inferenceClassification": "focused",
+          "body": {
+            "contentType": "html",
+            "content": "<html><head><meta charset=\"utf-8\"></head><body dir=\"ltr\"><div class=\"elementToProof\">The validation job is still pending.</div><div id=\"appendonsend\"></div><hr tabindex=\"-1\"><div id=\"divRplyFwdMsg\" dir=\"ltr\"><b>From:</b> Maya Reed &lt;maya.reed@contoso-retail.com&gt;<br><b>Sent:</b> 2026-09-03T12:00:00Z<br><b>Subject:</b> RE: generated fixture</div><div class=\"quotedMessage\"><div class=\"elementToProof\">Any update?</div></div></body></html>"
+          },
+          "sender": {
+            "emailAddress": {
+              "name": "Owen Price",
+              "address": "owen.price@microsoft.com"
+            }
+          },
+          "from": {
+            "emailAddress": {
+              "name": "Owen Price",
+              "address": "owen.price@microsoft.com"
+            }
+          },
+          "toRecipients": [
+            {
+              "emailAddress": {
+                "name": "Maya Reed",
+                "address": "maya.reed@contoso-retail.com"
+              }
+            }
+          ],
+          "ccRecipients": [],
+          "bccRecipients": [],
+          "replyTo": [],
+          "flag": {
+            "flagStatus": "notFlagged"
+          }
+        },
+        {
+          "@odata.etag": "W/\"42z1hCnfZhQn8ulAcc-7QPOv\"",
+          "id": "AAMkAGuuakQp2x-elHrBS8IwA39OLw9LAn1JASuqE6Ufax4mo",
+          "createdDateTime": "2026-09-04T11:00:00Z",
+          "lastModifiedDateTime": "2026-09-04T11:01:00Z",
+          "changeKey": "42z1hCnfZhQn8ulAcc-7QPOv",
+          "categories": [],
+          "receivedDateTime": "2026-09-04T11:01:00Z",
+          "sentDateTime": "2026-09-04T11:00:00Z",
+          "hasAttachments": false,
+          "internetMessageId": "<fGA6RoKsv8DlNAzklMuH9EZ0oOKNp5GB_gZS1p8xmts@fixture.example>",
+          "subject": "RE: Card verification loop - TrackingID#2701010001000001",
+          "bodyPreview": "Escalate this.",
+          "importance": "normal",
+          "parentFolderId": "AAMkAGx0mk14TU6mlgtWFvy8ynLvYeeagAdq2JT5SLaJJzVMs",
+          "conversationId": "AAQkAGpSk_LRCSs_88CJxI_wbumFRoSCERqXuzVGpm73MH5S4",
+          "conversationIndex": "lqjSwZkeCN9W9jDeQNoBkFrV5M1qEZGe",
+          "isDeliveryReceiptRequested": null,
+          "isReadReceiptRequested": false,
+          "isRead": true,
+          "isDraft": false,
+          "webLink": "https://outlook.office365.com/owa/?ItemID=AAMkAGuuakQp2x-elHrBS8IwA39OLw9LAn1JASuqE6Ufax4mo",
+          "inferenceClassification": "focused",
+          "body": {
+            "contentType": "html",
+            "content": "<html><head><meta charset=\"utf-8\"></head><body dir=\"ltr\"><div class=\"elementToProof\">Escalate this.</div><div id=\"appendonsend\"></div><hr tabindex=\"-1\"><div id=\"divRplyFwdMsg\" dir=\"ltr\"><b>From:</b> Owen Price &lt;owen.price@microsoft.com&gt;<br><b>Sent:</b> 2026-09-04T11:00:00Z<br><b>Subject:</b> RE: generated fixture</div><div class=\"quotedMessage\"><div class=\"elementToProof\">The validation job is still pending.</div></div></body></html>"
+          },
+          "sender": {
+            "emailAddress": {
+              "name": "Maya Reed",
+              "address": "maya.reed@contoso-retail.com"
+            }
+          },
+          "from": {
+            "emailAddress": {
+              "name": "Maya Reed",
+              "address": "maya.reed@contoso-retail.com"
+            }
+          },
+          "toRecipients": [
+            {
+              "emailAddress": {
+                "name": "Owen Price",
+                "address": "owen.price@microsoft.com"
+              }
+            }
+          ],
+          "ccRecipients": [],
+          "bccRecipients": [],
+          "replyTo": [],
+          "flag": {
+            "flagStatus": "notFlagged"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "uri": "https://<your-function-app>.azurewebsites.net/api/threadEscalationEngine?code=<function-key>",
+    "method": "POST",
+    "body": {
+      "thread": [
+        {
+          "@odata.etag": "W/\"5loOXATmXo2Meb5ZRNatw5hh\"",
+          "id": "AAMkAG6lRa5wEPEjx7tpe6B3jQ6EOASAVLrkqxj8IDFkffAz8",
+          "createdDateTime": "2026-09-03T09:00:00Z",
+          "lastModifiedDateTime": "2026-09-03T09:01:00Z",
+          "changeKey": "5loOXATmXo2Meb5ZRNatw5hh",
+          "categories": [],
+          "receivedDateTime": "2026-09-03T09:01:00Z",
+          "sentDateTime": "2026-09-03T09:00:00Z",
+          "hasAttachments": false,
+          "internetMessageId": "<Vo53QTGaLPbpTWi3iucTC-uaOtdXv5AS8mbY1PSYXCU@fixture.example>",
+          "subject": "Missing corrected invoice - TrackingID#2701010001000002",
+          "bodyPreview": "The corrected invoice is missing.",
+          "importance": "normal",
+          "parentFolderId": "AAMkAG_LO5IoWlp4jpJJZJSQWbJIPQeiOxW0th2x130sfAoto",
+          "conversationId": "AAQkAG1CkC9VuCY2i1CoZa5OA1tgV8mTc4CJCzm7osdctNuY8",
+          "conversationIndex": "_hsgnnhaB_bkrXuNOjAkdQ3KwgeoFRgv",
+          "isDeliveryReceiptRequested": null,
+          "isReadReceiptRequested": false,
+          "isRead": true,
+          "isDraft": false,
+          "webLink": "https://outlook.office365.com/owa/?ItemID=AAMkAG6lRa5wEPEjx7tpe6B3jQ6EOASAVLrkqxj8IDFkffAz8",
+          "inferenceClassification": "focused",
+          "body": {
+            "contentType": "html",
+            "content": "<html><head><meta charset=\"utf-8\"></head><body dir=\"ltr\"><div class=\"elementToProof\">The corrected invoice is missing.</div></body></html>"
+          },
+          "sender": {
+            "emailAddress": {
+              "name": "Eli Warren",
+              "address": "eli.warren@fabrikam-foods.com"
+            }
+          },
+          "from": {
+            "emailAddress": {
+              "name": "Eli Warren",
+              "address": "eli.warren@fabrikam-foods.com"
+            }
+          },
+          "toRecipients": [
+            {
+              "emailAddress": {
+                "name": "Nina Shah",
+                "address": "nina.shah@microsoft.com"
+              }
+            }
+          ],
+          "ccRecipients": [],
+          "bccRecipients": [],
+          "replyTo": [],
+          "flag": {
+            "flagStatus": "notFlagged"
+          }
+        },
+        {
+          "@odata.etag": "W/\"7EJwPtLz-B7yetKVTJkYWaoH\"",
+          "id": "AAMkAGseF6H30n4USJGC8y0PVatkFkLR-yYDXJmE0a-GWwm14",
+          "createdDateTime": "2026-09-03T11:00:00Z",
+          "lastModifiedDateTime": "2026-09-03T11:01:00Z",
+          "changeKey": "7EJwPtLz-B7yetKVTJkYWaoH",
+          "categories": [],
+          "receivedDateTime": "2026-09-03T11:01:00Z",
+          "sentDateTime": "2026-09-03T11:00:00Z",
+          "hasAttachments": false,
+          "internetMessageId": "<h04uFfhizGHJSjiKFojEVTM6NWa1p2pOVczzM7ctlRg@fixture.example>",
+          "subject": "RE: Missing corrected invoice - TrackingID#2701010001000002",
+          "bodyPreview": "I requested a new invoice document.",
+          "importance": "normal",
+          "parentFolderId": "AAMkAGZ_-6pxCnVdgq6p603SkmlFn1MCN-CD9BK2Ad0TtaVpU",
+          "conversationId": "AAQkAG1CkC9VuCY2i1CoZa5OA1tgV8mTc4CJCzm7osdctNuY8",
+          "conversationIndex": "uFLhxF-91Hl6SbfKeiPgP2ujnhrzMdiM",
+          "isDeliveryReceiptRequested": null,
+          "isReadReceiptRequested": false,
+          "isRead": true,
+          "isDraft": false,
+          "webLink": "https://outlook.office365.com/owa/?ItemID=AAMkAGseF6H30n4USJGC8y0PVatkFkLR-yYDXJmE0a-GWwm14",
+          "inferenceClassification": "focused",
+          "body": {
+            "contentType": "html",
+            "content": "<html><head><meta charset=\"utf-8\"></head><body dir=\"ltr\"><div class=\"elementToProof\">I requested a new invoice document.</div><div id=\"appendonsend\"></div><hr tabindex=\"-1\"><div id=\"divRplyFwdMsg\" dir=\"ltr\"><b>From:</b> Eli Warren &lt;eli.warren@fabrikam-foods.com&gt;<br><b>Sent:</b> 2026-09-03T11:00:00Z<br><b>Subject:</b> RE: generated fixture</div><div class=\"quotedMessage\"><div class=\"elementToProof\">The corrected invoice is missing.</div></div></body></html>"
+          },
+          "sender": {
+            "emailAddress": {
+              "name": "Nina Shah",
+              "address": "nina.shah@microsoft.com"
+            }
+          },
+          "from": {
+            "emailAddress": {
+              "name": "Nina Shah",
+              "address": "nina.shah@microsoft.com"
+            }
+          },
+          "toRecipients": [
+            {
+              "emailAddress": {
+                "name": "Eli Warren",
+                "address": "eli.warren@fabrikam-foods.com"
+              }
+            }
+          ],
+          "ccRecipients": [],
+          "bccRecipients": [],
+          "replyTo": [],
+          "flag": {
+            "flagStatus": "notFlagged"
+          }
+        },
+        {
+          "@odata.etag": "W/\"SfwThRNdXYcYpi2yb2-MAIR3\"",
+          "id": "AAMkAGSCPSZEa_ZqstpC59COQuPam88UT7gidvbhT0F4n3zSw",
+          "createdDateTime": "2026-09-04T15:00:00Z",
+          "lastModifiedDateTime": "2026-09-04T15:01:00Z",
+          "changeKey": "SfwThRNdXYcYpi2yb2-MAIR3",
+          "categories": [],
+          "receivedDateTime": "2026-09-04T15:01:00Z",
+          "sentDateTime": "2026-09-04T15:00:00Z",
+          "hasAttachments": false,
+          "internetMessageId": "<at0eyl_misqtUQk2RO5U1-y2GZp43kQkqHDUjDgYeWg@fixture.example>",
+          "subject": "RE: Missing corrected invoice - TrackingID#2701010001000002",
+          "bodyPreview": "Still nothing.",
+          "importance": "normal",
+          "parentFolderId": "AAMkAGl8nbKZc7cxammi1roTsHCyfiikVbUvsZ7_qPr3pix1U",
+          "conversationId": "AAQkAG1CkC9VuCY2i1CoZa5OA1tgV8mTc4CJCzm7osdctNuY8",
+          "conversationIndex": "bKZ_P_AYbEzzyOJ3y7IHyRHMXgBTRjTi",
+          "isDeliveryReceiptRequested": null,
+          "isReadReceiptRequested": false,
+          "isRead": true,
+          "isDraft": false,
+          "webLink": "https://outlook.office365.com/owa/?ItemID=AAMkAGSCPSZEa_ZqstpC59COQuPam88UT7gidvbhT0F4n3zSw",
+          "inferenceClassification": "focused",
+          "body": {
+            "contentType": "html",
+            "content": "<html><head><meta charset=\"utf-8\"></head><body dir=\"ltr\"><div class=\"elementToProof\">Still nothing.</div><div id=\"appendonsend\"></div><hr tabindex=\"-1\"><div id=\"divRplyFwdMsg\" dir=\"ltr\"><b>From:</b> Nina Shah &lt;nina.shah@microsoft.com&gt;<br><b>Sent:</b> 2026-09-04T15:00:00Z<br><b>Subject:</b> RE: generated fixture</div><div class=\"quotedMessage\"><div class=\"elementToProof\">I requested a new invoice document.</div></div></body></html>"
+          },
+          "sender": {
+            "emailAddress": {
+              "name": "Eli Warren",
+              "address": "eli.warren@fabrikam-foods.com"
+            }
+          },
+          "from": {
+            "emailAddress": {
+              "name": "Eli Warren",
+              "address": "eli.warren@fabrikam-foods.com"
+            }
+          },
+          "toRecipients": [
+            {
+              "emailAddress": {
+                "name": "Nina Shah",
+                "address": "nina.shah@microsoft.com"
+              }
+            }
+          ],
+          "ccRecipients": [],
+          "bccRecipients": [],
+          "replyTo": [],
+          "flag": {
+            "flagStatus": "notFlagged"
+          }
+        },
+        {
+          "@odata.etag": "W/\"ze2nZaCpmG-EtQWuRZpfEwtK\"",
+          "id": "AAMkAG5uvawaft0edu2Z8jFPEJivi2b1a6EnvWJPpVj5lZTwk",
+          "createdDateTime": "2026-09-05T15:00:00Z",
+          "lastModifiedDateTime": "2026-09-05T15:01:00Z",
+          "changeKey": "ze2nZaCpmG-EtQWuRZpfEwtK",
+          "categories": [],
+          "receivedDateTime": "2026-09-05T15:01:00Z",
+          "sentDateTime": "2026-09-05T15:00:00Z",
+          "hasAttachments": false,
+          "internetMessageId": "<-rjzcJnqzkpaqkDHZ_xyvf02wgQ8ehEynB-mLHCtypM@fixture.example>",
+          "subject": "RE: Missing corrected invoice - TrackingID#2701010001000002",
+          "bodyPreview": "I need your manager.",
+          "importance": "normal",
+          "parentFolderId": "AAMkAGwN1Q8v5xK8djuvZ1DXS4-GMLc9F0ZObddGanP1ztQ8M",
+          "conversationId": "AAQkAG1CkC9VuCY2i1CoZa5OA1tgV8mTc4CJCzm7osdctNuY8",
+          "conversationIndex": "ZgxeI6gJB7e7hFVNQtgAksLO35GpxiSd",
+          "isDeliveryReceiptRequested": null,
+          "isReadReceiptRequested": false,
+          "isRead": true,
+          "isDraft": false,
+          "webLink": "https://outlook.office365.com/owa/?ItemID=AAMkAG5uvawaft0edu2Z8jFPEJivi2b1a6EnvWJPpVj5lZTwk",
+          "inferenceClassification": "focused",
+          "body": {
+            "contentType": "html",
+            "content": "<html><head><meta charset=\"utf-8\"></head><body dir=\"ltr\"><div class=\"elementToProof\">I need your manager.</div><div id=\"appendonsend\"></div><hr tabindex=\"-1\"><div id=\"divRplyFwdMsg\" dir=\"ltr\"><b>From:</b> Eli Warren &lt;eli.warren@fabrikam-foods.com&gt;<br><b>Sent:</b> 2026-09-05T15:00:00Z<br><b>Subject:</b> RE: generated fixture</div><div class=\"quotedMessage\"><div class=\"elementToProof\">Still nothing.</div></div></body></html>"
+          },
+          "sender": {
+            "emailAddress": {
+              "name": "Eli Warren",
+              "address": "eli.warren@fabrikam-foods.com"
+            }
+          },
+          "from": {
+            "emailAddress": {
+              "name": "Eli Warren",
+              "address": "eli.warren@fabrikam-foods.com"
+            }
+          },
+          "toRecipients": [
+            {
+              "emailAddress": {
+                "name": "Nina Shah",
+                "address": "nina.shah@microsoft.com"
+              }
+            }
+          ],
+          "ccRecipients": [],
+          "bccRecipients": [],
+          "replyTo": [],
+          "flag": {
+            "flagStatus": "notFlagged"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "uri": "https://<your-function-app>.azurewebsites.net/api/threadEscalationEngine?code=<function-key>",
+    "method": "POST",
+    "body": {
+      "thread": [
+        {
+          "@odata.etag": "W/\"XNlr9alhKCqMjXwDYyjcxHP0\"",
+          "id": "AAMkAGp0m-CVngGz17GtAo1kBGR3J7NciiGgIhYteJHE_mrn0",
+          "createdDateTime": "2026-09-04T09:00:00Z",
+          "lastModifiedDateTime": "2026-09-04T09:01:00Z",
+          "changeKey": "XNlr9alhKCqMjXwDYyjcxHP0",
+          "categories": [],
+          "receivedDateTime": "2026-09-04T09:01:00Z",
+          "sentDateTime": "2026-09-04T09:00:00Z",
+          "hasAttachments": false,
+          "internetMessageId": "<RajrovbKZIRHxH9Xib3Z9GrRCBoi9Hh-05UX9DcOk6U@fixture.example>",
+          "subject": "Usage meter mismatch - TrackingID#2701010001000003",
+          "bodyPreview": "The meter total looks wrong.",
+          "importance": "normal",
+          "parentFolderId": "AAMkAGpe94nM5bUUXkxurIvbYgvOTxEPz1UjgV_YJ_vOBMjCc",
+          "conversationId": "AAQkAGeJV7wkNJRp8OtS4a3-3vlaRRkGfCvJmshqktQEkBBKY",
+          "conversationIndex": "QyQdvfHJm8zrNHnP2Hs6ntLgGBZID9Ys",
+          "isDeliveryReceiptRequested": null,
+          "isReadReceiptRequested": false,
+          "isRead": true,
+          "isDraft": false,
+          "webLink": "https://outlook.office365.com/owa/?ItemID=AAMkAGp0m-CVngGz17GtAo1kBGR3J7NciiGgIhYteJHE_mrn0",
+          "inferenceClassification": "focused",
+          "body": {
+            "contentType": "html",
+            "content": "<html><head><meta charset=\"utf-8\"></head><body dir=\"ltr\"><div class=\"elementToProof\">The meter total looks wrong.</div></body></html>"
+          },
+          "sender": {
+            "emailAddress": {
+              "name": "Jon Bell",
+              "address": "jon.bell@northwind-labs.com"
+            }
+          },
+          "from": {
+            "emailAddress": {
+              "name": "Jon Bell",
+              "address": "jon.bell@northwind-labs.com"
+            }
+          },
+          "toRecipients": [
+            {
+              "emailAddress": {
+                "name": "Sara Kim",
+                "address": "sara.kim@microsoft.com"
+              }
+            }
+          ],
+          "ccRecipients": [],
+          "bccRecipients": [],
+          "replyTo": [],
+          "flag": {
+            "flagStatus": "notFlagged"
+          }
+        },
+        {
+          "@odata.etag": "W/\"UhrEDxTHPwsE8EQZlpTvXP-w\"",
+          "id": "AAMkAGvmFPOe75q_5OtA-ZpqJVIRBSRlEl6hFyY4aLgBWsRyE",
+          "createdDateTime": "2026-09-04T09:30:00Z",
+          "lastModifiedDateTime": "2026-09-04T09:31:00Z",
+          "changeKey": "UhrEDxTHPwsE8EQZlpTvXP-w",
+          "categories": [],
+          "receivedDateTime": "2026-09-04T09:31:00Z",
+          "sentDateTime": "2026-09-04T09:30:00Z",
+          "hasAttachments": false,
+          "internetMessageId": "<xMhpldIy2my4s32kKviu4mDhxHdGCZbf_Ux07HbQV1s@fixture.example>",
+          "subject": "RE: Usage meter mismatch - TrackingID#2701010001000003",
+          "bodyPreview": "Please share the resource ID.",
+          "importance": "normal",
+          "parentFolderId": "AAMkAGe4wEftKl7a8XD7mjkwQR_FtbLvKsQsyPmpkmsKpPIXY",
+          "conversationId": "AAQkAGeJV7wkNJRp8OtS4a3-3vlaRRkGfCvJmshqktQEkBBKY",
+          "conversationIndex": "GsYC50rEjpy3s6SGxUq7O-FUvuE9H0Ug",
+          "isDeliveryReceiptRequested": null,
+          "isReadReceiptRequested": false,
+          "isRead": true,
+          "isDraft": false,
+          "webLink": "https://outlook.office365.com/owa/?ItemID=AAMkAGvmFPOe75q_5OtA-ZpqJVIRBSRlEl6hFyY4aLgBWsRyE",
+          "inferenceClassification": "focused",
+          "body": {
+            "contentType": "html",
+            "content": "<html><head><meta charset=\"utf-8\"></head><body dir=\"ltr\"><div class=\"elementToProof\">Please share the resource ID.</div><div id=\"appendonsend\"></div><hr tabindex=\"-1\"><div id=\"divRplyFwdMsg\" dir=\"ltr\"><b>From:</b> Jon Bell &lt;jon.bell@northwind-labs.com&gt;<br><b>Sent:</b> 2026-09-04T09:30:00Z<br><b>Subject:</b> RE: generated fixture</div><div class=\"quotedMessage\"><div class=\"elementToProof\">The meter total looks wrong.</div></div></body></html>"
+          },
+          "sender": {
+            "emailAddress": {
+              "name": "Sara Kim",
+              "address": "sara.kim@microsoft.com"
+            }
+          },
+          "from": {
+            "emailAddress": {
+              "name": "Sara Kim",
+              "address": "sara.kim@microsoft.com"
+            }
+          },
+          "toRecipients": [
+            {
+              "emailAddress": {
+                "name": "Jon Bell",
+                "address": "jon.bell@northwind-labs.com"
+              }
+            }
+          ],
+          "ccRecipients": [],
+          "bccRecipients": [],
+          "replyTo": [],
+          "flag": {
+            "flagStatus": "notFlagged"
+          }
+        },
+        {
+          "@odata.etag": "W/\"Jaq41-JhpofsJ4shktUJQPCD\"",
+          "id": "AAMkAGpDBUlQWVPtHLiEDg7iemGaAV_rvwns7FkCX1n3Ab-Jg",
+          "createdDateTime": "2026-09-04T10:00:00Z",
+          "lastModifiedDateTime": "2026-09-04T10:01:00Z",
+          "changeKey": "Jaq41-JhpofsJ4shktUJQPCD",
+          "categories": [],
+          "receivedDateTime": "2026-09-04T10:01:00Z",
+          "sentDateTime": "2026-09-04T10:00:00Z",
+          "hasAttachments": false,
+          "internetMessageId": "<8RHel3WSZiSZCDjQ6iBSJ53GXHrJb4C2UKU0E5Vbg_Y@fixture.example>",
+          "subject": "RE: Usage meter mismatch - TrackingID#2701010001000003",
+          "bodyPreview": "Sent.",
+          "importance": "normal",
+          "parentFolderId": "AAMkAGRWLFnzy4yZ2Ulamvtig4tB9aBWAwSW_JARCNv8PWCr0",
+          "conversationId": "AAQkAGeJV7wkNJRp8OtS4a3-3vlaRRkGfCvJmshqktQEkBBKY",
+          "conversationIndex": "OhcGov7q6dT-NpDwJq_IPB5sCcQima72",
+          "isDeliveryReceiptRequested": null,
+          "isReadReceiptRequested": false,
+          "isRead": true,
+          "isDraft": false,
+          "webLink": "https://outlook.office365.com/owa/?ItemID=AAMkAGpDBUlQWVPtHLiEDg7iemGaAV_rvwns7FkCX1n3Ab-Jg",
+          "inferenceClassification": "focused",
+          "body": {
+            "contentType": "html",
+            "content": "<html><head><meta charset=\"utf-8\"></head><body dir=\"ltr\"><div class=\"elementToProof\">Sent.</div><div id=\"appendonsend\"></div><hr tabindex=\"-1\"><div id=\"divRplyFwdMsg\" dir=\"ltr\"><b>From:</b> Sara Kim &lt;sara.kim@microsoft.com&gt;<br><b>Sent:</b> 2026-09-04T10:00:00Z<br><b>Subject:</b> RE: generated fixture</div><div class=\"quotedMessage\"><div class=\"elementToProof\">Please share the resource ID.</div></div></body></html>"
+          },
+          "sender": {
+            "emailAddress": {
+              "name": "Jon Bell",
+              "address": "jon.bell@northwind-labs.com"
+            }
+          },
+          "from": {
+            "emailAddress": {
+              "name": "Jon Bell",
+              "address": "jon.bell@northwind-labs.com"
+            }
+          },
+          "toRecipients": [
+            {
+              "emailAddress": {
+                "name": "Sara Kim",
+                "address": "sara.kim@microsoft.com"
+              }
+            }
+          ],
+          "ccRecipients": [],
+          "bccRecipients": [],
+          "replyTo": [],
+          "flag": {
+            "flagStatus": "notFlagged"
+          }
+        },
+        {
+          "@odata.etag": "W/\"pj3LZ_jOFlE-iQgMvhEweh65\"",
+          "id": "AAMkAGMlZfDkOO9LB7z1cO38bVa6ds1h-bkv3kZ9fwUDjEOjk",
+          "createdDateTime": "2026-09-04T14:00:00Z",
+          "lastModifiedDateTime": "2026-09-04T14:01:00Z",
+          "changeKey": "pj3LZ_jOFlE-iQgMvhEweh65",
+          "categories": [],
+          "receivedDateTime": "2026-09-04T14:01:00Z",
+          "sentDateTime": "2026-09-04T14:00:00Z",
+          "hasAttachments": false,
+          "internetMessageId": "<1QKS81cLxiAkekLgo16CzI5dAWvkRTctVkwofdWr0SI@fixture.example>",
+          "subject": "RE: Usage meter mismatch - TrackingID#2701010001000003",
+          "bodyPreview": "I reproduced the mismatch.",
+          "importance": "normal",
+          "parentFolderId": "AAMkAGSGR8gsGg0G77PX2IGowBYea6TZL97tbgqyPR4rCDnvY",
+          "conversationId": "AAQkAGeJV7wkNJRp8OtS4a3-3vlaRRkGfCvJmshqktQEkBBKY",
+          "conversationIndex": "MQNUnglONslIOVPUj0ZPkfs_c9P3XBQg",
+          "isDeliveryReceiptRequested": null,
+          "isReadReceiptRequested": false,
+          "isRead": true,
+          "isDraft": false,
+          "webLink": "https://outlook.office365.com/owa/?ItemID=AAMkAGMlZfDkOO9LB7z1cO38bVa6ds1h-bkv3kZ9fwUDjEOjk",
+          "inferenceClassification": "focused",
+          "body": {
+            "contentType": "html",
+            "content": "<html><head><meta charset=\"utf-8\"></head><body dir=\"ltr\"><div class=\"elementToProof\">I reproduced the mismatch.</div><div id=\"appendonsend\"></div><hr tabindex=\"-1\"><div id=\"divRplyFwdMsg\" dir=\"ltr\"><b>From:</b> Jon Bell &lt;jon.bell@northwind-labs.com&gt;<br><b>Sent:</b> 2026-09-04T14:00:00Z<br><b>Subject:</b> RE: generated fixture</div><div class=\"quotedMessage\"><div class=\"elementToProof\">Sent.</div></div></body></html>"
+          },
+          "sender": {
+            "emailAddress": {
+              "name": "Sara Kim",
+              "address": "sara.kim@microsoft.com"
+            }
+          },
+          "from": {
+            "emailAddress": {
+              "name": "Sara Kim",
+              "address": "sara.kim@microsoft.com"
+            }
+          },
+          "toRecipients": [
+            {
+              "emailAddress": {
+                "name": "Jon Bell",
+                "address": "jon.bell@northwind-labs.com"
+              }
+            }
+          ],
+          "ccRecipients": [],
+          "bccRecipients": [],
+          "replyTo": [],
+          "flag": {
+            "flagStatus": "notFlagged"
+          }
+        },
+        {
+          "@odata.etag": "W/\"LIhqkb40bqO3Oday-gSFMLCQ\"",
+          "id": "AAMkAGwRnDz3ojVYL7dnCYn3F-ROKbO5GD20DaxJ1UX8jwa2A",
+          "createdDateTime": "2026-09-04T16:00:00Z",
+          "lastModifiedDateTime": "2026-09-04T16:01:00Z",
+          "changeKey": "LIhqkb40bqO3Oday-gSFMLCQ",
+          "categories": [],
+          "receivedDateTime": "2026-09-04T16:01:00Z",
+          "sentDateTime": "2026-09-04T16:00:00Z",
+          "hasAttachments": false,
+          "internetMessageId": "<FZcJDi07TfOSSXarDBvl9XaU-Vk2p3tHkjm5VRQ8zu8@fixture.example>",
+          "subject": "RE: Usage meter mismatch - TrackingID#2701010001000003",
+          "bodyPreview": "Please escalate this to engineering.",
+          "importance": "normal",
+          "parentFolderId": "AAMkAGOYbMf5EMPPWXarNdowZt07o8MXkg1p-tI7h6YGDvuBs",
+          "conversationId": "AAQkAGeJV7wkNJRp8OtS4a3-3vlaRRkGfCvJmshqktQEkBBKY",
+          "conversationIndex": "RnL5OKAmDXkqiCIX2d-6Kc7En1JroPpE",
+          "isDeliveryReceiptRequested": null,
+          "isReadReceiptRequested": false,
+          "isRead": true,
+          "isDraft": false,
+          "webLink": "https://outlook.office365.com/owa/?ItemID=AAMkAGwRnDz3ojVYL7dnCYn3F-ROKbO5GD20DaxJ1UX8jwa2A",
+          "inferenceClassification": "focused",
+          "body": {
+            "contentType": "html",
+            "content": "<html><head><meta charset=\"utf-8\"></head><body dir=\"ltr\"><div class=\"elementToProof\">Please escalate this to engineering.</div><div id=\"appendonsend\"></div><hr tabindex=\"-1\"><div id=\"divRplyFwdMsg\" dir=\"ltr\"><b>From:</b> Sara Kim &lt;sara.kim@microsoft.com&gt;<br><b>Sent:</b> 2026-09-04T16:00:00Z<br><b>Subject:</b> RE: generated fixture</div><div class=\"quotedMessage\"><div class=\"elementToProof\">I reproduced the mismatch.</div></div></body></html>"
+          },
+          "sender": {
+            "emailAddress": {
+              "name": "Jon Bell",
+              "address": "jon.bell@northwind-labs.com"
+            }
+          },
+          "from": {
+            "emailAddress": {
+              "name": "Jon Bell",
+              "address": "jon.bell@northwind-labs.com"
+            }
+          },
+          "toRecipients": [
+            {
+              "emailAddress": {
+                "name": "Sara Kim",
+                "address": "sara.kim@microsoft.com"
+              }
+            }
+          ],
+          "ccRecipients": [],
+          "bccRecipients": [],
+          "replyTo": [],
+          "flag": {
+            "flagStatus": "notFlagged"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "uri": "https://<your-function-app>.azurewebsites.net/api/threadEscalationEngine?code=<function-key>",
+    "method": "POST",
+    "body": {
+      "thread": [
+        {
+          "@odata.etag": "W/\"ORK0Jn3CSHnnNsINc_L4Gpcn\"",
+          "id": "AAMkAGNrJ2UqpE6qukOfRLhEpkVzoN2VwcDRtgoDpLGgDhbqY",
+          "createdDateTime": "2026-09-05T09:00:00Z",
+          "lastModifiedDateTime": "2026-09-05T09:01:00Z",
+          "changeKey": "ORK0Jn3CSHnnNsINc_L4Gpcn",
+          "categories": [],
+          "receivedDateTime": "2026-09-05T09:01:00Z",
+          "sentDateTime": "2026-09-05T09:00:00Z",
+          "hasAttachments": false,
+          "internetMessageId": "<Odmmnt-pAUIrx0XM3-5za405LQf3g3zBZ1t7GTDxV-I@fixture.example>",
+          "subject": "Credit not visible - TrackingID#2701010001000004",
+          "bodyPreview": "Our credit disappeared.",
+          "importance": "normal",
+          "parentFolderId": "AAMkAGNvlVgYb5mT6Un-w4YdZfq3Xg7gZmhEqXmoTtUz81Q00",
+          "conversationId": "AAQkAG3QqJJHzQWSgL-SGWmbatupfukY0HNrJXmcKnV6vRlcI",
+          "conversationIndex": "XAQGnljypLO-loMF-2zAlH8ZnnM_jc5q",
+          "isDeliveryReceiptRequested": null,
+          "isReadReceiptRequested": false,
+          "isRead": true,
+          "isDraft": false,
+          "webLink": "https://outlook.office365.com/owa/?ItemID=AAMkAGNrJ2UqpE6qukOfRLhEpkVzoN2VwcDRtgoDpLGgDhbqY",
+          "inferenceClassification": "focused",
+          "body": {
+            "contentType": "html",
+            "content": "<html><head><meta charset=\"utf-8\"></head><body dir=\"ltr\"><div class=\"elementToProof\">Our credit disappeared.</div></body></html>"
+          },
+          "sender": {
+            "emailAddress": {
+              "name": "Ana Costa",
+              "address": "ana.costa@adatum-energy.com"
+            }
+          },
+          "from": {
+            "emailAddress": {
+              "name": "Ana Costa",
+              "address": "ana.costa@adatum-energy.com"
+            }
+          },
+          "toRecipients": [
+            {
+              "emailAddress": {
+                "name": "Luis Mora",
+                "address": "luis.mora@microsoft.com"
+              }
+            }
+          ],
+          "ccRecipients": [],
+          "bccRecipients": [],
+          "replyTo": [],
+          "flag": {
+            "flagStatus": "notFlagged"
+          }
+        },
+        {
+          "@odata.etag": "W/\"gtB9JVSux0ZqnS7QgJlRJzNf\"",
+          "id": "AAMkAGT6NshV2Xa1eWmTlYek9VYBLvzWWiFk1Fj6A7GoQNaaI",
+          "createdDateTime": "2026-09-05T12:00:00Z",
+          "lastModifiedDateTime": "2026-09-05T12:01:00Z",
+          "changeKey": "gtB9JVSux0ZqnS7QgJlRJzNf",
+          "categories": [],
+          "receivedDateTime": "2026-09-05T12:01:00Z",
+          "sentDateTime": "2026-09-05T12:00:00Z",
+          "hasAttachments": false,
+          "internetMessageId": "<l9dvsBnIc65WDvJKivnslI20qOIjPJlWX_qzTTVr2pc@fixture.example>",
+          "subject": "RE: Credit not visible - TrackingID#2701010001000004",
+          "bodyPreview": "I am refreshing the benefit record.",
+          "importance": "normal",
+          "parentFolderId": "AAMkAGuGLX0YyjF3EyJ9Sd_oDQ1iKqHmM_LaLOpym7LPmCEEw",
+          "conversationId": "AAQkAG3QqJJHzQWSgL-SGWmbatupfukY0HNrJXmcKnV6vRlcI",
+          "conversationIndex": "mATqH7Re_2Xnyw012P0XGGTlY5BHxAvI",
+          "isDeliveryReceiptRequested": null,
+          "isReadReceiptRequested": false,
+          "isRead": true,
+          "isDraft": false,
+          "webLink": "https://outlook.office365.com/owa/?ItemID=AAMkAGT6NshV2Xa1eWmTlYek9VYBLvzWWiFk1Fj6A7GoQNaaI",
+          "inferenceClassification": "focused",
+          "body": {
+            "contentType": "html",
+            "content": "<html><head><meta charset=\"utf-8\"></head><body dir=\"ltr\"><div class=\"elementToProof\">I am refreshing the benefit record.</div><div id=\"appendonsend\"></div><hr tabindex=\"-1\"><div id=\"divRplyFwdMsg\" dir=\"ltr\"><b>From:</b> Ana Costa &lt;ana.costa@adatum-energy.com&gt;<br><b>Sent:</b> 2026-09-05T12:00:00Z<br><b>Subject:</b> RE: generated fixture</div><div class=\"quotedMessage\"><div class=\"elementToProof\">Our credit disappeared.</div></div></body></html>"
+          },
+          "sender": {
+            "emailAddress": {
+              "name": "Luis Mora",
+              "address": "luis.mora@microsoft.com"
+            }
+          },
+          "from": {
+            "emailAddress": {
+              "name": "Luis Mora",
+              "address": "luis.mora@microsoft.com"
+            }
+          },
+          "toRecipients": [
+            {
+              "emailAddress": {
+                "name": "Ana Costa",
+                "address": "ana.costa@adatum-energy.com"
+              }
+            }
+          ],
+          "ccRecipients": [],
+          "bccRecipients": [],
+          "replyTo": [],
+          "flag": {
+            "flagStatus": "notFlagged"
+          }
+        },
+        {
+          "@odata.etag": "W/\"ZkkDSlEcatB539pahgFLDmi1\"",
+          "id": "AAMkAGbOcyeB7KmFOqT7Vfqd01AN98fxKytknvNHW1O4ol5JU",
+          "createdDateTime": "2026-09-05T17:00:00Z",
+          "lastModifiedDateTime": "2026-09-05T17:01:00Z",
+          "changeKey": "ZkkDSlEcatB539pahgFLDmi1",
+          "categories": [],
+          "receivedDateTime": "2026-09-05T17:01:00Z",
+          "sentDateTime": "2026-09-05T17:00:00Z",
+          "hasAttachments": false,
+          "internetMessageId": "<1K2qDCJieRV4GJ2lj9M4Fr8EPQZgEquwe7g369ReZjw@fixture.example>",
+          "subject": "RE: Credit not visible - TrackingID#2701010001000004",
+          "bodyPreview": "If it is not back today, I will escalate.",
+          "importance": "normal",
+          "parentFolderId": "AAMkAGtdgCgKRAQ6CPq_AKY3khndgUu1r0pxgxyLyDl7H8G9o",
+          "conversationId": "AAQkAG3QqJJHzQWSgL-SGWmbatupfukY0HNrJXmcKnV6vRlcI",
+          "conversationIndex": "ZbHMwCh0xzmf21CJAyWHvXwKLvgTdlcU",
+          "isDeliveryReceiptRequested": null,
+          "isReadReceiptRequested": false,
+          "isRead": true,
+          "isDraft": false,
+          "webLink": "https://outlook.office365.com/owa/?ItemID=AAMkAGbOcyeB7KmFOqT7Vfqd01AN98fxKytknvNHW1O4ol5JU",
+          "inferenceClassification": "focused",
+          "body": {
+            "contentType": "html",
+            "content": "<html><head><meta charset=\"utf-8\"></head><body dir=\"ltr\"><div class=\"elementToProof\">If it is not back today, I will escalate.</div><div id=\"appendonsend\"></div><hr tabindex=\"-1\"><div id=\"divRplyFwdMsg\" dir=\"ltr\"><b>From:</b> Luis Mora &lt;luis.mora@microsoft.com&gt;<br><b>Sent:</b> 2026-09-05T17:00:00Z<br><b>Subject:</b> RE: generated fixture</div><div class=\"quotedMessage\"><div class=\"elementToProof\">I am refreshing the benefit record.</div></div></body></html>"
+          },
+          "sender": {
+            "emailAddress": {
+              "name": "Ana Costa",
+              "address": "ana.costa@adatum-energy.com"
+            }
+          },
+          "from": {
+            "emailAddress": {
+              "name": "Ana Costa",
+              "address": "ana.costa@adatum-energy.com"
+            }
+          },
+          "toRecipients": [
+            {
+              "emailAddress": {
+                "name": "Luis Mora",
+                "address": "luis.mora@microsoft.com"
+              }
+            }
+          ],
+          "ccRecipients": [],
+          "bccRecipients": [],
+          "replyTo": [],
+          "flag": {
+            "flagStatus": "notFlagged"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "uri": "https://<your-function-app>.azurewebsites.net/api/threadEscalationEngine?code=<function-key>",
+    "method": "POST",
+    "body": {
+      "thread": [
+        {
+          "@odata.etag": "W/\"I4xLb39n2iHUxfT4fl-VxPZ0\"",
+          "id": "AAMkAGZVWfUd_3mijVFT0aBMx2KrvzEKC_Sn5pwwdOwJidkNU",
+          "createdDateTime": "2026-09-06T09:00:00Z",
+          "lastModifiedDateTime": "2026-09-06T09:01:00Z",
+          "changeKey": "I4xLb39n2iHUxfT4fl-VxPZ0",
+          "categories": [],
+          "receivedDateTime": "2026-09-06T09:01:00Z",
+          "sentDateTime": "2026-09-06T09:00:00Z",
+          "hasAttachments": false,
+          "internetMessageId": "<92FvE9paTQcXSlBomLw5pETftLs2nSXmQ2mvQ-n3_EA@fixture.example>",
+          "subject": "Need receipt copy - TrackingID#2701010001000005",
+          "bodyPreview": "Please resend the receipt.",
+          "importance": "normal",
+          "parentFolderId": "AAMkAGt-JmZyi86FPWItQ1n8xJjEc_VysMWI_BtOMkUndS7t8",
+          "conversationId": "AAQkAGb7rfa6vyBt_MQjTaz42usx8I-WPgvt278HEF6cncTsQ",
+          "conversationIndex": "fpSlJuh6hrXgPH8R1oLZD7CSa6xTVTfH",
+          "isDeliveryReceiptRequested": null,
+          "isReadReceiptRequested": false,
+          "isRead": true,
+          "isDraft": false,
+          "webLink": "https://outlook.office365.com/owa/?ItemID=AAMkAGZVWfUd_3mijVFT0aBMx2KrvzEKC_Sn5pwwdOwJidkNU",
+          "inferenceClassification": "focused",
+          "body": {
+            "contentType": "html",
+            "content": "<html><head><meta charset=\"utf-8\"></head><body dir=\"ltr\"><div class=\"elementToProof\">Please resend the receipt.</div></body></html>"
+          },
+          "sender": {
+            "emailAddress": {
+              "name": "Ben Holt",
+              "address": "ben.holt@wingtip-toys.com"
+            }
+          },
+          "from": {
+            "emailAddress": {
+              "name": "Ben Holt",
+              "address": "ben.holt@wingtip-toys.com"
+            }
+          },
+          "toRecipients": [
+            {
+              "emailAddress": {
+                "name": "Iris Long",
+                "address": "iris.long@microsoft.com"
+              }
+            }
+          ],
+          "ccRecipients": [],
+          "bccRecipients": [],
+          "replyTo": [],
+          "flag": {
+            "flagStatus": "notFlagged"
+          }
+        },
+        {
+          "@odata.etag": "W/\"pGdorMAckwqLfVCSrzXG4Djn\"",
+          "id": "AAMkAGDEVtOku9OtOC6HyedoM_JywFZZvbRSyQe16UBcTeIzY",
+          "createdDateTime": "2026-09-06T09:15:00Z",
+          "lastModifiedDateTime": "2026-09-06T09:16:00Z",
+          "changeKey": "pGdorMAckwqLfVCSrzXG4Djn",
+          "categories": [],
+          "receivedDateTime": "2026-09-06T09:16:00Z",
+          "sentDateTime": "2026-09-06T09:15:00Z",
+          "hasAttachments": false,
+          "internetMessageId": "<9p2re21GFSIRHd9AFYBosAU2xgLt2HC5mOm6DoZVHR4@fixture.example>",
+          "subject": "RE: Need receipt copy - TrackingID#2701010001000005",
+          "bodyPreview": "Attached is the receipt copy.",
+          "importance": "normal",
+          "parentFolderId": "AAMkAGHW8QnswpU4uxTjcHObocAV8w7LJgRb6ZBJtRQpDnf2M",
+          "conversationId": "AAQkAGb7rfa6vyBt_MQjTaz42usx8I-WPgvt278HEF6cncTsQ",
+          "conversationIndex": "A2wRwm_ScspFl9wgb5TuoaqlvXRVQVFT",
+          "isDeliveryReceiptRequested": null,
+          "isReadReceiptRequested": false,
+          "isRead": true,
+          "isDraft": false,
+          "webLink": "https://outlook.office365.com/owa/?ItemID=AAMkAGDEVtOku9OtOC6HyedoM_JywFZZvbRSyQe16UBcTeIzY",
+          "inferenceClassification": "focused",
+          "body": {
+            "contentType": "html",
+            "content": "<html><head><meta charset=\"utf-8\"></head><body dir=\"ltr\"><div class=\"elementToProof\">Attached is the receipt copy.</div><div id=\"appendonsend\"></div><hr tabindex=\"-1\"><div id=\"divRplyFwdMsg\" dir=\"ltr\"><b>From:</b> Ben Holt &lt;ben.holt@wingtip-toys.com&gt;<br><b>Sent:</b> 2026-09-06T09:15:00Z<br><b>Subject:</b> RE: generated fixture</div><div class=\"quotedMessage\"><div class=\"elementToProof\">Please resend the receipt.</div></div></body></html>"
+          },
+          "sender": {
+            "emailAddress": {
+              "name": "Iris Long",
+              "address": "iris.long@microsoft.com"
+            }
+          },
+          "from": {
+            "emailAddress": {
+              "name": "Iris Long",
+              "address": "iris.long@microsoft.com"
+            }
+          },
+          "toRecipients": [
+            {
+              "emailAddress": {
+                "name": "Ben Holt",
+                "address": "ben.holt@wingtip-toys.com"
+              }
+            }
+          ],
+          "ccRecipients": [],
+          "bccRecipients": [],
+          "replyTo": [],
+          "flag": {
+            "flagStatus": "notFlagged"
+          }
+        },
+        {
+          "@odata.etag": "W/\"cAHwtotFhX-0wdo31x87XyHn\"",
+          "id": "AAMkAGJiw7HKYf68Y3tsij0z2AZU2A0wiC7QzKLHDZ0Yw86QM",
+          "createdDateTime": "2026-09-06T09:30:00Z",
+          "lastModifiedDateTime": "2026-09-06T09:31:00Z",
+          "changeKey": "cAHwtotFhX-0wdo31x87XyHn",
+          "categories": [],
+          "receivedDateTime": "2026-09-06T09:31:00Z",
+          "sentDateTime": "2026-09-06T09:30:00Z",
+          "hasAttachments": false,
+          "internetMessageId": "<wByGQYRRGJznocTY8tM51r3rRi1kzLfY_cuW4YAq07I@fixture.example>",
+          "subject": "RE: Need receipt copy - TrackingID#2701010001000005",
+          "bodyPreview": "Thanks. My manager needed it.",
+          "importance": "normal",
+          "parentFolderId": "AAMkAGpuhpWD223VJiusqTbl5FH72lYrduaxmKh21_0ulcTDE",
+          "conversationId": "AAQkAGb7rfa6vyBt_MQjTaz42usx8I-WPgvt278HEF6cncTsQ",
+          "conversationIndex": "raJ9G5yuXtmjQVwPUhmZGB5JkZUvjCjZ",
+          "isDeliveryReceiptRequested": null,
+          "isReadReceiptRequested": false,
+          "isRead": true,
+          "isDraft": false,
+          "webLink": "https://outlook.office365.com/owa/?ItemID=AAMkAGJiw7HKYf68Y3tsij0z2AZU2A0wiC7QzKLHDZ0Yw86QM",
+          "inferenceClassification": "focused",
+          "body": {
+            "contentType": "html",
+            "content": "<html><head><meta charset=\"utf-8\"></head><body dir=\"ltr\"><div class=\"elementToProof\">Thanks. My manager needed it.</div><div id=\"appendonsend\"></div><hr tabindex=\"-1\"><div id=\"divRplyFwdMsg\" dir=\"ltr\"><b>From:</b> Iris Long &lt;iris.long@microsoft.com&gt;<br><b>Sent:</b> 2026-09-06T09:30:00Z<br><b>Subject:</b> RE: generated fixture</div><div class=\"quotedMessage\"><div class=\"elementToProof\">Attached is the receipt copy.</div></div></body></html>"
+          },
+          "sender": {
+            "emailAddress": {
+              "name": "Ben Holt",
+              "address": "ben.holt@wingtip-toys.com"
+            }
+          },
+          "from": {
+            "emailAddress": {
+              "name": "Ben Holt",
+              "address": "ben.holt@wingtip-toys.com"
+            }
+          },
+          "toRecipients": [
+            {
+              "emailAddress": {
+                "name": "Iris Long",
+                "address": "iris.long@microsoft.com"
+              }
+            }
+          ],
+          "ccRecipients": [],
+          "bccRecipients": [],
+          "replyTo": [],
+          "flag": {
+            "flagStatus": "notFlagged"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "uri": "https://<your-function-app>.azurewebsites.net/api/threadEscalationEngine?code=<function-key>",
+    "method": "POST",
+    "body": {
+      "thread": [
+        {
+          "@odata.etag": "W/\"saiwVQHAfO6jiMBy2ogo4Xr0\"",
+          "id": "AAMkAGOkOtY4coQNB9Ik-HlkR2jPthVxzZl9ZAEseNg4PUyyY",
+          "createdDateTime": "2026-09-07T09:00:00Z",
+          "lastModifiedDateTime": "2026-09-07T09:01:00Z",
+          "changeKey": "saiwVQHAfO6jiMBy2ogo4Xr0",
+          "categories": [],
+          "receivedDateTime": "2026-09-07T09:01:00Z",
+          "sentDateTime": "2026-09-07T09:00:00Z",
+          "hasAttachments": false,
+          "internetMessageId": "<ks0mIBfwtY8xaTqtf7ionJd5YCKqVwy3r7rawxVq7Bk@fixture.example>",
+          "subject": "Cobro duplicado - TrackingID#2701010001000006",
+          "bodyPreview": "Me cobraron dos veces.",
+          "importance": "normal",
+          "parentFolderId": "AAMkAGyxqsKiQle9XhGRW08vDAtwVinlAu1rDNUBTu8vvW47Y",
+          "conversationId": "AAQkAGUAzXmAwaJaknIdoXU_7VvGrp4nHHrGWJGk11RTU0T7A",
+          "conversationIndex": "b07FktbiqWkqtyDgw2iyq_LHAL959ia7",
+          "isDeliveryReceiptRequested": null,
+          "isReadReceiptRequested": false,
+          "isRead": true,
+          "isDraft": false,
+          "webLink": "https://outlook.office365.com/owa/?ItemID=AAMkAGOkOtY4coQNB9Ik-HlkR2jPthVxzZl9ZAEseNg4PUyyY",
+          "inferenceClassification": "focused",
+          "body": {
+            "contentType": "html",
+            "content": "<html><head><meta charset=\"utf-8\"></head><body dir=\"ltr\"><div class=\"elementToProof\">Me cobraron dos veces.</div></body></html>"
+          },
+          "sender": {
+            "emailAddress": {
+              "name": "Lucía Vega",
+              "address": "lucia.vega@proseware.mx"
+            }
+          },
+          "from": {
+            "emailAddress": {
+              "name": "Lucía Vega",
+              "address": "lucia.vega@proseware.mx"
+            }
+          },
+          "toRecipients": [
+            {
+              "emailAddress": {
+                "name": "Diego Luna",
+                "address": "diego.luna@microsoft.com"
+              }
+            }
+          ],
+          "ccRecipients": [],
+          "bccRecipients": [],
+          "replyTo": [],
+          "flag": {
+            "flagStatus": "notFlagged"
+          }
+        },
+        {
+          "@odata.etag": "W/\"bCadK674kX5-sMU1N6AqmwEP\"",
+          "id": "AAMkAGKsU0WlFTGQ3aA1BvUIh6HoLKBEd4T8X-lFRljdwwR54",
+          "createdDateTime": "2026-09-07T11:00:00Z",
+          "lastModifiedDateTime": "2026-09-07T11:01:00Z",
+          "changeKey": "bCadK674kX5-sMU1N6AqmwEP",
+          "categories": [],
+          "receivedDateTime": "2026-09-07T11:01:00Z",
+          "sentDateTime": "2026-09-07T11:00:00Z",
+          "hasAttachments": false,
+          "internetMessageId": "<no_qB2ZXW4LmWdDfScimsh9Vpi1e265tHK1dCb6ILp0@fixture.example>",
+          "subject": "RE: Cobro duplicado - TrackingID#2701010001000006",
+          "bodyPreview": "Estoy revisando ambas transacciones.",
+          "importance": "normal",
+          "parentFolderId": "AAMkAGhAb-4wrK_XLbjyZ8NqonImcvM_q4JbxMoyZK6BTC7M4",
+          "conversationId": "AAQkAGUAzXmAwaJaknIdoXU_7VvGrp4nHHrGWJGk11RTU0T7A",
+          "conversationIndex": "ofZwlyhK5tmbCGMPV8mt1_3Z612J0PVB",
+          "isDeliveryReceiptRequested": null,
+          "isReadReceiptRequested": false,
+          "isRead": true,
+          "isDraft": false,
+          "webLink": "https://outlook.office365.com/owa/?ItemID=AAMkAGKsU0WlFTGQ3aA1BvUIh6HoLKBEd4T8X-lFRljdwwR54",
+          "inferenceClassification": "focused",
+          "body": {
+            "contentType": "html",
+            "content": "<html><head><meta charset=\"utf-8\"></head><body dir=\"ltr\"><div class=\"elementToProof\">Estoy revisando ambas transacciones.</div><div id=\"appendonsend\"></div><hr tabindex=\"-1\"><div id=\"divRplyFwdMsg\" dir=\"ltr\"><b>From:</b> Lucía Vega &lt;lucia.vega@proseware.mx&gt;<br><b>Sent:</b> 2026-09-07T11:00:00Z<br><b>Subject:</b> RE: generated fixture</div><div class=\"quotedMessage\"><div class=\"elementToProof\">Me cobraron dos veces.</div></div></body></html>"
+          },
+          "sender": {
+            "emailAddress": {
+              "name": "Diego Luna",
+              "address": "diego.luna@microsoft.com"
+            }
+          },
+          "from": {
+            "emailAddress": {
+              "name": "Diego Luna",
+              "address": "diego.luna@microsoft.com"
+            }
+          },
+          "toRecipients": [
+            {
+              "emailAddress": {
+                "name": "Lucía Vega",
+                "address": "lucia.vega@proseware.mx"
+              }
+            }
+          ],
+          "ccRecipients": [],
+          "bccRecipients": [],
+          "replyTo": [],
+          "flag": {
+            "flagStatus": "notFlagged"
+          }
+        },
+        {
+          "@odata.etag": "W/\"fTAb23eg4ltKXkg3zitRjM4S\"",
+          "id": "AAMkAGBQL_DRtrJhH1Ursf8_YJSrsfJP7injp5Y74-wy3UHfQ",
+          "createdDateTime": "2026-09-08T13:00:00Z",
+          "lastModifiedDateTime": "2026-09-08T13:01:00Z",
+          "changeKey": "fTAb23eg4ltKXkg3zitRjM4S",
+          "categories": [],
+          "receivedDateTime": "2026-09-08T13:01:00Z",
+          "sentDateTime": "2026-09-08T13:00:00Z",
+          "hasAttachments": false,
+          "internetMessageId": "<LQ4zweWTzvZ_1Qe9Mwo513pfV9QrLTaEzO1s6S0UwZw@fixture.example>",
+          "subject": "RE: Cobro duplicado - TrackingID#2701010001000006",
+          "bodyPreview": "¿Alguna novedad?",
+          "importance": "normal",
+          "parentFolderId": "AAMkAGkt8I1wZSyD8Kbuo3POw6d6Maruvv0-iiOvtrug85gPM",
+          "conversationId": "AAQkAGUAzXmAwaJaknIdoXU_7VvGrp4nHHrGWJGk11RTU0T7A",
+          "conversationIndex": "P63B6gRe7khEpP34pVK21xoW-6k0uksH",
+          "isDeliveryReceiptRequested": null,
+          "isReadReceiptRequested": false,
+          "isRead": true,
+          "isDraft": false,
+          "webLink": "https://outlook.office365.com/owa/?ItemID=AAMkAGBQL_DRtrJhH1Ursf8_YJSrsfJP7injp5Y74-wy3UHfQ",
+          "inferenceClassification": "focused",
+          "body": {
+            "contentType": "html",
+            "content": "<html><head><meta charset=\"utf-8\"></head><body dir=\"ltr\"><div class=\"elementToProof\">¿Alguna novedad?</div><div id=\"appendonsend\"></div><hr tabindex=\"-1\"><div id=\"divRplyFwdMsg\" dir=\"ltr\"><b>From:</b> Diego Luna &lt;diego.luna@microsoft.com&gt;<br><b>Sent:</b> 2026-09-08T13:00:00Z<br><b>Subject:</b> RE: generated fixture</div><div class=\"quotedMessage\"><div class=\"elementToProof\">Estoy revisando ambas transacciones.</div></div></body></html>"
+          },
+          "sender": {
+            "emailAddress": {
+              "name": "Lucía Vega",
+              "address": "lucia.vega@proseware.mx"
+            }
+          },
+          "from": {
+            "emailAddress": {
+              "name": "Lucía Vega",
+              "address": "lucia.vega@proseware.mx"
+            }
+          },
+          "toRecipients": [
+            {
+              "emailAddress": {
+                "name": "Diego Luna",
+                "address": "diego.luna@microsoft.com"
+              }
+            }
+          ],
+          "ccRecipients": [],
+          "bccRecipients": [],
+          "replyTo": [],
+          "flag": {
+            "flagStatus": "notFlagged"
+          }
+        },
+        {
+          "@odata.etag": "W/\"KZCA_BfLu9YSnNWngEdqzMLG\"",
+          "id": "AAMkAG6x47QAIwwM_dKgUBhtdTahozZC3Sdop8cHLv7C8c_QA",
+          "createdDateTime": "2026-09-08T16:00:00Z",
+          "lastModifiedDateTime": "2026-09-08T16:01:00Z",
+          "changeKey": "KZCA_BfLu9YSnNWngEdqzMLG",
+          "categories": [],
+          "receivedDateTime": "2026-09-08T16:01:00Z",
+          "sentDateTime": "2026-09-08T16:00:00Z",
+          "hasAttachments": false,
+          "internetMessageId": "<fboOMhrK3Ax_wE3nOdK6Z41zm55trFjJooiy5WN-C0o@fixture.example>",
+          "subject": "RE: Cobro duplicado - TrackingID#2701010001000006",
+          "bodyPreview": "Aún estoy validando el segundo cargo.",
+          "importance": "normal",
+          "parentFolderId": "AAMkAGOimSGxeohdmQrESZ2osUHg6O6B9BpbFidepwPKdn_UU",
+          "conversationId": "AAQkAGUAzXmAwaJaknIdoXU_7VvGrp4nHHrGWJGk11RTU0T7A",
+          "conversationIndex": "aXnz-oOJP_xdTKnXzgSaIXoDgLLLfU25",
+          "isDeliveryReceiptRequested": null,
+          "isReadReceiptRequested": false,
+          "isRead": true,
+          "isDraft": false,
+          "webLink": "https://outlook.office365.com/owa/?ItemID=AAMkAG6x47QAIwwM_dKgUBhtdTahozZC3Sdop8cHLv7C8c_QA",
+          "inferenceClassification": "focused",
+          "body": {
+            "contentType": "html",
+            "content": "<html><head><meta charset=\"utf-8\"></head><body dir=\"ltr\"><div class=\"elementToProof\">Aún estoy validando el segundo cargo.</div><div id=\"appendonsend\"></div><hr tabindex=\"-1\"><div id=\"divRplyFwdMsg\" dir=\"ltr\"><b>From:</b> Lucía Vega &lt;lucia.vega@proseware.mx&gt;<br><b>Sent:</b> 2026-09-08T16:00:00Z<br><b>Subject:</b> RE: generated fixture</div><div class=\"quotedMessage\"><div class=\"elementToProof\">¿Alguna novedad?</div></div></body></html>"
+          },
+          "sender": {
+            "emailAddress": {
+              "name": "Diego Luna",
+              "address": "diego.luna@microsoft.com"
+            }
+          },
+          "from": {
+            "emailAddress": {
+              "name": "Diego Luna",
+              "address": "diego.luna@microsoft.com"
+            }
+          },
+          "toRecipients": [
+            {
+              "emailAddress": {
+                "name": "Lucía Vega",
+                "address": "lucia.vega@proseware.mx"
+              }
+            }
+          ],
+          "ccRecipients": [],
+          "bccRecipients": [],
+          "replyTo": [],
+          "flag": {
+            "flagStatus": "notFlagged"
+          }
+        },
+        {
+          "@odata.etag": "W/\"xkZ8NFC0E05shNkgantKSd5S\"",
+          "id": "AAMkAG42ybrasUSElCRsM03AowXbKpAXcqtL0sI3dUqzvYGSQ",
+          "createdDateTime": "2026-09-09T13:00:00Z",
+          "lastModifiedDateTime": "2026-09-09T13:01:00Z",
+          "changeKey": "xkZ8NFC0E05shNkgantKSd5S",
+          "categories": [],
+          "receivedDateTime": "2026-09-09T13:01:00Z",
+          "sentDateTime": "2026-09-09T13:00:00Z",
+          "hasAttachments": false,
+          "internetMessageId": "<wBj1JW-d1d2whBlYL_cjA5GbEGMw3hXMLFvydsjxep4@fixture.example>",
+          "subject": "RE: Cobro duplicado - TrackingID#2701010001000006",
+          "bodyPreview": "Necesito una escalación.",
+          "importance": "normal",
+          "parentFolderId": "AAMkAGkjvd_5x3u3VcFYWD_XpTkgHNw4UKnP3mIRExDMRks3I",
+          "conversationId": "AAQkAGUAzXmAwaJaknIdoXU_7VvGrp4nHHrGWJGk11RTU0T7A",
+          "conversationIndex": "XIVQMKYgabGi0klNp1lIBw-BR45Ylumo",
+          "isDeliveryReceiptRequested": null,
+          "isReadReceiptRequested": false,
+          "isRead": true,
+          "isDraft": false,
+          "webLink": "https://outlook.office365.com/owa/?ItemID=AAMkAG42ybrasUSElCRsM03AowXbKpAXcqtL0sI3dUqzvYGSQ",
+          "inferenceClassification": "focused",
+          "body": {
+            "contentType": "html",
+            "content": "<html><head><meta charset=\"utf-8\"></head><body dir=\"ltr\"><div class=\"elementToProof\">Necesito una escalación.</div><div id=\"appendonsend\"></div><hr tabindex=\"-1\"><div id=\"divRplyFwdMsg\" dir=\"ltr\"><b>From:</b> Diego Luna &lt;diego.luna@microsoft.com&gt;<br><b>Sent:</b> 2026-09-09T13:00:00Z<br><b>Subject:</b> RE: generated fixture</div><div class=\"quotedMessage\"><div class=\"elementToProof\">Aún estoy validando el segundo cargo.</div></div></body></html>"
+          },
+          "sender": {
+            "emailAddress": {
+              "name": "Lucía Vega",
+              "address": "lucia.vega@proseware.mx"
+            }
+          },
+          "from": {
+            "emailAddress": {
+              "name": "Lucía Vega",
+              "address": "lucia.vega@proseware.mx"
+            }
+          },
+          "toRecipients": [
+            {
+              "emailAddress": {
+                "name": "Diego Luna",
+                "address": "diego.luna@microsoft.com"
+              }
+            }
+          ],
+          "ccRecipients": [],
+          "bccRecipients": [],
+          "replyTo": [],
+          "flag": {
+            "flagStatus": "notFlagged"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "uri": "https://<your-function-app>.azurewebsites.net/api/threadEscalationEngine?code=<function-key>",
+    "method": "POST",
+    "body": {
+      "thread": [
+        {
+          "@odata.etag": "W/\"Zx-d41N2sUSxRMarvN8AJHNH\"",
+          "id": "AAMkAGO00TV3C7KOC_RPugLNYuJtJ5Mn2AY9e_Rwenv8y7Ito",
+          "createdDateTime": "2026-09-08T09:00:00Z",
+          "lastModifiedDateTime": "2026-09-08T09:01:00Z",
+          "changeKey": "Zx-d41N2sUSxRMarvN8AJHNH",
+          "categories": [],
+          "receivedDateTime": "2026-09-08T09:01:00Z",
+          "sentDateTime": "2026-09-08T09:00:00Z",
+          "hasAttachments": false,
+          "internetMessageId": "<HoZg221l0Lij-Ol_Hsg0PyS4Ne7gUAC3mqXaZDMngLw@fixture.example>",
+          "subject": "Impuesto incorrecto - TrackingID#2701010001000007",
+          "bodyPreview": "El impuesto no corresponde.",
+          "importance": "normal",
+          "parentFolderId": "AAMkAGITHY-QMXJrPr6hfF6RfizjUnHxZRxZmxFpyppDXQxaI",
+          "conversationId": "AAQkAG6O4YZbaDPJQ1cYRXIibyDS0r9SgH5MQwbZh-CJiPsx0",
+          "conversationIndex": "XLghX9MQgahA9p9g22N2RpzQq5X-O3Vd",
+          "isDeliveryReceiptRequested": null,
+          "isReadReceiptRequested": false,
+          "isRead": true,
+          "isDraft": false,
+          "webLink": "https://outlook.office365.com/owa/?ItemID=AAMkAGO00TV3C7KOC_RPugLNYuJtJ5Mn2AY9e_Rwenv8y7Ito",
+          "inferenceClassification": "focused",
+          "body": {
+            "contentType": "html",
+            "content": "<html><head><meta charset=\"utf-8\"></head><body dir=\"ltr\"><div class=\"elementToProof\">El impuesto no corresponde.</div></body></html>"
+          },
+          "sender": {
+            "emailAddress": {
+              "name": "Iván Soto",
+              "address": "ivan.soto@cohovineyard.mx"
+            }
+          },
+          "from": {
+            "emailAddress": {
+              "name": "Iván Soto",
+              "address": "ivan.soto@cohovineyard.mx"
+            }
+          },
+          "toRecipients": [
+            {
+              "emailAddress": {
+                "name": "Elena Ruiz",
+                "address": "elena.ruiz@microsoft.com"
+              }
+            }
+          ],
+          "ccRecipients": [],
+          "bccRecipients": [],
+          "replyTo": [],
+          "flag": {
+            "flagStatus": "notFlagged"
+          }
+        },
+        {
+          "@odata.etag": "W/\"XaOIghYF0x9_M_d-fPWk3MWh\"",
+          "id": "AAMkAGHu72TSaQCwXmT0rOyeCME5av1tu9jRHTasUnBLpRQKs",
+          "createdDateTime": "2026-09-08T13:00:00Z",
+          "lastModifiedDateTime": "2026-09-08T13:01:00Z",
+          "changeKey": "XaOIghYF0x9_M_d-fPWk3MWh",
+          "categories": [],
+          "receivedDateTime": "2026-09-08T13:01:00Z",
+          "sentDateTime": "2026-09-08T13:00:00Z",
+          "hasAttachments": false,
+          "internetMessageId": "<8kyJ9ISr5XKSmHP9Prcw5DNQqrhgBMD_wpb07DGRNH0@fixture.example>",
+          "subject": "RE: Impuesto incorrecto - TrackingID#2701010001000007",
+          "bodyPreview": "Validaré el domicilio fiscal.",
+          "importance": "normal",
+          "parentFolderId": "AAMkAG7RlVAJxDjtuGviC2KsQUNfqGxf6N6WOrnJPwt8Ls_xs",
+          "conversationId": "AAQkAG6O4YZbaDPJQ1cYRXIibyDS0r9SgH5MQwbZh-CJiPsx0",
+          "conversationIndex": "Qjhdlb2kOuWsn50j4AO8F6RFPAuW0-Q1",
+          "isDeliveryReceiptRequested": null,
+          "isReadReceiptRequested": false,
+          "isRead": true,
+          "isDraft": false,
+          "webLink": "https://outlook.office365.com/owa/?ItemID=AAMkAGHu72TSaQCwXmT0rOyeCME5av1tu9jRHTasUnBLpRQKs",
+          "inferenceClassification": "focused",
+          "body": {
+            "contentType": "html",
+            "content": "<html><head><meta charset=\"utf-8\"></head><body dir=\"ltr\"><div class=\"elementToProof\">Validaré el domicilio fiscal.</div><div id=\"appendonsend\"></div><hr tabindex=\"-1\"><div id=\"divRplyFwdMsg\" dir=\"ltr\"><b>From:</b> Iván Soto &lt;ivan.soto@cohovineyard.mx&gt;<br><b>Sent:</b> 2026-09-08T13:00:00Z<br><b>Subject:</b> RE: generated fixture</div><div class=\"quotedMessage\"><div class=\"elementToProof\">El impuesto no corresponde.</div></div></body></html>"
+          },
+          "sender": {
+            "emailAddress": {
+              "name": "Elena Ruiz",
+              "address": "elena.ruiz@microsoft.com"
+            }
+          },
+          "from": {
+            "emailAddress": {
+              "name": "Elena Ruiz",
+              "address": "elena.ruiz@microsoft.com"
+            }
+          },
+          "toRecipients": [
+            {
+              "emailAddress": {
+                "name": "Iván Soto",
+                "address": "ivan.soto@cohovineyard.mx"
+              }
+            }
+          ],
+          "ccRecipients": [],
+          "bccRecipients": [],
+          "replyTo": [],
+          "flag": {
+            "flagStatus": "notFlagged"
+          }
+        },
+        {
+          "@odata.etag": "W/\"m7-ml_ZrAZ44kc0UdnvyoYW-\"",
+          "id": "AAMkAG7AyQ2-Tjd8MdfrZhEDvoCaWzG8qP5rPnwaHMqeT7A7w",
+          "createdDateTime": "2026-09-09T10:00:00Z",
+          "lastModifiedDateTime": "2026-09-09T10:01:00Z",
+          "changeKey": "m7-ml_ZrAZ44kc0UdnvyoYW-",
+          "categories": [],
+          "receivedDateTime": "2026-09-09T10:01:00Z",
+          "sentDateTime": "2026-09-09T10:00:00Z",
+          "hasAttachments": false,
+          "internetMessageId": "<fsSnsArLrsdFrjX41X61EcqSfoXz_COeOz_luEG5a_E@fixture.example>",
+          "subject": "RE: Impuesto incorrecto - TrackingID#2701010001000007",
+          "bodyPreview": "Por favor, escálenlo con facturación.",
+          "importance": "normal",
+          "parentFolderId": "AAMkAGnjbJVnDqRBrANZFUIn5Sc1bJJfAg_P9TxSN_zfMf8_8",
+          "conversationId": "AAQkAG6O4YZbaDPJQ1cYRXIibyDS0r9SgH5MQwbZh-CJiPsx0",
+          "conversationIndex": "E_gtRmnCnSh1rP607rBlD5EO-PTRrY51",
+          "isDeliveryReceiptRequested": null,
+          "isReadReceiptRequested": false,
+          "isRead": true,
+          "isDraft": false,
+          "webLink": "https://outlook.office365.com/owa/?ItemID=AAMkAG7AyQ2-Tjd8MdfrZhEDvoCaWzG8qP5rPnwaHMqeT7A7w",
+          "inferenceClassification": "focused",
+          "body": {
+            "contentType": "html",
+            "content": "<html><head><meta charset=\"utf-8\"></head><body dir=\"ltr\"><div class=\"elementToProof\">Por favor, escálenlo con facturación.</div><div id=\"appendonsend\"></div><hr tabindex=\"-1\"><div id=\"divRplyFwdMsg\" dir=\"ltr\"><b>From:</b> Elena Ruiz &lt;elena.ruiz@microsoft.com&gt;<br><b>Sent:</b> 2026-09-09T10:00:00Z<br><b>Subject:</b> RE: generated fixture</div><div class=\"quotedMessage\"><div class=\"elementToProof\">Validaré el domicilio fiscal.</div></div></body></html>"
+          },
+          "sender": {
+            "emailAddress": {
+              "name": "Iván Soto",
+              "address": "ivan.soto@cohovineyard.mx"
+            }
+          },
+          "from": {
+            "emailAddress": {
+              "name": "Iván Soto",
+              "address": "ivan.soto@cohovineyard.mx"
+            }
+          },
+          "toRecipients": [
+            {
+              "emailAddress": {
+                "name": "Elena Ruiz",
+                "address": "elena.ruiz@microsoft.com"
+              }
+            }
+          ],
+          "ccRecipients": [],
+          "bccRecipients": [],
+          "replyTo": [],
+          "flag": {
+            "flagStatus": "notFlagged"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "uri": "https://<your-function-app>.azurewebsites.net/api/threadEscalationEngine?code=<function-key>",
+    "method": "POST",
+    "body": {
+      "thread": [
+        {
+          "@odata.etag": "W/\"cztnLv4LI3hnNm9rJnqwStp7\"",
+          "id": "AAMkAGPZz7eCyIvd2BEni25FaDAd9Z54ddon-5bcbgnwXSE3k",
+          "createdDateTime": "2026-09-09T09:00:00Z",
+          "lastModifiedDateTime": "2026-09-09T09:01:00Z",
+          "changeKey": "cztnLv4LI3hnNm9rJnqwStp7",
+          "categories": [],
+          "receivedDateTime": "2026-09-09T09:01:00Z",
+          "sentDateTime": "2026-09-09T09:00:00Z",
+          "hasAttachments": false,
+          "internetMessageId": "<Kp7Ua3O_a-cLPVj21pOAiGInFhMl3s2S5VVh__kPMnE@fixture.example>",
+          "subject": "Refund status - TrackingID#2701010001000008",
+          "bodyPreview": "Please escalate this refund to your manager now.",
+          "importance": "normal",
+          "parentFolderId": "AAMkAGGsl3i4jeMnDbsOuYSSpwv8R7exfz09r9ff9glbax3fg",
+          "conversationId": "AAQkAGkhRXhxLJhkJVwrBYnj9E3CNWC49Ys5Pl0EMnsohu8V8",
+          "conversationIndex": "YyAUwGfYKFckE-O4OSZN5lKbmJGm1v1l",
+          "isDeliveryReceiptRequested": null,
+          "isReadReceiptRequested": false,
+          "isRead": true,
+          "isDraft": false,
+          "webLink": "https://outlook.office365.com/owa/?ItemID=AAMkAGPZz7eCyIvd2BEni25FaDAd9Z54ddon-5bcbgnwXSE3k",
+          "inferenceClassification": "focused",
+          "body": {
+            "contentType": "html",
+            "content": "<html><head><meta charset=\"utf-8\"></head><body dir=\"ltr\"><div class=\"elementToProof\">Please escalate this refund to your manager now.</div></body></html>"
+          },
+          "sender": {
+            "emailAddress": {
+              "name": "Noah Day",
+              "address": "noah.day@tailspin-farm.com"
+            }
+          },
+          "from": {
+            "emailAddress": {
+              "name": "Noah Day",
+              "address": "noah.day@tailspin-farm.com"
+            }
+          },
+          "toRecipients": [
+            {
+              "emailAddress": {
+                "name": "Amy Cole",
+                "address": "amy.cole@microsoft.com"
+              }
+            }
+          ],
+          "ccRecipients": [],
+          "bccRecipients": [],
+          "replyTo": [],
+          "flag": {
+            "flagStatus": "notFlagged"
+          }
+        },
+        {
+          "@odata.etag": "W/\"coQDuAz9jnlZIlwR-t5-dYpg\"",
+          "id": "AAMkAGGPhJBZEz0PL1Khjq__Y41mG69B6T_0kZ6_6kqRKmRJ4",
+          "createdDateTime": "2026-09-09T14:00:00Z",
+          "lastModifiedDateTime": "2026-09-09T14:01:00Z",
+          "changeKey": "coQDuAz9jnlZIlwR-t5-dYpg",
+          "categories": [],
+          "receivedDateTime": "2026-09-09T14:01:00Z",
+          "sentDateTime": "2026-09-09T14:00:00Z",
+          "hasAttachments": false,
+          "internetMessageId": "<B_ZeYFK-GOfxDDUxvHJD2SmZSTLrLkj2Aa6ZYiEPDTA@fixture.example>",
+          "subject": "RE: Refund status - TrackingID#2701010001000008",
+          "bodyPreview": "I obtained approval and submitted the refund.",
+          "importance": "normal",
+          "parentFolderId": "AAMkAGLCGoS-EvbplC1hklNcnoDlaRXRGhwnvJko5-0Qp9lRE",
+          "conversationId": "AAQkAGkhRXhxLJhkJVwrBYnj9E3CNWC49Ys5Pl0EMnsohu8V8",
+          "conversationIndex": "GR2cw0B8q7bOvOhw_Dmoqdh5S4IrE-bV",
+          "isDeliveryReceiptRequested": null,
+          "isReadReceiptRequested": false,
+          "isRead": true,
+          "isDraft": false,
+          "webLink": "https://outlook.office365.com/owa/?ItemID=AAMkAGGPhJBZEz0PL1Khjq__Y41mG69B6T_0kZ6_6kqRKmRJ4",
+          "inferenceClassification": "focused",
+          "body": {
+            "contentType": "html",
+            "content": "<html><head><meta charset=\"utf-8\"></head><body dir=\"ltr\"><div class=\"elementToProof\">I obtained approval and submitted the refund.</div><div id=\"appendonsend\"></div><hr tabindex=\"-1\"><div id=\"divRplyFwdMsg\" dir=\"ltr\"><b>From:</b> Noah Day &lt;noah.day@tailspin-farm.com&gt;<br><b>Sent:</b> 2026-09-09T14:00:00Z<br><b>Subject:</b> RE: generated fixture</div><div class=\"quotedMessage\"><div class=\"elementToProof\">Please escalate this refund to your manager now.</div></div></body></html>"
+          },
+          "sender": {
+            "emailAddress": {
+              "name": "Amy Cole",
+              "address": "amy.cole@microsoft.com"
+            }
+          },
+          "from": {
+            "emailAddress": {
+              "name": "Amy Cole",
+              "address": "amy.cole@microsoft.com"
+            }
+          },
+          "toRecipients": [
+            {
+              "emailAddress": {
+                "name": "Noah Day",
+                "address": "noah.day@tailspin-farm.com"
+              }
+            }
+          ],
+          "ccRecipients": [],
+          "bccRecipients": [],
+          "replyTo": [],
+          "flag": {
+            "flagStatus": "notFlagged"
+          }
+        },
+        {
+          "@odata.etag": "W/\"GHW_CSJ5g2j9m2CC94zFH0jJ\"",
+          "id": "AAMkAGdjb1ZVLY1ctiZ6v-MtTPmW3wTnjUc7BctoL5SoSSkag",
+          "createdDateTime": "2026-09-09T17:00:00Z",
+          "lastModifiedDateTime": "2026-09-09T17:01:00Z",
+          "changeKey": "GHW_CSJ5g2j9m2CC94zFH0jJ",
+          "categories": [],
+          "receivedDateTime": "2026-09-09T17:01:00Z",
+          "sentDateTime": "2026-09-09T17:00:00Z",
+          "hasAttachments": false,
+          "internetMessageId": "<uwtzJ0vaQnU-Dyof-tazhv33WkEPU867rQna4jwHEVU@fixture.example>",
+          "subject": "RE: Refund status - TrackingID#2701010001000008",
+          "bodyPreview": "Perfect, thank you.",
+          "importance": "normal",
+          "parentFolderId": "AAMkAGm2M70ermxmqhW4m5v5AnTfmjney9ILOzrqcVxhU1ez0",
+          "conversationId": "AAQkAGkhRXhxLJhkJVwrBYnj9E3CNWC49Ys5Pl0EMnsohu8V8",
+          "conversationIndex": "CajtkSlF_DWy5MjFhWMJmG5AZte0-LWy",
+          "isDeliveryReceiptRequested": null,
+          "isReadReceiptRequested": false,
+          "isRead": true,
+          "isDraft": false,
+          "webLink": "https://outlook.office365.com/owa/?ItemID=AAMkAGdjb1ZVLY1ctiZ6v-MtTPmW3wTnjUc7BctoL5SoSSkag",
+          "inferenceClassification": "focused",
+          "body": {
+            "contentType": "html",
+            "content": "<html><head><meta charset=\"utf-8\"></head><body dir=\"ltr\"><div class=\"elementToProof\">Perfect, thank you.</div><div id=\"appendonsend\"></div><hr tabindex=\"-1\"><div id=\"divRplyFwdMsg\" dir=\"ltr\"><b>From:</b> Amy Cole &lt;amy.cole@microsoft.com&gt;<br><b>Sent:</b> 2026-09-09T17:00:00Z<br><b>Subject:</b> RE: generated fixture</div><div class=\"quotedMessage\"><div class=\"elementToProof\">I obtained approval and submitted the refund.</div></div></body></html>"
+          },
+          "sender": {
+            "emailAddress": {
+              "name": "Noah Day",
+              "address": "noah.day@tailspin-farm.com"
+            }
+          },
+          "from": {
+            "emailAddress": {
+              "name": "Noah Day",
+              "address": "noah.day@tailspin-farm.com"
+            }
+          },
+          "toRecipients": [
+            {
+              "emailAddress": {
+                "name": "Amy Cole",
+                "address": "amy.cole@microsoft.com"
+              }
+            }
+          ],
+          "ccRecipients": [],
+          "bccRecipients": [],
+          "replyTo": [],
+          "flag": {
+            "flagStatus": "notFlagged"
+          }
+        }
+      ]
+    }
+  }
+]

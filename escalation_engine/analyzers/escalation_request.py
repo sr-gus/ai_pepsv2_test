@@ -236,7 +236,7 @@ _SPECIALIST_TARGETS = (
         re.compile(
             r"\b(?:(?:to|with)\s+(?:the\s+)?(?:billing|billing\s+team|"
             r"billing\s+department|billing\s+specialist)|"
-            r"(?:al|a\s+la|con\s+el|con\s+la)\s+(?:equipo\s+de\s+"
+            r"(?:al|a\s+la|con(?:\s+(?:el|la))?)\s+(?:equipo\s+de\s+"
             r"facturacion|departamento\s+de\s+facturacion|facturacion|"
             r"cobranza))\b"
         )
@@ -246,7 +246,7 @@ _SPECIALIST_TARGETS = (
         re.compile(
             r"\b(?:(?:to|with)\s+(?:the\s+)?(?:engineering|"
             r"engineering\s+team|engineers?|technical\s+team)|"
-            r"(?:al|a\s+la|con\s+el|con\s+la)\s+(?:equipo\s+de\s+"
+            r"(?:al|a\s+la|con(?:\s+(?:el|la))?)\s+(?:equipo\s+de\s+"
             r"ingenieria|ingenieria|equipo\s+tecnico))\b"
         )
     ),
@@ -254,7 +254,7 @@ _SPECIALIST_TARGETS = (
         "product_team",
         re.compile(
             r"\b(?:(?:to|with)\s+(?:the\s+)?(?:product|product\s+team)|"
-            r"(?:al|a\s+la|con\s+el)\s+equipo\s+de\s+producto)\b"
+            r"(?:al|a\s+la|con(?:\s+el)?)\s+(?:equipo\s+de\s+)?producto)\b"
         )
     ),
     (
@@ -262,7 +262,7 @@ _SPECIALIST_TARGETS = (
         re.compile(
             r"\b(?:(?:to|with)\s+(?:the\s+)?(?:platform|platform\s+team|"
             r"backend|backend\s+team|service\s+team)|"
-            r"(?:al|a\s+la|con\s+el)\s+"
+            r"(?:al|a\s+la|con(?:\s+el)?)\s+"
             r"(?:equipo\s+de\s+plataforma|equipo\s+de\s+backend))\b"
         )
     ),
@@ -270,8 +270,9 @@ _SPECIALIST_TARGETS = (
         "security_team",
         re.compile(
             r"\b(?:(?:to|with)\s+(?:the\s+)?(?:security\s+team|"
-            r"security\s+specialist|security)|(?:al|a\s+la|con\s+el|"
-            r"con\s+la)\s+(?:equipo\s+de\s+seguridad|seguridad))\b"
+            r"security\s+specialist|security)|(?:al|a\s+la|"
+            r"con(?:\s+(?:el|la))?)\s+(?:equipo\s+de\s+seguridad|"
+            r"seguridad))\b"
         )
     ),
     (
@@ -279,8 +280,7 @@ _SPECIALIST_TARGETS = (
         re.compile(
             r"\b(?:(?:to|with)\s+(?:the\s+)?(?:subscription\s+team|"
             r"subscriptions?|account|account\s+team|account\s+specialist)|"
-            r"(?:al|a\s+la|"
-            r"con\s+el)\s+(?:equipo\s+de\s+suscripciones|"
+            r"(?:al|a\s+la|con(?:\s+el)?)\s+(?:equipo\s+de\s+suscripciones|"
             r"equipo\s+de\s+cuentas))\b"
         )
     ),
@@ -288,7 +288,7 @@ _SPECIALIST_TARGETS = (
         "support_team",
         re.compile(
             r"\b(?:(?:to|with)\s+(?:the\s+)?(?:support|support\s+team|"
-            r"specialist\s+team)|(?:al|a\s+la|con\s+el)\s+(?:soporte|equipo\s+"
+            r"specialist\s+team)|(?:al|a\s+la|con(?:\s+el)?)\s+(?:soporte|equipo\s+"
             r"de\s+soporte|equipo\s+especializado))\b"
         )
     ),
@@ -301,7 +301,7 @@ _SPECIALIST_TARGETS = (
             r"area)|equipo\s+correcto|equipo\s+adecuado|equipo\s+"
             r"correspondiente)\b|\b(?:to|with)\s+(?:the\s+)?[a-z0-9]+"
             r"(?:\s+[a-z0-9]+){0,2}\s+(?:team|department|group|queue)\b|"
-            r"\b(?:al|a\s+la|con\s+el)\s+(?:equipo|departamento|area)\s+"
+            r"\b(?:al|a\s+la|con(?:\s+el)?)\s+(?:equipo|departamento|area)\s+"
             r"de\s+[a-z0-9]+(?:\s+[a-z0-9]+){0,2}\b"
         )
     ),

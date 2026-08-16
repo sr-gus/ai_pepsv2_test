@@ -18,6 +18,7 @@ from escalation_engine.thread.selectors import (
     get_message_role,
     is_automatic_message,
 )
+from tests.analyzer_dataset import configure_utf8_output
 
 
 FIXTURE_PATH = Path(__file__).with_name("azure_billing_escalation_threads.json")
@@ -43,7 +44,16 @@ def parse_args():
         action="store_true",
         help="Inspect every fixture case."
     )
-    selection.add_argument(
+    source = parser.add_mutually_exclusive_group()
+    source.add_argument(
+        "--fixture",
+        type=Path,
+        help=(
+            "Read a JSON array of generated requests from this fixture "
+            "instead of the default dataset."
+        )
+    )
+    source.add_argument(
         "--payload",
         type=Path,
         help=(
@@ -77,9 +87,16 @@ def parse_args():
     return parser.parse_args()
 
 
-def load_fixture():
-    with FIXTURE_PATH.open(encoding="utf-8") as fixture_file:
-        return json.load(fixture_file)
+def load_fixture(fixture_path=None):
+    path = fixture_path or FIXTURE_PATH
+
+    with path.open(encoding="utf-8-sig") as fixture_file:
+        fixture = json.load(fixture_file)
+
+    if not isinstance(fixture, list):
+        raise SystemExit("--fixture must contain a JSON array of requests")
+
+    return fixture
 
 
 def load_payload(payload_path):
@@ -328,7 +345,7 @@ async def async_main(args):
         selected_cases = [(1, load_payload(args.payload))]
         configure_engineers(args.engineer_email)
     else:
-        fixture = load_fixture()
+        fixture = load_fixture(args.fixture)
         configure_fixture_engineers(fixture)
         configure_engineers(args.engineer_email)
 
@@ -370,6 +387,7 @@ async def async_main(args):
 
 
 def main():
+    configure_utf8_output()
     asyncio.run(async_main(parse_args()))
 
 

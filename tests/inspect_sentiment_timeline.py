@@ -15,6 +15,7 @@ from escalation_engine.thread.selectors import (
     is_automatic_message,
 )
 from tests.analyzer_dataset import (
+    configure_utf8_output,
     get_fixture_engineer_emails,
     get_request_thread,
     load_fixture,
@@ -44,7 +45,16 @@ def parse_args():
         action="store_true",
         help="Inspect every fixture case."
     )
-    selection.add_argument(
+    source = parser.add_mutually_exclusive_group()
+    source.add_argument(
+        "--fixture",
+        type=Path,
+        help=(
+            "Read a JSON array of generated requests from this fixture "
+            "instead of the default dataset."
+        )
+    )
+    source.add_argument(
         "--payload",
         type=Path,
         help="Inspect one exported Power Automate JSON payload."
@@ -160,7 +170,7 @@ async def async_main(args):
         selected_cases = [(1, load_payload(args.payload))]
         configure_engineers(args.engineer_email)
     else:
-        fixture = load_fixture()
+        fixture = load_fixture(args.fixture)
         configure_engineers(
             get_fixture_engineer_emails(fixture) | set(args.engineer_email)
         )
@@ -197,6 +207,7 @@ async def async_main(args):
 
 
 def main():
+    configure_utf8_output()
     asyncio.run(async_main(parse_args()))
 
 

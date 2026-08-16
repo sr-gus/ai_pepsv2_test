@@ -1,6 +1,7 @@
 """Shared fixture helpers for incremental analyzer regression tests."""
 
 import json
+import sys
 from datetime import datetime
 from pathlib import Path
 
@@ -10,9 +11,22 @@ from escalation_engine.thread.extractors import parse_received_datetime
 FIXTURE_PATH = Path(__file__).with_name("azure_billing_escalation_threads.json")
 
 
-def load_fixture():
-    with FIXTURE_PATH.open(encoding="utf-8") as fixture_file:
-        return json.load(fixture_file)
+def configure_utf8_output():
+    """Keep Spanish fixture text readable in redirected Windows terminals."""
+    if hasattr(sys.stdout, "reconfigure"):
+        sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+
+
+def load_fixture(fixture_path=None):
+    path = Path(fixture_path) if fixture_path else FIXTURE_PATH
+
+    with path.open(encoding="utf-8-sig") as fixture_file:
+        fixture = json.load(fixture_file)
+
+    if not isinstance(fixture, list):
+        raise ValueError("The fixture must contain a JSON array of requests")
+
+    return fixture
 
 
 def get_request_thread(request):

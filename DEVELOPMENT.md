@@ -212,6 +212,30 @@ python -m tests.inspect_frequency_timeline --case 1 --pause
 python -m tests.inspect_sentiment_timeline --case 1 --pause
 ```
 
+Para usar uno de los datasets adicionales, agregar `--fixture` y conservar
+`--case` o `--all` como selector:
+
+```powershell
+python -m tests.inspect_keyword_timeline `
+  --fixture tests\azure_billing_escalation_threads_short.json `
+  --case 7 `
+  --pause
+```
+
+Los archivos `short`, `mixed` y `long` contienen 8 threads cada uno. Mantienen
+la forma `[{uri, method, body: {thread: [...]}}]`, mensajes Graph/Outlook con
+HTML, fechas ordenadas, respuestas del ingeniero y contenido citado. El
+archivo `tests/additional_thread_expectations.json` registra la intención,
+longitudes y clasificación contextual esperada por evento de cliente, pero no
+fija scores. Se regeneran de forma determinista con:
+
+```powershell
+python -m tests.generate_additional_thread_fixtures
+```
+
+`tests/test_additional_thread_fixtures.py` valida el contrato, la extracción
+del body nuevo, las distribuciones de longitud y el contexto de escalación.
+
 Para payloads exportados de Power Automate, reemplazar `--case 1` por
 `--payload <archivo.json>` y proporcionar `--engineer-email` cuando el correo
 del ingeniero no esté configurado en el ambiente.
