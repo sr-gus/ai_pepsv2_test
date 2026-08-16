@@ -179,6 +179,48 @@ claves de Function ni archivos `local.settings.json` al repositorio.
 - `master` debe recibir cambios desde `develop` únicamente cuando el conjunto
   esté listo para liberarse.
 
+## Replays y regresiones de analizadores
+
+Los tres analizadores pueden revisarse incrementalmente con los fixtures:
+
+```powershell
+python -m tests.inspect_keyword_timeline --case 1 --pause
+python -m tests.inspect_frequency_timeline --case 1 --pause
+python -m tests.inspect_sentiment_timeline --case 1 --pause
+```
+
+Para payloads exportados de Power Automate, reemplazar `--case 1` por
+`--payload <archivo.json>` y proporcionar `--engineer-email` cuando el correo
+del ingeniero no esté configurado en el ambiente.
+
+Regresiones disponibles:
+
+- Keyword fija score, label, tópicos y resolución para los 100 eventos de
+  cliente de los 25 casos.
+- Frequency fija score, label, flags, mensajes pendientes y horas sin
+  respuesta para los mismos 100 eventos. También prueba escenarios sintéticos
+  de ráfagas, delays de 24/72 horas, auto-replies y tendencias.
+- Sentiment valida desde ahora el replay, filtrado, fuentes de texto y contrato
+  de salida. Su regresión de calidad queda omitida mientras continúe siendo un
+  placeholder; se activa al llenar `EXPECTED_SENTIMENT_TIMELINES` en
+  `tests/test_sentiment_dataset_regression.py`.
+
+Observaciones de frequency, sin cambios en su implementación:
+
+- En el instante en que llega un correo nuevo del cliente, `ghostedHours` es
+  normalmente 0. Detectar silencios de 24/72 horas requiere una ejecución
+  posterior o programada; un flujo disparado exclusivamente por correos no
+  despierta durante el silencio.
+- El replay debe pasar como `now` la fecha del evento. Usar el reloj actual al
+  reproducir fixtures antiguos genera delays críticos artificiales.
+- `ghostedHours` se calcula desde el mensaje pendiente más reciente. Un nuevo
+  follow-up reinicia ese reloj aunque el primer mensaje continúe sin respuesta.
+- 88 de los 100 eventos del fixture producen exactamente el baseline 0.05,
+  neutral y sin flags. El fixture por sí solo ofrece poca cobertura de ráfagas
+  o delays, por lo que se agregaron casos sintéticos.
+- `multiple_unanswered_messages` afecta el score, pero no tiene boost en la
+  agregación final; solamente `rapid_followup` recibe un boost adicional.
+
 ## Estado conocido
 
 - El analizador sentimental todavía es un placeholder y devuelve un score
