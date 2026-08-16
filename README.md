@@ -28,6 +28,10 @@ Canonical message fields:
     {
       "subject": "Urgent billing issue",
       "bodyPreview": "I need help with this charge immediately.",
+      "body": {
+        "contentType": "html",
+        "content": "<div>I need help with this charge immediately.</div>"
+      },
       "receivedDateTime": "2026-07-12T20:30:00Z",
       "from": {
         "emailAddress": {
@@ -41,15 +45,25 @@ Canonical message fields:
 
 Field behavior:
 
-- `subject` and `bodyPreview` provide the text analyzed for sentiment and keywords.
+- Message text is extracted in this order: `uniqueBody`, `body`, then
+  `bodyPreview`. `bodyPreview` remains supported for legacy and test payloads.
+- HTML is converted to text and common Outlook/Gmail quoted-history and
+  signature markers are removed before analysis. The full recursive reply body
+  is never analyzed as if it were newly authored content.
+- `subject` is kept separate from the extracted message body so analyzers can
+  decide whether it is fresh evidence.
 - `receivedDateTime` must use ISO 8601 and drives message ordering and frequency metrics.
 - `from.emailAddress.address` identifies the sender.
-- `headers` is optional and can be an object or string used to detect automatic replies.
+- `headers` or `internetMessageHeaders` can provide automatic-reply metadata.
 
 Engineer messages are identified exclusively by matching
 `from.emailAddress.address` against the comma-separated `ENGINEER_EMAILS`
 environment variable. Matching is case-insensitive. Any sender that is not
 configured as an engineer is treated as a customer.
+
+High-confidence automatic replies, delivery notifications, and out-of-office
+messages are excluded from keyword, sentiment, and frequency analysis. Analyzer
+details report how many automatic messages were ignored.
 
 Validation failures return `400` with an `error` field.
 
@@ -129,7 +143,15 @@ It currently returns fixed scores and flags. Because of those fixed values,
 the current engine may escalate low-risk content. Treat its scoring behavior
 as integration scaffolding until the implementation is completed.
 
-`analyzers/keyword.py` is implemented and evaluates only the newest message in the thread, using `receivedDateTime` when available and falling back to the last valid message.
+`analyzers/keyword.py` evaluates only the newest customer message in the thread,
+using `receivedDateTime` when available and falling back to the last valid
+message. It consumes the shared cleaned message content, ignores automatic
+responses and stale subject evidence on replies or existing threads,
+deduplicates overlapping/repeated signals, and understands configured phrase
+patterns, negation, resolution language, and accented Spanish text.
+
+The sentimental analyzer consumes every non-automatic message, with quoted
+history removed from each one. Its score is still a fixed placeholder.
 
 `analyzers/frequency.py` evaluates customer follow-ups, unanswered messages,
 response delays, automatic replies, and response-time trends. It uses the same
@@ -139,7 +161,7 @@ configured engineer email classification as the keyword analyzer.
 
 `escalation_engine/config.py` contains:
 
-- Topic keyword lists and trigger thresholds.
+- Topic keyword, phrase, and variable-pattern lists with trigger thresholds.
 - Analyzer weights.
 - Boost values for specific flags.
 - Tier thresholds.
@@ -166,3 +188,23 @@ Run the automated tests:
 ```powershell
 python -m unittest discover -s tests -v
 ```
+
+Replay one generated fixture case and see both sides of the conversation:
+
+```powershell
+python -m tests.inspect_keyword_timeline --case 1 --pause
+```
+
+Inspect a Power Automate payload directly:
+
+```powershell
+python -m tests.inspect_keyword_timeline `
+  --payload "C:\path\to\payload.json" `
+  --engineer-email "engineer@example.com" `
+  --pause
+```
+
+The inspector keeps its default output compact: it displays only the cleaned
+body used for each interaction, followed immediately by the keyword result and
+evidence. Engineer responses and ignored automatic messages remain visible so
+the conversation can still be followed chronologically.

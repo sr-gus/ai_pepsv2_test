@@ -3,11 +3,13 @@ from typing import Any, Optional
 from datetime import datetime, timezone
 
 from escalation_engine.thread.extractors import (
-    get_headers,
-    get_subject,
     parse_received_datetime,
 )
-from escalation_engine.thread.selectors import get_message_role, get_valid_messages
+from escalation_engine.thread.selectors import (
+    get_message_role,
+    get_valid_messages,
+    is_automatic_message,
+)
 
 logger = logging.getLogger(__name__)
 
@@ -55,50 +57,6 @@ SCORE_WEIGHT_GHOSTED = 0.35
 SCORE_WEIGHT_RAPID_FOLLOWUP = 0.30
 SCORE_WEIGHT_UNANSWERED = 0.20
 SCORE_WEIGHT_TREND = 0.15
- 
-# Auto-reply / spam detection -- subject line
-AUTO_REPLY_SUBJECT_KEYWORDS = (
-    "out of office",
-    "automatic reply",
-    "auto-reply",
-    "auto reply",
-    "vacation",
-    "away from",
-    "undeliverable",
-    "delivery status notification",
-    "mail delivery failed",
-    "returned mail",
-    "auto-acknowledge",
-    "auto acknowledgement",
-    "ticket received",
-    "ticket confirmation",
-    "do not reply",
-)
-AUTO_REPLY_HEADER_HINTS = (
-    "auto-submitted",
-    "x-autoreply",
-    "x-autorespond",
-    "precedence: auto_reply",
-    "precedence: bulk",
-)
- 
-def _get_headers_blob(message: dict[str, Any]) -> str:
-    headers = get_headers(message)
-    if not headers:
-        return ""
-    if isinstance(headers, dict):
-        return " ".join(f"{k}: {v}" for k, v in headers.items()).lower()
-    return str(headers).lower()
-
-def _is_auto_reply(message: dict[str, Any]) -> bool:
-    subject = get_subject(message).lower()
-    headers_blob = _get_headers_blob(message)
-    if any(keyword in subject for keyword in AUTO_REPLY_SUBJECT_KEYWORDS):
-        return True
-    if any(hint in headers_blob for hint in AUTO_REPLY_HEADER_HINTS):
-        return True
-    return False
- 
  
 def _normalize_dt(dt: Optional[datetime]) -> Optional[datetime]:
     """Strip timezone info (converting to UTC first) so all datetimes in
@@ -249,7 +207,7 @@ async def analyze_frequency(raw_thread: list[Any], *, now: Optional[datetime] = 
         if dt is not None:
             messages_with_timestamp += 1
  
-        if _is_auto_reply(message):
+        if is_automatic_message(message):
             spam_count += 1
             continue
  
