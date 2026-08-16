@@ -554,6 +554,20 @@ ESCALATION_CONFIG = {
             "title": "Tier 2 escalation required",
             "summary": "Thread reached high escalation risk.",
             "recommendedAction": "Review by engineer and supervisor"
+        },
+        "explicit_escalation": {
+            "shouldNotify": True,
+            "severity": "high",
+            "target": "supervisor",
+            "title": "Customer-requested Tier 2 escalation",
+            "summary": (
+                "Customer explicitly requested escalation; routing was "
+                "applied independently of the aggregate score."
+            ),
+            "recommendedAction": (
+                "Review by engineer and supervisor and acknowledge the "
+                "customer's escalation request."
+            )
         }
     }
 }

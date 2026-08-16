@@ -110,6 +110,7 @@ escalation_engine/
   config.py                             Topics, weights, boosts, tiers, notifications
   notification.py                       Notification payload builder
   analyzers/
+    escalation_request.py               Context-aware escalation routing signal
     sentimental.py                      Sentiment analyzer placeholder
     keyword.py                          Topic keyword analyzer
     frequency.py                        Frequency analyzer placeholder
@@ -130,7 +131,9 @@ escalation_engine/
 3. `get_valid_messages` filters object-shaped messages.
 4. `process_thread_escalation` runs sentiment, keyword, and frequency analyzers in parallel with a 10 second timeout.
 5. `aggregate_results` combines analyzer scores using configured weights and boosts.
-6. `decide_escalation` maps the final score to exit, Tier 1, or Tier 2.
+6. `decide_escalation` maps the final score to exit, Tier 1, or Tier 2. An
+   active generic or hierarchical customer escalation request overrides this
+   mapping to Tier 2 without changing the aggregate score.
 7. `build_notification` creates the final routing payload.
 
 ## Analyzer Notes
@@ -149,6 +152,24 @@ message. It consumes the shared cleaned message content, ignores automatic
 responses and stale subject evidence on replies or existing threads,
 deduplicates overlapping/repeated signals, and understands configured phrase
 patterns, negation, resolution language, and accented Spanish text.
+
+The keyword result also includes `details.escalationRequest`. This classifier
+uses only the cleaned body of the newest customer message and distinguishes:
+
+- `hierarchical`: manager, supervisor, leadership, decision maker, or Tier 2;
+  routes directly to Tier 2.
+- `generic`: an active request to escalate without a specialist target; routes
+  directly to Tier 2.
+- `specialist_handoff`: billing, engineering, product, platform, security,
+  subscription, support, or another specialist team; the aggregate score still
+  decides the tier.
+- conditional, negated, historical, and quoted/stale escalation language; no
+  routing override is applied.
+
+The aggregate score is always preserved. Override decisions expose
+`decisionSource=explicit_escalation_request`, `routingOverride=true`,
+`routingConfidence=1.0`, the classified request, and the original score as
+`confidence` for prioritization and audit.
 
 The sentimental analyzer consumes every non-automatic message, with quoted
 history removed from each one. Its score is still a fixed placeholder.

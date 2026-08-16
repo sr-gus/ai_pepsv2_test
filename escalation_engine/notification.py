@@ -12,7 +12,9 @@ def build_notification(decision: dict[str, Any]) -> dict[str, Any]:
     """
     tier = decision.get("tier")
 
-    if tier == "Tier 1":
+    if decision.get("decisionSource") == "explicit_escalation_request":
+        notification_key = "explicit_escalation"
+    elif tier == "Tier 1":
         notification_key = "tier_1"
     elif tier == "Tier 2":
         notification_key = "tier_2"
@@ -32,6 +34,10 @@ def build_notification(decision: dict[str, Any]) -> dict[str, Any]:
         "action": decision.get("action"),
         "reason": decision.get("reason"),
         "confidence": decision.get("confidence"),
+        "routingConfidence": decision.get("routingConfidence"),
+        "decisionSource": decision.get("decisionSource"),
+        "routingOverride": decision.get("routingOverride", False),
+        "escalationRequest": decision.get("escalationRequest"),
         "explanation": decision.get("explanation", [])
     }
 

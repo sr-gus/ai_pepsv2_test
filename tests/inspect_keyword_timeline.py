@@ -178,6 +178,22 @@ def print_customer_event(
         f"label={result['label']} "
         f"triggered={','.join(triggered_topics) or '-'}"
     )
+    escalation_request = result["details"]["escalationRequest"]
+
+    if escalation_request["status"] != "none":
+        print(
+            "Escalation request: "
+            f"status={escalation_request['status']} "
+            f"kind={escalation_request['kind'] or '-'} "
+            f"target={escalation_request['requestedTarget'] or '-'} "
+            f"routing_override={escalation_request['routingOverride'] or '-'}"
+        )
+
+        if escalation_request["evidence"]:
+            print(
+                "Escalation evidence: "
+                + " | ".join(escalation_request["evidence"])
+            )
 
     evidence_topics = [
         topic

@@ -24,6 +24,18 @@ from escalation_engine.thread.selectors import (
 
 FIXTURE_PATH = Path(__file__).with_name("azure_billing_escalation_threads.json")
 EXPECTED_TRIGGERED_CASES = set(range(1, 16))
+DEFAULT_ESCALATION_CONTEXT = ("none", None, None, False)
+EXPECTED_ESCALATION_CONTEXT_OVERRIDES = {
+    (1, 3): ("mentioned", None, None, False),
+    (1, 4): ("active", "hierarchical", "manager", True),
+    (2, 4): ("active", "hierarchical", "manager", True),
+    (2, 5): ("historical", None, None, False),
+    (3, 4): ("active", "hierarchical", "manager", True),
+    (4, 4): ("active", "generic", None, True),
+    (8, 4): ("active", "hierarchical", "manager", True),
+    (9, 4): ("active", "hierarchical", "manager", True),
+    (10, 4): ("active", "generic", None, True),
+}
 EXPECTED_KEYWORD_TIMELINES = {
     1: [
         (0.50, ("billing_issue",), False),
@@ -411,6 +423,41 @@ class KeywordDatasetRegressionTests(unittest.TestCase):
                         ],
                         expected_resolution
                     )
+
+    def test_all_customer_events_match_escalation_context_baseline(self):
+        total_customer_events = 0
+
+        for case_number in range(1, len(self.fixture) + 1):
+            customer_results = self._customer_results_for_case(case_number)
+
+            for customer_event, result in enumerate(
+                customer_results,
+                start=1
+            ):
+                total_customer_events += 1
+                request = result["details"]["escalationRequest"]
+                actual = (
+                    request["status"],
+                    request["kind"],
+                    request["requestedTarget"],
+                    request["tier2Override"],
+                )
+                expected = EXPECTED_ESCALATION_CONTEXT_OVERRIDES.get(
+                    (case_number, customer_event),
+                    DEFAULT_ESCALATION_CONTEXT
+                )
+
+                with self.subTest(
+                    case=case_number,
+                    customer_event=customer_event
+                ):
+                    self.assertEqual(actual, expected)
+                    self.assertEqual(
+                        "explicit_escalation_request" in result["flags"],
+                        expected[3]
+                    )
+
+        self.assertEqual(total_customer_events, 100)
 
     def test_case_one_risk_strengthens_across_customer_interactions(self):
         request = self.fixture[0]

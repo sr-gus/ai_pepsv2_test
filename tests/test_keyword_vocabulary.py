@@ -30,6 +30,9 @@ class KeywordVocabularyTests(unittest.TestCase):
             if topic["topic"] == topic_name
         )
 
+    def escalation_request(self, result):
+        return result["details"]["escalationRequest"]
+
     def analyze_thread(self, messages):
         return asyncio.run(analyze_keywords(messages))
 
@@ -543,6 +546,223 @@ class KeywordVocabularyTests(unittest.TestCase):
 
         self.assertEqual(subscription["weightedMatches"], 1)
         self.assertFalse(subscription["triggered"])
+
+    def test_manager_request_is_hierarchical_tier_two_override(self):
+        result = self.analyze(
+            "Please escalate this to your manager today."
+        )
+        request = self.escalation_request(result)
+
+        self.assertTrue(request["detected"])
+        self.assertEqual(request["status"], "active")
+        self.assertEqual(request["kind"], "hierarchical")
+        self.assertEqual(request["requestedTarget"], "manager")
+        self.assertTrue(request["tier2Override"])
+        self.assertEqual(request["routingOverride"], "Tier 2")
+        self.assertIn("explicit_escalation_request", result["flags"])
+
+    def test_generic_explicit_escalation_is_tier_two_override(self):
+        result = self.analyze("I want this escalated today.")
+        request = self.escalation_request(result)
+
+        self.assertEqual(request["kind"], "generic")
+        self.assertTrue(request["tier2Override"])
+        self.assertIsNone(request["requestedTarget"])
+
+    def test_common_polite_and_passive_escalation_forms_are_detected(self):
+        samples = (
+            "Please, escalate this case.",
+            "Could this case be escalated?",
+            "Would it be possible to escalate this?",
+            "I want an escalation.",
+            "I am asking for this issue to be escalated.",
+            "Por favor, escálenlo.",
+            "Quiero una escalación.",
+        )
+
+        for message in samples:
+            with self.subTest(message=message):
+                request = self.escalation_request(self.analyze(message))
+
+                self.assertTrue(request["detected"])
+                self.assertEqual(request["kind"], "generic")
+                self.assertTrue(request["tier2Override"])
+
+    def test_hierarchical_targets_are_classified(self):
+        samples = {
+            "I need to speak with a supervisor.": "supervisor",
+            "Please escalate this to the team lead.": "team_lead",
+            "Please escalate this to senior leadership.": (
+                "director_or_executive"
+            ),
+            "Please escalate this to Tier 2 support.": "tier_2_support",
+            "Please take this to a higher level.": "higher_level",
+            "I demand a manager.": "manager",
+            "Please escalate this to someone with authority.": (
+                "decision_maker"
+            ),
+            "Necesito hablar con un gerente.": "manager",
+            "Quiero hablar con alguien con poder de decision.": (
+                "decision_maker"
+            ),
+        }
+
+        for message, expected_target in samples.items():
+            with self.subTest(message=message):
+                request = self.escalation_request(self.analyze(message))
+
+                self.assertEqual(request["kind"], "hierarchical")
+                self.assertEqual(
+                    request["requestedTarget"],
+                    expected_target
+                )
+                self.assertTrue(request["tier2Override"])
+
+    def test_specialist_handoffs_do_not_override_routing(self):
+        samples = {
+            "Please escalate this to the billing team.": "billing_team",
+            "Please escalate this to engineering.": "engineering_team",
+            "Please escalate this to the product team.": "product_team",
+            "Please escalate this to product.": "product_team",
+            "Please escalate this to the platform team.": "platform_team",
+            "Please escalate this to the backend.": "platform_team",
+            "Please escalate this to security.": "security_team",
+            "Please escalate this to the account team.": "subscription_team",
+            "Please escalate this to subscriptions.": "subscription_team",
+            "Please escalate this to the support team.": "support_team",
+            "Please escalate this to support.": "support_team",
+            "Please escalate this to the appropriate team.": "other_team",
+            "Please escalate this to another department.": "other_team",
+            "Please escalate this to the finance operations team.": (
+                "other_team"
+            ),
+            "Por favor escalen esto al equipo de facturacion.": (
+                "billing_team"
+            ),
+            "Por favor escalen este caso al equipo de ingenieria.": (
+                "engineering_team"
+            ),
+        }
+
+        for message, expected_target in samples.items():
+            with self.subTest(message=message):
+                result = self.analyze(message)
+                request = self.escalation_request(result)
+
+                self.assertTrue(request["detected"])
+                self.assertEqual(request["kind"], "specialist_handoff")
+                self.assertEqual(
+                    request["requestedTarget"],
+                    expected_target
+                )
+                self.assertFalse(request["tier2Override"])
+                self.assertNotIn(
+                    "explicit_escalation_request",
+                    result["flags"]
+                )
+                self.assertIn("specialist_handoff_requested", result["flags"])
+
+    def test_issue_type_is_not_mistaken_for_specialist_target(self):
+        request = self.escalation_request(
+            self.analyze("Please escalate this billing issue.")
+        )
+
+        self.assertEqual(request["kind"], "generic")
+        self.assertTrue(request["tier2Override"])
+
+    def test_unrelated_manager_mention_does_not_change_specialist_target(self):
+        request = self.escalation_request(self.analyze(
+            "Please escalate this to the billing team because the manager "
+            "who approved the account is unavailable."
+        ))
+
+        self.assertEqual(request["kind"], "specialist_handoff")
+        self.assertEqual(request["requestedTarget"], "billing_team")
+        self.assertFalse(request["tier2Override"])
+
+    def test_unfulfilled_prior_escalation_request_remains_active(self):
+        request = self.escalation_request(self.analyze(
+            "I asked you to escalate this last week and nobody responded."
+        ))
+
+        self.assertTrue(request["detected"])
+        self.assertEqual(request["kind"], "generic")
+        self.assertTrue(request["tier2Override"])
+
+    def test_spanish_generic_escalation_is_detected(self):
+        request = self.escalation_request(
+            self.analyze("Quiero que este caso se escale.")
+        )
+
+        self.assertEqual(request["status"], "active")
+        self.assertEqual(request["kind"], "generic")
+        self.assertTrue(request["tier2Override"])
+
+    def test_inactive_escalation_contexts_do_not_override(self):
+        samples = {
+            "If this continues, I will request an escalation.": "conditional",
+            "If this continues, please escalate this.": "conditional",
+            "I do not want this escalated.": "negated",
+            "Please do not escalate this.": "negated",
+            "No escalation is needed.": "negated",
+            "I may escalate this if it continues.": "conditional",
+            "Otherwise I will escalate this.": "conditional",
+            "Thank you for escalating this.": "historical",
+            "This was escalated yesterday.": "historical",
+            "This is urgent and needs to be fixed today.": "none",
+        }
+
+        for message, expected_status in samples.items():
+            with self.subTest(message=message):
+                result = self.analyze(message)
+                request = self.escalation_request(result)
+
+                self.assertFalse(request["detected"])
+                self.assertEqual(request["status"], expected_status)
+                self.assertFalse(request["tier2Override"])
+                self.assertNotIn(
+                    "explicit_escalation_request",
+                    result["flags"]
+                )
+
+    def test_escalation_in_stale_subject_does_not_override_current_body(self):
+        result = self.analyze(
+            "Everything is resolved, thank you.",
+            subject="RE: Please escalate this to a manager"
+        )
+
+        self.assertEqual(
+            self.escalation_request(result)["status"],
+            "none"
+        )
+
+    def test_escalation_in_quoted_history_does_not_override_current_reply(self):
+        result = self.analyze_thread([
+            {
+                "subject": "RE: Case update",
+                "body": {
+                    "contentType": "text",
+                    "content": (
+                        "Everything is resolved, thank you.\n\n"
+                        "From: Customer <customer@example.com>\n"
+                        "Sent: Friday, August 7, 2026 10:00 AM\n"
+                        "Subject: Case update\n\n"
+                        "Please escalate this to your manager."
+                    )
+                },
+                "receivedDateTime": "2026-08-09T12:00:00Z",
+                "from": {
+                    "emailAddress": {
+                        "address": "customer@example.com"
+                    }
+                }
+            }
+        ])
+
+        self.assertEqual(
+            self.escalation_request(result)["status"],
+            "none"
+        )
 
 
 if __name__ == "__main__":

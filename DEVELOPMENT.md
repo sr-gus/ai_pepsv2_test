@@ -156,6 +156,29 @@ Calibración actual:
 - Los demás tópicos: 2. Sus términos genéricos requieren dos señales
   distintas; una frase o patrón crítico puede alcanzar el umbral por sí solo.
 
+### Solicitudes explícitas de escalación
+
+El routing distingue la intención de escalar del score de riesgo:
+
+- Una solicitud activa a manager, supervisor, leadership, alguien con
+  autoridad o Tier 2 se clasifica como `hierarchical` y fuerza Tier 2.
+- Una solicitud activa sin target se clasifica como `generic` y fuerza Tier 2.
+- Escalar a billing, engineering, product, platform, security, subscriptions,
+  support u otro equipo especializado se clasifica como `specialist_handoff`.
+  No aplica override: el score agregado conserva la decisión.
+- Condicionales, negaciones, agradecimientos, solicitudes ya completadas,
+  subjects heredados y contenido citado no aplican override.
+
+El override nunca modifica `aggregation.score`. La decisión y notificación
+incluyen `decisionSource`, `routingOverride`, `routingConfidence` y la
+clasificación completa en `escalationRequest`. Esto permite distinguir un Tier
+2 solicitado por el cliente de uno alcanzado por score.
+
+Al ampliar este clasificador, agregar como mínimo una prueba positiva, un
+handoff especializado y ejemplos condicional, negado e histórico. Los targets
+deben estar gramaticalmente ligados a la petición; no basta con que aparezca la
+palabra `manager` o el nombre de un equipo en la misma oración.
+
 ## Verificaciones antes de compartir cambios
 
 ```powershell

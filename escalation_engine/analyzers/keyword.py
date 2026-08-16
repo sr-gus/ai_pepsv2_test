@@ -3,6 +3,9 @@ import re
 import unicodedata
 from typing import Any
 
+from escalation_engine.analyzers.escalation_request import (
+    classify_escalation_request,
+)
 from escalation_engine.config import ESCALATION_CONFIG
 from escalation_engine.thread.extractors import (
     get_message_content,
@@ -146,6 +149,7 @@ async def analyze_keywords(raw_thread: list[Any]) -> dict[str, Any]:
     text = _normalize_text(f"{raw_subject} {message_content.text}".strip())
     words = text.split()
     resolution_acknowledged = _acknowledges_resolution(content_text)
+    escalation_request = classify_escalation_request(content_text)
     subject_evidence_ignored = (
         len(customer_messages) > 1 or _is_reply_subject(raw_subject)
     )
@@ -236,6 +240,11 @@ async def analyze_keywords(raw_thread: list[Any]) -> dict[str, Any]:
     if weighted_total_matches >= 6:
         flags.append("high_keyword_density")
 
+    if escalation_request["tier2Override"]:
+        flags.append("explicit_escalation_request")
+    elif escalation_request["kind"] == "specialist_handoff":
+        flags.append("specialist_handoff_requested")
+
     result = {
         "name": "keyword",
         "score": round(score, 2),
@@ -262,7 +271,8 @@ async def analyze_keywords(raw_thread: list[Any]) -> dict[str, Any]:
             "wordCount": len(words),
             "customerMessageCount": len(customer_messages),
             "ignoredEngineerMessageCount": ignored_engineer_messages,
-            "ignoredAutomaticMessageCount": ignored_automatic_messages
+            "ignoredAutomaticMessageCount": ignored_automatic_messages,
+            "escalationRequest": escalation_request
         }
     }
 
