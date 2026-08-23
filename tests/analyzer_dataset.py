@@ -6,6 +6,7 @@ from datetime import datetime
 from pathlib import Path
 
 from escalation_engine.thread.extractors import parse_received_datetime
+from tests.fixture_constants import FIXTURE_ENGINEER_EMAIL
 
 
 FIXTURE_PATH = Path(__file__).with_name("azure_billing_escalation_threads.json")
@@ -52,12 +53,12 @@ def sort_messages(messages):
 
 
 def get_fixture_engineer_emails(fixture):
-    return {
+    sender_addresses = {
         message.get("from", {}).get("emailAddress", {}).get("address", "")
+        .strip()
+        .lower()
         for request in fixture
         for message in get_request_thread(request)
-        if message.get("from", {})
-        .get("emailAddress", {})
-        .get("address", "")
-        .endswith("@microsoft.com")
     }
+
+    return {FIXTURE_ENGINEER_EMAIL} & sender_addresses

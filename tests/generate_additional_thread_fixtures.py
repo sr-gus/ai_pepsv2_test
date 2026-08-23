@@ -15,6 +15,8 @@ import textwrap
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
+from tests.fixture_constants import FIXTURE_ENGINEER_EMAIL
+
 
 OUTPUT_DIRECTORY = Path(__file__).parent
 FUNCTION_URI = (
@@ -75,7 +77,7 @@ SHORT_SCENARIOS = [
         "language": "en",
         "subject": "Card verification loop - TrackingID#2701010001000001",
         "customer": ("Maya Reed", "maya.reed@contoso-retail.com"),
-        "engineer": ("Owen Price", "owen.price@microsoft.com"),
+        "engineer": ("Owen Price", FIXTURE_ENGINEER_EMAIL),
         "intent": "A terse generic escalation must force Tier 2.",
         "messages": [
             customer("My card keeps failing verification.", 0),
@@ -94,7 +96,7 @@ SHORT_SCENARIOS = [
         "language": "en",
         "subject": "Missing corrected invoice - TrackingID#2701010001000002",
         "customer": ("Eli Warren", "eli.warren@fabrikam-foods.com"),
-        "engineer": ("Nina Shah", "nina.shah@microsoft.com"),
+        "engineer": ("Nina Shah", FIXTURE_ENGINEER_EMAIL),
         "intent": "A short manager request without the word escalate is hierarchical.",
         "messages": [
             customer("The corrected invoice is missing.", 0),
@@ -112,7 +114,7 @@ SHORT_SCENARIOS = [
         "language": "en",
         "subject": "Usage meter mismatch - TrackingID#2701010001000003",
         "customer": ("Jon Bell", "jon.bell@northwind-labs.com"),
-        "engineer": ("Sara Kim", "sara.kim@microsoft.com"),
+        "engineer": ("Sara Kim", FIXTURE_ENGINEER_EMAIL),
         "intent": "Engineering handoff is active but remains score-based.",
         "messages": [
             customer("The meter total looks wrong.", 0),
@@ -131,7 +133,7 @@ SHORT_SCENARIOS = [
         "language": "en",
         "subject": "Credit not visible - TrackingID#2701010001000004",
         "customer": ("Ana Costa", "ana.costa@adatum-energy.com"),
-        "engineer": ("Luis Mora", "luis.mora@microsoft.com"),
+        "engineer": ("Luis Mora", FIXTURE_ENGINEER_EMAIL),
         "intent": "A future escalation threat must not override routing.",
         "messages": [
             customer("Our credit disappeared.", 0),
@@ -148,7 +150,7 @@ SHORT_SCENARIOS = [
         "language": "en",
         "subject": "Need receipt copy - TrackingID#2701010001000005",
         "customer": ("Ben Holt", "ben.holt@wingtip-toys.com"),
-        "engineer": ("Iris Long", "iris.long@microsoft.com"),
+        "engineer": ("Iris Long", FIXTURE_ENGINEER_EMAIL),
         "intent": "Mentioning the customer's manager is not an escalation request.",
         "messages": [
             customer("Please resend the receipt.", 0),
@@ -161,7 +163,7 @@ SHORT_SCENARIOS = [
         "language": "es",
         "subject": "Cobro duplicado - TrackingID#2701010001000006",
         "customer": ("Lucía Vega", "lucia.vega@proseware.mx"),
-        "engineer": ("Diego Luna", "diego.luna@microsoft.com"),
+        "engineer": ("Diego Luna", FIXTURE_ENGINEER_EMAIL),
         "intent": "A concise Spanish generic escalation must force Tier 2.",
         "messages": [
             customer("Me cobraron dos veces.", 0),
@@ -180,7 +182,7 @@ SHORT_SCENARIOS = [
         "language": "es",
         "subject": "Impuesto incorrecto - TrackingID#2701010001000007",
         "customer": ("Iván Soto", "ivan.soto@cohovineyard.mx"),
-        "engineer": ("Elena Ruiz", "elena.ruiz@microsoft.com"),
+        "engineer": ("Elena Ruiz", FIXTURE_ENGINEER_EMAIL),
         "intent": "A Spanish billing handoff is not a severity override.",
         "messages": [
             customer("El impuesto no corresponde.", 0),
@@ -197,7 +199,7 @@ SHORT_SCENARIOS = [
         "language": "en",
         "subject": "Refund status - TrackingID#2701010001000008",
         "customer": ("Noah Day", "noah.day@tailspin-farm.com"),
-        "engineer": ("Amy Cole", "amy.cole@microsoft.com"),
+        "engineer": ("Amy Cole", FIXTURE_ENGINEER_EMAIL),
         "intent": "A calm reply must ignore escalation language in quoted history.",
         "messages": [
             customer(
@@ -218,7 +220,7 @@ MIXED_SCENARIOS = [
         "language": "en",
         "subject": "EA commitment applied to wrong enrollment - TrackingID#2702020002000001",
         "customer": ("Rachel Flynn", "rachel.flynn@litware-finance.com"),
-        "engineer": ("Tom Becker", "tom.becker@microsoft.com"),
+        "engineer": ("Tom Becker", FIXTURE_ENGINEER_EMAIL),
         "intent": "General escalation risk grows over messages without an explicit request.",
         "messages": [
             customer(
@@ -242,7 +244,7 @@ MIXED_SCENARIOS = [
         "language": "en",
         "subject": "Refund exception review - TrackingID#2702020002000002",
         "customer": ("Paul Ng", "paul.ng@blueyonder-air.com"),
-        "engineer": ("Mina Fox", "mina.fox@microsoft.com"),
+        "engineer": ("Mina Fox", FIXTURE_ENGINEER_EMAIL),
         "intent": "A polite passive generic request still overrides to Tier 2.",
         "messages": [
             customer(
@@ -265,7 +267,7 @@ MIXED_SCENARIOS = [
         "language": "en",
         "subject": "Unknown marketplace purchase - TrackingID#2702020002000003",
         "customer": ("Kim Wells", "kim.wells@citypower.example"),
-        "engineer": ("Raj Patel", "raj.patel@microsoft.com"),
+        "engineer": ("Raj Patel", FIXTURE_ENGINEER_EMAIL),
         "intent": "A security-team handoff is specialist routing, not a hierarchy request.",
         "messages": [
             customer(
@@ -288,7 +290,7 @@ MIXED_SCENARIOS = [
         "language": "en",
         "subject": "Subscription reactivation delayed - TrackingID#2702020002000004",
         "customer": ("Derek Moss", "derek.moss@graphicdesign.example"),
-        "engineer": ("June Park", "june.park@microsoft.com"),
+        "engineer": ("June Park", FIXTURE_ENGINEER_EMAIL),
         "intent": "A request to speak with a supervisor forces Tier 2.",
         "messages": [
             customer("Payment cleared yesterday, but our production subscription is still disabled.", 0),
@@ -306,7 +308,7 @@ MIXED_SCENARIOS = [
         "language": "en",
         "subject": "Tax exemption review - TrackingID#2702020002000005",
         "customer": ("Olivia Stone", "olivia.stone@humongous-insurance.com"),
-        "engineer": ("Leo Grant", "leo.grant@microsoft.com"),
+        "engineer": ("Leo Grant", FIXTURE_ENGINEER_EMAIL),
         "intent": "Acknowledging a completed escalation is historical only.",
         "messages": [
             customer(
@@ -329,7 +331,7 @@ MIXED_SCENARIOS = [
         "language": "es",
         "subject": "Suscripción cancelada sigue facturando - TrackingID#2702020002000006",
         "customer": ("Sofía Reyes", "sofia.reyes@treyresearch.mx"),
-        "engineer": ("Hugo Díaz", "hugo.diaz@microsoft.com"),
+        "engineer": ("Hugo Díaz", FIXTURE_ENGINEER_EMAIL),
         "intent": "A Spanish manager request buried after context forces Tier 2.",
         "messages": [
             customer(
@@ -352,7 +354,7 @@ MIXED_SCENARIOS = [
         "language": "es",
         "subject": "Saldo de patrocinio sin aplicar - TrackingID#2702020002000007",
         "customer": ("Mateo Gil", "mateo.gil@nonprofit-example.org"),
-        "engineer": ("Clara Nieto", "clara.nieto@microsoft.com"),
+        "engineer": ("Clara Nieto", FIXTURE_ENGINEER_EMAIL),
         "intent": "A Spanish conditional threat is recorded without override.",
         "messages": [
             customer(
@@ -375,7 +377,7 @@ MIXED_SCENARIOS = [
         "language": "en",
         "subject": "Budget alert delivery - TrackingID#2702020002000008",
         "customer": ("Wes Ford", "wes.ford@wideworldimporters.com"),
-        "engineer": ("Ada Young", "ada.young@microsoft.com"),
+        "engineer": ("Ada Young", FIXTURE_ENGINEER_EMAIL),
         "intent": "Explicitly declining escalation must not trigger routing.",
         "messages": [
             customer(
@@ -402,7 +404,7 @@ LONG_SCENARIOS = [
         "language": "en",
         "subject": "Cost analysis export differs from invoice - TrackingID#2703030003000001",
         "customer": ("Grace Liu", "grace.liu@alpine-ski.example"),
-        "engineer": ("Marco Hill", "marco.hill@microsoft.com"),
+        "engineer": ("Marco Hill", FIXTURE_ENGINEER_EMAIL),
         "intent": "Long technical detail must remain low risk when language is calm.",
         "messages": [
             customer(
@@ -430,7 +432,7 @@ LONG_SCENARIOS = [
         "language": "en",
         "subject": "Production reservation exchange blocked - TrackingID#2703030003000002",
         "customer": ("Martin Webb", "martin.webb@fourthcoffee.example"),
-        "engineer": ("Priya Nair", "priya.nair@microsoft.com"),
+        "engineer": ("Priya Nair", FIXTURE_ENGINEER_EMAIL),
         "intent": "A hierarchy request at the end of a long message must be detected.",
         "messages": [
             customer(
@@ -459,7 +461,7 @@ LONG_SCENARIOS = [
         "language": "en",
         "subject": "Storage transaction spike after lifecycle change - TrackingID#2703030003000003",
         "customer": ("Helen Ward", "helen.ward@consolidatedmessenger.example"),
-        "engineer": ("Alex Wu", "alex.wu@microsoft.com"),
+        "engineer": ("Alex Wu", FIXTURE_ENGINEER_EMAIL),
         "intent": "A long specialist request must not be confused with hierarchy.",
         "messages": [
             customer(
@@ -488,7 +490,7 @@ LONG_SCENARIOS = [
         "language": "en",
         "subject": "Enterprise invoice allocation unresolved - TrackingID#2703030003000004",
         "customer": ("Victor Ames", "victor.ames@contoso-pharma.example"),
-        "engineer": ("Rita Singh", "rita.singh@microsoft.com"),
+        "engineer": ("Rita Singh", FIXTURE_ENGINEER_EMAIL),
         "intent": "Strong relationship-risk language with a conditional escalation remains score-based.",
         "messages": [
             customer(
@@ -517,7 +519,7 @@ LONG_SCENARIOS = [
         "language": "en",
         "subject": "Marketplace refund completed - TrackingID#2703030003000005",
         "customer": ("Amber Cole", "amber.cole@schoolofart.example"),
-        "engineer": ("Neil Cox", "neil.cox@microsoft.com"),
+        "engineer": ("Neil Cox", FIXTURE_ENGINEER_EMAIL),
         "intent": "Resolution text must ignore both historical and quoted active requests.",
         "messages": [
             customer(
@@ -547,7 +549,7 @@ LONG_SCENARIOS = [
         "language": "es",
         "subject": "Créditos consumidos por recurso eliminado - TrackingID#2703030003000006",
         "customer": ("Carolina Paredes", "carolina.paredes@empresa-ejemplo.mx"),
-        "engineer": ("Andrés Peña", "andres.pena@microsoft.com"),
+        "engineer": ("Andrés Peña", FIXTURE_ENGINEER_EMAIL),
         "intent": "A long Spanish hierarchy request must force Tier 2.",
         "messages": [
             customer(
@@ -576,7 +578,7 @@ LONG_SCENARIOS = [
         "language": "es",
         "subject": "Uso no reconocido en cuenta de almacenamiento - TrackingID#2703030003000007",
         "customer": ("Jorge Cano", "jorge.cano@datos-ejemplo.mx"),
-        "engineer": ("Teresa Ríos", "teresa.rios@microsoft.com"),
+        "engineer": ("Teresa Ríos", FIXTURE_ENGINEER_EMAIL),
         "intent": "A Spanish specialist request remains score-based even in a long email.",
         "messages": [
             customer(
@@ -605,7 +607,7 @@ LONG_SCENARIOS = [
         "language": "en",
         "subject": "Billing profile address updated - TrackingID#2703030003000008",
         "customer": ("Sam King", "sam.king@lucernepublishing.example"),
-        "engineer": ("Faye Ross", "faye.ross@microsoft.com"),
+        "engineer": ("Faye Ross", FIXTURE_ENGINEER_EMAIL),
         "intent": "Escalation words in a signature must not affect a calm long reply.",
         "messages": [
             customer(

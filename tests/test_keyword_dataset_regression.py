@@ -17,9 +17,11 @@ from escalation_engine.thread.extractors import (
 )
 from escalation_engine.thread.selectors import (
     CUSTOMER_ROLE,
+    ENGINEER_EMAILS_ENV_VAR,
     get_message_role,
     is_automatic_message,
 )
+from tests.analyzer_dataset import get_fixture_engineer_emails
 
 
 FIXTURE_PATH = Path(__file__).with_name("azure_billing_escalation_threads.json")
@@ -229,15 +231,7 @@ class KeywordDatasetRegressionTests(unittest.TestCase):
         with FIXTURE_PATH.open(encoding="utf-8") as fixture_file:
             cls.fixture = json.load(fixture_file)
 
-        cls.engineer_emails = {
-            message.get("from", {}).get("emailAddress", {}).get("address", "")
-            for request in cls.fixture
-            for message in request["body"]["thread"]
-            if message.get("from", {})
-            .get("emailAddress", {})
-            .get("address", "")
-            .endswith("@microsoft.com")
-        }
+        cls.engineer_emails = get_fixture_engineer_emails(cls.fixture)
 
     @staticmethod
     def sort_messages(messages):
@@ -252,7 +246,7 @@ class KeywordDatasetRegressionTests(unittest.TestCase):
 
         with patch.dict(
             os.environ,
-            {"ENGINEER_EMAILS": ",".join(self.engineer_emails)},
+            {ENGINEER_EMAILS_ENV_VAR: ",".join(self.engineer_emails)},
             clear=False
         ):
             for case_number, request in enumerate(self.fixture, start=1):
@@ -354,7 +348,7 @@ class KeywordDatasetRegressionTests(unittest.TestCase):
 
         with patch.dict(
             os.environ,
-            {"ENGINEER_EMAILS": ",".join(self.engineer_emails)},
+            {ENGINEER_EMAILS_ENV_VAR: ",".join(self.engineer_emails)},
             clear=False
         ):
             for case_number, request in enumerate(self.fixture, start=1):
@@ -466,7 +460,7 @@ class KeywordDatasetRegressionTests(unittest.TestCase):
 
         with patch.dict(
             os.environ,
-            {"ENGINEER_EMAILS": ",".join(self.engineer_emails)},
+            {ENGINEER_EMAILS_ENV_VAR: ",".join(self.engineer_emails)},
             clear=False
         ):
             for message in self.sort_messages(request["body"]["thread"]):
@@ -501,7 +495,7 @@ class KeywordDatasetRegressionTests(unittest.TestCase):
 
         with patch.dict(
             os.environ,
-            {"ENGINEER_EMAILS": ",".join(self.engineer_emails)},
+            {ENGINEER_EMAILS_ENV_VAR: ",".join(self.engineer_emails)},
             clear=False
         ):
             for message in self.sort_messages(request["body"]["thread"]):
@@ -539,7 +533,7 @@ class KeywordDatasetRegressionTests(unittest.TestCase):
 
         with patch.dict(
             os.environ,
-            {"ENGINEER_EMAILS": ",".join(self.engineer_emails)},
+            {ENGINEER_EMAILS_ENV_VAR: ",".join(self.engineer_emails)},
             clear=False
         ):
             for message in self.sort_messages(request["body"]["thread"]):
@@ -601,7 +595,7 @@ class KeywordDatasetRegressionTests(unittest.TestCase):
 
         with patch.dict(
             os.environ,
-            {"ENGINEER_EMAILS": ",".join(self.engineer_emails)},
+            {ENGINEER_EMAILS_ENV_VAR: ",".join(self.engineer_emails)},
             clear=False
         ):
             for message in self.sort_messages(request["body"]["thread"]):
@@ -907,7 +901,7 @@ class KeywordDatasetRegressionTests(unittest.TestCase):
 
         with patch.dict(
             os.environ,
-            {"ENGINEER_EMAILS": ",".join(self.engineer_emails)},
+            {ENGINEER_EMAILS_ENV_VAR: ",".join(self.engineer_emails)},
             clear=False
         ):
             for message in self.sort_messages(request["body"]["thread"]):

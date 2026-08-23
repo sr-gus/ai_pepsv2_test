@@ -9,6 +9,7 @@ from escalation_engine.analyzers.keyword import analyze_keywords
 from escalation_engine.analyzers.sentimental import analyze_sentimental
 from escalation_engine.thread.extractors import get_message_content
 from escalation_engine.thread.selectors import (
+    ENGINEER_EMAILS_ENV_VAR,
     get_customer_messages,
     is_automatic_message,
 )
@@ -144,7 +145,11 @@ class MessageContentExtractionTests(unittest.TestCase):
 
 class AnalyzerContentIntegrationTests(unittest.TestCase):
     def analyze_keywords(self, messages):
-        with patch.dict(os.environ, {"ENGINEER_EMAILS": ""}, clear=False):
+        with patch.dict(
+            os.environ,
+            {ENGINEER_EMAILS_ENV_VAR: ""},
+            clear=False,
+        ):
             return asyncio.run(analyze_keywords(messages))
 
     def test_keyword_uses_long_body_content_beyond_the_truncated_preview(self):

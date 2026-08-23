@@ -10,6 +10,7 @@ from escalation_engine.analyzers.sentimental import analyze_sentimental
 from escalation_engine.thread.extractors import get_message_content
 from escalation_engine.thread.selectors import (
     CUSTOMER_ROLE,
+    ENGINEER_EMAILS_ENV_VAR,
     ENGINEER_ROLE,
     get_message_role,
     is_automatic_message,
@@ -88,7 +89,10 @@ def load_payload(payload_path):
 
 
 def configure_engineers(engineer_emails):
-    os.environ["ENGINEER_EMAILS"] = ",".join(sorted(engineer_emails))
+    if engineer_emails:
+        os.environ[ENGINEER_EMAILS_ENV_VAR] = ",".join(
+            sorted(engineer_emails)
+        )
 
 
 def display_text(value):

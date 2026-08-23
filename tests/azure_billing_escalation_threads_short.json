@@ -47,7 +47,7 @@
             {
               "emailAddress": {
                 "name": "Owen Price",
-                "address": "owen.price@microsoft.com"
+                "address": "srgus@2sxtzc.onmicrosoft.com"
               }
             }
           ],
@@ -88,13 +88,13 @@
           "sender": {
             "emailAddress": {
               "name": "Owen Price",
-              "address": "owen.price@microsoft.com"
+              "address": "srgus@2sxtzc.onmicrosoft.com"
             }
           },
           "from": {
             "emailAddress": {
               "name": "Owen Price",
-              "address": "owen.price@microsoft.com"
+              "address": "srgus@2sxtzc.onmicrosoft.com"
             }
           },
           "toRecipients": [
@@ -137,7 +137,7 @@
           "inferenceClassification": "focused",
           "body": {
             "contentType": "html",
-            "content": "<html><head><meta charset=\"utf-8\"></head><body dir=\"ltr\"><div class=\"elementToProof\">Any update?</div><div id=\"appendonsend\"></div><hr tabindex=\"-1\"><div id=\"divRplyFwdMsg\" dir=\"ltr\"><b>From:</b> Owen Price &lt;owen.price@microsoft.com&gt;<br><b>Sent:</b> 2026-09-03T10:00:00Z<br><b>Subject:</b> RE: generated fixture</div><div class=\"quotedMessage\"><div class=\"elementToProof\">I am checking the payment profile now.</div></div></body></html>"
+            "content": "<html><head><meta charset=\"utf-8\"></head><body dir=\"ltr\"><div class=\"elementToProof\">Any update?</div><div id=\"appendonsend\"></div><hr tabindex=\"-1\"><div id=\"divRplyFwdMsg\" dir=\"ltr\"><b>From:</b> Owen Price &lt;srgus@2sxtzc.onmicrosoft.com&gt;<br><b>Sent:</b> 2026-09-03T10:00:00Z<br><b>Subject:</b> RE: generated fixture</div><div class=\"quotedMessage\"><div class=\"elementToProof\">I am checking the payment profile now.</div></div></body></html>"
           },
           "sender": {
             "emailAddress": {
@@ -155,7 +155,7 @@
             {
               "emailAddress": {
                 "name": "Owen Price",
-                "address": "owen.price@microsoft.com"
+                "address": "srgus@2sxtzc.onmicrosoft.com"
               }
             }
           ],
@@ -196,13 +196,13 @@
           "sender": {
             "emailAddress": {
               "name": "Owen Price",
-              "address": "owen.price@microsoft.com"
+              "address": "srgus@2sxtzc.onmicrosoft.com"
             }
           },
           "from": {
             "emailAddress": {
               "name": "Owen Price",
-              "address": "owen.price@microsoft.com"
+              "address": "srgus@2sxtzc.onmicrosoft.com"
             }
           },
           "toRecipients": [
@@ -245,7 +245,7 @@
           "inferenceClassification": "focused",
           "body": {
             "contentType": "html",
-            "content": "<html><head><meta charset=\"utf-8\"></head><body dir=\"ltr\"><div class=\"elementToProof\">Escalate this.</div><div id=\"appendonsend\"></div><hr tabindex=\"-1\"><div id=\"divRplyFwdMsg\" dir=\"ltr\"><b>From:</b> Owen Price &lt;owen.price@microsoft.com&gt;<br><b>Sent:</b> 2026-09-04T11:00:00Z<br><b>Subject:</b> RE: generated fixture</div><div class=\"quotedMessage\"><div class=\"elementToProof\">The validation job is still pending.</div></div></body></html>"
+            "content": "<html><head><meta charset=\"utf-8\"></head><body dir=\"ltr\"><div class=\"elementToProof\">Escalate this.</div><div id=\"appendonsend\"></div><hr tabindex=\"-1\"><div id=\"divRplyFwdMsg\" dir=\"ltr\"><b>From:</b> Owen Price &lt;srgus@2sxtzc.onmicrosoft.com&gt;<br><b>Sent:</b> 2026-09-04T11:00:00Z<br><b>Subject:</b> RE: generated fixture</div><div class=\"quotedMessage\"><div class=\"elementToProof\">The validation job is still pending.</div></div></body></html>"
           },
           "sender": {
             "emailAddress": {
@@ -263,7 +263,7 @@
             {
               "emailAddress": {
                 "name": "Owen Price",
-                "address": "owen.price@microsoft.com"
+                "address": "srgus@2sxtzc.onmicrosoft.com"
               }
             }
           ],
@@ -325,7 +325,7 @@
             {
               "emailAddress": {
                 "name": "Nina Shah",
-                "address": "nina.shah@microsoft.com"
+                "address": "srgus@2sxtzc.onmicrosoft.com"
               }
             }
           ],
@@ -366,13 +366,13 @@
           "sender": {
             "emailAddress": {
               "name": "Nina Shah",
-              "address": "nina.shah@microsoft.com"
+              "address": "srgus@2sxtzc.onmicrosoft.com"
             }
           },
           "from": {
             "emailAddress": {
               "name": "Nina Shah",
-              "address": "nina.shah@microsoft.com"
+              "address": "srgus@2sxtzc.onmicrosoft.com"
             }
           },
           "toRecipients": [
@@ -415,7 +415,7 @@
           "inferenceClassification": "focused",
           "body": {
             "contentType": "html",
-            "content": "<html><head><meta charset=\"utf-8\"></head><body dir=\"ltr\"><div class=\"elementToProof\">Still nothing.</div><div id=\"appendonsend\"></div><hr tabindex=\"-1\"><div id=\"divRplyFwdMsg\" dir=\"ltr\"><b>From:</b> Nina Shah &lt;nina.shah@microsoft.com&gt;<br><b>Sent:</b> 2026-09-04T15:00:00Z<br><b>Subject:</b> RE: generated fixture</div><div class=\"quotedMessage\"><div class=\"elementToProof\">I requested a new invoice document.</div></div></body></html>"
+            "content": "<html><head><meta charset=\"utf-8\"></head><body dir=\"ltr\"><div class=\"elementToProof\">Still nothing.</div><div id=\"appendonsend\"></div><hr tabindex=\"-1\"><div id=\"divRplyFwdMsg\" dir=\"ltr\"><b>From:</b> Nina Shah &lt;srgus@2sxtzc.onmicrosoft.com&gt;<br><b>Sent:</b> 2026-09-04T15:00:00Z<br><b>Subject:</b> RE: generated fixture</div><div class=\"quotedMessage\"><div class=\"elementToProof\">I requested a new invoice document.</div></div></body></html>"
           },
           "sender": {
             "emailAddress": {
@@ -433,7 +433,7 @@
             {
               "emailAddress": {
                 "name": "Nina Shah",
-                "address": "nina.shah@microsoft.com"
+                "address": "srgus@2sxtzc.onmicrosoft.com"
               }
             }
           ],
@@ -487,7 +487,7 @@
             {
               "emailAddress": {
                 "name": "Nina Shah",
-                "address": "nina.shah@microsoft.com"
+                "address": "srgus@2sxtzc.onmicrosoft.com"
               }
             }
           ],
@@ -549,7 +549,7 @@
             {
               "emailAddress": {
                 "name": "Sara Kim",
-                "address": "sara.kim@microsoft.com"
+                "address": "srgus@2sxtzc.onmicrosoft.com"
               }
             }
           ],
@@ -590,13 +590,13 @@
           "sender": {
             "emailAddress": {
               "name": "Sara Kim",
-              "address": "sara.kim@microsoft.com"
+              "address": "srgus@2sxtzc.onmicrosoft.com"
             }
           },
           "from": {
             "emailAddress": {
               "name": "Sara Kim",
-              "address": "sara.kim@microsoft.com"
+              "address": "srgus@2sxtzc.onmicrosoft.com"
             }
           },
           "toRecipients": [
@@ -639,7 +639,7 @@
           "inferenceClassification": "focused",
           "body": {
             "contentType": "html",
-            "content": "<html><head><meta charset=\"utf-8\"></head><body dir=\"ltr\"><div class=\"elementToProof\">Sent.</div><div id=\"appendonsend\"></div><hr tabindex=\"-1\"><div id=\"divRplyFwdMsg\" dir=\"ltr\"><b>From:</b> Sara Kim &lt;sara.kim@microsoft.com&gt;<br><b>Sent:</b> 2026-09-04T10:00:00Z<br><b>Subject:</b> RE: generated fixture</div><div class=\"quotedMessage\"><div class=\"elementToProof\">Please share the resource ID.</div></div></body></html>"
+            "content": "<html><head><meta charset=\"utf-8\"></head><body dir=\"ltr\"><div class=\"elementToProof\">Sent.</div><div id=\"appendonsend\"></div><hr tabindex=\"-1\"><div id=\"divRplyFwdMsg\" dir=\"ltr\"><b>From:</b> Sara Kim &lt;srgus@2sxtzc.onmicrosoft.com&gt;<br><b>Sent:</b> 2026-09-04T10:00:00Z<br><b>Subject:</b> RE: generated fixture</div><div class=\"quotedMessage\"><div class=\"elementToProof\">Please share the resource ID.</div></div></body></html>"
           },
           "sender": {
             "emailAddress": {
@@ -657,7 +657,7 @@
             {
               "emailAddress": {
                 "name": "Sara Kim",
-                "address": "sara.kim@microsoft.com"
+                "address": "srgus@2sxtzc.onmicrosoft.com"
               }
             }
           ],
@@ -698,13 +698,13 @@
           "sender": {
             "emailAddress": {
               "name": "Sara Kim",
-              "address": "sara.kim@microsoft.com"
+              "address": "srgus@2sxtzc.onmicrosoft.com"
             }
           },
           "from": {
             "emailAddress": {
               "name": "Sara Kim",
-              "address": "sara.kim@microsoft.com"
+              "address": "srgus@2sxtzc.onmicrosoft.com"
             }
           },
           "toRecipients": [
@@ -747,7 +747,7 @@
           "inferenceClassification": "focused",
           "body": {
             "contentType": "html",
-            "content": "<html><head><meta charset=\"utf-8\"></head><body dir=\"ltr\"><div class=\"elementToProof\">Please escalate this to engineering.</div><div id=\"appendonsend\"></div><hr tabindex=\"-1\"><div id=\"divRplyFwdMsg\" dir=\"ltr\"><b>From:</b> Sara Kim &lt;sara.kim@microsoft.com&gt;<br><b>Sent:</b> 2026-09-04T16:00:00Z<br><b>Subject:</b> RE: generated fixture</div><div class=\"quotedMessage\"><div class=\"elementToProof\">I reproduced the mismatch.</div></div></body></html>"
+            "content": "<html><head><meta charset=\"utf-8\"></head><body dir=\"ltr\"><div class=\"elementToProof\">Please escalate this to engineering.</div><div id=\"appendonsend\"></div><hr tabindex=\"-1\"><div id=\"divRplyFwdMsg\" dir=\"ltr\"><b>From:</b> Sara Kim &lt;srgus@2sxtzc.onmicrosoft.com&gt;<br><b>Sent:</b> 2026-09-04T16:00:00Z<br><b>Subject:</b> RE: generated fixture</div><div class=\"quotedMessage\"><div class=\"elementToProof\">I reproduced the mismatch.</div></div></body></html>"
           },
           "sender": {
             "emailAddress": {
@@ -765,7 +765,7 @@
             {
               "emailAddress": {
                 "name": "Sara Kim",
-                "address": "sara.kim@microsoft.com"
+                "address": "srgus@2sxtzc.onmicrosoft.com"
               }
             }
           ],
@@ -827,7 +827,7 @@
             {
               "emailAddress": {
                 "name": "Luis Mora",
-                "address": "luis.mora@microsoft.com"
+                "address": "srgus@2sxtzc.onmicrosoft.com"
               }
             }
           ],
@@ -868,13 +868,13 @@
           "sender": {
             "emailAddress": {
               "name": "Luis Mora",
-              "address": "luis.mora@microsoft.com"
+              "address": "srgus@2sxtzc.onmicrosoft.com"
             }
           },
           "from": {
             "emailAddress": {
               "name": "Luis Mora",
-              "address": "luis.mora@microsoft.com"
+              "address": "srgus@2sxtzc.onmicrosoft.com"
             }
           },
           "toRecipients": [
@@ -917,7 +917,7 @@
           "inferenceClassification": "focused",
           "body": {
             "contentType": "html",
-            "content": "<html><head><meta charset=\"utf-8\"></head><body dir=\"ltr\"><div class=\"elementToProof\">If it is not back today, I will escalate.</div><div id=\"appendonsend\"></div><hr tabindex=\"-1\"><div id=\"divRplyFwdMsg\" dir=\"ltr\"><b>From:</b> Luis Mora &lt;luis.mora@microsoft.com&gt;<br><b>Sent:</b> 2026-09-05T17:00:00Z<br><b>Subject:</b> RE: generated fixture</div><div class=\"quotedMessage\"><div class=\"elementToProof\">I am refreshing the benefit record.</div></div></body></html>"
+            "content": "<html><head><meta charset=\"utf-8\"></head><body dir=\"ltr\"><div class=\"elementToProof\">If it is not back today, I will escalate.</div><div id=\"appendonsend\"></div><hr tabindex=\"-1\"><div id=\"divRplyFwdMsg\" dir=\"ltr\"><b>From:</b> Luis Mora &lt;srgus@2sxtzc.onmicrosoft.com&gt;<br><b>Sent:</b> 2026-09-05T17:00:00Z<br><b>Subject:</b> RE: generated fixture</div><div class=\"quotedMessage\"><div class=\"elementToProof\">I am refreshing the benefit record.</div></div></body></html>"
           },
           "sender": {
             "emailAddress": {
@@ -935,7 +935,7 @@
             {
               "emailAddress": {
                 "name": "Luis Mora",
-                "address": "luis.mora@microsoft.com"
+                "address": "srgus@2sxtzc.onmicrosoft.com"
               }
             }
           ],
@@ -997,7 +997,7 @@
             {
               "emailAddress": {
                 "name": "Iris Long",
-                "address": "iris.long@microsoft.com"
+                "address": "srgus@2sxtzc.onmicrosoft.com"
               }
             }
           ],
@@ -1038,13 +1038,13 @@
           "sender": {
             "emailAddress": {
               "name": "Iris Long",
-              "address": "iris.long@microsoft.com"
+              "address": "srgus@2sxtzc.onmicrosoft.com"
             }
           },
           "from": {
             "emailAddress": {
               "name": "Iris Long",
-              "address": "iris.long@microsoft.com"
+              "address": "srgus@2sxtzc.onmicrosoft.com"
             }
           },
           "toRecipients": [
@@ -1087,7 +1087,7 @@
           "inferenceClassification": "focused",
           "body": {
             "contentType": "html",
-            "content": "<html><head><meta charset=\"utf-8\"></head><body dir=\"ltr\"><div class=\"elementToProof\">Thanks. My manager needed it.</div><div id=\"appendonsend\"></div><hr tabindex=\"-1\"><div id=\"divRplyFwdMsg\" dir=\"ltr\"><b>From:</b> Iris Long &lt;iris.long@microsoft.com&gt;<br><b>Sent:</b> 2026-09-06T09:30:00Z<br><b>Subject:</b> RE: generated fixture</div><div class=\"quotedMessage\"><div class=\"elementToProof\">Attached is the receipt copy.</div></div></body></html>"
+            "content": "<html><head><meta charset=\"utf-8\"></head><body dir=\"ltr\"><div class=\"elementToProof\">Thanks. My manager needed it.</div><div id=\"appendonsend\"></div><hr tabindex=\"-1\"><div id=\"divRplyFwdMsg\" dir=\"ltr\"><b>From:</b> Iris Long &lt;srgus@2sxtzc.onmicrosoft.com&gt;<br><b>Sent:</b> 2026-09-06T09:30:00Z<br><b>Subject:</b> RE: generated fixture</div><div class=\"quotedMessage\"><div class=\"elementToProof\">Attached is the receipt copy.</div></div></body></html>"
           },
           "sender": {
             "emailAddress": {
@@ -1105,7 +1105,7 @@
             {
               "emailAddress": {
                 "name": "Iris Long",
-                "address": "iris.long@microsoft.com"
+                "address": "srgus@2sxtzc.onmicrosoft.com"
               }
             }
           ],
@@ -1167,7 +1167,7 @@
             {
               "emailAddress": {
                 "name": "Diego Luna",
-                "address": "diego.luna@microsoft.com"
+                "address": "srgus@2sxtzc.onmicrosoft.com"
               }
             }
           ],
@@ -1208,13 +1208,13 @@
           "sender": {
             "emailAddress": {
               "name": "Diego Luna",
-              "address": "diego.luna@microsoft.com"
+              "address": "srgus@2sxtzc.onmicrosoft.com"
             }
           },
           "from": {
             "emailAddress": {
               "name": "Diego Luna",
-              "address": "diego.luna@microsoft.com"
+              "address": "srgus@2sxtzc.onmicrosoft.com"
             }
           },
           "toRecipients": [
@@ -1257,7 +1257,7 @@
           "inferenceClassification": "focused",
           "body": {
             "contentType": "html",
-            "content": "<html><head><meta charset=\"utf-8\"></head><body dir=\"ltr\"><div class=\"elementToProof\">¿Alguna novedad?</div><div id=\"appendonsend\"></div><hr tabindex=\"-1\"><div id=\"divRplyFwdMsg\" dir=\"ltr\"><b>From:</b> Diego Luna &lt;diego.luna@microsoft.com&gt;<br><b>Sent:</b> 2026-09-08T13:00:00Z<br><b>Subject:</b> RE: generated fixture</div><div class=\"quotedMessage\"><div class=\"elementToProof\">Estoy revisando ambas transacciones.</div></div></body></html>"
+            "content": "<html><head><meta charset=\"utf-8\"></head><body dir=\"ltr\"><div class=\"elementToProof\">¿Alguna novedad?</div><div id=\"appendonsend\"></div><hr tabindex=\"-1\"><div id=\"divRplyFwdMsg\" dir=\"ltr\"><b>From:</b> Diego Luna &lt;srgus@2sxtzc.onmicrosoft.com&gt;<br><b>Sent:</b> 2026-09-08T13:00:00Z<br><b>Subject:</b> RE: generated fixture</div><div class=\"quotedMessage\"><div class=\"elementToProof\">Estoy revisando ambas transacciones.</div></div></body></html>"
           },
           "sender": {
             "emailAddress": {
@@ -1275,7 +1275,7 @@
             {
               "emailAddress": {
                 "name": "Diego Luna",
-                "address": "diego.luna@microsoft.com"
+                "address": "srgus@2sxtzc.onmicrosoft.com"
               }
             }
           ],
@@ -1316,13 +1316,13 @@
           "sender": {
             "emailAddress": {
               "name": "Diego Luna",
-              "address": "diego.luna@microsoft.com"
+              "address": "srgus@2sxtzc.onmicrosoft.com"
             }
           },
           "from": {
             "emailAddress": {
               "name": "Diego Luna",
-              "address": "diego.luna@microsoft.com"
+              "address": "srgus@2sxtzc.onmicrosoft.com"
             }
           },
           "toRecipients": [
@@ -1365,7 +1365,7 @@
           "inferenceClassification": "focused",
           "body": {
             "contentType": "html",
-            "content": "<html><head><meta charset=\"utf-8\"></head><body dir=\"ltr\"><div class=\"elementToProof\">Necesito una escalación.</div><div id=\"appendonsend\"></div><hr tabindex=\"-1\"><div id=\"divRplyFwdMsg\" dir=\"ltr\"><b>From:</b> Diego Luna &lt;diego.luna@microsoft.com&gt;<br><b>Sent:</b> 2026-09-09T13:00:00Z<br><b>Subject:</b> RE: generated fixture</div><div class=\"quotedMessage\"><div class=\"elementToProof\">Aún estoy validando el segundo cargo.</div></div></body></html>"
+            "content": "<html><head><meta charset=\"utf-8\"></head><body dir=\"ltr\"><div class=\"elementToProof\">Necesito una escalación.</div><div id=\"appendonsend\"></div><hr tabindex=\"-1\"><div id=\"divRplyFwdMsg\" dir=\"ltr\"><b>From:</b> Diego Luna &lt;srgus@2sxtzc.onmicrosoft.com&gt;<br><b>Sent:</b> 2026-09-09T13:00:00Z<br><b>Subject:</b> RE: generated fixture</div><div class=\"quotedMessage\"><div class=\"elementToProof\">Aún estoy validando el segundo cargo.</div></div></body></html>"
           },
           "sender": {
             "emailAddress": {
@@ -1383,7 +1383,7 @@
             {
               "emailAddress": {
                 "name": "Diego Luna",
-                "address": "diego.luna@microsoft.com"
+                "address": "srgus@2sxtzc.onmicrosoft.com"
               }
             }
           ],
@@ -1445,7 +1445,7 @@
             {
               "emailAddress": {
                 "name": "Elena Ruiz",
-                "address": "elena.ruiz@microsoft.com"
+                "address": "srgus@2sxtzc.onmicrosoft.com"
               }
             }
           ],
@@ -1486,13 +1486,13 @@
           "sender": {
             "emailAddress": {
               "name": "Elena Ruiz",
-              "address": "elena.ruiz@microsoft.com"
+              "address": "srgus@2sxtzc.onmicrosoft.com"
             }
           },
           "from": {
             "emailAddress": {
               "name": "Elena Ruiz",
-              "address": "elena.ruiz@microsoft.com"
+              "address": "srgus@2sxtzc.onmicrosoft.com"
             }
           },
           "toRecipients": [
@@ -1535,7 +1535,7 @@
           "inferenceClassification": "focused",
           "body": {
             "contentType": "html",
-            "content": "<html><head><meta charset=\"utf-8\"></head><body dir=\"ltr\"><div class=\"elementToProof\">Por favor, escálenlo con facturación.</div><div id=\"appendonsend\"></div><hr tabindex=\"-1\"><div id=\"divRplyFwdMsg\" dir=\"ltr\"><b>From:</b> Elena Ruiz &lt;elena.ruiz@microsoft.com&gt;<br><b>Sent:</b> 2026-09-09T10:00:00Z<br><b>Subject:</b> RE: generated fixture</div><div class=\"quotedMessage\"><div class=\"elementToProof\">Validaré el domicilio fiscal.</div></div></body></html>"
+            "content": "<html><head><meta charset=\"utf-8\"></head><body dir=\"ltr\"><div class=\"elementToProof\">Por favor, escálenlo con facturación.</div><div id=\"appendonsend\"></div><hr tabindex=\"-1\"><div id=\"divRplyFwdMsg\" dir=\"ltr\"><b>From:</b> Elena Ruiz &lt;srgus@2sxtzc.onmicrosoft.com&gt;<br><b>Sent:</b> 2026-09-09T10:00:00Z<br><b>Subject:</b> RE: generated fixture</div><div class=\"quotedMessage\"><div class=\"elementToProof\">Validaré el domicilio fiscal.</div></div></body></html>"
           },
           "sender": {
             "emailAddress": {
@@ -1553,7 +1553,7 @@
             {
               "emailAddress": {
                 "name": "Elena Ruiz",
-                "address": "elena.ruiz@microsoft.com"
+                "address": "srgus@2sxtzc.onmicrosoft.com"
               }
             }
           ],
@@ -1615,7 +1615,7 @@
             {
               "emailAddress": {
                 "name": "Amy Cole",
-                "address": "amy.cole@microsoft.com"
+                "address": "srgus@2sxtzc.onmicrosoft.com"
               }
             }
           ],
@@ -1656,13 +1656,13 @@
           "sender": {
             "emailAddress": {
               "name": "Amy Cole",
-              "address": "amy.cole@microsoft.com"
+              "address": "srgus@2sxtzc.onmicrosoft.com"
             }
           },
           "from": {
             "emailAddress": {
               "name": "Amy Cole",
-              "address": "amy.cole@microsoft.com"
+              "address": "srgus@2sxtzc.onmicrosoft.com"
             }
           },
           "toRecipients": [
@@ -1705,7 +1705,7 @@
           "inferenceClassification": "focused",
           "body": {
             "contentType": "html",
-            "content": "<html><head><meta charset=\"utf-8\"></head><body dir=\"ltr\"><div class=\"elementToProof\">Perfect, thank you.</div><div id=\"appendonsend\"></div><hr tabindex=\"-1\"><div id=\"divRplyFwdMsg\" dir=\"ltr\"><b>From:</b> Amy Cole &lt;amy.cole@microsoft.com&gt;<br><b>Sent:</b> 2026-09-09T17:00:00Z<br><b>Subject:</b> RE: generated fixture</div><div class=\"quotedMessage\"><div class=\"elementToProof\">I obtained approval and submitted the refund.</div></div></body></html>"
+            "content": "<html><head><meta charset=\"utf-8\"></head><body dir=\"ltr\"><div class=\"elementToProof\">Perfect, thank you.</div><div id=\"appendonsend\"></div><hr tabindex=\"-1\"><div id=\"divRplyFwdMsg\" dir=\"ltr\"><b>From:</b> Amy Cole &lt;srgus@2sxtzc.onmicrosoft.com&gt;<br><b>Sent:</b> 2026-09-09T17:00:00Z<br><b>Subject:</b> RE: generated fixture</div><div class=\"quotedMessage\"><div class=\"elementToProof\">I obtained approval and submitted the refund.</div></div></body></html>"
           },
           "sender": {
             "emailAddress": {
@@ -1723,7 +1723,7 @@
             {
               "emailAddress": {
                 "name": "Amy Cole",
-                "address": "amy.cole@microsoft.com"
+                "address": "srgus@2sxtzc.onmicrosoft.com"
               }
             }
           ],

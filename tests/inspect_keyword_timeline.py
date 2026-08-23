@@ -14,11 +14,15 @@ from escalation_engine.thread.extractors import (
 )
 from escalation_engine.thread.selectors import (
     CUSTOMER_ROLE,
+    ENGINEER_EMAILS_ENV_VAR,
     ENGINEER_ROLE,
     get_message_role,
     is_automatic_message,
 )
-from tests.analyzer_dataset import configure_utf8_output
+from tests.analyzer_dataset import (
+    configure_utf8_output,
+    get_fixture_engineer_emails,
+)
 
 
 FIXTURE_PATH = Path(__file__).with_name("azure_billing_escalation_threads.json")
@@ -121,23 +125,11 @@ def get_request_thread(request):
     raise SystemExit("The payload must contain thread or body.thread")
 
 
-def configure_fixture_engineers(fixture):
-    """Pass fixture-known Microsoft senders through the production role config."""
-    engineer_emails = {
-        message.get("from", {}).get("emailAddress", {}).get("address", "")
-        for request in fixture
-        for message in get_request_thread(request)
-        if message.get("from", {})
-        .get("emailAddress", {})
-        .get("address", "")
-        .endswith("@microsoft.com")
-    }
-    os.environ["ENGINEER_EMAILS"] = ",".join(sorted(engineer_emails))
-
-
 def configure_engineers(engineer_emails):
     if engineer_emails:
-        os.environ["ENGINEER_EMAILS"] = ",".join(engineer_emails)
+        os.environ[ENGINEER_EMAILS_ENV_VAR] = ",".join(
+            sorted(engineer_emails)
+        )
 
 
 def sort_messages(messages):
@@ -346,8 +338,9 @@ async def async_main(args):
         configure_engineers(args.engineer_email)
     else:
         fixture = load_fixture(args.fixture)
-        configure_fixture_engineers(fixture)
-        configure_engineers(args.engineer_email)
+        configure_engineers(
+            get_fixture_engineer_emails(fixture) | set(args.engineer_email)
+        )
 
         if args.all:
             selected_cases = list(enumerate(fixture, start=1))

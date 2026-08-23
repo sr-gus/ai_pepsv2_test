@@ -47,7 +47,7 @@
             {
               "emailAddress": {
                 "name": "Marco Hill",
-                "address": "marco.hill@microsoft.com"
+                "address": "srgus@2sxtzc.onmicrosoft.com"
               }
             }
           ],
@@ -88,13 +88,13 @@
           "sender": {
             "emailAddress": {
               "name": "Marco Hill",
-              "address": "marco.hill@microsoft.com"
+              "address": "srgus@2sxtzc.onmicrosoft.com"
             }
           },
           "from": {
             "emailAddress": {
               "name": "Marco Hill",
-              "address": "marco.hill@microsoft.com"
+              "address": "srgus@2sxtzc.onmicrosoft.com"
             }
           },
           "toRecipients": [
@@ -137,7 +137,7 @@
           "inferenceClassification": "focused",
           "body": {
             "contentType": "html",
-            "content": "<html><head><meta charset=\"utf-8\"></head><body dir=\"ltr\"><div class=\"elementToProof\">That makes sense. I reran the query using invoice currency and added the pricing-model and charge-type columns. The difference is now down to the support plan and a small tax adjustment, which matches your explanation. When you have the sample query, please send it so we can add it to our internal runbook. This is not time-sensitive anymore, and the invoice can proceed through approval while we document the reconciliation steps.</div><div id=\"appendonsend\"></div><hr tabindex=\"-1\"><div id=\"divRplyFwdMsg\" dir=\"ltr\"><b>From:</b> Marco Hill &lt;marco.hill@microsoft.com&gt;<br><b>Sent:</b> 2026-09-03T13:00:00Z<br><b>Subject:</b> RE: generated fixture</div><div class=\"quotedMessage\"><div class=\"elementToProof\">Your comparison method is mostly correct. The amortized-cost export spreads reservation purchases and can omit certain invoice-level adjustments that are not resource usage. I will map the difference by charge type and send you the exact query needed to reproduce the invoiced total. In the meantime, please keep the invoice currency rather than converting the rows through the pricing-currency column, because those can differ for some agreements.</div></div></body></html>"
+            "content": "<html><head><meta charset=\"utf-8\"></head><body dir=\"ltr\"><div class=\"elementToProof\">That makes sense. I reran the query using invoice currency and added the pricing-model and charge-type columns. The difference is now down to the support plan and a small tax adjustment, which matches your explanation. When you have the sample query, please send it so we can add it to our internal runbook. This is not time-sensitive anymore, and the invoice can proceed through approval while we document the reconciliation steps.</div><div id=\"appendonsend\"></div><hr tabindex=\"-1\"><div id=\"divRplyFwdMsg\" dir=\"ltr\"><b>From:</b> Marco Hill &lt;srgus@2sxtzc.onmicrosoft.com&gt;<br><b>Sent:</b> 2026-09-03T13:00:00Z<br><b>Subject:</b> RE: generated fixture</div><div class=\"quotedMessage\"><div class=\"elementToProof\">Your comparison method is mostly correct. The amortized-cost export spreads reservation purchases and can omit certain invoice-level adjustments that are not resource usage. I will map the difference by charge type and send you the exact query needed to reproduce the invoiced total. In the meantime, please keep the invoice currency rather than converting the rows through the pricing-currency column, because those can differ for some agreements.</div></div></body></html>"
           },
           "sender": {
             "emailAddress": {
@@ -155,7 +155,7 @@
             {
               "emailAddress": {
                 "name": "Marco Hill",
-                "address": "marco.hill@microsoft.com"
+                "address": "srgus@2sxtzc.onmicrosoft.com"
               }
             }
           ],
@@ -217,7 +217,7 @@
             {
               "emailAddress": {
                 "name": "Priya Nair",
-                "address": "priya.nair@microsoft.com"
+                "address": "srgus@2sxtzc.onmicrosoft.com"
               }
             }
           ],
@@ -258,13 +258,13 @@
           "sender": {
             "emailAddress": {
               "name": "Priya Nair",
-              "address": "priya.nair@microsoft.com"
+              "address": "srgus@2sxtzc.onmicrosoft.com"
             }
           },
           "from": {
             "emailAddress": {
               "name": "Priya Nair",
-              "address": "priya.nair@microsoft.com"
+              "address": "srgus@2sxtzc.onmicrosoft.com"
             }
           },
           "toRecipients": [
@@ -307,7 +307,7 @@
           "inferenceClassification": "focused",
           "body": {
             "contentType": "html",
-            "content": "<html><head><meta charset=\"utf-8\"></head><body dir=\"ltr\"><div class=\"elementToProof\">We are now on the fourth business day and the reservation still shows the same pending operation. Yesterday we were told the queue had accepted the request, but nobody could provide an owner, a completion estimate, or a workaround. We have already moved the production workload and are paying for capacity that cannot be applied, which makes every additional day more expensive. The technical details and correlation ID have been available since the case opened, so another request for the same information will not move this forward. Please escalate this to your manager and have someone with decision-making authority confirm the recovery plan today.</div><div id=\"appendonsend\"></div><hr tabindex=\"-1\"><div id=\"divRplyFwdMsg\" dir=\"ltr\"><b>From:</b> Priya Nair &lt;priya.nair@microsoft.com&gt;<br><b>Sent:</b> 2026-09-07T14:00:00Z<br><b>Subject:</b> RE: generated fixture</div><div class=\"quotedMessage\"><div class=\"elementToProof\">I confirmed that the failed item has a stale exchange operation attached to it. I sent the reservation order and correlation ID to commerce operations so they can clear the pending state. Their normal handling time is two business days, and I will update you as soon as the operation is released.</div></div></body></html>"
+            "content": "<html><head><meta charset=\"utf-8\"></head><body dir=\"ltr\"><div class=\"elementToProof\">We are now on the fourth business day and the reservation still shows the same pending operation. Yesterday we were told the queue had accepted the request, but nobody could provide an owner, a completion estimate, or a workaround. We have already moved the production workload and are paying for capacity that cannot be applied, which makes every additional day more expensive. The technical details and correlation ID have been available since the case opened, so another request for the same information will not move this forward. Please escalate this to your manager and have someone with decision-making authority confirm the recovery plan today.</div><div id=\"appendonsend\"></div><hr tabindex=\"-1\"><div id=\"divRplyFwdMsg\" dir=\"ltr\"><b>From:</b> Priya Nair &lt;srgus@2sxtzc.onmicrosoft.com&gt;<br><b>Sent:</b> 2026-09-07T14:00:00Z<br><b>Subject:</b> RE: generated fixture</div><div class=\"quotedMessage\"><div class=\"elementToProof\">I confirmed that the failed item has a stale exchange operation attached to it. I sent the reservation order and correlation ID to commerce operations so they can clear the pending state. Their normal handling time is two business days, and I will update you as soon as the operation is released.</div></div></body></html>"
           },
           "sender": {
             "emailAddress": {
@@ -325,7 +325,7 @@
             {
               "emailAddress": {
                 "name": "Priya Nair",
-                "address": "priya.nair@microsoft.com"
+                "address": "srgus@2sxtzc.onmicrosoft.com"
               }
             }
           ],
@@ -387,7 +387,7 @@
             {
               "emailAddress": {
                 "name": "Alex Wu",
-                "address": "alex.wu@microsoft.com"
+                "address": "srgus@2sxtzc.onmicrosoft.com"
               }
             }
           ],
@@ -428,13 +428,13 @@
           "sender": {
             "emailAddress": {
               "name": "Alex Wu",
-              "address": "alex.wu@microsoft.com"
+              "address": "srgus@2sxtzc.onmicrosoft.com"
             }
           },
           "from": {
             "emailAddress": {
               "name": "Alex Wu",
-              "address": "alex.wu@microsoft.com"
+              "address": "srgus@2sxtzc.onmicrosoft.com"
             }
           },
           "toRecipients": [
@@ -477,7 +477,7 @@
           "inferenceClassification": "focused",
           "body": {
             "contentType": "html",
-            "content": "<html><head><meta charset=\"utf-8\"></head><body dir=\"ltr\"><div class=\"elementToProof\">I added the account name, policy JSON, and the UTC window to the secure upload. The trace should focus on 03:00 through 09:00 on August 3, when the list-operation meter rose most sharply. We are not asking for a management escalation at this stage; we need the source of the requests identified before changing a policy that applies to retained customer records. Please escalate the technical investigation to the storage engineering team and keep the current case owner copied so the billing and diagnostic findings stay together.</div><div id=\"appendonsend\"></div><hr tabindex=\"-1\"><div id=\"divRplyFwdMsg\" dir=\"ltr\"><b>From:</b> Alex Wu &lt;alex.wu@microsoft.com&gt;<br><b>Sent:</b> 2026-09-04T19:00:00Z<br><b>Subject:</b> RE: generated fixture</div><div class=\"quotedMessage\"><div class=\"elementToProof\">The billing meter confirms that the increase is primarily list operations. Lifecycle evaluation can perform internal scans, but I need the storage diagnostics team to correlate the request IDs with the policy run. Please send one affected account name and a six-hour UTC window so I can prepare the trace request.</div></div></body></html>"
+            "content": "<html><head><meta charset=\"utf-8\"></head><body dir=\"ltr\"><div class=\"elementToProof\">I added the account name, policy JSON, and the UTC window to the secure upload. The trace should focus on 03:00 through 09:00 on August 3, when the list-operation meter rose most sharply. We are not asking for a management escalation at this stage; we need the source of the requests identified before changing a policy that applies to retained customer records. Please escalate the technical investigation to the storage engineering team and keep the current case owner copied so the billing and diagnostic findings stay together.</div><div id=\"appendonsend\"></div><hr tabindex=\"-1\"><div id=\"divRplyFwdMsg\" dir=\"ltr\"><b>From:</b> Alex Wu &lt;srgus@2sxtzc.onmicrosoft.com&gt;<br><b>Sent:</b> 2026-09-04T19:00:00Z<br><b>Subject:</b> RE: generated fixture</div><div class=\"quotedMessage\"><div class=\"elementToProof\">The billing meter confirms that the increase is primarily list operations. Lifecycle evaluation can perform internal scans, but I need the storage diagnostics team to correlate the request IDs with the policy run. Please send one affected account name and a six-hour UTC window so I can prepare the trace request.</div></div></body></html>"
           },
           "sender": {
             "emailAddress": {
@@ -495,7 +495,7 @@
             {
               "emailAddress": {
                 "name": "Alex Wu",
-                "address": "alex.wu@microsoft.com"
+                "address": "srgus@2sxtzc.onmicrosoft.com"
               }
             }
           ],
@@ -557,7 +557,7 @@
             {
               "emailAddress": {
                 "name": "Rita Singh",
-                "address": "rita.singh@microsoft.com"
+                "address": "srgus@2sxtzc.onmicrosoft.com"
               }
             }
           ],
@@ -598,13 +598,13 @@
           "sender": {
             "emailAddress": {
               "name": "Rita Singh",
-              "address": "rita.singh@microsoft.com"
+              "address": "srgus@2sxtzc.onmicrosoft.com"
             }
           },
           "from": {
             "emailAddress": {
               "name": "Rita Singh",
-              "address": "rita.singh@microsoft.com"
+              "address": "srgus@2sxtzc.onmicrosoft.com"
             }
           },
           "toRecipients": [
@@ -647,7 +647,7 @@
           "inferenceClassification": "focused",
           "body": {
             "contentType": "html",
-            "content": "<html><head><meta charset=\"utf-8\"></head><body dir=\"ltr\"><div class=\"elementToProof\">Another week has passed without a confirmed owner or completion date. This is the third billing cycle affected, and our auditors have now recorded the allocation failure as a control exception. We selected the enterprise agreement partly because consolidated billing was supposed to reduce manual reconciliation, yet this case has added work every month and nobody will commit to a timeline. If the ownership matrix is not corrected before Friday, we will escalate this through our account team and reconsider whether the current agreement is workable for the renewal.</div><div id=\"appendonsend\"></div><hr tabindex=\"-1\"><div id=\"divRplyFwdMsg\" dir=\"ltr\"><b>From:</b> Rita Singh &lt;rita.singh@microsoft.com&gt;<br><b>Sent:</b> 2026-09-12T17:00:00Z<br><b>Subject:</b> RE: generated fixture</div><div class=\"quotedMessage\"><div class=\"elementToProof\">I compared the matrix with the current invoice-section owners and found that the migration imported the previous department identifiers. I submitted a batch correction to billing operations. They must validate the legal-entity mapping before applying it, and I requested completion before the next billing cut.</div></div></body></html>"
+            "content": "<html><head><meta charset=\"utf-8\"></head><body dir=\"ltr\"><div class=\"elementToProof\">Another week has passed without a confirmed owner or completion date. This is the third billing cycle affected, and our auditors have now recorded the allocation failure as a control exception. We selected the enterprise agreement partly because consolidated billing was supposed to reduce manual reconciliation, yet this case has added work every month and nobody will commit to a timeline. If the ownership matrix is not corrected before Friday, we will escalate this through our account team and reconsider whether the current agreement is workable for the renewal.</div><div id=\"appendonsend\"></div><hr tabindex=\"-1\"><div id=\"divRplyFwdMsg\" dir=\"ltr\"><b>From:</b> Rita Singh &lt;srgus@2sxtzc.onmicrosoft.com&gt;<br><b>Sent:</b> 2026-09-12T17:00:00Z<br><b>Subject:</b> RE: generated fixture</div><div class=\"quotedMessage\"><div class=\"elementToProof\">I compared the matrix with the current invoice-section owners and found that the migration imported the previous department identifiers. I submitted a batch correction to billing operations. They must validate the legal-entity mapping before applying it, and I requested completion before the next billing cut.</div></div></body></html>"
           },
           "sender": {
             "emailAddress": {
@@ -665,7 +665,7 @@
             {
               "emailAddress": {
                 "name": "Rita Singh",
-                "address": "rita.singh@microsoft.com"
+                "address": "srgus@2sxtzc.onmicrosoft.com"
               }
             }
           ],
@@ -727,7 +727,7 @@
             {
               "emailAddress": {
                 "name": "Neil Cox",
-                "address": "neil.cox@microsoft.com"
+                "address": "srgus@2sxtzc.onmicrosoft.com"
               }
             }
           ],
@@ -768,13 +768,13 @@
           "sender": {
             "emailAddress": {
               "name": "Neil Cox",
-              "address": "neil.cox@microsoft.com"
+              "address": "srgus@2sxtzc.onmicrosoft.com"
             }
           },
           "from": {
             "emailAddress": {
               "name": "Neil Cox",
-              "address": "neil.cox@microsoft.com"
+              "address": "srgus@2sxtzc.onmicrosoft.com"
             }
           },
           "toRecipients": [
@@ -817,7 +817,7 @@
           "inferenceClassification": "focused",
           "body": {
             "contentType": "html",
-            "content": "<html><head><meta charset=\"utf-8\"></head><body dir=\"ltr\"><div class=\"elementToProof\">Thank you for escalating the exception and keeping us informed. The credit memo is now visible, the invoice balance matches the amount approved by the publisher, and finance has released the remaining budget for the department. No additional review is required from our side. You can close the support request after confirming that the marketplace subscription itself remains disabled, since we do not intend to reactivate it.</div><div id=\"appendonsend\"></div><hr tabindex=\"-1\"><div id=\"divRplyFwdMsg\" dir=\"ltr\"><b>From:</b> Neil Cox &lt;neil.cox@microsoft.com&gt;<br><b>Sent:</b> 2026-09-08T13:00:00Z<br><b>Subject:</b> RE: generated fixture</div><div class=\"quotedMessage\"><div class=\"elementToProof\">The publisher authorization was sufficient for an exception. My manager approved the request and the marketplace operations team issued the credit memo. It may take up to twenty-four hours for the adjusted balance to appear in Cost Management and the invoice portal.</div></div></body></html>"
+            "content": "<html><head><meta charset=\"utf-8\"></head><body dir=\"ltr\"><div class=\"elementToProof\">Thank you for escalating the exception and keeping us informed. The credit memo is now visible, the invoice balance matches the amount approved by the publisher, and finance has released the remaining budget for the department. No additional review is required from our side. You can close the support request after confirming that the marketplace subscription itself remains disabled, since we do not intend to reactivate it.</div><div id=\"appendonsend\"></div><hr tabindex=\"-1\"><div id=\"divRplyFwdMsg\" dir=\"ltr\"><b>From:</b> Neil Cox &lt;srgus@2sxtzc.onmicrosoft.com&gt;<br><b>Sent:</b> 2026-09-08T13:00:00Z<br><b>Subject:</b> RE: generated fixture</div><div class=\"quotedMessage\"><div class=\"elementToProof\">The publisher authorization was sufficient for an exception. My manager approved the request and the marketplace operations team issued the credit memo. It may take up to twenty-four hours for the adjusted balance to appear in Cost Management and the invoice portal.</div></div></body></html>"
           },
           "sender": {
             "emailAddress": {
@@ -835,7 +835,7 @@
             {
               "emailAddress": {
                 "name": "Neil Cox",
-                "address": "neil.cox@microsoft.com"
+                "address": "srgus@2sxtzc.onmicrosoft.com"
               }
             }
           ],
@@ -897,7 +897,7 @@
             {
               "emailAddress": {
                 "name": "Andrés Peña",
-                "address": "andres.pena@microsoft.com"
+                "address": "srgus@2sxtzc.onmicrosoft.com"
               }
             }
           ],
@@ -938,13 +938,13 @@
           "sender": {
             "emailAddress": {
               "name": "Andrés Peña",
-              "address": "andres.pena@microsoft.com"
+              "address": "srgus@2sxtzc.onmicrosoft.com"
             }
           },
           "from": {
             "emailAddress": {
               "name": "Andrés Peña",
-              "address": "andres.pena@microsoft.com"
+              "address": "srgus@2sxtzc.onmicrosoft.com"
             }
           },
           "toRecipients": [
@@ -987,7 +987,7 @@
           "inferenceClassification": "focused",
           "body": {
             "contentType": "html",
-            "content": "<html><head><meta charset=\"utf-8\"></head><body dir=\"ltr\"><div class=\"elementToProof\">Han pasado seis días desde esa respuesta y todavía no recibimos las rutas ni una confirmación de dependencias. Mientras tanto, los cargos continúan y el crédito restante bajó lo suficiente como para poner en riesgo las cargas de producción que sí deben permanecer activas. Ya compartimos la exportación completa, los identificadores y las fechas en dos ocasiones, así que volver a pedir la misma información no es una solución. Por favor, escale este caso con su supervisora y solicite que alguien con autoridad nos dé hoy un plan y una fecha de resolución.</div><div id=\"appendonsend\"></div><hr tabindex=\"-1\"><div id=\"divRplyFwdMsg\" dir=\"ltr\"><b>From:</b> Andrés Peña &lt;andres.pena@microsoft.com&gt;<br><b>Sent:</b> 2026-09-13T14:00:00Z<br><b>Subject:</b> RE: generated fixture</div><div class=\"quotedMessage\"><div class=\"elementToProof\">Los identificadores indican que dos discos y una IP quedaron en un grupo administrado diferente al que se eliminó. Estoy verificando si pertenecen a nodos que fueron reemplazados antes de borrar el clúster. Enviaré la ruta exacta de cada recurso y confirmaré si existe alguna dependencia antes de recomendar su eliminación.</div></div></body></html>"
+            "content": "<html><head><meta charset=\"utf-8\"></head><body dir=\"ltr\"><div class=\"elementToProof\">Han pasado seis días desde esa respuesta y todavía no recibimos las rutas ni una confirmación de dependencias. Mientras tanto, los cargos continúan y el crédito restante bajó lo suficiente como para poner en riesgo las cargas de producción que sí deben permanecer activas. Ya compartimos la exportación completa, los identificadores y las fechas en dos ocasiones, así que volver a pedir la misma información no es una solución. Por favor, escale este caso con su supervisora y solicite que alguien con autoridad nos dé hoy un plan y una fecha de resolución.</div><div id=\"appendonsend\"></div><hr tabindex=\"-1\"><div id=\"divRplyFwdMsg\" dir=\"ltr\"><b>From:</b> Andrés Peña &lt;srgus@2sxtzc.onmicrosoft.com&gt;<br><b>Sent:</b> 2026-09-13T14:00:00Z<br><b>Subject:</b> RE: generated fixture</div><div class=\"quotedMessage\"><div class=\"elementToProof\">Los identificadores indican que dos discos y una IP quedaron en un grupo administrado diferente al que se eliminó. Estoy verificando si pertenecen a nodos que fueron reemplazados antes de borrar el clúster. Enviaré la ruta exacta de cada recurso y confirmaré si existe alguna dependencia antes de recomendar su eliminación.</div></div></body></html>"
           },
           "sender": {
             "emailAddress": {
@@ -1005,7 +1005,7 @@
             {
               "emailAddress": {
                 "name": "Andrés Peña",
-                "address": "andres.pena@microsoft.com"
+                "address": "srgus@2sxtzc.onmicrosoft.com"
               }
             }
           ],
@@ -1067,7 +1067,7 @@
             {
               "emailAddress": {
                 "name": "Teresa Ríos",
-                "address": "teresa.rios@microsoft.com"
+                "address": "srgus@2sxtzc.onmicrosoft.com"
               }
             }
           ],
@@ -1108,13 +1108,13 @@
           "sender": {
             "emailAddress": {
               "name": "Teresa Ríos",
-              "address": "teresa.rios@microsoft.com"
+              "address": "srgus@2sxtzc.onmicrosoft.com"
             }
           },
           "from": {
             "emailAddress": {
               "name": "Teresa Ríos",
-              "address": "teresa.rios@microsoft.com"
+              "address": "srgus@2sxtzc.onmicrosoft.com"
             }
           },
           "toRecipients": [
@@ -1157,7 +1157,7 @@
           "inferenceClassification": "focused",
           "body": {
             "contentType": "html",
-            "content": "<html><head><meta charset=\"utf-8\"></head><body dir=\"ltr\"><div class=\"elementToProof\">Ya cargamos cinco identificadores, el intervalo en UTC y una captura de las métricas. También incluimos el identificador de la suscripción para evitar otra ronda de preguntas. El acceso se detuvo, pero necesitamos saber qué identidad lo originó antes de volver a habilitar los respaldos. Por favor, escalen la investigación al equipo de seguridad; no estamos solicitando intervención de un gerente, sino una revisión especializada de los registros y recomendaciones para evitar que vuelva a ocurrir.</div><div id=\"appendonsend\"></div><hr tabindex=\"-1\"><div id=\"divRplyFwdMsg\" dir=\"ltr\"><b>From:</b> Teresa Ríos &lt;teresa.rios@microsoft.com&gt;<br><b>Sent:</b> 2026-09-08T18:00:00Z<br><b>Subject:</b> RE: generated fixture</div><div class=\"quotedMessage\"><div class=\"elementToProof\">Revisé los registros disponibles y las solicitudes usan autenticación de identidad administrada, no las claves que rotaron. Para conocer el recurso que posee esa identidad necesitamos correlacionar el identificador del token con los registros de la plataforma. Por favor, carguen de forma segura tres identificadores de solicitud y el intervalo exacto donde siguieron viendo tráfico.</div></div></body></html>"
+            "content": "<html><head><meta charset=\"utf-8\"></head><body dir=\"ltr\"><div class=\"elementToProof\">Ya cargamos cinco identificadores, el intervalo en UTC y una captura de las métricas. También incluimos el identificador de la suscripción para evitar otra ronda de preguntas. El acceso se detuvo, pero necesitamos saber qué identidad lo originó antes de volver a habilitar los respaldos. Por favor, escalen la investigación al equipo de seguridad; no estamos solicitando intervención de un gerente, sino una revisión especializada de los registros y recomendaciones para evitar que vuelva a ocurrir.</div><div id=\"appendonsend\"></div><hr tabindex=\"-1\"><div id=\"divRplyFwdMsg\" dir=\"ltr\"><b>From:</b> Teresa Ríos &lt;srgus@2sxtzc.onmicrosoft.com&gt;<br><b>Sent:</b> 2026-09-08T18:00:00Z<br><b>Subject:</b> RE: generated fixture</div><div class=\"quotedMessage\"><div class=\"elementToProof\">Revisé los registros disponibles y las solicitudes usan autenticación de identidad administrada, no las claves que rotaron. Para conocer el recurso que posee esa identidad necesitamos correlacionar el identificador del token con los registros de la plataforma. Por favor, carguen de forma segura tres identificadores de solicitud y el intervalo exacto donde siguieron viendo tráfico.</div></div></body></html>"
           },
           "sender": {
             "emailAddress": {
@@ -1175,7 +1175,7 @@
             {
               "emailAddress": {
                 "name": "Teresa Ríos",
-                "address": "teresa.rios@microsoft.com"
+                "address": "srgus@2sxtzc.onmicrosoft.com"
               }
             }
           ],
@@ -1237,7 +1237,7 @@
             {
               "emailAddress": {
                 "name": "Faye Ross",
-                "address": "faye.ross@microsoft.com"
+                "address": "srgus@2sxtzc.onmicrosoft.com"
               }
             }
           ],
@@ -1278,13 +1278,13 @@
           "sender": {
             "emailAddress": {
               "name": "Faye Ross",
-              "address": "faye.ross@microsoft.com"
+              "address": "srgus@2sxtzc.onmicrosoft.com"
             }
           },
           "from": {
             "emailAddress": {
               "name": "Faye Ross",
-              "address": "faye.ross@microsoft.com"
+              "address": "srgus@2sxtzc.onmicrosoft.com"
             }
           },
           "toRecipients": [
@@ -1327,7 +1327,7 @@
           "inferenceClassification": "focused",
           "body": {
             "contentType": "html",
-            "content": "<html><head><meta charset=\"utf-8\"></head><body dir=\"ltr\"><div class=\"elementToProof\">Understood. That behavior is acceptable because the legal entity and tax registration are correct, and accounts payable has confirmed that they can use the original document. Please send the informational copy when it is available, but there is no deadline and no further action is needed for this month&#x27;s payment. We will verify the address on the next invoice and reopen the case only if it still shows the old office.</div><div id=\"Signature\">Sam King<br>Director, Customer Escalation Management</div><div id=\"appendonsend\"></div><hr tabindex=\"-1\"><div id=\"divRplyFwdMsg\" dir=\"ltr\"><b>From:</b> Faye Ross &lt;faye.ross@microsoft.com&gt;<br><b>Sent:</b> 2026-09-09T16:00:00Z<br><b>Subject:</b> RE: generated fixture</div><div class=\"quotedMessage\"><div class=\"elementToProof\">Address changes apply to documents generated after the update and do not rewrite an invoice that has already been finalized. I requested a regenerated informational copy for your records, while the legally issued original will remain unchanged. The next invoice will use the new sold-to address automatically.</div></div></body></html>"
+            "content": "<html><head><meta charset=\"utf-8\"></head><body dir=\"ltr\"><div class=\"elementToProof\">Understood. That behavior is acceptable because the legal entity and tax registration are correct, and accounts payable has confirmed that they can use the original document. Please send the informational copy when it is available, but there is no deadline and no further action is needed for this month&#x27;s payment. We will verify the address on the next invoice and reopen the case only if it still shows the old office.</div><div id=\"Signature\">Sam King<br>Director, Customer Escalation Management</div><div id=\"appendonsend\"></div><hr tabindex=\"-1\"><div id=\"divRplyFwdMsg\" dir=\"ltr\"><b>From:</b> Faye Ross &lt;srgus@2sxtzc.onmicrosoft.com&gt;<br><b>Sent:</b> 2026-09-09T16:00:00Z<br><b>Subject:</b> RE: generated fixture</div><div class=\"quotedMessage\"><div class=\"elementToProof\">Address changes apply to documents generated after the update and do not rewrite an invoice that has already been finalized. I requested a regenerated informational copy for your records, while the legally issued original will remain unchanged. The next invoice will use the new sold-to address automatically.</div></div></body></html>"
           },
           "sender": {
             "emailAddress": {
@@ -1345,7 +1345,7 @@
             {
               "emailAddress": {
                 "name": "Faye Ross",
-                "address": "faye.ross@microsoft.com"
+                "address": "srgus@2sxtzc.onmicrosoft.com"
               }
             }
           ],

@@ -13,6 +13,7 @@ from escalation_engine.thread.extractors import (
     parse_received_datetime,
 )
 from escalation_engine.thread.selectors import (
+    ENGINEER_EMAILS_ENV_VAR,
     ENGINEER_ROLE,
     get_message_role,
     is_automatic_message,
@@ -23,6 +24,7 @@ from tests.analyzer_dataset import (
     load_fixture,
     sort_messages,
 )
+from tests.fixture_constants import FIXTURE_ENGINEER_EMAIL
 
 
 TEST_DIRECTORY = Path(__file__).parent
@@ -83,36 +85,52 @@ class AdditionalFixtureQualityTests(unittest.TestCase):
     def test_extracted_body_lengths_match_authored_expectations(self):
         for fixture_name, case_expectations in self.expectations.items():
             fixture = load_fixture(TEST_DIRECTORY / fixture_name)
+            engineer_emails = get_fixture_engineer_emails(fixture)
 
-            for request, case_expected in zip(fixture, case_expectations):
-                expected_events = case_expected["customerEvents"]
-                actual_events = []
+            self.assertEqual(
+                engineer_emails,
+                {FIXTURE_ENGINEER_EMAIL},
+                fixture_name,
+            )
 
-                for message in get_request_thread(request):
-                    sender = message["from"]["emailAddress"]["address"]
+            with patch.dict(
+                os.environ,
+                {ENGINEER_EMAILS_ENV_VAR: ",".join(engineer_emails)},
+                clear=False,
+            ):
+                for request, case_expected in zip(fixture, case_expectations):
+                    expected_events = case_expected["customerEvents"]
+                    actual_events = []
 
-                    if sender.endswith("@microsoft.com") or is_automatic_message(message):
-                        continue
+                    for message in get_request_thread(request):
+                        if (
+                            get_message_role(message) == ENGINEER_ROLE
+                            or is_automatic_message(message)
+                        ):
+                            continue
 
-                    content = get_message_content(message)
-                    actual_events.append(
-                        {
-                            "authoredCharacters": len(content.text),
-                            "authoredWords": len(content.text.split()),
-                        }
-                    )
+                        content = get_message_content(message)
+                        actual_events.append(
+                            {
+                                "authoredCharacters": len(content.text),
+                                "authoredWords": len(content.text.split()),
+                            }
+                        )
 
-                for actual, expected_event in zip(actual_events, expected_events):
-                    self.assertEqual(
-                        actual["authoredCharacters"],
-                        expected_event["authoredCharacters"],
-                        case_expected["key"],
-                    )
-                    self.assertEqual(
-                        actual["authoredWords"],
-                        expected_event["authoredWords"],
-                        case_expected["key"],
-                    )
+                    for actual, expected_event in zip(
+                        actual_events,
+                        expected_events,
+                    ):
+                        self.assertEqual(
+                            actual["authoredCharacters"],
+                            expected_event["authoredCharacters"],
+                            case_expected["key"],
+                        )
+                        self.assertEqual(
+                            actual["authoredWords"],
+                            expected_event["authoredWords"],
+                            case_expected["key"],
+                        )
 
     def test_profiles_create_materially_different_length_distributions(self):
         ranges = {}
@@ -155,7 +173,7 @@ class AdditionalFixtureKeywordContextTests(unittest.TestCase):
 
             with patch.dict(
                 os.environ,
-                {"ENGINEER_EMAILS": ",".join(sorted(engineer_emails))},
+                {ENGINEER_EMAILS_ENV_VAR: ",".join(sorted(engineer_emails))},
                 clear=False,
             ):
                 for request, case_expected in zip(fixture, case_expectations):
