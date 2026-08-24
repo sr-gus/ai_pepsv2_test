@@ -193,8 +193,32 @@ Changing escalation behavior should usually start there before changing pipeline
 Deployment environment:
 
 ```text
-ENGINEER_EMAILS=eng1@example.com,eng2@example.com
+ENGINEER_EMAILS=srgus@2sxtzc.onmicrosoft.com
 ```
+
+`ENGINEER_EMAILS` is the only supported role-classification setting. Define it
+as one Azure Function App setting whose value is a comma-separated list of
+complete email addresses. Do not use a JSON array, semicolons, domains, or
+wildcards. Matching is case-insensitive and surrounding whitespace is ignored;
+the canonical deployed form omits spaces:
+
+```text
+ENGINEER_EMAILS=srgus@2sxtzc.onmicrosoft.com,engineer2@contoso.com
+```
+
+In the Azure portal, use `ENGINEER_EMAILS` as the setting name and enter only
+the value, without wrapping quotes. The equivalent Azure CLI command is:
+
+```powershell
+az functionapp config appsettings set `
+  --resource-group "<resource-group>" `
+  --name "<function-app-name>" `
+  --settings "ENGINEER_EMAILS=srgus@2sxtzc.onmicrosoft.com,engineer2@contoso.com"
+```
+
+Include every address or alias from which an engineer can send replies. A
+sender not listed in `ENGINEER_EMAILS` is classified as a customer; domains
+are never used to infer the role.
 
 ## Local Checks
 
@@ -221,7 +245,7 @@ Inspect a Power Automate payload directly:
 ```powershell
 python -m tests.inspect_keyword_timeline `
   --payload "C:\path\to\payload.json" `
-  --engineer-email "engineer@example.com" `
+  --engineer-email "srgus@2sxtzc.onmicrosoft.com" `
   --pause
 ```
 

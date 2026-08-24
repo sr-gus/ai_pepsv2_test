@@ -8,6 +8,7 @@ from escalation_engine.analyzers.frequency import analyze_frequency
 from escalation_engine.thread.extractors import parse_received_datetime
 from escalation_engine.thread.selectors import (
     CUSTOMER_ROLE,
+    ENGINEER_EMAILS_ENV_VAR,
     ENGINEER_ROLE,
     get_message_role,
     is_automatic_message,
@@ -79,7 +80,7 @@ class FrequencyDatasetRegressionTests(unittest.TestCase):
 
         with patch.dict(
             os.environ,
-            {"ENGINEER_EMAILS": ",".join(self.engineer_emails)},
+            {ENGINEER_EMAILS_ENV_VAR: ",".join(self.engineer_emails)},
             clear=False
         ):
             for case_number, request in enumerate(self.fixture, start=1):
@@ -141,7 +142,7 @@ class FrequencyDatasetRegressionTests(unittest.TestCase):
     def test_full_thread_matches_the_last_incremental_message(self):
         with patch.dict(
             os.environ,
-            {"ENGINEER_EMAILS": ",".join(self.engineer_emails)},
+            {ENGINEER_EMAILS_ENV_VAR: ",".join(self.engineer_emails)},
             clear=False
         ):
             for case_number, request in enumerate(self.fixture, start=1):
@@ -194,7 +195,7 @@ class FrequencyBehaviorTests(unittest.TestCase):
     def analyze(self, messages, now_offset):
         with patch.dict(
             os.environ,
-            {"ENGINEER_EMAILS": "engineer@example.com"},
+            {ENGINEER_EMAILS_ENV_VAR: "engineer@example.com"},
             clear=False
         ):
             return asyncio.run(analyze_frequency(

@@ -7,6 +7,7 @@ from unittest.mock import patch
 from escalation_engine.analyzers.frequency import analyze_frequency
 from escalation_engine.service import process_thread_escalation
 from escalation_engine.thread.selectors import (
+    ENGINEER_EMAILS_ENV_VAR,
     get_latest_message,
     get_message_role,
 )
@@ -124,8 +125,29 @@ class RuntimeStabilityTests(unittest.TestCase):
 
         with patch.dict(
             os.environ,
-            {"ENGINEER_EMAILS": "engineer@example.com"},
+            {ENGINEER_EMAILS_ENV_VAR: "engineer@example.com"},
             clear=False
+        ):
+            self.assertEqual(get_message_role(message), "engineer")
+
+    def test_sender_role_supports_multiple_comma_separated_addresses(self):
+        message = {
+            "from": {
+                "emailAddress": {
+                    "address": "Second.Engineer@Example.com"
+                }
+            }
+        }
+
+        with patch.dict(
+            os.environ,
+            {
+                ENGINEER_EMAILS_ENV_VAR: (
+                    "first.engineer@example.com, "
+                    "second.engineer@example.com,third.engineer@example.com"
+                )
+            },
+            clear=False,
         ):
             self.assertEqual(get_message_role(message), "engineer")
 
@@ -138,7 +160,11 @@ class RuntimeStabilityTests(unittest.TestCase):
             }
         }
 
-        with patch.dict(os.environ, {"ENGINEER_EMAILS": ""}, clear=False):
+        with patch.dict(
+            os.environ,
+            {ENGINEER_EMAILS_ENV_VAR: ""},
+            clear=False,
+        ):
             self.assertEqual(get_message_role(message), "customer")
 
     def test_frequency_uses_shared_sender_roles(self):
@@ -165,7 +191,7 @@ class RuntimeStabilityTests(unittest.TestCase):
 
         with patch.dict(
             os.environ,
-            {"ENGINEER_EMAILS": "engineer@example.com"},
+            {ENGINEER_EMAILS_ENV_VAR: "engineer@example.com"},
             clear=False
         ):
             result = asyncio.run(

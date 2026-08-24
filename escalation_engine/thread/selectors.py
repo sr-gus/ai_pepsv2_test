@@ -17,6 +17,7 @@ logger = logging.getLogger(__name__)
 
 CUSTOMER_ROLE = "customer"
 ENGINEER_ROLE = "engineer"
+ENGINEER_EMAILS_ENV_VAR = "ENGINEER_EMAILS"
 
 AUTO_REPLY_SUBJECT_KEYWORDS = (
     "out of office",
@@ -71,8 +72,12 @@ def get_engineer_emails() -> set[str]:
 
     Configure with a comma-separated ENGINEER_EMAILS environment variable.
     Example: ENGINEER_EMAILS=eng1@example.com,eng2@example.com
+
+    The setting name is case-sensitive on platforms that expose environment
+    variables with case-sensitive semantics. Addresses are comma-separated;
+    matching itself is case-insensitive and ignores surrounding whitespace.
     """
-    raw_value = os.getenv("ENGINEER_EMAILS", "")
+    raw_value = os.getenv(ENGINEER_EMAILS_ENV_VAR, "")
 
     return {
         email.strip().lower()

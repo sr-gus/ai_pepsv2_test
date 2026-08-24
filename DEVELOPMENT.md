@@ -17,9 +17,21 @@ En PowerShell:
 python -m venv .venv
 .\.venv\Scripts\Activate.ps1
 python -m pip install -r requirements.txt
-$env:ENGINEER_EMAILS="eng1@example.com,eng2@example.com"
+$env:ENGINEER_EMAILS="srgus@2sxtzc.onmicrosoft.com"
 func start
 ```
+
+Para varios ingenieros se conserva una sola variable, con direcciones
+completas separadas por comas y sin espacios:
+
+```powershell
+$env:ENGINEER_EMAILS="srgus@2sxtzc.onmicrosoft.com,engineer2@contoso.com"
+```
+
+En Azure se debe crear una única App Setting llamada exactamente
+`ENGINEER_EMAILS`. El valor no debe ser un arreglo JSON ni contener dominios o
+comodines; cada alias capaz de enviar respuestas debe aparecer como una
+dirección completa.
 
 La Function queda expuesta en la ruta `threadEscalationEngine`. El nivel de
 autenticación configurado es `FUNCTION`.

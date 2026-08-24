@@ -6,6 +6,7 @@ from unittest.mock import patch
 from escalation_engine.analyzers.sentimental import analyze_sentimental
 from escalation_engine.thread.selectors import (
     CUSTOMER_ROLE,
+    ENGINEER_EMAILS_ENV_VAR,
     get_message_role,
     is_automatic_message,
 )
@@ -37,7 +38,7 @@ class SentimentDatasetRegressionTests(unittest.TestCase):
 
         with patch.dict(
             os.environ,
-            {"ENGINEER_EMAILS": ",".join(self.engineer_emails)},
+            {ENGINEER_EMAILS_ENV_VAR: ",".join(self.engineer_emails)},
             clear=False
         ):
             for case_number, request in enumerate(self.fixture, start=1):
@@ -94,7 +95,7 @@ class SentimentDatasetRegressionTests(unittest.TestCase):
     def test_full_thread_matches_the_last_incremental_message(self):
         with patch.dict(
             os.environ,
-            {"ENGINEER_EMAILS": ",".join(self.engineer_emails)},
+            {ENGINEER_EMAILS_ENV_VAR: ",".join(self.engineer_emails)},
             clear=False
         ):
             for case_number, request in enumerate(self.fixture, start=1):
@@ -129,7 +130,7 @@ class SentimentDatasetRegressionTests(unittest.TestCase):
 
         with patch.dict(
             os.environ,
-            {"ENGINEER_EMAILS": ",".join(self.engineer_emails)},
+            {ENGINEER_EMAILS_ENV_VAR: ",".join(self.engineer_emails)},
             clear=False
         ):
             for case_number, request in enumerate(self.fixture, start=1):

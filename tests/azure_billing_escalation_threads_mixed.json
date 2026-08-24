@@ -47,7 +47,7 @@
             {
               "emailAddress": {
                 "name": "Tom Becker",
-                "address": "tom.becker@microsoft.com"
+                "address": "srgus@2sxtzc.onmicrosoft.com"
               }
             }
           ],
@@ -88,13 +88,13 @@
           "sender": {
             "emailAddress": {
               "name": "Tom Becker",
-              "address": "tom.becker@microsoft.com"
+              "address": "srgus@2sxtzc.onmicrosoft.com"
             }
           },
           "from": {
             "emailAddress": {
               "name": "Tom Becker",
-              "address": "tom.becker@microsoft.com"
+              "address": "srgus@2sxtzc.onmicrosoft.com"
             }
           },
           "toRecipients": [
@@ -137,7 +137,7 @@
           "inferenceClassification": "focused",
           "body": {
             "contentType": "html",
-            "content": "<html><head><meta charset=\"utf-8\"></head><body dir=\"ltr\"><div class=\"elementToProof\">Checking in because finance closes the month tomorrow. Do you have a timeline?</div><div id=\"appendonsend\"></div><hr tabindex=\"-1\"><div id=\"divRplyFwdMsg\" dir=\"ltr\"><b>From:</b> Tom Becker &lt;tom.becker@microsoft.com&gt;<br><b>Sent:</b> 2026-09-03T12:00:00Z<br><b>Subject:</b> RE: generated fixture</div><div class=\"quotedMessage\"><div class=\"elementToProof\">I can see the old enrollment reference. I will compare the transfer records and confirm whether a backend correction is required.</div></div></body></html>"
+            "content": "<html><head><meta charset=\"utf-8\"></head><body dir=\"ltr\"><div class=\"elementToProof\">Checking in because finance closes the month tomorrow. Do you have a timeline?</div><div id=\"appendonsend\"></div><hr tabindex=\"-1\"><div id=\"divRplyFwdMsg\" dir=\"ltr\"><b>From:</b> Tom Becker &lt;srgus@2sxtzc.onmicrosoft.com&gt;<br><b>Sent:</b> 2026-09-03T12:00:00Z<br><b>Subject:</b> RE: generated fixture</div><div class=\"quotedMessage\"><div class=\"elementToProof\">I can see the old enrollment reference. I will compare the transfer records and confirm whether a backend correction is required.</div></div></body></html>"
           },
           "sender": {
             "emailAddress": {
@@ -155,7 +155,7 @@
             {
               "emailAddress": {
                 "name": "Tom Becker",
-                "address": "tom.becker@microsoft.com"
+                "address": "srgus@2sxtzc.onmicrosoft.com"
               }
             }
           ],
@@ -196,13 +196,13 @@
           "sender": {
             "emailAddress": {
               "name": "Tom Becker",
-              "address": "tom.becker@microsoft.com"
+              "address": "srgus@2sxtzc.onmicrosoft.com"
             }
           },
           "from": {
             "emailAddress": {
               "name": "Tom Becker",
-              "address": "tom.becker@microsoft.com"
+              "address": "srgus@2sxtzc.onmicrosoft.com"
             }
           },
           "toRecipients": [
@@ -245,7 +245,7 @@
           "inferenceClassification": "focused",
           "body": {
             "contentType": "html",
-            "content": "<html><head><meta charset=\"utf-8\"></head><body dir=\"ltr\"><div class=\"elementToProof\">Two more business days passed and there is still no timeline or correction. The committed spend is being reported in the wrong entity and our controller is asking why this remains unresolved.</div><div id=\"appendonsend\"></div><hr tabindex=\"-1\"><div id=\"divRplyFwdMsg\" dir=\"ltr\"><b>From:</b> Tom Becker &lt;tom.becker@microsoft.com&gt;<br><b>Sent:</b> 2026-09-05T19:00:00Z<br><b>Subject:</b> RE: generated fixture</div><div class=\"quotedMessage\"><div class=\"elementToProof\">The transfer record is with the commerce operations queue. I expect their review within two business days.</div></div></body></html>"
+            "content": "<html><head><meta charset=\"utf-8\"></head><body dir=\"ltr\"><div class=\"elementToProof\">Two more business days passed and there is still no timeline or correction. The committed spend is being reported in the wrong entity and our controller is asking why this remains unresolved.</div><div id=\"appendonsend\"></div><hr tabindex=\"-1\"><div id=\"divRplyFwdMsg\" dir=\"ltr\"><b>From:</b> Tom Becker &lt;srgus@2sxtzc.onmicrosoft.com&gt;<br><b>Sent:</b> 2026-09-05T19:00:00Z<br><b>Subject:</b> RE: generated fixture</div><div class=\"quotedMessage\"><div class=\"elementToProof\">The transfer record is with the commerce operations queue. I expect their review within two business days.</div></div></body></html>"
           },
           "sender": {
             "emailAddress": {
@@ -263,7 +263,7 @@
             {
               "emailAddress": {
                 "name": "Tom Becker",
-                "address": "tom.becker@microsoft.com"
+                "address": "srgus@2sxtzc.onmicrosoft.com"
               }
             }
           ],
@@ -325,7 +325,7 @@
             {
               "emailAddress": {
                 "name": "Mina Fox",
-                "address": "mina.fox@microsoft.com"
+                "address": "srgus@2sxtzc.onmicrosoft.com"
               }
             }
           ],
@@ -366,13 +366,13 @@
           "sender": {
             "emailAddress": {
               "name": "Mina Fox",
-              "address": "mina.fox@microsoft.com"
+              "address": "srgus@2sxtzc.onmicrosoft.com"
             }
           },
           "from": {
             "emailAddress": {
               "name": "Mina Fox",
-              "address": "mina.fox@microsoft.com"
+              "address": "srgus@2sxtzc.onmicrosoft.com"
             }
           },
           "toRecipients": [
@@ -415,7 +415,7 @@
           "inferenceClassification": "focused",
           "body": {
             "contentType": "html",
-            "content": "<html><head><meta charset=\"utf-8\"></head><body dir=\"ltr\"><div class=\"elementToProof\">Thank you for checking. Given that the reservation is untouched and the amount is significant, could this case be escalated?</div><div id=\"appendonsend\"></div><hr tabindex=\"-1\"><div id=\"divRplyFwdMsg\" dir=\"ltr\"><b>From:</b> Mina Fox &lt;mina.fox@microsoft.com&gt;<br><b>Sent:</b> 2026-09-04T13:00:00Z<br><b>Subject:</b> RE: generated fixture</div><div class=\"quotedMessage\"><div class=\"elementToProof\">The standard self-service exchange window is closed for this offer. I am checking whether the unused purchase qualifies for a manual review.</div></div></body></html>"
+            "content": "<html><head><meta charset=\"utf-8\"></head><body dir=\"ltr\"><div class=\"elementToProof\">Thank you for checking. Given that the reservation is untouched and the amount is significant, could this case be escalated?</div><div id=\"appendonsend\"></div><hr tabindex=\"-1\"><div id=\"divRplyFwdMsg\" dir=\"ltr\"><b>From:</b> Mina Fox &lt;srgus@2sxtzc.onmicrosoft.com&gt;<br><b>Sent:</b> 2026-09-04T13:00:00Z<br><b>Subject:</b> RE: generated fixture</div><div class=\"quotedMessage\"><div class=\"elementToProof\">The standard self-service exchange window is closed for this offer. I am checking whether the unused purchase qualifies for a manual review.</div></div></body></html>"
           },
           "sender": {
             "emailAddress": {
@@ -433,7 +433,7 @@
             {
               "emailAddress": {
                 "name": "Mina Fox",
-                "address": "mina.fox@microsoft.com"
+                "address": "srgus@2sxtzc.onmicrosoft.com"
               }
             }
           ],
@@ -495,7 +495,7 @@
             {
               "emailAddress": {
                 "name": "Raj Patel",
-                "address": "raj.patel@microsoft.com"
+                "address": "srgus@2sxtzc.onmicrosoft.com"
               }
             }
           ],
@@ -536,13 +536,13 @@
           "sender": {
             "emailAddress": {
               "name": "Raj Patel",
-              "address": "raj.patel@microsoft.com"
+              "address": "srgus@2sxtzc.onmicrosoft.com"
             }
           },
           "from": {
             "emailAddress": {
               "name": "Raj Patel",
-              "address": "raj.patel@microsoft.com"
+              "address": "srgus@2sxtzc.onmicrosoft.com"
             }
           },
           "toRecipients": [
@@ -585,7 +585,7 @@
           "inferenceClassification": "focused",
           "body": {
             "contentType": "html",
-            "content": "<html><head><meta charset=\"utf-8\"></head><body dir=\"ltr\"><div class=\"elementToProof\">It belonged to a former contractor and should no longer have access. Please escalate this to the security team so they can validate whether the credential was reused.</div><div id=\"appendonsend\"></div><hr tabindex=\"-1\"><div id=\"divRplyFwdMsg\" dir=\"ltr\"><b>From:</b> Raj Patel &lt;raj.patel@microsoft.com&gt;<br><b>Sent:</b> 2026-09-04T15:00:00Z<br><b>Subject:</b> RE: generated fixture</div><div class=\"quotedMessage\"><div class=\"elementToProof\">I have placed the invoice item under review. Please confirm whether the object ID belonged to an employee or service principal.</div></div></body></html>"
+            "content": "<html><head><meta charset=\"utf-8\"></head><body dir=\"ltr\"><div class=\"elementToProof\">It belonged to a former contractor and should no longer have access. Please escalate this to the security team so they can validate whether the credential was reused.</div><div id=\"appendonsend\"></div><hr tabindex=\"-1\"><div id=\"divRplyFwdMsg\" dir=\"ltr\"><b>From:</b> Raj Patel &lt;srgus@2sxtzc.onmicrosoft.com&gt;<br><b>Sent:</b> 2026-09-04T15:00:00Z<br><b>Subject:</b> RE: generated fixture</div><div class=\"quotedMessage\"><div class=\"elementToProof\">I have placed the invoice item under review. Please confirm whether the object ID belonged to an employee or service principal.</div></div></body></html>"
           },
           "sender": {
             "emailAddress": {
@@ -603,7 +603,7 @@
             {
               "emailAddress": {
                 "name": "Raj Patel",
-                "address": "raj.patel@microsoft.com"
+                "address": "srgus@2sxtzc.onmicrosoft.com"
               }
             }
           ],
@@ -665,7 +665,7 @@
             {
               "emailAddress": {
                 "name": "June Park",
-                "address": "june.park@microsoft.com"
+                "address": "srgus@2sxtzc.onmicrosoft.com"
               }
             }
           ],
@@ -706,13 +706,13 @@
           "sender": {
             "emailAddress": {
               "name": "June Park",
-              "address": "june.park@microsoft.com"
+              "address": "srgus@2sxtzc.onmicrosoft.com"
             }
           },
           "from": {
             "emailAddress": {
               "name": "June Park",
-              "address": "june.park@microsoft.com"
+              "address": "srgus@2sxtzc.onmicrosoft.com"
             }
           },
           "toRecipients": [
@@ -755,7 +755,7 @@
           "inferenceClassification": "focused",
           "body": {
             "contentType": "html",
-            "content": "<html><head><meta charset=\"utf-8\"></head><body dir=\"ltr\"><div class=\"elementToProof\">I am currently out of the office and will return tomorrow.</div><div id=\"appendonsend\"></div><hr tabindex=\"-1\"><div id=\"divRplyFwdMsg\" dir=\"ltr\"><b>From:</b> June Park &lt;june.park@microsoft.com&gt;<br><b>Sent:</b> 2026-09-05T18:00:00Z<br><b>Subject:</b> RE: generated fixture</div><div class=\"quotedMessage\"><div class=\"elementToProof\">The balance is cleared. I have started a manual entitlement refresh.</div></div></body></html>"
+            "content": "<html><head><meta charset=\"utf-8\"></head><body dir=\"ltr\"><div class=\"elementToProof\">I am currently out of the office and will return tomorrow.</div><div id=\"appendonsend\"></div><hr tabindex=\"-1\"><div id=\"divRplyFwdMsg\" dir=\"ltr\"><b>From:</b> June Park &lt;srgus@2sxtzc.onmicrosoft.com&gt;<br><b>Sent:</b> 2026-09-05T18:00:00Z<br><b>Subject:</b> RE: generated fixture</div><div class=\"quotedMessage\"><div class=\"elementToProof\">The balance is cleared. I have started a manual entitlement refresh.</div></div></body></html>"
           },
           "sender": {
             "emailAddress": {
@@ -773,7 +773,7 @@
             {
               "emailAddress": {
                 "name": "June Park",
-                "address": "june.park@microsoft.com"
+                "address": "srgus@2sxtzc.onmicrosoft.com"
               }
             }
           ],
@@ -837,7 +837,7 @@
             {
               "emailAddress": {
                 "name": "June Park",
-                "address": "june.park@microsoft.com"
+                "address": "srgus@2sxtzc.onmicrosoft.com"
               }
             }
           ],
@@ -899,7 +899,7 @@
             {
               "emailAddress": {
                 "name": "Leo Grant",
-                "address": "leo.grant@microsoft.com"
+                "address": "srgus@2sxtzc.onmicrosoft.com"
               }
             }
           ],
@@ -940,13 +940,13 @@
           "sender": {
             "emailAddress": {
               "name": "Leo Grant",
-              "address": "leo.grant@microsoft.com"
+              "address": "srgus@2sxtzc.onmicrosoft.com"
             }
           },
           "from": {
             "emailAddress": {
               "name": "Leo Grant",
-              "address": "leo.grant@microsoft.com"
+              "address": "srgus@2sxtzc.onmicrosoft.com"
             }
           },
           "toRecipients": [
@@ -989,7 +989,7 @@
           "inferenceClassification": "focused",
           "body": {
             "contentType": "html",
-            "content": "<html><head><meta charset=\"utf-8\"></head><body dir=\"ltr\"><div class=\"elementToProof\">Thanks for escalating it. The corrected invoice is now visible and the tax line has been removed.</div><div id=\"appendonsend\"></div><hr tabindex=\"-1\"><div id=\"divRplyFwdMsg\" dir=\"ltr\"><b>From:</b> Leo Grant &lt;leo.grant@microsoft.com&gt;<br><b>Sent:</b> 2026-09-06T20:00:00Z<br><b>Subject:</b> RE: generated fixture</div><div class=\"quotedMessage\"><div class=\"elementToProof\">The certificate is valid. I escalated the effective-date mismatch to the tax operations team and they corrected the account record.</div></div></body></html>"
+            "content": "<html><head><meta charset=\"utf-8\"></head><body dir=\"ltr\"><div class=\"elementToProof\">Thanks for escalating it. The corrected invoice is now visible and the tax line has been removed.</div><div id=\"appendonsend\"></div><hr tabindex=\"-1\"><div id=\"divRplyFwdMsg\" dir=\"ltr\"><b>From:</b> Leo Grant &lt;srgus@2sxtzc.onmicrosoft.com&gt;<br><b>Sent:</b> 2026-09-06T20:00:00Z<br><b>Subject:</b> RE: generated fixture</div><div class=\"quotedMessage\"><div class=\"elementToProof\">The certificate is valid. I escalated the effective-date mismatch to the tax operations team and they corrected the account record.</div></div></body></html>"
           },
           "sender": {
             "emailAddress": {
@@ -1007,7 +1007,7 @@
             {
               "emailAddress": {
                 "name": "Leo Grant",
-                "address": "leo.grant@microsoft.com"
+                "address": "srgus@2sxtzc.onmicrosoft.com"
               }
             }
           ],
@@ -1069,7 +1069,7 @@
             {
               "emailAddress": {
                 "name": "Hugo Díaz",
-                "address": "hugo.diaz@microsoft.com"
+                "address": "srgus@2sxtzc.onmicrosoft.com"
               }
             }
           ],
@@ -1110,13 +1110,13 @@
           "sender": {
             "emailAddress": {
               "name": "Hugo Díaz",
-              "address": "hugo.diaz@microsoft.com"
+              "address": "srgus@2sxtzc.onmicrosoft.com"
             }
           },
           "from": {
             "emailAddress": {
               "name": "Hugo Díaz",
-              "address": "hugo.diaz@microsoft.com"
+              "address": "srgus@2sxtzc.onmicrosoft.com"
             }
           },
           "toRecipients": [
@@ -1159,7 +1159,7 @@
           "inferenceClassification": "focused",
           "body": {
             "contentType": "html",
-            "content": "<html><head><meta charset=\"utf-8\"></head><body dir=\"ltr\"><div class=\"elementToProof\">Ya envié la fecha exacta y los identificadores de los recursos dos veces. Necesito hablar con su gerente porque seguimos recibiendo la misma explicación sin una corrección.</div><div id=\"appendonsend\"></div><hr tabindex=\"-1\"><div id=\"divRplyFwdMsg\" dir=\"ltr\"><b>From:</b> Hugo Díaz &lt;hugo.diaz@microsoft.com&gt;<br><b>Sent:</b> 2026-09-09T15:00:00Z<br><b>Subject:</b> RE: generated fixture</div><div class=\"quotedMessage\"><div class=\"elementToProof\">La suscripción está cancelada. Revisaré si los cargos corresponden a uso procesado con retraso o a un error de cierre.</div></div></body></html>"
+            "content": "<html><head><meta charset=\"utf-8\"></head><body dir=\"ltr\"><div class=\"elementToProof\">Ya envié la fecha exacta y los identificadores de los recursos dos veces. Necesito hablar con su gerente porque seguimos recibiendo la misma explicación sin una corrección.</div><div id=\"appendonsend\"></div><hr tabindex=\"-1\"><div id=\"divRplyFwdMsg\" dir=\"ltr\"><b>From:</b> Hugo Díaz &lt;srgus@2sxtzc.onmicrosoft.com&gt;<br><b>Sent:</b> 2026-09-09T15:00:00Z<br><b>Subject:</b> RE: generated fixture</div><div class=\"quotedMessage\"><div class=\"elementToProof\">La suscripción está cancelada. Revisaré si los cargos corresponden a uso procesado con retraso o a un error de cierre.</div></div></body></html>"
           },
           "sender": {
             "emailAddress": {
@@ -1177,7 +1177,7 @@
             {
               "emailAddress": {
                 "name": "Hugo Díaz",
-                "address": "hugo.diaz@microsoft.com"
+                "address": "srgus@2sxtzc.onmicrosoft.com"
               }
             }
           ],
@@ -1239,7 +1239,7 @@
             {
               "emailAddress": {
                 "name": "Clara Nieto",
-                "address": "clara.nieto@microsoft.com"
+                "address": "srgus@2sxtzc.onmicrosoft.com"
               }
             }
           ],
@@ -1280,13 +1280,13 @@
           "sender": {
             "emailAddress": {
               "name": "Clara Nieto",
-              "address": "clara.nieto@microsoft.com"
+              "address": "srgus@2sxtzc.onmicrosoft.com"
             }
           },
           "from": {
             "emailAddress": {
               "name": "Clara Nieto",
-              "address": "clara.nieto@microsoft.com"
+              "address": "srgus@2sxtzc.onmicrosoft.com"
             }
           },
           "toRecipients": [
@@ -1329,7 +1329,7 @@
           "inferenceClassification": "focused",
           "body": {
             "contentType": "html",
-            "content": "<html><head><meta charset=\"utf-8\"></head><body dir=\"ltr\"><div class=\"elementToProof\">Necesitamos cerrar el mes esta semana. Si no recibimos una corrección antes del viernes, vamos a escalar el caso.</div><div id=\"appendonsend\"></div><hr tabindex=\"-1\"><div id=\"divRplyFwdMsg\" dir=\"ltr\"><b>From:</b> Clara Nieto &lt;clara.nieto@microsoft.com&gt;<br><b>Sent:</b> 2026-09-09T14:00:00Z<br><b>Subject:</b> RE: generated fixture</div><div class=\"quotedMessage\"><div class=\"elementToProof\">La oferta está activa. Estoy verificando por qué el beneficio no se aplicó al perfil de facturación.</div></div></body></html>"
+            "content": "<html><head><meta charset=\"utf-8\"></head><body dir=\"ltr\"><div class=\"elementToProof\">Necesitamos cerrar el mes esta semana. Si no recibimos una corrección antes del viernes, vamos a escalar el caso.</div><div id=\"appendonsend\"></div><hr tabindex=\"-1\"><div id=\"divRplyFwdMsg\" dir=\"ltr\"><b>From:</b> Clara Nieto &lt;srgus@2sxtzc.onmicrosoft.com&gt;<br><b>Sent:</b> 2026-09-09T14:00:00Z<br><b>Subject:</b> RE: generated fixture</div><div class=\"quotedMessage\"><div class=\"elementToProof\">La oferta está activa. Estoy verificando por qué el beneficio no se aplicó al perfil de facturación.</div></div></body></html>"
           },
           "sender": {
             "emailAddress": {
@@ -1347,7 +1347,7 @@
             {
               "emailAddress": {
                 "name": "Clara Nieto",
-                "address": "clara.nieto@microsoft.com"
+                "address": "srgus@2sxtzc.onmicrosoft.com"
               }
             }
           ],
@@ -1409,7 +1409,7 @@
             {
               "emailAddress": {
                 "name": "Ada Young",
-                "address": "ada.young@microsoft.com"
+                "address": "srgus@2sxtzc.onmicrosoft.com"
               }
             }
           ],
@@ -1450,13 +1450,13 @@
           "sender": {
             "emailAddress": {
               "name": "Ada Young",
-              "address": "ada.young@microsoft.com"
+              "address": "srgus@2sxtzc.onmicrosoft.com"
             }
           },
           "from": {
             "emailAddress": {
               "name": "Ada Young",
-              "address": "ada.young@microsoft.com"
+              "address": "srgus@2sxtzc.onmicrosoft.com"
             }
           },
           "toRecipients": [
@@ -1499,7 +1499,7 @@
           "inferenceClassification": "focused",
           "body": {
             "contentType": "html",
-            "content": "<html><head><meta charset=\"utf-8\"></head><body dir=\"ltr\"><div class=\"elementToProof\">That fixed it. We do not need to escalate this; both test alerts reached finance successfully.</div><div id=\"appendonsend\"></div><hr tabindex=\"-1\"><div id=\"divRplyFwdMsg\" dir=\"ltr\"><b>From:</b> Ada Young &lt;ada.young@microsoft.com&gt;<br><b>Sent:</b> 2026-09-09T12:00:00Z<br><b>Subject:</b> RE: generated fixture</div><div class=\"quotedMessage\"><div class=\"elementToProof\">The distribution list was configured as an ARM role receiver, which only resolves individual role assignments. I changed it to an email receiver.</div></div></body></html>"
+            "content": "<html><head><meta charset=\"utf-8\"></head><body dir=\"ltr\"><div class=\"elementToProof\">That fixed it. We do not need to escalate this; both test alerts reached finance successfully.</div><div id=\"appendonsend\"></div><hr tabindex=\"-1\"><div id=\"divRplyFwdMsg\" dir=\"ltr\"><b>From:</b> Ada Young &lt;srgus@2sxtzc.onmicrosoft.com&gt;<br><b>Sent:</b> 2026-09-09T12:00:00Z<br><b>Subject:</b> RE: generated fixture</div><div class=\"quotedMessage\"><div class=\"elementToProof\">The distribution list was configured as an ARM role receiver, which only resolves individual role assignments. I changed it to an email receiver.</div></div></body></html>"
           },
           "sender": {
             "emailAddress": {
@@ -1517,7 +1517,7 @@
             {
               "emailAddress": {
                 "name": "Ada Young",
-                "address": "ada.young@microsoft.com"
+                "address": "srgus@2sxtzc.onmicrosoft.com"
               }
             }
           ],
