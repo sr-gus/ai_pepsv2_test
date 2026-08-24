@@ -1,3 +1,4 @@
+import json
 import logging
 from typing import Any, Optional
 from datetime import datetime, timezone
@@ -43,14 +44,29 @@ UNANSWERED_BURST_MIN_MESSAGES = 2
 GHOSTED_LOW_HOURS = 4.0
 GHOSTED_MEDIUM_HOURS = 24.0
 GHOSTED_HIGH_HOURS = 72.0
+
+# Beyond "critical," a thread that's been silently open for a week or more
+# is a distinct failure mode worth flagging on its own (e.g. lost/abandoned
+# tickets) -- this doesn't change scoring (ghosted_component is still
+# capped at CRITICAL_RESPONSE_DELAY_HOURS), it's purely informational.
+STALE_THREAD_HOURS = 24.0 * 7  # 168h / 7 days
  
 LONG_RESPONSE_DELAY_HOURS = GHOSTED_MEDIUM_HOURS
 CRITICAL_RESPONSE_DELAY_HOURS = GHOSTED_HIGH_HOURS
  
 # Trend detection: compare the average engineer-response-time in the first
 # half of the thread vs. the second half.
-TREND_MIN_RESPONSE_SAMPLES = 4  # need at least this many response times total
+TREND_MIN_RESPONSE_SAMPLES = 4  # sample count for FULL-confidence trend signal
+TREND_MIN_SAMPLES_FLOOR = 2     # minimum samples needed to compute any trend at all
 TREND_CHANGE_RATIO = 1.25       # >=25% slower/faster counts as a trend
+
+# When a customer message has been sitting unanswered past LONG_RESPONSE_DELAY_HOURS,
+# the thread is forced to label "increasing" regardless of historical averages (see
+# the override in analyze_frequency). This floor scales the trend_signal used in the
+# score itself to match that label, ramping from 0 at LONG_RESPONSE_DELAY_HOURS up to
+# 1.0 at CRITICAL_RESPONSE_DELAY_HOURS, instead of leaving the score's trend
+# component at 0 while the displayed label says "increasing."
+GHOSTED_TREND_OVERRIDE_RANGE_HOURS = CRITICAL_RESPONSE_DELAY_HOURS - LONG_RESPONSE_DELAY_HOURS
  
 # Score weights (sum to 1.0)
 SCORE_WEIGHT_GHOSTED = 0.35
@@ -142,12 +158,21 @@ def _response_times_hours(timestamped: list[tuple[datetime, str, Any]]) -> list[
 
 def _determine_trend(timestamped: list[tuple[datetime, str, Any]]) -> tuple[str, float]:
     """Compare average engineer response time in the first vs. second half
-    of the thread."""
+    of the thread.
+
+    Full confidence (signal used as-is) requires TREND_MIN_RESPONSE_SAMPLES
+    pairs. With fewer samples (but at least TREND_MIN_SAMPLES_FLOOR), the
+    trend is still computed but scaled down by how little data backs it --
+    e.g. 3 samples out of a full-confidence 4 contributes 75% of the signal
+    it otherwise would, rather than being discarded to 0.0. Below the floor
+    there simply isn't enough data to say anything, so it stays neutral.
+    """
     response_times = _response_times_hours(timestamped)
-    if len(response_times) < TREND_MIN_RESPONSE_SAMPLES:
+    sample_count = len(response_times)
+    if sample_count < TREND_MIN_SAMPLES_FLOOR:
         return "neutral", 0.0
  
-    mid = len(response_times) // 2
+    mid = sample_count // 2
     first_half, second_half = response_times[:mid], response_times[mid:]
     avg_first = sum(first_half) / len(first_half)
     avg_second = sum(second_half) / len(second_half)
@@ -157,10 +182,12 @@ def _determine_trend(timestamped: list[tuple[datetime, str, Any]]) -> tuple[str,
     else:
         ratio = avg_second / avg_first
  
+    confidence = min(sample_count / TREND_MIN_RESPONSE_SAMPLES, 1.0)
+ 
     if ratio >= TREND_CHANGE_RATIO:
-        return "increasing", min(ratio - 1, 1.0)
+        return "increasing", min(ratio - 1, 1.0) * confidence
     if ratio <= 1 / TREND_CHANGE_RATIO:
-        return "decreasing", -min(1 - ratio, 1.0)
+        return "decreasing", -min(1 - ratio, 1.0) * confidence
     return "neutral", 0.0
  
 def _compute_score(
@@ -174,7 +201,7 @@ def _compute_score(
     """
     rapid_component = min(rapid_followup_hits / 2, 1.0) * SCORE_WEIGHT_RAPID_FOLLOWUP
     unanswered_component = (
-        min(unanswered_count / (UNANSWERED_BURST_MIN_MESSAGES * 2), 1.0) * SCORE_WEIGHT_UNANSWERED
+        min(unanswered_count / UNANSWERED_BURST_MIN_MESSAGES, 1.0) * SCORE_WEIGHT_UNANSWERED
     )
     ghosted_component = (
         0.0
@@ -192,18 +219,93 @@ def _thread_span_days(timestamped: list[tuple[datetime, str, Any]]) -> Optional[
         return None
     span_hours = (timestamped[-1][0] - timestamped[0][0]).total_seconds() / 3600
     return max(span_hours / 24, 1 / 24)  # floor at ~1 hour to avoid divide-by-near-zero
- 
 
-async def analyze_frequency(raw_thread: list[Any], *, now: Optional[datetime] = None) -> dict[str, Any]:
-  
-    valid_messages = get_valid_messages(raw_thread)
+
+def _extract_messages(raw_thread: Any) -> list[Any]:
+    """Normalize whatever shape we're handed into a flat list of Graph
+    mail-message dicts.
+
+    Callers may pass:
+      1. A bare list of Graph messages (already unwrapped).
+      2. The full threadEscalationEngine Azure Function payload, i.e.
+         {"uri": ..., "method": "POST", "body": {"thread": [...]}} --
+         the message array lives at body.thread, not at the top level.
+      3. A raw Graph list response, i.e. {"value": [...]}.
+      4. Just the inner {"thread": [...]} dict.
+    """
+    if raw_thread is None:
+        return []
+
+    if isinstance(raw_thread, list):
+        return raw_thread
+
+    if isinstance(raw_thread, dict):
+        body = raw_thread.get("body")
+        if isinstance(body, dict) and isinstance(body.get("thread"), list):
+            return body["thread"]
+
+        if isinstance(raw_thread.get("thread"), list):
+            return raw_thread["thread"]
+
+        if isinstance(raw_thread.get("value"), list):
+            return raw_thread["value"]
+
+        logger.warning(
+            "analyze_frequency received a dict payload with no recognizable "
+            "message array (looked for body.thread, thread, value); keys=%s",
+            list(raw_thread.keys()),
+        )
+        return []
+
+    logger.warning(
+        "analyze_frequency received an unsupported payload type: %s",
+        type(raw_thread).__name__,
+    )
+    return []
+
+
+def _redacted_payload_shape(raw_thread: Any) -> Any:
+    """Return a version of raw_thread safe to log -- never let the Azure
+    Function key/code (embedded in the payload's "uri") reach the logs."""
+    if isinstance(raw_thread, dict):
+        safe = dict(raw_thread)
+        if "uri" in safe:
+            safe["uri"] = "<redacted>"
+        return safe
+    return raw_thread
+
+
+async def analyze_frequency(raw_thread: Any, *, now: Optional[datetime] = None) -> dict[str, Any]:
+
+    logger.info(
+        "analyze_frequency received payload. type=%s shape=%s",
+        type(raw_thread).__name__,
+        _redacted_payload_shape(raw_thread),
+    )
+
+    messages = _extract_messages(raw_thread)
+
+    try:
+        logger.info(
+            "analyze_frequency extracted %s message(s):\n%s",
+            len(messages),
+            json.dumps(messages, indent=2, default=str),
+        )
+    except (TypeError, ValueError):
+        logger.info(
+            "analyze_frequency extracted %s message(s) (not JSON-serializable): %r",
+            len(messages),
+            messages,
+        )
+
+    valid_messages = get_valid_messages(messages)
 
     timestamped: list[tuple[datetime, str, Any]] = []
     spam_count = 0
     messages_with_timestamp = 0
  
     for message in valid_messages:
-        dt = parse_received_datetime(message)
+        dt = _normalize_dt(parse_received_datetime(message))
         if dt is not None:
             messages_with_timestamp += 1
  
@@ -237,6 +339,8 @@ async def analyze_frequency(raw_thread: list[Any], *, now: Optional[datetime] = 
             flags.add("critical_response_delay")
         elif ghosted_hours >= LONG_RESPONSE_DELAY_HOURS:
             flags.add("long_response_delay")
+        if ghosted_hours >= STALE_THREAD_HOURS:
+            flags.add("stale_thread")
  
     if spam_count > 0:
         flags.add("auto_reply_detected")
@@ -247,8 +351,20 @@ async def analyze_frequency(raw_thread: list[Any], *, now: Optional[datetime] = 
     # "long delay" threshold, treat the thread as actively worsening
     # regardless of historical average -- this matches the spec's example
     # of "engineer stops responding" implying an increasing trend.
+    #
+    # Previously this only reassigned trend_label for display, leaving
+    # trend_signal (the value _compute_score actually uses) untouched --
+    # so a thread could show label="increasing" while silently scoring
+    # trend_component=0. Now the override also floors trend_signal, scaled
+    # by how far past the "long delay" threshold the ghost has gone, so the
+    # displayed label and the score always agree.
     if unanswered_count > 0 and ghosted_hours is not None and ghosted_hours >= LONG_RESPONSE_DELAY_HOURS:
         trend_label = "increasing"
+        override_signal = min(
+            (ghosted_hours - LONG_RESPONSE_DELAY_HOURS) / GHOSTED_TREND_OVERRIDE_RANGE_HOURS,
+            1.0,
+        )
+        trend_signal = max(trend_signal, override_signal)
  
     score = _compute_score(
         rapid_followup_hits=rapid_followup_hits,
@@ -278,6 +394,7 @@ async def analyze_frequency(raw_thread: list[Any], *, now: Optional[datetime] = 
             "engineerMessages": len(engineer_events),
             "unansweredCustomerMessages": unanswered_count,
             "ghostedHours": round(ghosted_hours, 1) if ghosted_hours is not None else 0,
+            "ghostedDays": round(ghosted_hours / 24, 1) if ghosted_hours is not None else 0,
             "spamMessagesIgnored": spam_count,
             "messagesWithTimestamp": messages_with_timestamp,
         },
