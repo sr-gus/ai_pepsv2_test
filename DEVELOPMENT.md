@@ -261,6 +261,20 @@ python -m tests.inspect_frequency_timeline --case 1 --pause
 python -m tests.inspect_sentiment_timeline --case 1 --pause
 ```
 
+Para auditar el texto acondicionado que recibirá el modelo en cada evento del
+cliente, ejecutar:
+
+```powershell
+python -m tests.inspect_sentiment_timeline `
+  --case 1 `
+  --show-conditioning `
+  --pause
+```
+
+El transcript mostrado conserva el orden cronológico y los prefijos
+`Customer:`/`Support:`, pero excluye asuntos, HTML, firmas, historial citado y
+respuestas automáticas.
+
 Para usar uno de los datasets adicionales, agregar `--fixture` y conservar
 `--case` o `--all` como selector:
 

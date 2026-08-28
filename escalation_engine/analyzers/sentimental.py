@@ -1,11 +1,8 @@
 import logging
-from collections import Counter
 from typing import Any
 
-from escalation_engine.thread.extractors import get_message_content, get_subject
-from escalation_engine.thread.selectors import (
-    get_non_automatic_messages,
-    get_valid_messages,
+from escalation_engine.thread.conditioning import (
+    build_sentiment_transcript,
 )
 
 logger = logging.getLogger(__name__)
@@ -15,26 +12,19 @@ async def analyze_sentimental(raw_thread: list[Any]) -> dict[str, Any]:
     """
     Placeholder sentimental analysis.
 
-    This analyzer decides to use the full raw thread.
+    This analyzer conditions the full accumulated thread for the future model.
     """
-    valid_messages = get_valid_messages(raw_thread)
-    analyzed_messages = get_non_automatic_messages(raw_thread)
-    extracted_contents = [
-        get_message_content(message)
-        for message in analyzed_messages
-    ]
+    conditioned = build_sentiment_transcript(raw_thread)
 
     logger.info(
-        "Starting sentimental analysis. valid_message_count=%s analyzed_message_count=%s ignored_automatic_message_count=%s",
-        len(valid_messages),
-        len(analyzed_messages),
-        len(valid_messages) - len(analyzed_messages)
+        "Starting sentimental analysis. analyzed_message_count=%s "
+        "conditioned_turn_count=%s ignored_automatic_message_count=%s",
+        conditioned.analyzed_messages,
+        conditioned.included_turns,
+        conditioned.ignored_automatic_messages,
     )
 
-    full_text = " ".join(
-        f"{get_subject(message)} {content.text}".strip()
-        for message, content in zip(analyzed_messages, extracted_contents)
-    )
+    full_text = conditioned.text
 
     # Placeholder:
     # Later this full_text can be sent to a real sentiment model.
@@ -47,13 +37,12 @@ async def analyze_sentimental(raw_thread: list[Any]) -> dict[str, Any]:
         "confidence": 0.9,
         "flags": ["frustration_detected"],
         "details": {
-            "analyzedMessages": len(analyzed_messages),
+            "analyzedMessages": conditioned.analyzed_messages,
             "ignoredAutomaticMessages": (
-                len(valid_messages) - len(analyzed_messages)
+                conditioned.ignored_automatic_messages
             ),
-            "textSources": dict(Counter(
-                content.source for content in extracted_contents
-            ))
+            "conditionedTurns": conditioned.included_turns,
+            "textSources": conditioned.text_sources,
         }
     }
 

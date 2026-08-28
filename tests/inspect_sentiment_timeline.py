@@ -7,6 +7,7 @@ import os
 from pathlib import Path
 
 from escalation_engine.analyzers.sentimental import analyze_sentimental
+from escalation_engine.thread.conditioning import build_sentiment_transcript
 from escalation_engine.thread.extractors import get_message_content
 from escalation_engine.thread.selectors import (
     CUSTOMER_ROLE,
@@ -74,6 +75,14 @@ def parse_args():
         action="store_true",
         help="Wait for Enter after each displayed email."
     )
+    parser.add_argument(
+        "--show-conditioning",
+        action="store_true",
+        help=(
+            "Show the exact accumulated transcript that the future Azure ML "
+            "model would receive after each customer message."
+        )
+    )
 
     return parser.parse_args()
 
@@ -99,7 +108,15 @@ def display_text(value):
     return " ".join(value.split())
 
 
-def print_event(case_number, step_number, role, role_event, message, result):
+def print_event(
+    case_number,
+    step_number,
+    role,
+    role_event,
+    message,
+    result,
+    conditioned=None,
+):
     role_labels = {
         CUSTOMER_ROLE: "CUSTOMER",
         ENGINEER_ROLE: "ENGINEER",
@@ -128,9 +145,16 @@ def print_event(case_number, step_number, role, role_event, message, result):
     print(
         "Coverage: "
         f"analyzed={details['analyzedMessages']} "
+        f"conditioned_turns={details['conditionedTurns']} "
         f"automatic_ignored={details['ignoredAutomaticMessages']} "
         f"sources={sources}"
     )
+
+    if conditioned is not None:
+        print("Conditioned transcript:")
+        print("-" * 72)
+        print(conditioned.text or "-")
+        print("-" * 72)
 
 
 async def inspect_case(case_number, request, args):
@@ -154,13 +178,19 @@ async def inspect_case(case_number, request, args):
 
         role_counts[role] += 1
         result = await analyze_sentimental(list(accumulated_thread))
+        conditioned = None
+
+        if args.show_conditioning and role == CUSTOMER_ROLE:
+            conditioned = build_sentiment_transcript(accumulated_thread)
+
         print_event(
             case_number,
             step_number,
             role,
             role_counts[role],
             message,
-            result
+            result,
+            conditioned,
         )
 
         if args.pause:
