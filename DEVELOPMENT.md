@@ -315,22 +315,6 @@ Regresiones disponibles:
   placeholder; se activa al llenar `EXPECTED_SENTIMENT_TIMELINES` en
   `tests/test_sentiment_dataset_regression.py`.
 
-Observaciones de frequency, sin cambios en su implementación:
-
-- En el instante en que llega un correo nuevo del cliente, `ghostedHours` es
-  normalmente 0. Detectar silencios de 24/72 horas requiere una ejecución
-  posterior o programada; un flujo disparado exclusivamente por correos no
-  despierta durante el silencio.
-- El replay debe pasar como `now` la fecha del evento. Usar el reloj actual al
-  reproducir fixtures antiguos genera delays críticos artificiales.
-- `ghostedHours` se calcula desde el mensaje pendiente más reciente. Un nuevo
-  follow-up reinicia ese reloj aunque el primer mensaje continúe sin respuesta.
-- 88 de los 100 eventos del fixture producen exactamente el baseline 0.05,
-  neutral y sin flags. El fixture por sí solo ofrece poca cobertura de ráfagas
-  o delays, por lo que se agregaron casos sintéticos.
-- `multiple_unanswered_messages` afecta el score, pero no tiene boost en la
-  agregación final; solamente `rapid_followup` recibe un boost adicional.
-
 ## Estado conocido
 
 - El analizador sentimental todavía es un placeholder y devuelve un score
