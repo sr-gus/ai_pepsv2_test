@@ -200,6 +200,43 @@ git diff --check
 git status --short
 ```
 
+### Pruebas contra la Function desplegada
+
+`tests/az_func_call_test.py` contiene dos pruebas HTTP separadas de las
+pruebas unitarias habituales:
+
+- Un smoke test valida que la Function responde y conserva el contrato que
+  consume Power Automate.
+- Un test de paridad procesa el mismo payload mediante el endpoint desplegado
+  y directamente mediante `process_thread_escalation`, y exige que ambas
+  respuestas sean iguales.
+
+Para habilitarlas, copiar la plantilla local si todavía no existe `.env`:
+
+```powershell
+Copy-Item .env.example .env
+```
+
+Después, pegar la URL completa de la Function, incluido `?code=`, en la
+variable de `.env`:
+
+```dotenv
+AZURE_FUNCTION_ENDPOINT=https://<function-app>.azurewebsites.net/api/threadEscalationEngine?code=<function-key>
+```
+
+Ejecutar las pruebas con:
+
+```powershell
+python -m tests.az_func_call_test
+```
+
+El archivo `.env` es local y está excluido de Git; `.env.example` es la
+plantilla que se comparte con el equipo. También se puede definir
+`AZURE_FUNCTION_ENDPOINT` como variable de entorno del proceso. Mientras el
+endpoint esté vacío, ambas pruebas se reportan como omitidas. El nombre del
+módulo evita que una ejecución normal con `unittest discover` realice llamadas
+remotas involuntarias.
+
 Todo cambio de contrato, timestamp, remitente o scoring debe incluir al menos
 una prueba de regresión. No agregar datos reales de clientes, correos privados,
 claves de Function ni archivos `local.settings.json` al repositorio.
