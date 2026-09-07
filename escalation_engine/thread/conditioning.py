@@ -36,7 +36,7 @@ def build_sentiment_transcript(
 
     Each non-automatic message contributes only its newly authored content.
     Messages are ordered by ``receivedDateTime`` and rendered as one line per
-    turn using the exact ``Customer:`` and ``Support:`` role prefixes present
+    turn using the exact ``Customer:`` and ``Engineer:`` role prefixes present
     in the training dataset. Subjects and email metadata are intentionally
     excluded.
     """
@@ -55,7 +55,7 @@ def build_sentiment_transcript(
             continue
 
         role = (
-            "Support"
+            "Engineer"
             if get_message_role(message) == ENGINEER_ROLE
             else "Customer"
         )
