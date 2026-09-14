@@ -531,6 +531,14 @@ ESCALATION_CONFIG = {
         "tier_2_min_score": 0.75
     },
     "notifications": {
+        "missing_tracking_id": {
+            "shouldNotify": False,
+            "severity": "none",
+            "target": None,
+            "title": "Analysis skipped: missing TrackingID",
+            "summary": "No thread subject contains a valid numeric TrackingID.",
+            "recommendedAction": "No action required"
+        },
         "exit": {
             "shouldNotify": False,
             "severity": "none",

@@ -1,0 +1,63 @@
+{
+  "type": "object",
+  "properties": {
+    "messageCount": { "type": "integer" },
+    "analysis": { "type": "object" },
+    "aggregation": {
+      "type": "object",
+      "properties": {
+        "score": { "type": "number" },
+        "baseScore": { "type": "number" },
+        "boost": { "type": "number" },
+        "weights": { "type": "object" },
+        "signals": {
+          "type": "array",
+          "items": { "type": "object" }
+        }
+      }
+    },
+    "decision": {
+      "type": "object",
+      "properties": {
+        "tier": { "type": ["string", "null"] },
+        "action": { "type": "string" },
+        "reason": { "type": "string" },
+        "confidence": { "type": ["number", "null"] },
+        "routingConfidence": { "type": ["number", "null"] },
+        "decisionSource": { "type": "string" },
+        "routingOverride": { "type": "boolean" },
+        "escalationRequest": { "type": ["object", "null"] },
+        "explanation": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "notification": {
+      "type": "object",
+      "properties": {
+        "caseNumber": { "type": ["string", "null"] },
+        "engineerName": { "type": ["string", "null"] },
+        "engineerEmail": { "type": ["string", "null"] },
+        "shouldNotify": { "type": "boolean" },
+        "severity": { "type": "string" },
+        "target": { "type": ["string", "null"] },
+        "title": { "type": "string" },
+        "summary": { "type": "string" },
+        "recommendedAction": { "type": "string" },
+        "tier": { "type": ["string", "null"] },
+        "action": { "type": "string" },
+        "reason": { "type": "string" },
+        "confidence": { "type": ["number", "null"] },
+        "routingConfidence": { "type": ["number", "null"] },
+        "decisionSource": { "type": "string" },
+        "routingOverride": { "type": "boolean" },
+        "escalationRequest": { "type": ["object", "null"] },
+        "explanation": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    }
+  }
+}

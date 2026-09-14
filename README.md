@@ -26,7 +26,7 @@ Canonical message fields:
 {
   "thread": [
     {
-      "subject": "Urgent billing issue",
+      "subject": "Urgent billing issue - TrackingID#0001234567890123",
       "bodyPreview": "I need help with this charge immediately.",
       "body": {
         "contentType": "html",
@@ -35,7 +35,8 @@ Canonical message fields:
       "receivedDateTime": "2026-07-12T20:30:00Z",
       "from": {
         "emailAddress": {
-          "address": "customer@example.com"
+          "address": "customer@example.com",
+          "name": "Example Customer"
         }
       }
     }
@@ -54,7 +55,24 @@ Field behavior:
   decide whether it is fresh evidence.
 - `receivedDateTime` must use ISO 8601 and drives message ordering and frequency metrics.
 - `from.emailAddress.address` identifies the sender.
+- `from.emailAddress.name` optionally supplies the sender's display name for
+  notification metadata.
 - `headers` or `internetMessageHeaders` can provide automatic-reply metadata.
+
+Before running any analyzer, the service requires a numeric `TrackingID#...`
+in at least one message's `subject`. The marker is case-insensitive and must
+be immediately followed by digits; the digit count is not fixed. IDs are
+returned as strings to preserve leading zeros. A TrackingID found only in a
+message body does not qualify. If several subjects contain an ID, the newest
+matching message supplies the case number, using the shared timestamp selector
+and falling back to the last matching message when no valid timestamps exist.
+
+Threads without a matching subject return `200` as a normal filter outcome,
+with empty `analysis` and `aggregation` objects, `decision.action="exit"`,
+`decision.decisionSource="missing_tracking_id"`, and
+`notification.shouldNotify=false`. No analyzer or score aggregation runs;
+`tier`, `confidence`, and `routingConfidence` are `null` for this outcome.
+Structurally invalid requests still return `400`.
 
 Engineer messages are identified exclusively by matching
 `from.emailAddress.address` against the comma-separated `ENGINEER_EMAILS`
@@ -82,6 +100,21 @@ Successful requests return `200` with:
 - `aggregation`: weighted score and contributing signals.
 - `decision`: selected escalation tier and reason.
 - `notification`: routing-friendly notification payload.
+
+The notification includes these fields for Teams messages:
+
+| Field | Source |
+| --- | --- |
+| `caseNumber` | Digits following `TrackingID#` in the selected subject. |
+| `engineerName` | `from.emailAddress.name` of the newest non-automatic message from a configured engineer, trimmed; `null` when unavailable. |
+| `engineerEmail` | `from.emailAddress.address` of that same engineer message; `null` when no engineer sender is identified. |
+
+Engineer selection uses `ENGINEER_EMAILS`, the same role classification used
+by the analyzers. When multiple engineers participate, the latest human sender
+is selected; this is a conversation participant, not proof of case ownership.
+Customer names, signatures, and recipients are not used to infer an engineer.
+If the selected message has no name, the email remains available separately.
+All three metadata fields are `null` when the thread is skipped for missing ID.
 
 Example high-level shape:
 
@@ -129,12 +162,60 @@ escalation_engine/
 1. `function_app.py` parses the HTTP JSON body.
 2. `validate_request_body` checks the minimum request contract.
 3. `get_valid_messages` filters object-shaped messages.
-4. `process_thread_escalation` runs sentiment, keyword, and frequency analyzers in parallel with a 10 second timeout.
-5. `aggregate_results` combines analyzer scores using configured weights and boosts.
-6. `decide_escalation` maps the final score to exit, Tier 1, or Tier 2. An
+4. The service selects a case number from subjects containing `TrackingID#...`;
+   when none exists, it returns the skipped result before analysis.
+5. `process_thread_escalation` runs sentiment, keyword, and frequency analyzers in parallel with a 10 second timeout.
+6. `aggregate_results` combines analyzer scores using configured weights and boosts.
+7. `decide_escalation` maps the final score to exit, Tier 1, or Tier 2. An
    active generic or hierarchical customer escalation request overrides this
    mapping to Tier 2 without changing the aggregate score.
-7. `build_notification` creates the final routing payload.
+8. `build_notification` creates the final routing payload with the case number
+   and latest engineer sender's available name and email.
+
+## Teams / Power Automate
+
+After the successful HTTP call, use a Compose action named `Notification` with
+`body('HTTP')?['notification']`, replacing `HTTP` with the actual action name.
+`Notification` is the name of a flow action you must create; it is not created
+automatically by the `notification` property in the response. Place it before
+the condition / Switch so both Teams branches can reference its output.
+
+If the flow already uses Parse JSON, paste
+[`docs/power-automate-response.schema.json`](docs/power-automate-response.schema.json)
+into its Schema field, and keep the HTTP action's Body as its Content. Then
+set the Compose expression to `body('Parse_JSON')?['notification']`, replacing
+`Parse_JSON` with the real internal name of that action. Alternatively, access
+`body('Parse_JSON')?['notification']?['caseNumber']` and the other fields directly
+from Parse JSON without a Compose action. An invalid reference to `Notification`
+requires fixing the action name or adding that action; updating the schema alone
+does not resolve the reference.
+
+Check `outputs('Notification')?['shouldNotify']` against the boolean `true`
+before formatting scores or sending any Teams message. A skipped result has
+no numeric score; a Parse JSON schema must allow nullable confidence fields
+and empty `analysis` / `aggregation` objects.
+
+Inside the true branch, switch on `outputs('Notification')?['tier']`:
+
+- `Tier 1`: Post a message to myself, with HTML content. The destination is
+  the authenticated Teams connection account's own chat.
+- `Tier 2`: Post message in a chat or channel, as Flow bot, to the configured
+  team and channel.
+- Default: no message.
+
+Use these expressions to replace the corresponding message placeholders:
+
+```text
+outputs('Notification')?['caseNumber']
+coalesce(outputs('Notification')?['engineerName'], outputs('Notification')?['engineerEmail'], 'No identificado')
+formatNumber(mul(outputs('Notification')?['confidence'], 100), '0')
+```
+
+The last expression produces a score on a 0-100 scale; append `%` in the message.
+Do not use `routingConfidence` as the escalation score or recompute the tier
+from the percentage: an explicit escalation request can select Tier 2
+independently of the aggregate score. When inserting a sender name into HTML,
+escape `&`, `<`, and `>` as `&amp;`, `&lt;`, and `&gt;` to keep it as plain text.
 
 ## Analyzer Notes
 

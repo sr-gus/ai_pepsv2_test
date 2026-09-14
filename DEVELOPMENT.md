@@ -71,7 +71,7 @@ Cada mensaje usa como contrato canónico:
 
 ```json
 {
-  "subject": "Urgent billing issue",
+    "subject": "Urgent billing issue - TrackingID#0001234567890123",
   "bodyPreview": "I need help immediately.",
   "body": {
     "contentType": "html",
@@ -80,7 +80,8 @@ Cada mensaje usa como contrato canónico:
   "receivedDateTime": "2026-07-12T20:30:00Z",
   "from": {
     "emailAddress": {
-      "address": "customer@example.com"
+        "address": "customer@example.com",
+        "name": "Example Customer"
     }
   },
   "headers": {
@@ -109,6 +110,30 @@ Reglas que todos los analizadores deben respetar:
   `support`, `agent` o `microsoft`.
 - Los campos opcionales deben leerse mediante los extractores compartidos para
   evitar errores cuando sean nulos o tengan un tipo inesperado.
+
+### Filtro de casos y contexto de notificación
+
+El servicio requiere `TrackingID#` seguido inmediatamente de dígitos en al
+menos un `subject` antes de ejecutar los analizadores. No fija la longitud del
+ID y conserva sus ceros iniciales. La selección usa el asunto más reciente que
+contenga un ID válido; una coincidencia en el body no habilita el análisis.
+
+Sin ID, la respuesta es `200`, con `analysis={}`, `aggregation={}`,
+`decisionSource=missing_tracking_id`, `action=exit` y `shouldNotify=false`.
+Los valores de tier y confianza son nulos: no se fabrica un score para un hilo
+que no se analizó. Los requests con estructura inválida siguen devolviendo 400.
+
+`notification` incluye `caseNumber`, `engineerName` y `engineerEmail`. Los
+datos del ingeniero provienen del remitente del último mensaje no automático
+clasificado como ingeniero mediante `ENGINEER_EMAILS`. Se toma el nombre de
+`from.emailAddress.name` cuando existe y el correo se devuelve por separado.
+No se infiere el dueño del caso desde firmas, nombres o destinatarios. Si falta
+un dato, se devuelve `null`; al omitir el análisis los tres campos son nulos.
+
+Las pruebas de integración que necesiten ejecutar el motor deben incluir un
+TrackingID en su asunto. `tests/test_notification_context.py` verifica que el
+filtro evita llamar a los tres analizadores, conserva los IDs como texto y
+selecciona el ingeniero por rol y fecha excluyendo respuestas automáticas.
 
 ## Contrato de un analizador
 
@@ -319,7 +344,8 @@ Regresiones disponibles:
 
 - El analizador sentimental todavía es un placeholder y devuelve un score
   negativo fijo.
-- La validación actual comprueba solamente la estructura mínima del request.
+- La validación comprueba la estructura mínima del request; después el servicio
+  omite el análisis si ningún asunto contiene un TrackingID numérico.
 - El analizador de frecuencia y el de keywords ya comparten la clasificación
   de remitentes.
 - Keyword, sentiment y frequency comparten la extracción de contenido nuevo y

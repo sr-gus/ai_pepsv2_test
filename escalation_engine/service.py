@@ -9,7 +9,16 @@ from escalation_engine.notification import build_notification
 from escalation_engine.request.validation import extract_thread, validate_request_body
 from escalation_engine.scoring.aggregation import aggregate_results
 from escalation_engine.scoring.decision import decide_escalation
-from escalation_engine.thread.selectors import get_valid_messages
+from escalation_engine.thread.extractors import (
+    get_case_number,
+    get_sender_address,
+    get_sender_name,
+)
+from escalation_engine.thread.selectors import (
+    get_latest_engineer_message,
+    get_latest_tracked_message,
+    get_valid_messages,
+)
 
 logger = logging.getLogger(__name__)
 
@@ -43,6 +52,29 @@ async def process_thread_escalation(
         len(valid_messages)
     )
 
+    case_number = get_case_number(get_latest_tracked_message(valid_messages))
+
+    if case_number is None:
+        logger.info("Analysis skipped: no numeric TrackingID in thread subjects.")
+        decision = {
+            "tier": None,
+            "action": "exit",
+            "reason": "Missing TrackingID in thread subjects",
+            "confidence": None,
+            "routingConfidence": None,
+            "decisionSource": "missing_tracking_id",
+            "routingOverride": False,
+            "escalationRequest": None,
+            "explanation": []
+        }
+        return {
+            "messageCount": len(valid_messages),
+            "analysis": {},
+            "aggregation": {},
+            "decision": decision,
+            "notification": build_notification(decision)
+        }, 200
+
     try:
         logger.info("Starting parallel analysis.")
 
@@ -74,7 +106,13 @@ async def process_thread_escalation(
 
     aggregate = aggregate_results(sentimental, keyword, frequency)
     decision = decide_escalation(aggregate)
-    notification = build_notification(decision)
+    engineer_message = get_latest_engineer_message(valid_messages)
+    notification = build_notification(
+        decision,
+        case_number=case_number,
+        engineer_name=get_sender_name(engineer_message),
+        engineer_email=get_sender_address(engineer_message),
+    )
 
     response = {
         "messageCount": len(valid_messages),

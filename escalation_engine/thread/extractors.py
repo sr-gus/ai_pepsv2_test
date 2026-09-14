@@ -6,6 +6,9 @@ from html.parser import HTMLParser
 from typing import Any
 
 
+_TRACKING_ID_PATTERN = re.compile(r"\bTrackingID#([0-9]+)\b", re.IGNORECASE)
+
+
 @dataclass(frozen=True)
 class ExtractedMessageContent:
     """The new, human-authored portion extracted from one email message."""
@@ -121,6 +124,12 @@ def get_subject(message: dict[str, Any]) -> str:
     return value if isinstance(value, str) else ""
 
 
+def get_case_number(message: dict[str, Any]) -> str | None:
+    """Extract numeric TrackingID from the subject, preserving leading zeros."""
+    match = _TRACKING_ID_PATTERN.search(get_subject(message))
+    return match.group(1) if match else None
+
+
 def get_preview(message: dict[str, Any]) -> str:
     value = message.get("bodyPreview")
 
@@ -141,6 +150,26 @@ def get_sender_address(message: dict[str, Any]) -> str | None:
     address = email_address.get("address")
 
     return address if isinstance(address, str) else None
+
+
+def get_sender_name(message: dict[str, Any]) -> str | None:
+    """Read the sender's display name when provided by Graph / Outlook."""
+    sender = message.get("from")
+
+    if not isinstance(sender, dict):
+        return None
+
+    email_address = sender.get("emailAddress")
+
+    if not isinstance(email_address, dict):
+        return None
+
+    name = email_address.get("name")
+
+    if not isinstance(name, str):
+        return None
+
+    return name.strip() or None
 
 
 def get_headers(

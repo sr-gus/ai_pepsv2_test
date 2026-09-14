@@ -21,7 +21,7 @@ class RuntimeStabilityTests(unittest.TestCase):
         payload = {
             "thread": [
                 {
-                    "subject": "Urgent billing issue",
+                    "subject": "Urgent billing issue - TrackingID#0001234567890123",
                     "bodyPreview": "I need help with this charge immediately.",
                     "receivedDateTime": "2026-07-12T20:30:00Z",
                     "from": {
@@ -42,6 +42,7 @@ class RuntimeStabilityTests(unittest.TestCase):
     def test_nullable_sender_and_non_string_text_do_not_crash(self):
         payload = {
             "thread": [
+                {"subject": "TrackingID#0001234567890123"},
                 {
                     "subject": 123,
                     "bodyPreview": None,
@@ -54,7 +55,8 @@ class RuntimeStabilityTests(unittest.TestCase):
         body, status = self.run_service(payload)
 
         self.assertEqual(status, 200)
-        self.assertEqual(body["messageCount"], 1)
+        self.assertEqual(body["messageCount"], 2)
+        self.assertIn("frequency", body["analysis"])
 
     def test_mixed_timezone_timestamps_select_latest_message(self):
         messages = [
@@ -76,7 +78,7 @@ class RuntimeStabilityTests(unittest.TestCase):
         payload = {
             "thread": [
                 {
-                    "subject": "Question",
+                    "subject": "Question - TrackingID#0001234567890123",
                     "bodyPreview": "Hello",
                     "receivedDateTime": "not-a-date"
                 }
@@ -96,7 +98,7 @@ class RuntimeStabilityTests(unittest.TestCase):
             "body": {
                 "thread": [
                     {
-                        "subject": "Question",
+                        "subject": "Question - TrackingID#0001234567890123",
                         "bodyPreview": "Can you help me?",
                         "receivedDateTime": "2026-07-12T20:30:00Z",
                         "from": {
