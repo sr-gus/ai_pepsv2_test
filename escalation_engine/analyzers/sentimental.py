@@ -1,4 +1,4 @@
-import logging
+import logging, urllib
 from typing import Any
 
 from escalation_engine.thread.conditioning import (
@@ -56,7 +56,10 @@ async def analyze_sentimental(raw_thread: list[Any]) -> dict[str, Any]:
         # Print the headers - they include the requert ID and the timestamp, which are useful for debugging the failure
         print(error.info())
         print(error.read().decode("utf8", 'ignore'))
-
+        
+    logger.info("Completed Sentimental analysis: "+str(result))
+    
+    return result
 """
     result = {
         "name": "sentimental",
@@ -81,6 +84,4 @@ async def analyze_sentimental(raw_thread: list[Any]) -> dict[str, Any]:
         result["flags"]
     )
 """
-    logger.info("Completed Sentimental analysis: "+str(result))
     
-    return result
