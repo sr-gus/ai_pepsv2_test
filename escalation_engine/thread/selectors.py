@@ -5,6 +5,7 @@ from datetime import datetime
 from typing import Any
 
 from escalation_engine.thread.extractors import (
+    get_case_number,
     get_headers,
     get_message_body_text,
     get_received_datetime,
@@ -135,6 +136,22 @@ def get_customer_messages(raw_thread: list[Any]) -> list[dict[str, Any]]:
         message for message in get_non_automatic_messages(raw_thread)
         if not is_engineer_message(message)
     ]
+
+
+def get_latest_tracked_message(raw_thread: list[Any]) -> dict[str, Any]:
+    """Select the newest message whose subject contains a numeric TrackingID."""
+    return get_latest_message([
+        message for message in get_valid_messages(raw_thread)
+        if get_case_number(message) is not None
+    ])
+
+
+def get_latest_engineer_message(raw_thread: list[Any]) -> dict[str, Any]:
+    """Select the last human response from a configured engineer sender."""
+    return get_latest_message([
+        message for message in get_non_automatic_messages(raw_thread)
+        if get_message_role(message) == ENGINEER_ROLE
+    ])
 
 
 def get_latest_message(raw_thread: list[Any]) -> dict[str, Any]:

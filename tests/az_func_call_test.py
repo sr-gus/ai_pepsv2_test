@@ -56,7 +56,7 @@ def build_power_automate_payload() -> dict:
         "body": {
             "thread": [
                 {
-                    "subject": "Case update",
+                    "subject": "Case update - TrackingID#0001234567890123",
                     "body": {
                         "contentType": "html",
                         "content": "<p>Please escalate this case.</p>"
@@ -134,6 +134,7 @@ class AzureFunctionRemoteTests(unittest.TestCase):
             {"sentimental", "keyword", "frequency"}
         )
         self.assertEqual(body["decision"]["tier"], "Tier 2")
+        self.assertEqual(body["notification"]["caseNumber"], "0001234567890123")
         self.assertTrue(body["decision"]["routingOverride"])
         self.assertTrue(body["notification"]["shouldNotify"])
         self.assertEqual(

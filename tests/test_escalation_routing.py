@@ -133,7 +133,7 @@ class EscalationRoutingIntegrationTests(unittest.TestCase):
         return {
             "thread": [
                 {
-                    "subject": "Case update",
+                    "subject": "Case update - TrackingID#0001234567890123",
                     "bodyPreview": body,
                     "receivedDateTime": datetime.now(timezone.utc).isoformat(),
                     "from": {
