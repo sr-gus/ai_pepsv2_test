@@ -48,9 +48,18 @@ def build_notification(
         "routingConfidence": decision.get("routingConfidence"),
         "decisionSource": decision.get("decisionSource"),
         "routingOverride": decision.get("routingOverride", False),
+        "minimumTierRule": decision.get("minimumTierRule"),
         "escalationRequest": decision.get("escalationRequest"),
         "explanation": decision.get("explanation", [])
     }
+
+    if decision.get("decisionSource") in {
+        "high_sentiment_floor", "sentiment_frequency_floor"
+    }:
+        notification["summary"] = (
+            decision["reason"]
+            + "; a minimum tier rule was applied independently of the aggregate score."
+        )
 
     logger.info(
         "Notification built. should_notify=%s severity=%s target=%s",

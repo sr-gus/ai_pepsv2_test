@@ -3,6 +3,8 @@
 import re
 from typing import Any
 
+from escalation_engine.analyzers.spelling import correct_spelling
+
 
 _ACTIVE_REQUEST_PATTERNS = (
     # Direct English escalation requests.
@@ -180,7 +182,9 @@ _HIERARCHICAL_TARGETS = (
             r"\b(?:(?:to|with)\s+(?:a|your|the)?\s*supervisor|"
             r"(?:want|need|request|demand)\s+(?:a|your|the)\s+supervisor|"
             r"(?:con|a|al)\s+(?:un|una|su|el|la)?\s*"
-            r"(?:supervisor|supervisora|supervision))\b"
+            r"(?:supervisor|supervisora|supervision)|"
+            r"(?:quiero|necesito|queremos|necesitamos)\s+(?:un|una|su)\s+"
+            r"(?:supervisor|supervisora))\b"
         )
     ),
     (
@@ -389,6 +393,17 @@ _ESCALATION_MENTION_PATTERN = re.compile(
 
 def classify_escalation_request(text: str) -> dict[str, Any]:
     """Classify active, contextual escalation language in normalized text."""
+    matching_text, corrections = correct_spelling(text)
+    result = _classify_escalation_request(matching_text)
+    result['matchType'] = 'orthographic' if corrections else 'exact'
+    result['spellingCorrections'] = corrections
+    if corrections:
+        result['originalText'] = text
+        result['matchingText'] = matching_text
+    return result
+
+
+def _classify_escalation_request(text: str) -> dict[str, Any]:
     active_matches = []
     rejected_matches = []
 
@@ -527,6 +542,11 @@ def _context_status(context: str, matched_text: str) -> str:
     match_start = context.find(matched_text.strip())
     prefix = context[:max(match_start, 0)]
     suffix = context[max(match_start, 0) + len(matched_text.strip()):]
+
+    # Hierarchy requests can omit "escalate", including Spanish "no necesito
+    # un supervisor". Keep their direct negation when recovering a typo.
+    if re.search(r"\b(?:no|not|never|nunca)\s*$", prefix):
+        return "negated"
 
     if any(pattern.search(context) for pattern in _NEGATED_PATTERNS):
         return "negated"

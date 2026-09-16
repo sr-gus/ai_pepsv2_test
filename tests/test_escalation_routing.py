@@ -1,6 +1,7 @@
 import asyncio
 import unittest
 from datetime import datetime, timezone
+from unittest.mock import AsyncMock, patch
 
 from escalation_engine.notification import build_notification
 from escalation_engine.scoring.decision import decide_escalation
@@ -128,6 +129,17 @@ class EscalationDecisionTests(unittest.TestCase):
 
 
 class EscalationRoutingIntegrationTests(unittest.TestCase):
+    def setUp(self):
+        model = patch(
+            "escalation_engine.service.analyze_sentimental",
+            new=AsyncMock(return_value={
+                "name": "sentimental", "score": 0.2,
+                "label": "negative", "flags": [], "details": {},
+            }),
+        )
+        model.start()
+        self.addCleanup(model.stop)
+
     @staticmethod
     def payload(body):
         return {

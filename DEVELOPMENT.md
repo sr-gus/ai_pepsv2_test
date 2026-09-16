@@ -297,7 +297,7 @@ python -m tests.inspect_sentiment_timeline `
 ```
 
 El transcript mostrado conserva el orden cronológico y los prefijos
-`Customer:`/`Support:`, pero excluye asuntos, HTML, firmas, historial citado y
+`Customer:`/`Engineer:`, pero excluye asuntos, HTML, firmas, historial citado y
 respuestas automáticas.
 
 Para usar uno de los datasets adicionales, agregar `--fixture` y conservar
@@ -335,15 +335,16 @@ Regresiones disponibles:
 - Frequency fija score, label, flags, mensajes pendientes y horas sin
   respuesta para los mismos 100 eventos. También prueba escenarios sintéticos
   de ráfagas, delays de 24/72 horas, auto-replies y tendencias.
-- Sentiment valida desde ahora el replay, filtrado, fuentes de texto y contrato
-  de salida. Su regresión de calidad queda omitida mientras continúe siendo un
-  placeholder; se activa al llenar `EXPECTED_SENTIMENT_TIMELINES` en
+- Sentiment incluye pruebas de replay, filtrado, fuentes de texto y contrato
+  de salida que requieren actualizarse para el cliente de Azure ML. Su regresión
+  de calidad sigue pendiente; se activa al llenar `EXPECTED_SENTIMENT_TIMELINES` en
   `tests/test_sentiment_dataset_regression.py`.
 
 ## Estado conocido
 
-- El analizador sentimental todavía es un placeholder y devuelve un score
-  negativo fijo.
+- El analizador sentimental usa el modelo funcional de Azure ML. Algunas
+  pruebas antiguas todavía esperan la respuesta fija anterior y requieren
+  mantenimiento independiente.
 - La validación comprueba la estructura mínima del request; después el servicio
   omite el análisis si ningún asunto contiene un TrackingID numérico.
 - El analizador de frecuencia y el de keywords ya comparten la clasificación

@@ -6,6 +6,7 @@ from typing import Any
 from escalation_engine.analyzers.escalation_request import (
     classify_escalation_request,
 )
+from escalation_engine.analyzers.spelling import correct_spelling
 from escalation_engine.config import ESCALATION_CONFIG
 from escalation_engine.thread.extractors import (
     get_message_content,
@@ -146,10 +147,12 @@ async def analyze_keywords(raw_thread: list[Any]) -> dict[str, Any]:
     raw_subject = get_subject(latest_msg)
     subject_text = _normalize_text(raw_subject)
     content_text = _normalize_text(message_content.text)
+    escalation_request = classify_escalation_request(content_text)
+    subject_text, subject_corrections = correct_spelling(subject_text)
+    content_text, content_corrections = correct_spelling(content_text)
     text = _normalize_text(f"{raw_subject} {message_content.text}".strip())
     words = text.split()
     resolution_acknowledged = _acknowledges_resolution(content_text)
-    escalation_request = classify_escalation_request(content_text)
     subject_evidence_ignored = (
         len(customer_messages) > 1 or _is_reply_subject(raw_subject)
     )
@@ -260,6 +263,10 @@ async def analyze_keywords(raw_thread: list[Any]) -> dict[str, Any]:
                 "quotedContentRemoved": message_content.quoted_content_removed,
                 "signatureRemoved": message_content.signature_removed,
                 "resolutionAcknowledged": resolution_acknowledged,
+                "isLatestHumanMessage": (
+                    bool(latest_msg)
+                    and latest_msg == get_latest_message(non_automatic_messages)
+                ),
                 "from": get_sender_address(latest_msg),
                 "subjectEvidenceIgnored": subject_evidence_ignored
             },
@@ -272,7 +279,12 @@ async def analyze_keywords(raw_thread: list[Any]) -> dict[str, Any]:
             "customerMessageCount": len(customer_messages),
             "ignoredEngineerMessageCount": ignored_engineer_messages,
             "ignoredAutomaticMessageCount": ignored_automatic_messages,
-            "escalationRequest": escalation_request
+            "escalationRequest": escalation_request,
+            "spellingCorrections": {
+                "subject": subject_corrections,
+                "content": content_corrections,
+            },
+            "matchingText": {"subject": subject_text, "content": content_text},
         }
     }
 

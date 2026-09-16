@@ -1405,6 +1405,53 @@ ESCALATION_CONFIG = {
         'tier_1_min_score': 0.5,
         'tier_2_min_score': 0.75
     },
+    # Floors only raise the tier; they never rewrite the aggregate score.
+    'tier_floors': {
+        'enabled': True,
+        'sentimental_min_score': 0.95,
+        'frequency_min_score': 0.50,
+    },
+    'spelling': {
+        'enabled': True,
+        'min_token_length': 6,
+        'max_token_length': 32,
+        # Deliberately curated, rather than fuzzy matching every dictionary word.
+        # One insertion, deletion, substitution or adjacent transposition only.
+        'terms': (
+            'escalate escalated escalating escalation escalar escale escalen '
+            'escalado escalada escalacion manager management supervisor '
+            'supervisora supervision leadership director executive gerente '
+            'gerencia autoridad billing engineering engineer engineers product '
+            'platform backend security subscription subscriptions support '
+            'specialist technical facturacion cobranza ingenieria producto '
+            'plataforma seguridad suscripciones soporte especializado '
+            'urgent urgente urgency critical critically urgentemente '
+            'urgencia immediately inmediato inmediatamente frustrated '
+            'frustrating frustration frustrado frustrada frustracion '
+            'unacceptable inaceptable disappointed disappointing '
+            'duplicate duplicated duplicado duplicada unauthorized '
+            'unrecognized declined unpaid pendiente refund reembolso '
+            'failure failed failing blocked blocker unavailable outage '
+            'disabled suspended suspension suspendida suspendido '
+            'cancelled cancellation cancelacion unresolved unresponsive '
+            'resolved resuelto resuelta solucionado solucionada '
+            'response respuesta resolution resolucion overdue downtime '
+            'production produccion impact impacto deadline demora '
+            'charged charging overcharged overcharge payment invoice'
+        ).split(),
+        # Real words close to escalation vocabulary must not be autocorrected.
+        'protected_terms': (
+            'manage managed manages managing manner manger massage '
+            'messages passage storage outrage outages produce products '
+            'productive directory directly securing securely secretaries '
+            'supported supports supportive billings filling willing killing '
+            'thrilling changing challenge exchanged refunded refunds '
+            'resolving failures pending spending suspensions responses '
+            'charges charge urgentes escales escala escalas escalo '
+            'escalados escaladas escaleras gerentes directores '
+            'resueltos resueltas cancelado cancelada'
+        ).split(),
+    },
     'notifications': {
         'missing_tracking_id': {
             'shouldNotify': False,

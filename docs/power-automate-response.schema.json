@@ -26,6 +26,7 @@
         "routingConfidence": { "type": ["number", "null"] },
         "decisionSource": { "type": "string" },
         "routingOverride": { "type": "boolean" },
+        "minimumTierRule": { "type": ["object", "null"] },
         "escalationRequest": { "type": ["object", "null"] },
         "explanation": {
           "type": "array",
@@ -52,6 +53,7 @@
         "routingConfidence": { "type": ["number", "null"] },
         "decisionSource": { "type": "string" },
         "routingOverride": { "type": "boolean" },
+        "minimumTierRule": { "type": ["object", "null"] },
         "escalationRequest": { "type": ["object", "null"] },
         "explanation": {
           "type": "array",

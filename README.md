@@ -144,9 +144,10 @@ escalation_engine/
   notification.py                       Notification payload builder
   analyzers/
     escalation_request.py               Context-aware escalation routing signal
-    sentimental.py                      Sentiment analyzer placeholder
+    sentimental.py                      Azure ML sentiment model client
     keyword.py                          Topic keyword analyzer
-    frequency.py                        Frequency analyzer placeholder
+    frequency.py                        Communication timing analyzer
+    spelling.py                         Bounded one-edit orthographic recovery
   request/
     validation.py                       Request validation
   scoring/
@@ -168,7 +169,8 @@ escalation_engine/
 6. `aggregate_results` combines analyzer scores using configured weights and boosts.
 7. `decide_escalation` maps the final score to exit, Tier 1, or Tier 2. An
    active generic or hierarchical customer escalation request overrides this
-   mapping to Tier 2 without changing the aggregate score.
+   mapping to Tier 2 without changing the aggregate score. Configurable
+   sentiment rules can also establish a minimum tier.
 8. `build_notification` creates the final routing payload with the case number
    and latest engineer sender's available name and email.
 
@@ -219,13 +221,10 @@ escape `&`, `<`, and `>` as `&amp;`, `&lt;`, and `&gt;` to keep it as plain text
 
 ## Analyzer Notes
 
-The sentimental analyzer is intentionally a placeholder at the moment:
-
-- `analyzers/sentimental.py`
-
-It currently returns fixed scores and flags. Because of those fixed values,
-the current engine may escalate low-risk content. Treat its scoring behavior
-as integration scaffolding until the implementation is completed.
+The sentimental analyzer calls the functional Azure ML model. It submits the
+cleaned chronological transcript with `Customer:` and `Engineer:` prefixes and
+returns the model response. The score is consumed as an increasing risk signal;
+the endpoint's class confidence must not be substituted for that risk score.
 
 `analyzers/keyword.py` evaluates only the newest customer message in the thread,
 using `receivedDateTime` when available and falling back to the last valid
@@ -253,11 +252,62 @@ The aggregate score is always preserved. Override decisions expose
 `confidence` for prioritization and audit.
 
 The sentimental analyzer consumes every non-automatic message, with quoted
-history removed from each one. Its score is still a fixed placeholder.
+history removed from each one.
 
 `analyzers/frequency.py` evaluates customer follow-ups, unanswered messages,
 response delays, automatic replies, and response-time trends. It uses the same
 configured engineer email classification as the keyword analyzer.
+
+### Minimum tier rules and spelling tolerance
+
+`ESCALATION_CONFIG["tier_floors"]` enables these inclusive thresholds:
+
+| Condition | Minimum tier |
+| --- | --- |
+| Sentimental score >= 0.95 | Tier 1 |
+| Sentimental >= 0.95 and frequency >= 0.50, corroborated by current pending messages | Tier 2 |
+
+Both rules require a nonempty customer body that is the latest human message.
+They do not apply to recognized resolution/closure or simple acknowledgements,
+explicitly positive/neutral sentiment labels, failed model results, or invalid
+sentiment scores. Tier 2 additionally requires at least two unanswered customer
+messages, or one unanswered message with a long/critical response-delay flag.
+There is no new frequency-only override and frequency calculations are unchanged.
+
+The final tier is the higher of the aggregate decision and the rule's minimum.
+Explicit escalation retains precedence. The aggregate score, weights and boosts
+are preserved. An applied rule sets `routingOverride=true` and
+`decisionSource=high_sentiment_floor` or `sentiment_frequency_floor`.
+`minimumTierRule` records the eligible rule, observed scores and thresholds;
+it can be present even when the aggregate already supplies an equal/higher tier.
+`confidence` and `routingConfidence` retain the aggregate score for these rules;
+neither field is a calibrated probability of the rule being correct.
+
+Keyword and explicit-request matching also accept unique one-character edits
+(insertion, deletion, substitution, adjacent transposition) against the curated
+`ESCALATION_CONFIG["spelling"]["terms"]` list. Input tokens must be 6-32 letters
+by default. Exact vocabulary, protected real words and ambiguous candidates
+are never corrected. This uses a cached local deletion index with no additional
+dependency or network call. It handles typos, not semantic paraphrases.
+
+Context checks still run after correction: negation, conditional requests,
+historical language, specialist targets, deduplication and stale subjects retain
+their existing roles. `details.analyzedMessage.text` retains the original clean
+body; `details.matchingText` shows the normalized matching text.
+`details.spellingCorrections` records original/replacement tokens, distance and
+offsets into the normalized pre-correction subject/body. The request classifier
+also exposes its corrections and matching text when corrections occur.
+
+Both features can be disabled independently with their `enabled` config fields.
+Run the deterministic feature and routing tests without calling Azure ML:
+
+```powershell
+python -m unittest tests.test_branch_strategy tests.test_escalation_routing -v
+```
+
+The legacy full suite still includes live-model tests and some historical
+keyword/frequency score expectations. These need separate maintenance; the
+new tests mock the model response, not keyword, frequency or routing behavior.
 
 ## Configuration
 
